@@ -3,7 +3,7 @@
   "type": "module",
   "homepage": "https://unify.github.io/website/",
   "scripts": {
-    "build": "npx unify/cli build",
-    "dev": "npx unify/cli serve"
+    "build": "npx fwdslsh/unify build",
+    "dev": "npx fwdslsh/unify serve"
   }
 }
