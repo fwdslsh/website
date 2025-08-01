@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Unify – Documentation</title>
+    <meta name="description" content="Get started with Unify: installation, usage, and command reference." />
+    <link rel="stylesheet" href="https://unpkg.com/augmented-ui@2/augmented-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="assets/main.css" />
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="https://raw.githubusercontent.com/unify/cli/main/example/src/imgs/green-banner-800.png"
+                    alt="Unify" class="logo-img" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="features.html">Features</a></li>
+                <li><a href="docs.html">Docs</a></li>
+                <li><a href="https://github.com/fwdslsh/unify" target="_blank" rel="noopener">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="docs-intro" data-augmented-ui="tl-clip br-clip border">
+            <h1 class="page-title">Documentation</h1>
+            <p class="page-subtagline">Get started with Unify in just a few steps.</p>
+        </section>
+
+        <section class="docs-content">
+            <h2>Installation</h2>
+            <p>You can install Unify via npm. For a quick try, you don't even need to install globally &mdash; just
+                use <code>npx</code> as shown below.</p>
+            <pre
+                class="code-block"><code>$ npm install -g @fwdslsh/unify<br>$ unify build<br>$ unify serve</code></pre>
+            <p>The commands above will install Unify globally, build the site from the default <code>src/</code>
+                directory into <code>dist/</code>, and start a local dev server. Alternatively, run
+                <code>npx @fwdslsh/unify serve</code> in any project to serve it without a global install.</p>
+
+            <h2>Project Structure</h2>
+            <p>By default, Unify looks for a <code>src/</code> folder with your source files and outputs to
+                <code>dist/</code>. Within <code>src</code>, you can organize reusable components and layouts in special
+                directories:</p>
+            <pre
+                class="code-block"><code>my-site/<br>├── src/<br>│&nbsp;&nbsp;&nbsp;&nbsp;├── .components/ (partials like header, footer, etc.)<br>│&nbsp;&nbsp;&nbsp;&nbsp;├── .layouts/ (HTML layouts for pages)<br>│&nbsp;&nbsp;&nbsp;&nbsp;├── css/ (your CSS files)<br>│&nbsp;&nbsp;&nbsp;&nbsp;├── index.html (example page)<br>│&nbsp;&nbsp;&nbsp;&nbsp;└── about.md (example Markdown page)<br>└── dist/ (output directory)</code></pre>
+
+            <h2>Using Includes &amp; Layouts</h2>
+            <p>Create reusable pieces of HTML like headers, footers, or sidebars in <code>.components/</code>, and
+                reference them in your pages or layouts using an include comment. For example:</p>
+            <pre
+                class="code-block"><code>&lt;!--#include virtual=&quot;/.components/header.html&quot; --&gt;<br>&lt;main&gt;<br>&nbsp;&nbsp;&lt;h1&gt;Welcome!&lt;/h1&gt;<br>&lt;/main&gt;<br>&lt;!--#include virtual=&quot;/.components/footer.html&quot; --&gt;</code></pre>
+            <p>You can also use a special <code>&lt;slot&gt;</code> element in layouts to define where page content
+                goes, and template variables (like <code>{{ title }}</code>) to inject frontmatter data into layouts.
+            </p>
+
+            <h2>Commands Overview</h2>
+            <ul>
+                <li><code>unify build [options]</code> &ndash; Compile the site (with options for source directory,
+                    output directory, pretty URLs, etc.).</li>
+                <li><code>unify serve [options]</code> &ndash; Start a dev server on <code>localhost</code> (use
+                    <code>-p</code> to specify port) with live reload.</li>
+            </ul>
+            <p>Run <code>unify --help</code> to see all available commands and flags.</p>
+
+            <h2>Learn More</h2>
+            <p>Check out the <a href="https://github.com/fwdslsh/unify" target="_blank" rel="noopener">Unify GitHub
+                    repository</a> for full documentation, examples, and the latest updates.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Unify Project. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+@view-transition {
+  navigation: auto;
+}
+
+:root {
+  --animate-duration: 1.5s;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0f2d2e;
+  color: #f0f0eb;
+  line-height: 1.6;
+}
+
+main{
+  margin-inline: 1rem;  
+}
+
+a {
+  color: #a8ff60;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code,
+pre {
+  font-family: monospace;
+}
+
+/* Layout structure */
+.site-header {
+  padding: 1rem 2rem;
+  background: rgba(15, 45, 46, 0.8);
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-img {
+  height: 40px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  font-weight: 600;
+  color: #f0f0eb;
+}
+
+.nav-links a:hover {
+  color: #a8ff60;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: radial-gradient(circle at top center, rgba(168, 230, 206, 0.15), transparent 60%), #0f2d2e;
+  --aug-border-all: 4px;
+  --aug-border-bg: linear-gradient(135deg, #c6ff00, #64ffda);
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #f0f0eb;
+}
+
+.hero-tagline {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0.5rem auto 2rem;
+}
+
+.hero-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #0f2d2e;
+  background: #a8ff60;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background: #92e556;
+}
+
+.cta-inline {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cta-code {
+  font-family: monospace;
+  color: #f0f0eb;
+}
+
+.copy-btn {
+  background: #244f24;
+  color: #a8ff60;
+  border: 1px solid #a8ff60;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.copy-btn:hover {
+  background: #2e5e2d;
+}
+
+/* Landing features overview */
+.features-overview {
+  max-width: 800px;
+  margin: 3rem auto 2rem;
+  padding: 0 1rem;
+}
+
+.features-overview h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+}
+
+.feature-list li {
+  margin: 0.5rem 0;
+}
+
+.feature-list strong {
+  color: #a8ff60;
+}
+
+/* Features page */
+.features-page-header {
+  padding: 3rem 2rem;
+  text-align: center;
+  --aug-border-all: 4px;
+  --aug-border-bg: linear-gradient(135deg, #c6ff00, #64ffda);
+}
+
+.features-page-header .page-title {
+  font-size: 2.2rem;
+  color: #f0f0eb;
+  margin-bottom: 0.5rem;
+}
+
+.features-page-header .page-subtagline {
+  font-size: 1.2rem;
+  color: #f0f0eb;
+  opacity: 0.8;
+}
+
+.feature-details {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.feature-details h2 {
+  font-size: 1.5rem;
+  color: #a8ff60;
+  margin: 2rem 0 0.5rem;
+}
+
+.feature-details p {
+  margin-bottom: 1rem;
+}
+
+/* Documentation page */
+.docs-intro {
+  padding: 3rem 2rem;
+  text-align: center;
+  --aug-border-all: 4px;
+  --aug-border-bg: linear-gradient(135deg, #c6ff00, #64ffda);
+}
+
+.docs-intro .page-title {
+  font-size: 2rem;
+  color: #f0f0eb;
+  margin-bottom: 0.5rem;
+}
+
+.docs-intro .page-subtagline {
+  font-size: 1.1rem;
+  color: #f0f0eb;
+  opacity: 0.8;
+}
+
+.docs-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.docs-content h2 {
+  font-size: 1.4rem;
+  color: #a8ff60;
+  margin: 2rem 0 0.5rem;
+}
+
+.docs-content p {
+  margin-bottom: 1rem;
+}
+
+.code-block {
+  background: #162a2b;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 0.5rem 0 1rem;
+}
+
+.code-block code {
+  color: #e0e0e0;
+}
+
+.docs-content ul {
+  list-style: disc inside;
+  margin: 0.5rem 0 1rem;
+}
+
+.docs-content li {
+  margin: 0.3rem 0;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 1rem 2rem;
+  background: rgba(15, 45, 46, 0.8);
+  margin-top: 2rem;
+}
+
+.site-footer p {
+  color: #bbbbbb;
+  font-size: 0.9rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+  }
+}

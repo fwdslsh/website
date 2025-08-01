@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unify – Build Static Sites Peacefully</title>
+  <meta name="description"
+    content="A modern static site generator that simplifies building maintainable websites with server-side includes and live reload." />
+  <link rel="stylesheet" href="https://unpkg.com/augmented-ui@2/augmented-ui.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="assets/main.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <img src="https://raw.githubusercontent.com/unify/cli/main/example/src/imgs/green-banner-800.png"
+          alt="Unify" class="logo-img" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="features.html">Features</a></li>
+        <li><a href="docs.html">Docs</a></li>
+        <li><a href="https://github.com/unify/cli" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" data-augmented-ui="tl-clip br-clip border">
+      <h1 class="hero-title animate__animated animate__fadeInDown">A More Peaceful Way to Build Static Websites</h1>
+      <p class="hero-tagline animate__animated animate__fadeInDown animate__delay-1s">
+        Unify is a modern, lightweight static site generator that brings the power of server-side includes, markdown
+        processing, and live reloading to your workflow. Build maintainable static sites with a component-based approach
+        &ndash; no more copy-pasting headers and footers!
+      </p>
+      <div class="hero-cta animate__animated animate__fadeInUp animate__delay-2s">
+        <a href="docs.html" class="cta-button">Get Started</a>
+        <div class="cta-inline">
+          <code class="cta-code">npx @fwdslsh/unify serve</code>
+          <button class="copy-btn">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-overview">
+      <h2>Key Features</h2>
+      <ul class="feature-list">
+        <li><strong>Zero Learning Curve:</strong> Use standard HTML templates and familiar <code>&lt;include&gt;</code>
+          tags or Apache SSI syntax for components.</li>
+        <li><strong>Live Development:</strong> Built-in dev server with auto-reload for a smooth workflow.</li>
+        <li><strong>Flexible &amp; Fast:</strong> Supports Node.js, Deno, or Bun with lightning-fast builds and minimal
+          dependencies.</li>
+        <li><strong>SEO-Ready:</strong> Automatic sitemap generation and easy meta tag management.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Unify Project. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
+
+</html>

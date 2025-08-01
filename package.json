@@ -1,0 +1,9 @@
+{
+  "name": "unify-starter",
+  "type": "module",
+  "homepage": "https://unify.github.io/website/",
+  "scripts": {
+    "build": "npx unify/cli build",
+    "dev": "npx unify/cli serve"
+  }
+}
