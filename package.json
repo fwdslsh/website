@@ -1,9 +1,11 @@
 {
-  "name": "unify-starter",
+  "name": "fwdslsh-website",
+  "version": "0.0.1",
+  "description": "The official website for fwdslsh",
   "type": "module",
-  "homepage": "https://unify.github.io/website/",
+  "homepage": "https://fwdslsh.dev",
   "scripts": {
-    "build": "npx fwdslsh/unify build",
-    "dev": "npx fwdslsh/unify serve"
+    "build": "npx @fwdslsh/unify build",
+    "dev": "npx @fwdslsh/unify serve"
   }
 }
