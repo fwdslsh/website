@@ -21,6 +21,8 @@ jobs:
         run: npx @fwdslsh/unify build
       - name: Copy Config
         run: cp ./src/staticwebapp.config.json ./dist/staticwebapp.config.json
+      - name: List Files
+        run: tree -r ./dist
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -28,6 +30,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WHITE_DUNE_0803B6B10 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
+          app_build_command: "" # App build command
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "./dist" # App source code path
