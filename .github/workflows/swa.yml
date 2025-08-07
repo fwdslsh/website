@@ -19,6 +19,8 @@ jobs:
         uses: actions/checkout@v4      
       - name: Build site
         run: npx @fwdslsh/unify build
+      - name: Copy Config
+        run: cp ./src/staticwebapp.config.json ./dist/staticwebapp.config.json
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
