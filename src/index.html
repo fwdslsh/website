@@ -2,67 +2,754 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Unify – Build Static Sites Peacefully</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fwdslsh - Slash a path through the bloat</title>
   <meta name="description"
-    content="A modern static site generator that simplifies building maintainable websites with server-side includes and live reload." />
-  <link rel="stylesheet" href="https://unpkg.com/augmented-ui@2/augmented-ui.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <link rel="stylesheet" href="assets/main.css" />
+    content="Sharp tools for hackers who remember when software didn't fight you. Zero deps, instant setup, no frameworks to babysit.">
+  <style>
+    :root {
+      --primary: #00ff41;
+      --primary-dim: #00cc33;
+      --bg-dark: #0a0e0a;
+      --bg-darker: #050705;
+      --text-primary: #ffffff;
+      --text-secondary: #b3b3b3;
+      --text-dim: #666666;
+      --border: #1a1a1a;
+      --accent: #ff6b35;
+      --gradient-1: linear-gradient(135deg, #00ff41 0%, #00cc33 100%);
+      --gradient-2: linear-gradient(135deg, #0a0e0a 0%, #1a1a1a 100%);
+      --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated background grid */
+    .bg-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.1;
+      background-image:
+        linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(50px, 50px);
+      }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 14, 10, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo::before {
+      content: '/';
+      font-size: 2rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::before {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+
+    .hero .tagline {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      font-family: var(--font-mono);
+    }
+
+    .hero .description {
+      font-size: 1.2rem;
+      color: var(--text-dim);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gradient-1);
+      color: var(--bg-dark);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 255, 65, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Tools Preview Section */
+    .tools-preview {
+      padding: 8rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .section-header p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .tool-card {
+      background: var(--gradient-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient-1);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .tool-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .tool-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .tool-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: bold;
+      color: var(--bg-dark);
+    }
+
+    .tool-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+    }
+
+    .tool-card .subtitle {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .tool-card p {
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .code-snippet {
+      background: var(--bg-darker);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--primary);
+      overflow-x: auto;
+    }
+
+    .tool-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .tool-links a {
+      color: var(--primary);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .tool-links a:hover {
+      color: var(--primary-dim);
+      text-decoration: underline;
+    }
+
+    /* Terminal Demo Section */
+    .terminal-demo {
+      background: var(--bg-darker);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin: 4rem auto;
+      max-width: 800px;
+      overflow: hidden;
+    }
+
+    .terminal-header {
+      background: var(--border);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .dot-red {
+      background: #ff5f56;
+    }
+
+    .dot-yellow {
+      background: #ffbd2e;
+    }
+
+    .dot-green {
+      background: #27ca3f;
+    }
+
+    .terminal-title {
+      margin-left: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .terminal-content {
+      padding: 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .terminal-line {
+      margin-bottom: 1rem;
+    }
+
+    .prompt {
+      color: var(--primary);
+    }
+
+    .command {
+      color: var(--text-primary);
+    }
+
+    .output {
+      color: var(--text-secondary);
+      margin-left: 2rem;
+    }
+
+    .comment {
+      color: var(--text-dim);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-darker);
+      border-top: 1px solid var(--border);
+      padding: 4rem 2rem 2rem;
+      margin-top: 8rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-content p {
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.8rem;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tool-card {
+        padding: 1.5rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 200px;
+        justify-content: center;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="bg-grid"></div>
 
-  <header class="site-header">
-    <nav class="navbar">
-      <a href="index.html" class="logo">
-        <img src="https://raw.githubusercontent.com/fwdslsh/unify/main/example/src/imgs/green-banner-800.png"
-          alt="Unify" class="logo-img" />
-      </a>
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="logo">fwdslsh</a>
       <ul class="nav-links">
-        <li><a href="features.html">Features</a></li>
-        <li><a href="docs.html">Docs</a></li>
-        <li><a href="https://github.com/fwdslsh/unify" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="#tools">tools</a></li>
+        <li><a href="#about">about</a></li>
+        <li><a href="https://github.com/fwdslsh">github</a></li>
       </ul>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
   <main>
-    <section class="hero" data-augmented-ui="tl-clip br-clip border">
-      <h1 class="hero-title animate__animated animate__fadeInDown">A More Peaceful Way to Build Static Websites</h1>
-      <p class="hero-tagline animate__animated animate__fadeInDown animate__delay-1s">
-        Unify is a modern, lightweight static site generator that brings the power of server-side includes, markdown
-        processing, and live reloading to your workflow. Build maintainable static sites with a component-based approach
-        &ndash; no more copy-pasting headers and footers!
-      </p>
-      <div class="hero-cta animate__animated animate__fadeInUp animate__delay-2s">
-        <a href="docs.html" class="cta-button">Get Started</a>
-        <div class="cta-inline">
-          <code class="cta-code">npx @fwdslsh/unify serve</code>
-          <button class="copy-btn">Copy</button>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>fwdslsh</h1>
+        <p class="tagline">Slash a path through the bloat</p>
+        <p class="description">
+          Sharp tools for hackers who remember when software didn't fight you.
+          Zero deps, instant setup, no frameworks to babysit.
+        </p>
+        <div class="cta-buttons">
+          <a href="#tools" class="btn btn-primary">
+            <span>/</span> Explore Tools
+          </a>
+          <a href="https://github.com/fwdslsh" class="btn btn-secondary">
+            View on GitHub
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="features-overview">
-      <h2>Key Features</h2>
-      <ul class="feature-list">
-        <li><strong>Zero Learning Curve:</strong> Use standard HTML templates and familiar <code>&lt;include&gt;</code>
-          tags or Apache SSI syntax for components.</li>
-        <li><strong>Live Development:</strong> Built-in dev server with auto-reload for a smooth workflow.</li>
-        <li><strong>Flexible &amp; Fast:</strong> Supports Node.js, Deno, or Bun with lightning-fast builds and minimal
-          dependencies.</li>
-        <li><strong>SEO-Ready:</strong> Automatic sitemap generation and easy meta tag management.</li>
-      </ul>
+    <section id="tools" class="tools-preview">
+      <div class="section-header">
+        <h2>Built for the Command Line</h2>
+        <p>Small, sharp programs that do one thing well</p>
+      </div>
+
+      <div class="terminal-demo">
+        <div class="terminal-header">
+          <div class="terminal-dot dot-red"></div>
+          <div class="terminal-dot dot-yellow"></div>
+          <div class="terminal-dot dot-green"></div>
+          <div class="terminal-title">~/project</div>
+        </div>
+        <div class="terminal-content">
+          <div class="terminal-line">
+            <span class="prompt">$</span> <span class="command">git add .</span>
+          </div>
+          <div class="terminal-line">
+            <span class="prompt">$</span> <span class="command">giv message</span>
+            <span class="comment"> # Perfect commit in 30 seconds</span>
+          </div>
+          <div class="terminal-line output">
+            ✓ Generated commit: "feat: implement user authentication with JWT tokens"
+          </div>
+          <div class="terminal-line">
+            <span class="prompt">$</span> <span class="command">unify build</span>
+            <span class="comment"> # Static site, zero config</span>
+          </div>
+          <div class="terminal-line output">
+            ✓ Built 23 pages in 847ms
+          </div>
+          <div class="terminal-line">
+            <span class="prompt">$</span> <span class="command">giv changelog v1.0.0..HEAD > CHANGELOG.md</span>
+          </div>
+          <div class="terminal-line output">
+            ✓ Generated changelog with 12 commits
+          </div>
+        </div>
+      </div>
+
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">g</div>
+            <div>
+              <h3>giv</h3>
+              <div class="subtitle">Git workflows on autopilot</div>
+            </div>
+          </div>
+          <p>AI-powered commit messages, changelogs, and release notes. Ships as a static binary, talks to any LLM
+            backend, doesn't break your flow.</p>
+
+          <div class="code-snippet">$ giv message
+            $ giv changelog v1.0.0..HEAD
+            $ giv release-notes --format markdown</div>
+
+          <p><strong>Why we built it:</strong> Writing commit messages is grunt work. Let the machine do grunt work
+            while you build.</p>
+
+          <div class="tool-links">
+            <a href="/giv">Documentation →</a>
+            <a href="https://github.com/fwdslsh/giv">GitHub →</a>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">u</div>
+            <div>
+              <h3>unify</h3>
+              <div class="subtitle">Static sites for people who remember HTML</div>
+            </div>
+          </div>
+          <p>Build sites with Apache SSI syntax and modern tooling. No JSX, no build step hell, no framework lock-in.
+            Just fast sites that ship.</p>
+
+          <div class="code-snippet">$ unify build
+            $ unify serve --live-reload
+            $ unify watch</div>
+
+          <p><strong>Why we built it:</strong> Static site generators became more complex than the sites they build. We
+            fixed that.</p>
+
+          <div class="tool-links">
+            <a href="/unify">Documentation →</a>
+            <a href="https://github.com/fwdslsh/unify">GitHub →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="tools-preview">
+      <div class="section-header">
+        <h2>The Path Forward</h2>
+        <p>Old-school principles, new-school execution</p>
+      </div>
+
+      <div
+        style="max-width: 600px; margin: 0 auto; text-align: left; color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8;">
+        <p style="margin-bottom: 1.5rem;">
+          We're not building the next unicorn framework. We're building tools for hackers who value craft over hype.
+        </p>
+
+        <p style="margin-bottom: 1.5rem;">
+          <strong style="color: var(--primary);">Ship binaries, not ecosystems:</strong> Download once, run everywhere.
+          No package manager roulette or dependency hell.
+        </p>
+
+        <p style="margin-bottom: 1.5rem;">
+          <strong style="color: var(--primary);">Hack with the grain:</strong> Work with web standards and POSIX
+          conventions instead of reinventing everything.
+        </p>
+
+        <p style="margin-bottom: 1.5rem;">
+          <strong style="color: var(--primary);">Performance starts in your head:</strong> Tools should amplify human
+          intelligence, not fight it with ceremony and complexity.
+        </p>
+
+        <p
+          style="color: var(--text-primary); text-align: center; font-family: var(--font-mono); font-style: italic; margin-top: 2rem;">
+          The <span style="color: var(--primary); font-weight: bold;">/</span> isn't just our logo - it's a commitment
+          to cutting through the cruft.
+        </p>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; 2025 Unify Project. All rights reserved.</p>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="https://github.com/fwdslsh">GitHub</a>
+        <a href="https://npmjs.com/org/fwdslsh">NPM</a>
+        <a href="#tools">Tools</a>
+        <a href="#about">About</a>
+      </div>
+      <p>Carving paths through complexity, one slash at a time.</p>
+      <p style="font-size: 0.8rem; margin-top: 1rem;">
+        Built with <span style="color: var(--primary);">unify</span> •
+        Commits generated with <span style="color: var(--primary);">giv</span>
+      </p>
+    </div>
   </footer>
 
-  <script src="assets/main.js"></script>
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add scroll effect to navigation
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        nav.style.background = 'rgba(10, 14, 10, 0.95)';
+      } else {
+        nav.style.background = 'rgba(10, 14, 10, 0.9)';
+      }
+    });
+
+    // Terminal typing animation (optional enhancement)
+    const terminalLines = document.querySelectorAll('.terminal-line');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.5s ease-out forwards';
+        }
+      });
+    });
+
+    terminalLines.forEach((line, index) => {
+      line.style.opacity = '0';
+      line.style.animationDelay = `${index * 0.2}s`;
+      observer.observe(line);
+    });
+  </script>
 </body>
 
 </html>
