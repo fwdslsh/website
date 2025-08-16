@@ -163,22 +163,34 @@ body {
   font-family: var(--font-sans);
   line-height: 1.6;
   overflow-x: hidden;
+  padding-top: 80px;
+  /* Account for fixed navigation */
 }
 
 
 
+/* Layout Fixes */
+main {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* Typography */
 h1 {
   display: inline;
+  font-family: 'Protest Revolution';
 }
 
 /* Navigation */
 nav {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(10, 14, 10, 0.9);
+  background: rgba(10, 14, 10, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -361,17 +373,21 @@ nav {
 .section-header {
   text-align: center;
   margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
 }
 
 .section-header h2 {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   margin-bottom: 1rem;
   color: var(--text-primary);
 }
 
 .section-header p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
   font-family: var(--font-mono);
 }
@@ -686,6 +702,83 @@ footer {
   }
 }
 
+/* Navigation Dropdown */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-darker);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  min-width: 280px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin-top: 0.5rem;
+}
+
+.nav-dropdown:hover .nav-dropdown-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-dropdown-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-tool-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.nav-tool-link:hover {
+  background: rgba(0, 255, 65, 0.1);
+  border-color: var(--primary);
+}
+
+.nav-tool-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--gradient-primary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: bold;
+  color: var(--bg-dark);
+  font-size: 0.9rem;
+}
+
+.nav-tool-name {
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.nav-tool-desc {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+}
+
 /* Base Responsive Design */
 @media (max-width: 768px) {
   .nav-container {
@@ -702,6 +795,13 @@ footer {
 
   .nav-text {
     display: none;
+  }
+
+  .nav-dropdown-content {
+    left: auto;
+    right: 0;
+    transform: none;
+    min-width: 250px;
   }
 
   .cta-buttons {

@@ -78,7 +78,7 @@
 
     .tools-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 2rem;
       margin-top: 4rem;
     }
@@ -224,14 +224,18 @@
       </div>
       <div class="terminal-content">
         <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">git add .</span>
-        </div>
-        <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">giv message</span>
-          <span class="comment"> # Perfect commit in 30 seconds</span>
+          <span class="prompt">$</span> <span class="command">inform https://docs.example.com</span>
+          <span class="comment"> # Crawl documentation site</span>
         </div>
         <div class="terminal-line output">
-          ✓ Generated commit: "feat: implement user authentication with JWT tokens"
+          ✓ Crawled 42 pages, saved as Markdown
+        </div>
+        <div class="terminal-line">
+          <span class="prompt">$</span> <span class="command">catalog --input docs --output build --sitemap</span>
+          <span class="comment"> # Generate llms.txt index</span>
+        </div>
+        <div class="terminal-line output">
+          ✓ Generated llms.txt with 42 files indexed
         </div>
         <div class="terminal-line">
           <span class="prompt">$</span> <span class="command">unify build</span>
@@ -241,10 +245,11 @@
           ✓ Built 23 pages in 847ms
         </div>
         <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">giv changelog v1.0.0..HEAD > CHANGELOG.md</span>
+          <span class="prompt">$</span> <span class="command">git add . && giv message</span>
+          <span class="comment"> # AI-powered commit</span>
         </div>
         <div class="terminal-line output">
-          ✓ Generated changelog with 12 commits
+          ✓ Generated: "feat: add documentation with automated indexing"
         </div>
       </div>
     </div>
@@ -295,6 +300,50 @@
         <div class="tool-links">
           <a href="/unify">Documentation →</a>
           <a href="https://github.com/fwdslsh/unify">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-icon">i</div>
+          <div>
+            <h3>inform</h3>
+            <div class="subtitle">High-performance web content crawler</div>
+          </div>
+        </div>
+        <p>Crawl websites, extract main content, and convert to clean Markdown. Powered by Bun for maximum performance with zero dependencies.</p>
+
+        <div class="code-snippet">$ inform https://docs.example.com
+          $ inform github.com/owner/repo/tree/main/docs
+          $ inform --include "*.md" --exclude "temp/*"</div>
+
+        <p><strong>Why we built it:</strong> Documentation migration and content extraction shouldn't require heavy frameworks. Fast, focused, effective.</p>
+
+        <div class="tool-links">
+          <a href="/inform">Documentation →</a>
+          <a href="https://github.com/fwdslsh/inform">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-icon">c</div>
+          <div>
+            <h3>catalog</h3>
+            <div class="subtitle">AI-ready documentation indexer</div>
+          </div>
+        </div>
+        <p>Generate llms.txt and llms-full.txt from Markdown/HTML directories. Perfect for AI-powered documentation workflows and searchable knowledge bases.</p>
+
+        <div class="code-snippet">$ catalog --input docs --output build
+          $ catalog --sitemap --base-url https://docs.example.com
+          $ catalog --optional "drafts/**/*" --validate</div>
+
+        <p><strong>Why we built it:</strong> AI tools need structured, indexed content. We made it trivial to prepare documentation for AI consumption.</p>
+
+        <div class="tool-links">
+          <a href="/catalog">Documentation →</a>
+          <a href="https://github.com/fwdslsh/catalog">GitHub →</a>
         </div>
       </div>
     </div>
