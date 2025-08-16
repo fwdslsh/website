@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4      
       - name: Build site
-        run: npx @fwdslsh/unify build -a assets/**/*.*
+        run: npx @fwdslsh/unify build ---copy assets/**/*.*
       - name: List Files
         run: tree -r ./dist
       - name: Build And Deploy
