@@ -31,6 +31,125 @@
   --font-sans: 'Exo 2', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+
+
+/* Base page background */
+:root {
+  /* tweak density/scale here (must evenly divide the keyframe distance) */
+  --tile: 400px;
+  --bg: transparent;
+  /* page background behind the pattern */
+  --opacity: 0.01;
+  /* pattern visibility */
+}
+
+body {
+  background-color: var(--bg);
+}
+
+/* Two independent layers for subtle parallax */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-repeat: repeat;
+  opacity: var(--opacity);
+  mix-blend-mode: screen;
+  /* luminous on dark bg; switch to 'overlay' if needed */
+  filter: hue-rotate(0deg) saturate(120%);
+  /* color-tunable */
+}
+
+body::before {
+  background-image: url("/assets/bg2.svg");
+  background-size: var(--tile) var(--tile);
+  animation: driftA 9s linear infinite alternate;
+}
+
+body::after {
+  background-image: url("/assets/bg2.svg");
+  background-size: calc(var(--tile) * 2) calc(var(--tile) * 2);
+  animation: driftB 15s linear infinite alternate-reverse;
+  opacity: calc(var(--opacity) * 0.5);
+}
+
+@keyframes driftA {
+  from {
+    background-position: 0 0;
+    opacity: calc(var(--opacity) * 0.5);
+    transform: scale(1.1);
+  }
+
+  to {
+    background-position: var(--tile) var(--tile);
+  }
+}
+
+@keyframes driftB {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: calc(var(--tile) * 2) calc(var(--tile) * 2);
+    opacity: calc(var(--opacity) * 0.5);
+    transform: scale(1.1);
+  }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+
+  body::before,
+  body::after {
+    animation: none;
+  }
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+
+.page-bg {
+  display: none;
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/bg.svg");
+  background-repeat: repeat;
+  background-size: var(--tile-size) var(--tile-size);
+  opacity: var(--pattern-opacity);
+  mix-blend-mode: screen;
+  animation: driftSlow 60s linear infinite;
+  z-index: -1;
+}
+
+@keyframes driftSlow {
+  from {
+    background-position: 0 0;
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  to {
+    background-position: var(--tile-size) var(--tile-size);
+    opacity: 0.1;
+    transform: scale(1.1);
+  }
+}
+
+/* No animation if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .page-bg {
+    animation: none;
+  }
+}
+
 /* Base Styles */
 * {
   margin: 0;
@@ -46,35 +165,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Animated background grid */
-.bg-grid {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.1;
-  background-image:
-    linear-gradient(var(--grid-lines-dim) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 64, 0.055) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: gridMove 20s linear infinite;
-}
 
-@keyframes gridMove {
-
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.1;
-    transform: scale(1.1);
-  }
-}
 
 /* Typography */
 h1 {
@@ -110,7 +201,7 @@ nav {
 
 /* Logo specific styles */
 .nav-logo-container {
-  background-image: url("assets/cables-logo-bg-128.png");
+  background-image: url("/assets/cables-logo-bg-128.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
