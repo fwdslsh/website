@@ -10,9 +10,6 @@
       font-style: normal;
     }
 
-
-   
-
     /* Hero Section - Page specific */
     .hero {
       min-height: 100vh;
@@ -78,9 +75,16 @@
 
     .tools-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
       margin-top: 4rem;
+    }
+
+    /* Responsive even distribution for tools grid */
+    @media (min-width: 1200px) {
+      .tools-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
 
     .tool-card {
@@ -266,9 +270,9 @@
         <p>AI-powered commit messages, changelogs, and release notes. Ships as a static binary, talks to any LLM
           backend, doesn't break your flow.</p>
 
-        <div class="code-snippet">$ giv message
-          $ giv changelog v1.0.0..HEAD
-          $ giv release-notes --format markdown</div>
+        <pre class="code-snippet">$ giv message
+$ giv changelog v1.0.0..HEAD
+$ giv release-notes --format markdown</pre>
 
         <p><strong>Why we built it:</strong> Writing commit messages is grunt work. Let the machine do grunt work
           while you build.</p>
@@ -290,9 +294,9 @@
         <p>Build sites with Apache SSI syntax and modern tooling. No JSX, no build step hell, no framework lock-in.
           Just fast sites that ship.</p>
 
-        <div class="code-snippet">$ unify build
-          $ unify serve
-          $ unify watch</div>
+        <pre class="code-snippet">$ unify build
+$ unify serve
+$ unify watch</pre>
 
         <p><strong>Why we built it:</strong> Static site generators became more complex than the sites they build. We
           fixed that.</p>
@@ -313,9 +317,9 @@
         </div>
         <p>Crawl websites, extract main content, and convert to clean Markdown. Powered by Bun for maximum performance with zero dependencies.</p>
 
-        <div class="code-snippet">$ inform https://docs.example.com
-          $ inform github.com/owner/repo/tree/main/docs
-          $ inform --include "*.md" --exclude "temp/*"</div>
+        <pre class="code-snippet">$ inform https://docs.example.com
+$ inform github.com/owner/repo/tree/main/docs
+$ inform --include "*.md" --exclude "temp/*"</pre>
 
         <p><strong>Why we built it:</strong> Documentation migration and content extraction shouldn't require heavy frameworks. Fast, focused, effective.</p>
 
@@ -335,9 +339,9 @@
         </div>
         <p>Generate llms.txt and llms-full.txt from Markdown/HTML directories. Perfect for AI-powered documentation workflows and searchable knowledge bases.</p>
 
-        <div class="code-snippet">$ catalog --input docs --output build
-          $ catalog --sitemap --base-url https://docs.example.com
-          $ catalog --optional "drafts/**/*" --validate</div>
+        <pre class="code-snippet">$ catalog --input docs --output build
+$ catalog --sitemap --base-url https://docs.example.com
+$ catalog --optional "drafts/**/*" --validate</pre>
 
         <p><strong>Why we built it:</strong> AI tools need structured, indexed content. We made it trivial to prepare documentation for AI consumption.</p>
 

@@ -1,8 +1,9 @@
-<head>
-    <title>giv - AI-Powered Git History Assistant</title>
-    <meta name="description"
-        content="Transform your Git history into polished commit messages, changelogs, and release notes with AI. Zero dependencies, self-contained binary.">
-    <style>
+<div data-layout="/_includes/tool-page.layout.html">
+    <!-- Page metadata -->
+    <template data-slot="head-content">
+        <meta name="description"
+            content="Transform your Git history into polished commit messages, changelogs, and release notes with AI. Zero dependencies, self-contained binary.">
+        <style>
             /* Page-specific styles for giv */
             .giv-hero {
                 background: linear-gradient(135deg, rgba(0, 255, 65, 0.05) 0%, transparent 50%);
@@ -144,26 +145,26 @@
 </head>
 
 <body data-layout="/_includes/tool-page.layout.html">
-
-<!-- Hero Section -->
-<section class="tool-hero giv-hero">
-    <div class="tool-hero-content">
-        <h1>giv</h1>
-        <div class="tagline">AI-Powered Git History Assistant</div>
-        <div class="description">
-            Transform raw Git history into polished commit messages, summaries, changelogs, and release notes.
-            Self-contained binaries with zero dependencies and multiple AI backend support.
+    
+    <!-- Hero Section -->
+    <section class="tool-hero giv-hero">
+        <div class="tool-hero-content">
+            <h1>giv</h1>
+            <div class="tagline">AI-Powered Git History Assistant</div>
+            <div class="description">
+                Transform raw Git history into polished commit messages, summaries, changelogs, and release notes.
+                Self-contained binaries with zero dependencies and multiple AI backend support.
+            </div>
+            <div class="cta-buttons">
+                <a href="#install" class="btn btn-primary">
+                    <span>🚀</span> Get Started
+                </a>
+                <a href="https://github.com/fwdslsh/giv" class="btn btn-secondary">
+                    View Source
+                </a>
+            </div>
         </div>
-        <div class="cta-buttons">
-            <a href="#install" class="btn btn-primary">
-                <span>🚀</span> Get Started
-            </a>
-            <a href="https://github.com/fwdslsh/giv" class="btn btn-secondary">
-                View Source
-            </a>
-        </div>
-    </div>
-    <div class="tool-demo">
+        <div class="tool-demo">
         <div class="ai-demo">
             <div class="git-diff">
                 <div class="diff-line header">diff --git a/auth.py b/auth.py</div>
@@ -198,10 +199,10 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </template>
 
-<!-- Features Section -->
+    <!-- Features Section -->
+    <template data-slot="features-section">
         <section class="tool-section">
             <div class="section-header">
                 <h2>AI-Powered Git Workflows</h2>
@@ -252,8 +253,10 @@
                 </div>
             </div>
         </section>
+    </template>
 
-<!-- Installation Section -->
+    <!-- Installation Section -->
+    <template data-slot="install-section">
         <section id="install" class="tool-section alt-bg">
             <div class="section-header">
                 <h2>Installation</h2>
@@ -302,8 +305,10 @@
                 </div>
             </div>
         </section>
+    </template>
 
-<!-- Additional content for AI providers and workflow -->
+    <!-- Additional content for AI providers and workflow -->
+    <template data-slot="additional-content">
         <section class="tool-section">
             <div class="section-header">
                 <h2>Supported AI Providers</h2>
@@ -387,8 +392,10 @@
                 </div>
             </div>
         </section>
+    </template>
 
-<!-- Stats Section -->
+    <!-- Stats Section -->
+    <template data-slot="stats-section">
         <section class="stats-section">
             <div class="stats-container">
                 <div class="section-header">
@@ -416,8 +423,10 @@
                 </div>
             </div>
         </section>
+    </template>
 
-<!-- CTA Section -->
+    <!-- CTA Section -->
+    <template data-slot="cta-section">
         <section class="tool-section">
             <div class="section-header">
                 <h2>Ready to Transform Your Git Workflow?</h2>
@@ -462,8 +471,10 @@
                 </a>
             </div>
         </section>
+    </template>
 
-<!-- Scripts -->
+    <!-- Scripts -->
+    <template data-slot="scripts">
         <script>
             // Animate the AI demo
             const diffLines = document.querySelectorAll('.diff-line');
@@ -511,3 +522,5 @@
                 statsObserver.observe(statsGrid);
             }
         </script>
+    </template>
+</div>

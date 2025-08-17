@@ -3,78 +3,9 @@
     <meta name="description"
         content="Build maintainable static sites using Apache SSI syntax and modern tooling. No JSX, no build step hell, no framework lock-in.">
     <style>
-        /* Background Pattern - Page specific */
-        .bg-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.05;
-            background-image:
-                radial-gradient(circle at 25% 25%, #00ff41 2px, transparent 2px),
-                radial-gradient(circle at 75% 75%, #3b82f6 1px, transparent 1px);
-            background-size: 100px 100px, 60px 60px;
-            animation: float 15s ease-in-out infinite;
-        }
-
-        /* Hero Section - Page specific */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 2rem 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .hero-content {
-            flex: 1;
-            max-width: 600px;
-            animation: fadeInLeft 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 6vw, 4.5rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.1;
-        }
-
-        .hero .tagline {
-            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-family: var(--font-mono);
-        }
-
-        .hero .description {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            margin-bottom: 3rem;
-            line-height: 1.7;
-        }
-
-        .hero-demo {
-            flex: 1;
-            margin-left: 4rem;
-            animation: fadeInRight 1s ease-out 0.3s both;
-        }
-
-        /* Installation Section - Page specific */
-        .install-section {
-            padding: 6rem 2rem;
-            background: var(--bg-darker);
-        }
-
-        .install-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Page-specific styles for unify */
+        .unify-hero {
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.05) 0%, transparent 50%);
         }
 
         .install-grid {
@@ -91,454 +22,257 @@
             padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .install-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .install-card:hover::before {
-            transform: scaleX(1);
         }
 
         .install-card:hover {
-            transform: translateY(-5px);
             border-color: var(--primary);
+            transform: translateY(-2px);
         }
 
         .install-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 1rem;
-            background: var(--gradient-primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--bg-dark);
-        }
-
-        .install-card h3 {
-            font-size: 1.3rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
-            color: var(--text-primary);
         }
 
         .install-code {
             background: var(--bg-darker);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 6px;
             padding: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--primary);
             margin: 1rem 0;
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--primary);
             text-align: left;
-        }
-
-        /* Features Section - Page specific */
-        .features-section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .feature-card {
-            background: var(--gradient-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            color: var(--bg-dark);
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Performance Stats - Page specific */
-        .stats-section {
-            padding: 6rem 2rem;
-            background: var(--bg-darker);
-            text-align: center;
-        }
-
-        .stats-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            padding: 1.5rem;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--primary);
-            font-family: var(--font-mono);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-            font-family: var(--font-mono);
-        }
-
-        /* CTA Section - Page specific */
-        .cta-section {
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-
-        /* Responsive Design - Page specific */
-        @media (max-width: 968px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero-demo {
-                margin-left: 0;
-                margin-top: 3rem;
-                max-width: 500px;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            .install-grid,
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            white-space: pre-line;
         }
     </style>
 </head>
 
+<body data-layout="/_includes/tool-page.layout.html">
 
-<div>
-    <section class="hero">
-        <div class="hero-content">
-            <h1>unify</h1>
-            <p class="tagline">Static sites for people who remember HTML</p>
-            <p class="description">
-                Build maintainable sites with Apache SSI syntax and modern tooling.
-                No JSX, no build step hell, no framework lock-in. Just fast sites that ship.
-            </p>
-            <div class="cta-buttons">
-                <a href="#install" class="btn btn-primary">
-                    <span>⚡</span> Get Started
-                </a>
-                <a href="https://github.com/fwdslsh/unify" class="btn btn-secondary">
-                    View Source
-                </a>
-            </div>
+<!-- Hero Section -->
+<section class="tool-hero unify-hero">
+    <div class="tool-hero-content">
+        <h1>unify</h1>
+        <div class="tagline">Static sites for people who remember HTML</div>
+        <div class="description">
+            Build maintainable sites with Apache SSI syntax and modern tooling.
+            No JSX, no build step hell, no framework lock-in. Just fast sites that ship.
         </div>
-        <div class="hero-demo">
-            <div class="code-editor">
-                <div class="editor-header">
-                    <div class="editor-dot dot-red"></div>
-                    <div class="editor-dot dot-yellow"></div>
-                    <div class="editor-dot dot-green"></div>
-                    <div class="editor-title">src/index.html</div>
-                </div>
-                <div class="editor-content">
-                    <div class="code-line">
-                        <span class="line-number">1</span>
-                        <span class="html-comment">&lt;!-- No build step, no bundler --&gt;</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">2</span>
-                        <span class="html-tag">&lt;!--#include</span> <span class="html-attr">virtual</span>=<span
-                            class="html-string">"/_includes/header.html"</span> <span class="html-tag">--&gt;</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">3</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">4</span>
-                        <span class="html-tag">&lt;main&gt;</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">5</span>
-                        &nbsp;&nbsp;<span class="html-tag">&lt;h1&gt;</span>Welcome!<span
-                            class="html-tag">&lt;/h1&gt;</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">6</span>
-                        &nbsp;&nbsp;<span class="html-tag">&lt;p&gt;</span>Built with HTML you already know<span
-                            class="html-tag">&lt;/p&gt;</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">7</span>
-                        <span class="html-tag">&lt;/main&gt;</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">8</span>
-                    </div>
-                    <div class="code-line">
-                        <span class="line-number">9</span>
-                        <span class="html-tag">&lt;!--#include</span> <span class="html-attr">virtual</span>=<span
-                            class="html-string">"/_includes/footer.html"</span> <span class="html-tag">--&gt;</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="install" class="install-section">
-        <div class="install-container">
-            <div class="section-header">
-                <h2>Get Running in 30 Seconds</h2>
-                <p>One command, zero config ceremony</p>
-            </div>
-
-            <div class="install-grid">
-                <div class="install-card">
-                    <div class="install-icon">🚀</div>
-                    <h3>Quick Start</h3>
-                    <div class="install-code">
-                        # Install Bun (if needed)
-                        curl -fsSL https://bun.sh/install | bash
-
-                        # Install unify globally
-                        bun add -g @fwdslsh/unify
-
-                        # Build your site
-                        unify build
-                    </div>
-                    <p>Zero dependencies, instant setup</p>
-                </div>
-
-                <div class="install-card">
-                    <div class="install-icon">⚡</div>
-                    <h3>Dev Server</h3>
-                    <div class="install-code">
-                        # Start dev server with live reload
-                        unify serve
-
-                        # Watch for changes
-                        unify watch
-
-                        # Custom port
-                        unify serve --port 8080
-                    </div>
-                    <p>Live reload via Server-Sent Events</p>
-                </div>
-
-                <div class="install-card">
-                    <div class="install-icon">📦</div>
-                    <h3>Standalone Binary</h3>
-                    <div class="install-code">
-                        # Create executable
-                        bun run build:executable
-
-                        # Run anywhere
-                        ./unify build
-                        ./unify serve
-                    </div>
-                    <p>Deploy without runtime dependencies</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features-section">
-        <div class="section-header">
-            <h2>Built for Speed and Simplicity</h2>
-            <p>Modern tooling with timeless principles</p>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🌐</div>
-                <h3>Apache SSI Syntax</h3>
-                <p>Use familiar server-side includes that have worked for decades. No new templating language to
-                    learn.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Bun-Powered Performance</h3>
-                <p>Native HTMLRewriter, fs.watch, and Bun.serve APIs deliver ultra-fast builds and live development.
-                </p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🔧</div>
-                <h3>Component Architecture</h3>
-                <p>Build maintainable sites with reusable components. No more copy-pasting headers and footers.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">📝</div>
-                <h3>Markdown + Frontmatter</h3>
-                <p>Write content in Markdown with YAML frontmatter. Perfect for blogs, docs, and content sites.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🛡️</div>
-                <h3>Security First</h3>
-                <p>Path traversal prevention, input validation, and secure serving. Static output means no runtime
-                    vulnerabilities.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🌍</div>
-                <h3>Cross-Platform</h3>
-                <p>Runs on Node.js, Deno, and Bun. Compile to standalone executables for any platform.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="stats-section">
-        <div class="stats-container">
-            <div class="section-header">
-                <h2>Performance That Matters</h2>
-                <p>Benchmarks from real-world usage</p>
-            </div>
-
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">~800ms</div>
-                    <div class="stat-label">Cold Start Time</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">&lt;100ms</div>
-                    <div class="stat-label">Hot Rebuild</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">0</div>
-                    <div class="stat-label">Runtime Dependencies</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">1</div>
-                    <div class="stat-label">Config Files Needed</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="docs" class="cta-section">
-        <div class="section-header">
-            <h2>Ready to Build?</h2>
-            <p>Get started with unify today</p>
-        </div>
-
         <div class="cta-buttons">
-            <a href="/docs/getting-started" class="btn btn-primary">
-                📚 Read the Docs
+            <a href="#install" class="btn btn-primary">
+                <span>⚡</span> Get Started
             </a>
-            <a href="/examples" class="btn btn-secondary">
-                🎯 View Examples
-            </a>
-            <a href="https://github.com/fwdslsh/unify-starter" class="btn btn-secondary">
-                🚀 Starter Template
+            <a href="https://github.com/fwdslsh/unify" class="btn btn-secondary">
+                View Source
             </a>
         </div>
-    </section>
-</div>
+    </div>
+    <div class="tool-demo">
+        <div class="code-editor">
+            <div class="editor-header">
+                <div class="editor-dot dot-red"></div>
+                <div class="editor-dot dot-yellow"></div>
+                <div class="editor-dot dot-green"></div>
+                <div class="editor-title">src/index.html</div>
+            </div>
+            <div class="editor-content">
+                <div class="code-line">
+                    <span class="line-number">1</span>
+                    <span class="html-comment">&lt;!-- No build step, no bundler --&gt;</span>
+                </div>
+                <div class="code-line">
+                    <span class="line-number">2</span>
+                    <span class="html-tag">&lt;!--#include</span> <span class="html-attr">virtual</span>=<span
+                        class="html-string">"/_includes/header.html"</span> <span class="html-tag">--&gt;</span>
+                </div>
+                <div class="code-line">
+                    <span class="line-number">3</span>
+                </div>
+                <div class="code-line">
+                    <span class="line-number">4</span>
+                    <span class="html-tag">&lt;main&gt;</span>
+                </div>
+                <div class="code-line">
+                    <span class="line-number">5</span>
+                    &nbsp;&nbsp;<span class="html-tag">&lt;h1&gt;</span>Welcome!<span
+                        class="html-tag">&lt;/h1&gt;</span>
+                </div>
+                <div class="code-line">
+                    <span class="line-number">6</span>
+                    &nbsp;&nbsp;<span class="html-tag">&lt;p&gt;</span>Built with HTML you already know<span
+                        class="html-tag">&lt;/p&gt;</span>
+                </div>
+                <div class="code-line">
+                    <span class="line-number">7</span>
+                    <span class="html-tag">&lt;/main&gt;</span>
+                </div>
+                <div class="code-line">
+                    <span class="line-number">8</span>
+                </div>
+                <div class="code-line">
+                    <span class="line-number">9</span>
+                    <span class="html-tag">&lt;!--#include</span> <span class="html-attr">virtual</span>=<span
+                        class="html-string">"/_includes/footer.html"</span> <span class="html-tag">--&gt;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- Installation Section -->
+        <section id="install" class="install-section">
+            <div class="install-container">
+                <div class="section-header">
+                    <h2>Get Running in 30 Seconds</h2>
+                    <p>One command, zero config ceremony</p>
+                </div>
 
-<script>
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
+                <div class="install-grid">
+                    <div class="install-card">
+                        <div class="install-icon">🚀</div>
+                        <h3>Quick Start</h3>
+                        <div class="install-code">
+                            # Install Bun (if needed)
+                            curl -fsSL https://bun.sh/install | bash
 
-    // Navigation background on scroll
-    window.addEventListener('scroll', () => {
-        const nav = document.querySelector('nav');
-        if (window.scrollY > 50) {
-            nav.style.background = 'rgba(10, 14, 10, 0.98)';
-        } else {
-            nav.style.background = 'rgba(10, 14, 10, 0.95)';
-        }
-    });
+                            # Install unify globally
+                            bun add -g @fwdslsh/unify
 
-    // Animate stats on scroll
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const statNumbers = entry.target.querySelectorAll('.stat-number');
-                statNumbers.forEach(stat => {
-                    stat.style.animation = 'fadeInUp 0.6s ease-out forwards';
-                });
-            }
-        });
-    });
+                            # Build your site
+                            unify build
+                        </div>
+                        <p>Zero dependencies, instant setup</p>
+                    </div>
 
-    const statsSection = document.querySelector('.stats-section');
-    if (statsSection) {
-        statsObserver.observe(statsSection);
-    }
+                    <div class="install-card">
+                        <div class="install-icon">⚡</div>
+                        <h3>Dev Server</h3>
+                        <div class="install-code">
+                            # Start dev server with live reload
+                            unify serve
 
-    // Code syntax highlighting animation
-    const codeLines = document.querySelectorAll('.code-line');
-    codeLines.forEach((line, index) => {
-        line.style.animation = `fadeInUp 0.3s ease-out ${index * 0.1}s both`;
-    });
-</script>
+                            # Watch for changes
+                            unify watch
+
+                            # Custom port
+                            unify serve --port 8080
+                        </div>
+                        <p>Live reload via Server-Sent Events</p>
+                    </div>
+
+                    <div class="install-card">
+                        <div class="install-icon">📦</div>
+                        <h3>Standalone Binary</h3>
+                        <div class="install-code">
+                            # Create executable
+                            bun run build:executable
+
+                            # Run anywhere
+                            ./unify build
+                            ./unify serve
+                        </div>
+                        <p>Deploy without runtime dependencies</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- Features Section -->
+        <section class="tool-section">
+            <div class="section-header">
+                <h2>Built for Speed and Simplicity</h2>
+                <p>Modern tooling with timeless principles</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Apache SSI Syntax</h3>
+                    <p>Use familiar server-side includes that have worked for decades. No new templating language to
+                        learn.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Bun-Powered Performance</h3>
+                    <p>Native HTMLRewriter, fs.watch, and Bun.serve APIs deliver ultra-fast builds and live development.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Component Architecture</h3>
+                    <p>Build maintainable sites with reusable components. No more copy-pasting headers and footers.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Markdown + Frontmatter</h3>
+                    <p>Write content in Markdown with YAML frontmatter. Perfect for blogs, docs, and content sites.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Security First</h3>
+                    <p>Path traversal prevention, input validation, and secure serving. Static output means no runtime
+                        vulnerabilities.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Cross-Platform</h3>
+                    <p>Runs on Node.js, Deno, and Bun. Compile to standalone executables for any platform.</p>
+                </div>
+            </div>
+        </section>
+
+<!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-container">
+                <div class="section-header">
+                    <h2>Performance That Matters</h2>
+                    <p>Benchmarks from real-world usage</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">~800ms</div>
+                        <div class="stat-label">Cold Start Time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">&lt;100ms</div>
+                        <div class="stat-label">Hot Rebuild</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Runtime Dependencies</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">Config Files Needed</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- CTA Section -->
+        <section class="cta-section">
+            <div class="section-header">
+                <h2>Ready to Build?</h2>
+                <p>Get started with unify today</p>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="/docs/getting-started" class="btn btn-primary">
+                    📚 Read the Docs
+                </a>
+                <a href="/examples" class="btn btn-secondary">
+                    🎯 View Examples
+                </a>
+                <a href="https://github.com/fwdslsh/unify-starter" class="btn btn-secondary">
+                    🚀 Starter Template
+                </a>
+            </div>
+        </section>

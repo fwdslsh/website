@@ -1,5 +1,5 @@
+<!-- Page metadata -->
 <head>
-    <title>inform - High-Performance Web Content Crawler</title>
     <meta name="description"
         content="Crawl websites, extract main content, and convert to clean Markdown. Powered by Bun for maximum performance with zero dependencies.">
     <style>
@@ -237,28 +237,26 @@
         }
     </style>
 </head>
+<div>
 
-<body data-layout="/_includes/tool-page.layout.html">
+    <template data-slot="title">inform - High-Performance Web Content Crawler</template>
 
-<!-- Hero Section -->
-<section class="tool-hero inform-hero">
-    <div class="tool-hero-content">
-        <h1>inform</h1>
-        <div class="tagline">High-Performance Web Content Crawler</div>
-        <div class="description">
-            Crawl websites, extract main content, and convert to clean Markdown. Powered by Bun for maximum
-            performance with concurrent processing and zero dependencies.
-        </div>
-        <div class="cta-buttons">
-            <a href="#install" class="btn btn-primary">
-                <span>⚡</span> Get Started
-            </a>
-            <a href="https://github.com/fwdslsh/inform" class="btn btn-secondary">
-                View Source
-            </a>
-        </div>
-    </div>
-    <div class="tool-demo">
+    <!-- Hero content -->
+    <template data-slot="tool-name">inform</template>
+    <template data-slot="tagline">High-Performance Web Content Crawler</template>
+    <template data-slot="description">
+        Crawl websites, extract main content, and convert to clean Markdown. Powered by Bun for maximum
+        performance with concurrent processing and zero dependencies.
+    </template>
+    <template data-slot="cta-buttons">
+        <a href="#install" class="btn btn-primary">
+            <span>⚡</span> Get Started
+        </a>
+        <a href="https://github.com/fwdslsh/inform" class="btn btn-secondary">
+            View Source
+        </a>
+    </template>
+    <template data-slot="demo">
         <div class="crawler-demo">
             <div class="crawler-progress">
                 <div class="progress-line">
@@ -301,10 +299,10 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </template>
 
     <!-- Features Section -->
+    <template data-slot="features-section">
         <section class="tool-section">
             <div class="section-header">
                 <h2>Built for Speed and Reliability</h2>
@@ -359,8 +357,10 @@
                 </div>
             </div>
         </section>
+    </template>
 
     <!-- Installation Section -->
+    <template data-slot="install-section">
         <section id="install" class="tool-section">
             <div class="section-header">
                 <h2>Installation</h2>
@@ -408,8 +408,10 @@
                 </div>
             </div>
         </section>
+    </template>
 
     <!-- Additional content for sources and performance -->
+    <template data-slot="additional-content">
         <section id="sources" class="tool-section alt-bg">
             <div class="section-header">
                 <h2>Multiple Content Sources</h2>
@@ -588,8 +590,10 @@ giv message # AI-powered commit for the updates</pre>
                 </a>
             </div>
         </section>
+    </template>
 
     <!-- Stats Section -->
+    <template data-slot="stats-section">
         <section class="stats-section">
             <div class="stats-container">
                 <div class="section-header">
@@ -617,8 +621,10 @@ giv message # AI-powered commit for the updates</pre>
                 </div>
             </div>
         </section>
+    </template>
 
     <!-- CTA Section -->
+    <template data-slot="cta-section">
         <section class="tool-section alt-bg">
             <div class="section-header">
                 <h2>Ready to Start Crawling?</h2>
@@ -637,8 +643,10 @@ giv message # AI-powered commit for the updates</pre>
                 </a>
             </div>
         </section>
+    </template>
 
     <!-- Scripts -->
+    <template data-slot="scripts">
         <script>
             // Animate crawler demo
             const progressLines = document.querySelectorAll('.progress-line');
@@ -690,3 +698,5 @@ giv message # AI-powered commit for the updates</pre>
                 perfObserver.observe(perfGrid);
             }
         </script>
+    </template>
+</div>

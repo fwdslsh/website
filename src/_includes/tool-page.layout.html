@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <include src="base/head.html"></include>
+</head>
+
+<body>
+    <div class="page-bg"></div>
+
+    <include src="base/nav.html">
+        <!-- Tool-specific navigation replaces main nav-links -->
+        <template data-slot="nav-links">
+            <li><a href="index.html">Overview</a></li>
+            <li><a href="getting-started.html">Getting Started</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="examples.html">Examples</a></li>
+        </template>
+    </include>
+
+    <main>
+        <!-- Page content goes here -->
+        <div data-slot="default"></div>
+    </main>
+
+    <include src="base/footer.html"></include>
+    <include src="base/scripts.html"></include>
+</body>
+
+</html>
