@@ -20,9 +20,9 @@
 - [x] 3.5 gather Pages
 
 ## Phase 4: Update Ecosystem & Supporting Pages
-- [ ] 4.1 Ecosystem Page
-- [ ] 4.2 Shared Components
-- [ ] 4.3 Layout Files
+- [x] 4.1 Ecosystem Page
+- [x] 4.2 Shared Components
+- [x] 4.3 Layout Files
 
 ## Phase 5: Assets & Styling
 - [ ] 5.1 Icon Assets

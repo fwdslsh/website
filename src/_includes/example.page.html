@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>unify Documentation - Getting Started</title>
+    <title>Tool Documentation - Getting Started</title>
     <meta name="description"
-        content="Complete documentation for unify static site generator. Learn Apache SSI syntax, CLI commands, and deployment options.">
+        content="Documentation template for fwdslsh tools.">
     <link rel="stylesheet" href="../assets/styles.css" data-remove>
     <style>
         /* Documentation Layout - Page specific */
@@ -224,9 +224,10 @@
 <body>
 
     <template data-replace="nav-links">
-        <li><a href="/unify" class="active">docs</a></li>
-        <li><a href="/unify/getting-started">quick start</a></li>
-        <li><a href="https://github.com/fwdslsh/unify">github</a></li>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="getting-started.html" class="active">Getting Started</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="examples.html">Examples</a></li>
     </template>
 
     <div class="docs-layout">
@@ -235,49 +236,17 @@
                 <div class="sidebar-section">
                     <h3 class="sidebar-title">Getting Started</h3>
                     <ul class="sidebar-nav">
-                        <li><a href="/unify/docs" class="active">Quick Start</a></li>
-                        <li><a href="/unify/docs/installation">Installation</a></li>
-                        <li><a href="/unify/docs/project-structure">Project Structure</a></li>
-                        <li><a href="/unify/docs/first-site">Your First Site</a></li>
+                        <li><a href="#" class="active">Quick Start</a></li>
+                        <li><a href="#">Installation</a></li>
+                        <li><a href="#">Configuration</a></li>
                     </ul>
                 </div>
 
                 <div class="sidebar-section">
-                    <h3 class="sidebar-title">Core Concepts</h3>
+                    <h3 class="sidebar-title">Reference</h3>
                     <ul class="sidebar-nav">
-                        <li><a href="/unify/docs/includes">Server-Side Includes</a></li>
-                        <li><a href="/unify/docs/components">Components</a></li>
-                        <li><a href="/unify/docs/markdown">Markdown</a></li>
-                        <li><a href="/unify/docs/assets">Static Assets</a></li>
-                    </ul>
-                </div>
-
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">CLI Reference</h3>
-                    <ul class="sidebar-nav">
-                        <li><a href="/unify/docs/cli-build">unify build</a></li>
-                        <li><a href="/unify/docs/cli-serve">unify serve</a></li>
-                        <li><a href="/unify/docs/cli-watch">unify watch</a></li>
-                        <li><a href="/unify/docs/configuration">Configuration</a></li>
-                    </ul>
-                </div>
-
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Deployment</h3>
-                    <ul class="sidebar-nav">
-                        <li><a href="/unify/docs/deployment">Static Hosting</a></li>
-                        <li><a href="/unify/docs/docker">Docker</a></li>
-                        <li><a href="/unify/docs/ci-cd">CI/CD</a></li>
-                    </ul>
-                </div>
-
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Advanced</h3>
-                    <ul class="sidebar-nav">
-                        <li><a href="/unify/docs/performance">Performance</a></li>
-                        <li><a href="/unify/docs/security">Security</a></li>
-                        <li><a href="/unify/docs/migration">Migration Guide</a></li>
-                        <li><a href="/unify/docs/troubleshooting">Troubleshooting</a></li>
+                        <li><a href="#">Commands</a></li>
+                        <li><a href="#">API</a></li>
                     </ul>
                 </div>
             </div>
@@ -286,362 +255,35 @@
         <main class="main-content">
             <div class="content-wrapper">
                 <div class="content">
-                    <h1>Getting Started with unify</h1>
+                    <h1>Getting Started</h1>
 
-                    <p>unify is a modern static site generator that uses familiar Apache Server-Side Includes (SSI)
-                        syntax with modern tooling. Build maintainable sites without learning new templating languages
-                        or managing complex build pipelines.</p>
+                    <p>Welcome to the documentation for [Tool Name]. This template demonstrates the standard documentation layout.</p>
 
                     <div class="callout callout-success">
                         <div class="callout-title">⚡ Quick Start</div>
-                        <p>Get a site running in under 2 minutes with zero configuration.</p>
+                        <p>Get up and running in seconds.</p>
                     </div>
 
                     <h2>Installation</h2>
 
-                    <p>unify requires <strong>Bun</strong> for optimal performance. If you don't have Bun installed:</p>
-
                     <div class="code-block">
                         <div class="language-label">bash</div>
-                        <pre># Install Bun
-curl -fsSL https://bun.sh/install | bash
-
-# Install unify globally
-bun add -g @fwdslsh/unify
-
-# Verify installation
-unify --version</pre>
+                        <pre>npm install -g @fwdslsh/[tool]</pre>
                     </div>
 
-                    <div class="callout callout-warning">
-                        <div class="callout-title">⚠️ Alternative Runtimes</div>
-                        <p>While unify works with Node.js and Deno, Bun provides the best performance with native APIs.
-                        </p>
-                    </div>
-
-                    <h2>Create Your First Site</h2>
-
-                    <p>Start with the official starter template:</p>
-
+                    <h2>Usage</h2>
+                    <p>Run the tool from your terminal:</p>
                     <div class="code-block">
                         <div class="language-label">bash</div>
-                        <pre># Clone the starter template
-git clone https://github.com/fwdslsh/unify-starter my-site
-cd my-site
-
-# Install dependencies
-bun install
-
-# Start development server
-bun run dev</pre>
+                        <pre>[tool] init</pre>
                     </div>
-
-                    <p>Your site will be available at <code>http://localhost:3000</code> with live reload enabled.</p>
-
-                    <h3>Manual Setup</h3>
-
-                    <p>Prefer to start from scratch? Create a minimal project structure:</p>
-
-                    <div class="code-block">
-                        <div class="language-label">bash</div>
-                        <pre># Create project directory
-mkdir my-unify-site && cd my-unify-site
-
-# Create basic structure
-mkdir src src/_includes src/assets
-touch src/index.html src/_includes/header.html src/_includes/footer.html</pre>
-                    </div>
-
-                    <h2>Basic Project Structure</h2>
-
-                    <p>A typical unify project follows this structure:</p>
-
-                    <div class="code-block">
-                        <div class="language-label">text</div>
-                        <pre>my-site/
-├── src/                    # Source files
-│   ├── _includes/          # Reusable components
-│   │   ├── header.html
-│   │   ├── footer.html
-│   │   └── nav.html
-│   ├── assets/            # Static assets
-│   │   ├── css/
-│   │   ├── js/
-│   │   └── images/
-│   ├── index.html         # Homepage
-│   ├── about.html         # Additional pages
-│   └── blog/              # Nested directories
-│       └── index.md       # Markdown content
-├── dist/                  # Generated output
-└── package.json           # Dependencies (optional)</pre>
-                    </div>
-
-                    <h2>Your First Component</h2>
-
-                    <p>Create a reusable header component in <code>src/_includes/header.html</code>:</p>
-
-                    <div class="code-block">
-                        <div class="language-label">html</div>
-                        <pre>&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;My Site&lt;/title&gt;
-    &lt;link rel="stylesheet" href="/assets/css/style.css"&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;header&gt;
-        &lt;nav&gt;
-            &lt;a href="/"&gt;Home&lt;/a&gt;
-            &lt;a href="/about"&gt;About&lt;/a&gt;
-            &lt;a href="/blog"&gt;Blog&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;</pre>
-                    </div>
-
-                    <p>Create a footer component in <code>src/_includes/footer.html</code>:</p>
-
-                    <div class="code-block">
-                        <div class="language-label">html</div>
-                        <pre>    &lt;footer&gt;
-        &lt;p&gt;&amp;copy; 2024 My Site. Built with unify.&lt;/p&gt;
-    &lt;/footer&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
-                    </div>
-
-                    <h2>Using Server-Side Includes</h2>
-
-                    <p>Now create your homepage in <code>src/index.html</code> using Apache SSI syntax:</p>
-
-                    <div class="code-block">
-                        <div class="language-label">html</div>
-                        <pre>&lt;!--#include virtual="/_includes/header.html" --&gt;
-
-&lt;main&gt;
-    &lt;h1&gt;Welcome to My Site&lt;/h1&gt;
-    &lt;p&gt;Built with unify - static sites for people who remember HTML.&lt;/p&gt;
-    
-    &lt;section&gt;
-        &lt;h2&gt;Features&lt;/h2&gt;
-        &lt;ul&gt;
-            &lt;li&gt;No learning curve - uses Apache SSI syntax&lt;/li&gt;
-            &lt;li&gt;Live reload development server&lt;/li&gt;
-            &lt;li&gt;Markdown support with frontmatter&lt;/li&gt;
-            &lt;li&gt;Component-based architecture&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/section&gt;
-&lt;/main&gt;
-
-&lt;!--#include virtual="/_includes/footer.html" --&gt;</pre>
-                    </div>
-
-                    <h2>Slot System with Fallbacks</h2>
-
-                    <p>Unify's slot system supports fallback content when no content is provided:</p>
-
-                    <div class="code-block">
-                        <div class="language-label">html</div>
-                        <pre>&lt;!-- Layout with fallback content --&gt;
-&lt;header&gt;
-  &lt;div data-slot="header"&gt;
-    &lt;h1&gt;Default Site Title&lt;/h1&gt;
-  &lt;/div&gt;
-&lt;/header&gt;
-
-&lt;main&gt;
-  &lt;div data-slot="content"&gt;&lt;/div&gt;
-&lt;/main&gt;</pre>
-                    </div>
-
-                    <p>Pages can override the fallback content by providing slot content:</p>
-
-                    <div class="code-block">
-                        <div class="language-label">html</div>
-                        <pre>&lt;!-- Page that overrides header slot --&gt;
-&lt;template slot="header"&gt;
-  &lt;h1&gt;Custom Page Title&lt;/h1&gt;
-  &lt;nav&gt;...&lt;/nav&gt;
-&lt;/template&gt;
-
-&lt;p&gt;This content goes into the content slot&lt;/p&gt;</pre>
-                    </div>
-
-                    <h3>Slot Injection in Includes</h3>
-
-                    <p>Include files can also use slots for dynamic content:</p>
-
-                    <div class="code-block">
-                        <div class="language-label">html</div>
-                        <pre>&lt;!-- _includes/card.html --&gt;
-&lt;div class="card"&gt;
-  &lt;h3 data-slot="title"&gt;Default Title&lt;/h3&gt;
-  &lt;div data-slot="content"&gt;Default content&lt;/div&gt;
-&lt;/div&gt;</pre>
-                    </div>
-
-                    <p>Use the include with custom data attributes:</p>
-
-                    <div class="code-block">
-                        <div class="language-label">html</div>
-                        <pre>&lt;include src="/_includes/card.html" 
-         data-title="My Card Title"
-         data-content="Custom card content" /&gt;</pre>
-                    </div>
-
-                    <h2>CLI Commands</h2>
-
-                    <p>unify provides a simple command-line interface:</p>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Command</th>
-                                <th>Description</th>
-                                <th>Options</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>unify build</code></td>
-                                <td>Build your site to <code>dist/</code></td>
-                                <td><code>--pretty-urls</code>, <code>--base-url</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>unify serve</code></td>
-                                <td>Start development server</td>
-                                <td><code>--port</code>, <code>--host</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>unify watch</code></td>
-                                <td>Watch files and rebuild</td>
-                                <td><code>--verbose</code></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <h3>Build for Production</h3>
-
-                    <div class="code-block">
-                        <div class="language-label">bash</div>
-                        <pre># Basic build
-unify build
-
-# Build with pretty URLs (removes .html extensions)
-unify build --pretty-urls
-
-# Build with custom base URL
-unify build --base-url https://mysite.com
-
-# Build and serve locally to test
-unify build && unify serve --port 8080</pre>
-                    </div>
-
-                    <h2>Development Workflow</h2>
-
-                    <p>The typical development workflow with unify:</p>
-
-                    <ol>
-                        <li><strong>Start development server</strong>: <code>unify serve</code></li>
-                        <li><strong>Edit files</strong>: Changes auto-reload in browser</li>
-                        <li><strong>Add components</strong>: Create reusable parts in <code>_includes/</code></li>
-                        <li><strong>Build for production</strong>: <code>unify build</code></li>
-                        <li><strong>Deploy</strong>: Upload <code>dist/</code> to any static host</li>
-                    </ol>
-
-                    <div class="callout">
-                        <div class="callout-title">🚀 Next Steps</div>
-                        <p>Ready to dive deeper? Check out the <a href="/unify/docs/components"
-                                style="color: var(--primary);">Components guide</a> to learn about advanced templating,
-                            or explore our <a href="/unify/examples" style="color: var(--primary);">example
-                                projects</a>.</p>
-                    </div>
-
-                    <h2>Layout Discovery</h2>
-
-                    <p>Unify provides flexible layout discovery options to structure your pages:</p>
-
-                    <h3>Automatic Layout Discovery</h3>
-                    <p>Place a <code>_layout.html</code> file in any directory to automatically apply it to all pages in
-                        that directory and subdirectories:</p>
-
-                    <div class="code-block">
-                        <div class="language-label">html</div>
-                        <pre>&lt;!-- src/_layout.html --&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;div data-slot="head"&gt;&lt;/div&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;div data-slot="content"&gt;&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
-                    </div>
-
-                    <h3>Explicit Layout Reference</h3>
-                    <p>Use the <code>&lt;link rel="layout"&gt;</code> element to specify a custom layout:</p>
-
-                    <div class="code-block">
-                        <div class="language-label">html</div>
-                        <pre>&lt;!-- In your HTML page --&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;link rel="layout" href="/custom-layout.html"&gt;
-  &lt;template slot="head"&gt;
-    &lt;title&gt;My Custom Page&lt;/title&gt;
-  &lt;/template&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;Page content goes here&lt;/h1&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
-                    </div>
-
-                    <h3>Short Name Layout Discovery</h3>
-                    <p>Create named layouts in <code>_includes/</code> with the pattern
-                        <code>_[name].layout.html</code>:</p>
-
-                    <div class="code-block">
-                        <div class="language-label">html</div>
-                        <pre>&lt;!-- src/_includes/_blog.layout.html --&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;div data-slot="head"&gt;&lt;/div&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;header&gt;Blog Layout&lt;/header&gt;
-  &lt;div data-slot="content"&gt;&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
-                    </div>
-
-                    <p>Reference it using the short name:</p>
-
-                    <div class="code-block">
-                        <div class="language-label">html</div>
-                        <pre>&lt;link rel="layout" href="blog"&gt;</pre>
-                    </div>
-
-                    <h2>Key Benefits</h2>
-
-                    <ul>
-                        <li><strong>Zero learning curve</strong>: If you know HTML and Apache SSI, you know unify</li>
-                        <li><strong>Fast builds</strong>: Powered by Bun's native APIs for maximum performance</li>
-                        <li><strong>Live development</strong>: Server-Sent Events for instant browser updates</li>
-                        <li><strong>Portable output</strong>: Pure HTML/CSS/JS that works anywhere</li>
-                        <li><strong>Secure by default</strong>: Path traversal protection and input validation</li>
-                        <li><strong>Framework-free</strong>: No client-side JavaScript frameworks required</li>
-                    </ul>
 
                     <div class="page-nav">
-                        <a href="/unify/docs/installation" class="nav-btn">
+                        <a href="#" class="nav-btn">
                             <span class="nav-btn-label">Next →</span>
                             <span class="nav-btn-title">Installation Guide</span>
                         </a>
-                        <a href="/unify/examples" class="nav-btn">
+                        <a href="#" class="nav-btn">
                             <span class="nav-btn-label">Examples →</span>
                             <span class="nav-btn-title">View Example Projects</span>
                         </a>

@@ -1,7 +1,7 @@
 <head data-unify="head-content">
-    <template data-slot="title">fwdslsh Ecosystem - Complete Development Toolkit</template>
+    <template data-slot="title">fwdslsh Ecosystem - The Agentic Web Toolkit</template>
     <meta name="description"
-        content="The complete fwdslsh ecosystem: unify for static sites, giv for AI Git workflows, inform for web crawling, and catalog for documentation indexing.">
+        content="The complete fwdslsh ecosystem: hyphn for sharing, rabit for navigation, dispatch for security, disclose for context, and gather for content.">
     <style>
         /* Page-specific styles for ecosystem */
         .ecosystem-hero {
@@ -23,8 +23,8 @@
 
         .workflow-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
             position: relative;
         }
 
@@ -32,7 +32,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 2rem 1.5rem;
+            padding: 1.5rem 1rem;
             text-align: center;
             position: relative;
             transition: all 0.3s ease;
@@ -60,8 +60,8 @@
         }
 
         .step-tool {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             margin: 0 auto 1rem;
             background: var(--gradient-primary);
             border-radius: 12px;
@@ -71,20 +71,20 @@
             font-family: var(--font-mono);
             font-weight: bold;
             color: var(--bg-dark);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
 
         .step-title {
             color: var(--text-primary);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .step-description {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.8rem;
+            line-height: 1.4;
         }
 
         .integration-matrix {
@@ -311,10 +311,11 @@
 
     <!-- Hero content -->
     <template data-slot="tool-name">fwdslsh Ecosystem</template>
-    <template data-slot="tagline">Complete toolkit for modern development</template>
+    <template data-slot="tagline">Tools for the Agentic Web</template>
     <template data-slot="description">
-        Four focused tools that work together seamlessly. Build static sites, manage Git workflows with AI,
-        crawl web content, and index documentation - all with zero dependencies and maximum performance.
+        A modular suite of tools designed for the era of AI agents. 
+        Secure execution, structured navigation, context retrieval, and skill sharing 
+        - all built on modern standards and composable conventions.
     </template>
     <template data-slot="cta-buttons">
         <a href="#workflow" class="btn btn-primary">
@@ -332,48 +333,51 @@
     <template data-slot="features-section">
         <section id="workflow" class="tool-section">
             <div class="section-header">
-                <h2>Complete Development Workflow</h2>
-                <p>From content to deployment in one seamless pipeline</p>
+                <h2>The Agentic Workflow</h2>
+                <p>A complete pipeline for AI-driven development and interaction</p>
             </div>
 
             <div class="workflow-visualization">
                 <div class="workflow-steps">
                     <div class="workflow-step">
-                        <div class="step-tool">i</div>
-                        <div class="step-title">Crawl Content</div>
-                        <div class="step-description">Use inform to extract content from websites and convert to
-                            clean Markdown</div>
+                        <div class="step-tool">g</div>
+                        <div class="step-title">Gather</div>
+                        <div class="step-description">Ingest content from web & repos</div>
                     </div>
 
                     <div class="workflow-step">
                         <div class="step-tool">c</div>
-                        <div class="step-title">Index Documentation</div>
-                        <div class="step-description">catalog generates llms.txt files and sitemaps for AI-ready
-                            documentation</div>
+                        <div class="step-title">Catalog</div>
+                        <div class="step-description">Index documentation</div>
                     </div>
 
                     <div class="workflow-step">
-                        <div class="step-tool">u</div>
-                        <div class="step-title">Build Sites</div>
-                        <div class="step-description">unify creates fast static sites with zero configuration
-                            required</div>
+                        <div class="step-tool">x</div>
+                        <div class="step-title">Disclose</div>
+                        <div class="step-description">Bundle context</div>
                     </div>
 
                     <div class="workflow-step">
-                        <div class="step-tool">g</div>
-                        <div class="step-title">Commit & Deploy</div>
-                        <div class="step-description">giv generates professional commit messages and documentation
-                            with AI</div>
+                        <div class="step-tool">d</div>
+                        <div class="step-title">Dispatch</div>
+                        <div class="step-description">Secure execution</div>
+                    </div>
+                    
+                    <div class="workflow-step">
+                        <div class="step-tool">h</div>
+                        <div class="step-title">Hyphn</div>
+                        <div class="step-description">Share agents</div>
                     </div>
                 </div>
             </div>
 
             <div class="code-block">
-                <pre># Complete workflow in 4 commands
-inform https://docs.example.com --output-dir content
-catalog --input content --output indexed --sitemap --base-url https://mysite.com
-unify build --input indexed --output dist
-giv message && git push</pre>
+                <pre># The Agentic Pipeline in Action
+gather https://docs.example.com --output raw-data
+catalog --input raw-data --output indexed
+disclose learnings --query "auth" > context.md
+dispatch start --env-file .env
+hyphn run @agent/coder --context context.md</pre>
             </div>
         </section>
     </template>
@@ -383,86 +387,59 @@ giv message && git push</pre>
         <section id="quick-start" class="tool-section">
             <div class="section-header">
                 <h2>Quick Start Guide</h2>
-                <p>Get the entire ecosystem running in minutes</p>
+                <p>Initialize your agentic environment in minutes</p>
             </div>
 
             <div class="quick-start-section">
                 <div class="quick-start-tabs">
                     <button class="quick-start-tab active" onclick="showQuickStartTab('install')">Installation</button>
-                    <button class="quick-start-tab" onclick="showQuickStartTab('workflow')">First Workflow</button>
-                    <button class="quick-start-tab" onclick="showQuickStartTab('automation')">Automation</button>
+                    <button class="quick-start-tab" onclick="showQuickStartTab('workspace')">Workspace</button>
+                    <button class="quick-start-tab" onclick="showQuickStartTab('execution')">Execution</button>
                 </div>
 
                 <div id="install-content" class="quick-start-content active">
-                    <h4>Install All Tools</h4>
+                    <h4>Install Core Tools</h4>
                     <div class="code-block">
-                        <pre># Install all fwdslsh tools at once
-curl -fsSL https://raw.githubusercontent.com/fwdslsh/toolkit/main/install.sh | sh
+                        <pre># Install Hyphn (the orchestrator)
+npm install -g @fwdslsh/hyphn
 
-# Or install individually
-curl -fsSL https://raw.githubusercontent.com/fwdslsh/inform/main/install.sh | sh
-curl -fsSL https://raw.githubusercontent.com/fwdslsh/catalog/main/install.sh | sh
-curl -fsSL https://raw.githubusercontent.com/fwdslsh/unify/main/install.sh | sh
-curl -fsSL https://raw.githubusercontent.com/fwdslsh/giv/main/install.sh | sh
+# Install Dispatch (secure sandbox)
+curl -fsSL https://raw.githubusercontent.com/fwdslsh/dispatch/main/install.sh | bash
 
-# Verify installation
-inform --version && catalog --version && unify --version && giv --version</pre>
+# Install other tools as needed
+npm install -g @fwdslsh/disclose @fwdslsh/gather</pre>
                     </div>
-                    <p>All tools are distributed as self-contained binaries with no dependencies required.</p>
+                    <p>All tools are designed to work independently or together.</p>
                 </div>
 
-                <div id="workflow-content" class="quick-start-content">
-                    <h4>Your First Complete Workflow</h4>
+                <div id="workspace-content" class="quick-start-content">
+                    <h4>Initialize Your Workspace</h4>
                     <div class="code-block">
-                        <pre># 1. Set up AI for giv (choose one)
-export OPENAI_API_KEY="your-key"  # OpenAI
-export ANTHROPIC_API_KEY="your-key"  # Anthropic
-# Or use local: ollama pull llama3.2
+                        <pre># Initialize Hyphn workspace
+hyphn init
 
-# 2. Create a project
-mkdir my-docs && cd my-docs
-git init
+# Configure your sources
+hyphn sources add ~/my-agents
 
-# 3. Crawl some documentation
-inform https://docs.example.com --output-dir content
-
-# 4. Generate documentation index
-catalog --input content --output build --sitemap --validate
-
-# 5. Build static site
-unify build --input build --output dist
-
-# 6. Commit with AI-generated message
-git add . && giv message</pre>
+# Check available agents and skills
+hyphn list</pre>
                     </div>
-                    <p>This creates a complete documentation pipeline from crawling to deployment.</p>
+                    <p>Set up your environment to share and reuse agents across projects.</p>
                 </div>
 
-                <div id="automation-content" class="quick-start-content">
-                    <h4>Automate with Scripts</h4>
+                <div id="execution-content" class="quick-start-content">
+                    <h4>Secure Execution</h4>
                     <div class="code-block">
-                        <pre># Create docs-pipeline.sh
-#!/bin/bash
-set -e
+                        <pre># Start a secure dispatch session
+dispatch start my-session
 
-echo "📡 Crawling documentation..."
-inform $1 --output-dir temp/content
+# Attach to the session
+dispatch attach my-session
 
-echo "📋 Generating indexes..."
-catalog --input temp/content --output temp/build \
-  --sitemap --base-url $2 --validate
-
-echo "🏗️ Building site..."
-unify build --input temp/build --output dist
-
-echo "📝 Committing changes..."
-git add dist/ && giv message
-
-echo "✅ Documentation pipeline complete!"
-
-# Usage: ./docs-pipeline.sh https://docs.site.com https://my-site.com</pre>
+# Run an agent safely
+hyphn run @agent/review --safe</pre>
                     </div>
-                    <p>Create reusable scripts for common workflows and integrate with CI/CD systems.</p>
+                    <p>Run untrusted code or complex agents without risking your host system.</p>
                 </div>
             </div>
         </section>
@@ -473,56 +450,52 @@ echo "✅ Documentation pipeline complete!"
         <section class="tool-section alt-bg">
             <div class="section-header">
                 <h2>Tool Integrations</h2>
-                <p>Each tool complements the others perfectly</p>
+                <p>Composable tools for powerful workflows</p>
             </div>
 
             <div class="integration-matrix">
                 <div class="integration-card">
                     <div class="integration-tools">
-                        <div class="integration-tool-icon">i</div>
+                        <div class="integration-tool-icon">g</div>
                         <div class="integration-arrow">→</div>
                         <div class="integration-tool-icon">c</div>
                     </div>
-                    <h4>inform → catalog</h4>
-                    <p>Crawl websites and automatically generate AI-ready documentation indexes. Perfect for
-                        migrating documentation or creating knowledge bases.</p>
-                    <div class="code-snippet">inform docs.site.com | catalog --stdin --validate</div>
+                    <h4>gather → catalog</h4>
+                    <p>Crawl websites and repositories, then automatically index them for agent consumption.</p>
+                    <div class="code-snippet">gather docs.site.com | catalog --index</div>
                 </div>
 
                 <div class="integration-card">
                     <div class="integration-tools">
-                        <div class="integration-tool-icon">c</div>
+                        <div class="integration-tool-icon">x</div>
                         <div class="integration-arrow">→</div>
-                        <div class="integration-tool-icon">u</div>
+                        <div class="integration-tool-icon">d</div>
                     </div>
-                    <h4>catalog → unify</h4>
-                    <p>Generate documentation indexes and build them into beautiful static sites with navigation and
-                        SEO optimization.</p>
-                    <div class="code-snippet">catalog --sitemap --index | unify build</div>
+                    <h4>disclose → dispatch</h4>
+                    <p>Retrieve focused context bundles and inject them into secure sandboxed sessions.</p>
+                    <div class="code-snippet">disclose pack | dispatch inject</div>
                 </div>
 
                 <div class="integration-card">
                     <div class="integration-tools">
-                        <div class="integration-tool-icon">u</div>
+                        <div class="integration-tool-icon">h</div>
                         <div class="integration-arrow">→</div>
-                        <div class="integration-tool-icon">g</div>
+                        <div class="integration-tool-icon">r</div>
                     </div>
-                    <h4>unify → giv</h4>
-                    <p>Build your static site and generate professional commit messages and release notes
-                        automatically with AI assistance.</p>
-                    <div class="code-snippet">unify build && giv message --format conventional</div>
+                    <h4>hyphn → rabit</h4>
+                    <p>Agents share navigation capabilities using Rabit manifests to explore the web.</p>
+                    <div class="code-snippet">hyphn use @skill/nav --manifest .burrow.json</div>
                 </div>
 
                 <div class="integration-card">
                     <div class="integration-tools">
-                        <div class="integration-tool-icon">g</div>
+                        <div class="integration-tool-icon">d</div>
                         <div class="integration-arrow">→</div>
-                        <div class="integration-tool-icon">i</div>
+                        <div class="integration-tool-icon">h</div>
                     </div>
-                    <h4>giv → inform</h4>
-                    <p>Track documentation changes and automatically crawl updated content for continuous
-                        integration workflows.</p>
-                    <div class="code-snippet">giv summary --since="1 week" | inform --changed-urls</div>
+                    <h4>dispatch → hyphn</h4>
+                    <p>Run shared agents within isolated containers for maximum security.</p>
+                    <div class="code-snippet">dispatch exec -- hyphn run @agent/unsafe</div>
                 </div>
             </div>
         </section>
@@ -530,91 +503,56 @@ echo "✅ Documentation pipeline complete!"
         <section class="tool-section">
             <div class="section-header">
                 <h2>Use Case Scenarios</h2>
-                <p>Real-world applications of the fwdslsh ecosystem</p>
+                <p>Solving real problems with agentic tools</p>
             </div>
 
             <div class="use-case-scenarios">
                 <div class="scenario-card">
                     <div class="scenario-title">
-                        <span class="scenario-icon">📚</span>
-                        Documentation Migration
+                        <span class="scenario-icon">🛡️</span>
+                        Secure AI Development
                     </div>
                     <div class="scenario-tools">
-                        <span class="scenario-tool-badge">inform</span>
-                        <span class="scenario-tool-badge">catalog</span>
-                        <span class="scenario-tool-badge">unify</span>
+                        <span class="scenario-tool-badge">dispatch</span>
+                        <span class="scenario-tool-badge">hyphn</span>
                     </div>
-                    <p>Migrate documentation from legacy systems to modern static sites. Extract content, generate
-                        indexes, and build beautiful documentation sites.</p>
-                    <div class="code-snippet">
-                        # Migrate docs from old system
-                        inform https://legacy-docs.com --output legacy-content
-                        catalog --input legacy-content --output structured --validate
-                        unify build --input structured --output new-docs
-                    </div>
+                    <p>Develop with AI agents that have full shell access, but contained within a secure, disposable sandbox. Protect your secrets and system stability.</p>
                 </div>
 
                 <div class="scenario-card">
                     <div class="scenario-title">
-                        <span class="scenario-icon">🤖</span>
-                        AI Training Pipeline
+                        <span class="scenario-icon">🧠</span>
+                        Context-Aware Agents
                     </div>
                     <div class="scenario-tools">
-                        <span class="scenario-tool-badge">inform</span>
+                        <span class="scenario-tool-badge">disclose</span>
                         <span class="scenario-tool-badge">catalog</span>
-                        <span class="scenario-tool-badge">giv</span>
                     </div>
-                    <p>Create AI training datasets from web content. Crawl, structure, and version control your AI
-                        training data with proper documentation.</p>
-                    <div class="code-snippet">
-                        # Build AI training dataset
-                        inform https://knowledge-base.com --include "*.md"
-                        catalog --optional "examples/**" --output ai-dataset --validate
-                        giv message "dataset: add new training content for v2.0"
-                    </div>
+                    <p>Give your agents exactly the context they need - not too little, not too much. Retrieve relevant learnings and documentation dynamically.</p>
                 </div>
 
                 <div class="scenario-card">
                     <div class="scenario-title">
-                        <span class="scenario-icon">🚀</span>
-                        Continuous Deployment
+                        <span class="scenario-icon">🕸️</span>
+                        The Agentic Web
                     </div>
                     <div class="scenario-tools">
-                        <span class="scenario-tool-badge">unify</span>
-                        <span class="scenario-tool-badge">giv</span>
-                        <span class="scenario-tool-badge">catalog</span>
+                        <span class="scenario-tool-badge">rabit</span>
+                        <span class="scenario-tool-badge">gather</span>
                     </div>
-                    <p>Automated deployment pipeline with AI-generated documentation. Build, version, and deploy
-                        with professional commit messages.</p>
-                    <div class="code-snippet">
-                        # CI/CD Pipeline
-                        unify build --production
-                        catalog --input build --sitemap --base-url https://production.com
-                        giv changelog v1.0.0..HEAD --output CHANGELOG.md
-                        giv message && git push origin main
-                    </div>
+                    <p>Publish content that agents can navigate reliably. Use Rabit manifests to guide agents through your documentation and data.</p>
                 </div>
 
                 <div class="scenario-card">
                     <div class="scenario-title">
-                        <span class="scenario-icon">🔍</span>
-                        Knowledge Base Creation
+                        <span class="scenario-icon">🤝</span>
+                        Team Collaboration
                     </div>
                     <div class="scenario-tools">
-                        <span class="scenario-tool-badge">inform</span>
-                        <span class="scenario-tool-badge">catalog</span>
-                        <span class="scenario-tool-badge">unify</span>
-                        <span class="scenario-tool-badge">giv</span>
+                        <span class="scenario-tool-badge">hyphn</span>
+                        <span class="scenario-tool-badge">dispatch</span>
                     </div>
-                    <p>Complete knowledge base workflow. Aggregate content from multiple sources, index for search,
-                        and maintain with version control.</p>
-                    <div class="code-snippet">
-                        # Full knowledge base setup
-                        inform https://wiki.company.com --output kb-content
-                        catalog --input kb-content --index --sitemap --base-url https://kb.company.com
-                        unify build --input kb-content --output public
-                        giv init && giv message "docs: initialize company knowledge base"
-                    </div>
+                    <p>Share agents, skills, and environments across your team. standardize workflows and enable consistent AI assistance for everyone.</p>
                 </div>
             </div>
         </section>
@@ -622,55 +560,38 @@ echo "✅ Documentation pipeline complete!"
         <section class="tool-section alt-bg">
             <div class="philosophy-section">
                 <h2>The fwdslsh Philosophy</h2>
-                <p>Focused tools that compose beautifully</p>
+                <p>Tools that empower, not constrain</p>
 
                 <div class="philosophy-principles">
                     <div class="principle">
                         <div class="principle-icon">🎯</div>
                         <div class="principle-content">
-                            <h4>Single Purpose</h4>
-                            <p>Each tool does one thing exceptionally well. No feature creep, no kitchen sinks.</p>
+                            <h4>Focused</h4>
+                            <p>Each tool solves one problem well. No bloated frameworks.</p>
                         </div>
                     </div>
 
                     <div class="principle">
-                        <div class="principle-icon">🔗</div>
+                        <div class="principle-icon">🧩</div>
                         <div class="principle-content">
                             <h4>Composable</h4>
-                            <p>Tools work together seamlessly but remain independent. Mix and match as needed.</p>
+                            <p>Tools work together via standard interfaces (pipes, files, manifests).</p>
                         </div>
                     </div>
 
                     <div class="principle">
                         <div class="principle-icon">⚡</div>
                         <div class="principle-content">
-                            <h4>Performance First</h4>
-                            <p>Built with Bun and modern runtimes for maximum speed with minimal resource usage.</p>
+                            <h4>Performant</h4>
+                            <p>Built with Bun and modern runtimes for speed and efficiency.</p>
                         </div>
                     </div>
 
                     <div class="principle">
-                        <div class="principle-icon">📦</div>
+                        <div class="principle-icon">🤖</div>
                         <div class="principle-content">
-                            <h4>Zero Dependencies</h4>
-                            <p>Self-contained binaries with no external dependencies. Download and run anywhere.</p>
-                        </div>
-                    </div>
-
-                    <div class="principle">
-                        <div class="principle-icon">🛠️</div>
-                        <div class="principle-content">
-                            <h4>Developer Experience</h4>
-                            <p>Intuitive CLIs, sensible defaults, and helpful error messages. Tools that feel good
-                                to use.</p>
-                        </div>
-                    </div>
-
-                    <div class="principle">
-                        <div class="principle-icon">🌐</div>
-                        <div class="principle-content">
-                            <h4>Cross-Platform</h4>
-                            <p>Works consistently across Linux, macOS, and Windows. Same experience everywhere.</p>
+                            <h4>Agent-First</h4>
+                            <p>Designed from the ground up for both human and AI users.</p>
                         </div>
                     </div>
                 </div>
@@ -680,55 +601,32 @@ echo "✅ Documentation pipeline complete!"
 
     <!-- Stats Section -->
     <template data-slot="stats-section">
-        <section class="stats-section">
-            <div class="stats-container">
-                <div class="section-header">
-                    <h2>Ecosystem Metrics</h2>
-                    <p>Built for performance and reliability</p>
-                </div>
-
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">4</div>
-                        <div class="stat-label">Focused Tools</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">0</div>
-                        <div class="stat-label">Runtime Dependencies</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">3</div>
-                        <div class="stat-label">Platforms Supported</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Self-Contained</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <include src="components/stats-section.html"></include>
     </template>
 
     <!-- CTA Section -->
     <template data-slot="cta-section">
         <section class="tool-section alt-bg">
             <div class="section-header">
-                <h2>Ready to Build?</h2>
-                <p>Start with any tool and expand your workflow</p>
+                <h2>Build Your Ecosystem</h2>
+                <p>Start with one tool, expand to the full suite</p>
             </div>
 
             <div class="cta-buttons">
-                <a href="/unify/getting-started" class="btn btn-primary">
-                    🏗️ Start with Static Sites
+                <a href="/hyphn/getting-started" class="btn btn-primary">
+                    Start with Hyphn
                 </a>
-                <a href="/giv/getting-started" class="btn btn-secondary">
-                    🤖 Start with AI Git
+                <a href="/dispatch/getting-started" class="btn btn-secondary">
+                    Secure with Dispatch
                 </a>
-                <a href="/inform/getting-started" class="btn btn-secondary">
-                    🌐 Start with Web Crawling
+                <a href="/disclose/getting-started" class="btn btn-secondary">
+                    Learn with Disclose
                 </a>
-                <a href="/catalog/getting-started" class="btn btn-secondary">
-                    📋 Start with Documentation
+                <a href="/rabit/getting-started" class="btn btn-secondary">
+                    Navigate with Rabit
+                </a>
+                <a href="/gather/getting-started" class="btn btn-secondary">
+                    Crawl with Gather
                 </a>
             </div>
 
@@ -737,7 +635,7 @@ echo "✅ Documentation pipeline complete!"
                     <span class="quick-link-icon">🔗</span>
                     <div class="quick-link-content">
                         <h4>GitHub Organization</h4>
-                        <p>All tools, examples, and documentation</p>
+                        <p>Open source and community driven</p>
                     </div>
                 </a>
 
@@ -745,7 +643,7 @@ echo "✅ Documentation pipeline complete!"
                     <span class="quick-link-icon">🐳</span>
                     <div class="quick-link-content">
                         <h4>Docker Hub</h4>
-                        <p>Containerized versions of all tools</p>
+                        <p>Containerized tools ready to run</p>
                     </div>
                 </a>
 
@@ -753,7 +651,7 @@ echo "✅ Documentation pipeline complete!"
                     <span class="quick-link-icon">📦</span>
                     <div class="quick-link-content">
                         <h4>NPM Packages</h4>
-                        <p>Install with your favorite package manager</p>
+                        <p>Standard installation via npm</p>
                     </div>
                 </a>
             </div>
