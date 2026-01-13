@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dispatch Examples</title>
+</head>
+<body data-unify="_includes/tool-page.layout.html">
+    <section class="tool-hero">
+        <div class="tool-hero-content">
+            <h1>dispatch Examples</h1>
+        </div>
+    </section>
+
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="tool-nav-links">
+                <li><a href="/dispatch/">Overview</a></li>
+                <li><a href="/dispatch/getting-started">Getting Started</a></li>
+                <li><a href="/dispatch/docs">Documentation</a></li>
+                <li><a href="/dispatch/examples" class="active">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <h2>Long-Running Tasks</h2>
+        <p>Start a heavy task in dispatch, close your browser, and check back later.</p>
+        <div class="code-block">
+            # Inside dispatch terminal
+            python training_script.py &
+            disown
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>hyphn Examples - Workflows & Patterns</title>
+</head>
+<body data-unify="_includes/tool-page.layout.html">
+    <section class="tool-hero">
+        <div class="tool-hero-content">
+            <h1>hyphn Examples</h1>
+            <p class="tagline">Common patterns for team collaboration</p>
+        </div>
+    </section>
+
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="tool-nav-links">
+                <li><a href="/hyphn/">Overview</a></li>
+                <li><a href="/hyphn/getting-started">Getting Started</a></li>
+                <li><a href="/hyphn/docs">Documentation</a></li>
+                <li><a href="/hyphn/examples" class="active">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <h2>Team Collaboration</h2>
+        <p>Create a shared git repository for your team's AI prompts and agents.</p>
+        <div class="code-block">
+            git clone git@github.com:my-org/ai-config.git ~/ai-config
+            hyphn sources add ~/ai-config
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <h2>Custom Agents</h2>
+        <p>Define specialized agents for your specific codebase.</p>
+        <div class="code-block">
+            # ~/.hyphn/agents/db-expert.md
+            ---
+            name: db-expert
+            description: Expert in our PostgreSQL schema
+            ---
+            You are a database expert. Always use parameterized queries.
+            Refer to schema.sql for table definitions.
+        </div>
+    </section>
+</body>
+</html>

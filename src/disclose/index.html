@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>disclose - Learning Retrieval & Context Assembly</title>
+    <meta name="description"
+        content="Retrieve and bundle relevant context from the Hyphn learning system. Manage token budgets and assemble session contexts for AI tools.">
+    <style>
+        /* Page-specific styles */
+        .disclose-hero {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+        }
+
+        .disclose-icon {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+        }
+    </style>
+</head>
+
+<body data-unify="_includes/tool-page.layout.html">
+
+    <section class="tool-hero disclose-hero">
+        <div class="tool-hero-content">
+            <h1>disclose</h1>
+            <p class="tagline">Context assembly for the AI age</p>
+            <p class="description">
+                Don't flood your context window. Retrieve exactly the learnings and documentation you need 
+                within a strict token budget.
+            </p>
+            <div class="cta-buttons">
+                <a href="#install" class="btn btn-primary">
+                    <span>x</span> Get Started
+                </a>
+                <a href="https://github.com/fwdslsh/core" class="btn btn-secondary">
+                    View Source
+                </a>
+            </div>
+        </div>
+        
+        <div class="tool-demo">
+            <div class="code-block">
+                <pre>
+$ disclose learnings --query "auth" --budget 1000
+> Found 5 learnings related to "auth"
+> Selected 3 top matches (850 tokens)
+> Output written to context.md
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="tool-nav-links">
+                <li><a href="/disclose/" class="active">Overview</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="examples.html">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="features" class="tool-section">
+        <div class="section-header">
+            <h2>Smart Context Management</h2>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>Learning Retrieval</h3>
+                <p>Use hybrid search (semantic + keyword) to find relevant past learnings and solutions.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Token Budgeting</h3>
+                <p>Specify a max token count. Disclose prioritizes the most valuable context to fit your budget.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3>Context Bundling</h3>
+                <p>Pack documentation, learnings, and file snippets into a single optimized context package.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="install" class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Installation</h2>
+        </div>
+
+        <div class="install-grid">
+            <div class="install-card">
+                <div class="install-icon">📦</div>
+                <h3>Bun Package</h3>
+                <div class="install-code">
+                    bun add -g @fwdslsh/disclose
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

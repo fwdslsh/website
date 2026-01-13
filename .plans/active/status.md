@@ -13,11 +13,11 @@
 - [x] 2.1 Update Main Landing Page
 
 ## Phase 3: Create New Tool Pages
-- [ ] 3.1 hyphn Pages
-- [ ] 3.2 rabit Pages
-- [ ] 3.3 dispatch Pages
-- [ ] 3.4 disclose Pages
-- [ ] 3.5 gather Pages
+- [x] 3.1 hyphn Pages
+- [x] 3.2 rabit Pages
+- [x] 3.3 dispatch Pages
+- [x] 3.4 disclose Pages
+- [x] 3.5 gather Pages
 
 ## Phase 4: Update Ecosystem & Supporting Pages
 - [ ] 4.1 Ecosystem Page

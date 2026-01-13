@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Getting Started with hyphn - AI Workflow Unification</title>
+    <meta name="description"
+        content="Learn how to install and configure hyphn to share agents and skills across your AI development tools.">
+    <style>
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-item::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+    </style>
+</head>
+
+<body data-unify="_includes/tool-page.layout.html">
+
+    <section class="tool-hero">
+        <div class="tool-hero-content">
+            <h1>Getting Started with hyphn</h1>
+            <p class="tagline">Unified configuration for your AI tools</p>
+        </div>
+    </section>
+
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="tool-nav-links">
+                <li><a href="/hyphn/">Overview</a></li>
+                <li><a href="/hyphn/getting-started" class="active">Getting Started</a></li>
+                <li><a href="/hyphn/docs">Documentation</a></li>
+                <li><a href="/hyphn/examples">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Setup Guide</h2>
+        </div>
+
+        <ol class="step-list">
+            <li class="step-item">
+                <div class="step-title">Prerequisites</div>
+                <p>Ensure you have Node.js (v18+) and npm installed on your system.</p>
+                <div class="code-block">node --version</div>
+            </li>
+
+            <li class="step-item">
+                <div class="step-title">Installation</div>
+                <p>Install hyphn globally via npm:</p>
+                <div class="code-block">npm install -g @fwdslsh/hyphn</div>
+            </li>
+
+            <li class="step-item">
+                <div class="step-title">Initialization</div>
+                <p>Initialize your local configuration directory (`~/.hyphn`). This creates the standard structure for your agents and skills.</p>
+                <div class="code-block">hyphn init</div>
+            </li>
+
+            <li class="step-item">
+                <div class="step-title">Platform Setup</div>
+                <p>Configure your installed AI tools (OpenCode, Claude Code) to recognize hyphn.</p>
+                <div class="code-block">hyphn setup</div>
+            </li>
+        </ol>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Understanding Directory Structure</h2>
+        </div>
+        
+        <p>Your `~/.hyphn` directory is the source of truth for your AI workflows.</p>
+
+        <div class="code-block">
+            <pre>
+~/.hyphn/
+├── config.yaml       # Main configuration
+├── agents/           # Custom agent definitions
+│   └── my-agent.md
+├── commands/         # Custom slash commands
+│   └── test.sh
+├── skills/           # Reusable skills
+│   └── deploy-skill/
+└── sources/          # External source repositories
+            </pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Adding Sources</h2>
+        </div>
+        <p>Share configuration with your team by adding git repositories as sources.</p>
+        
+        <div class="code-block">
+            # Add a local directory or git repo
+            hyphn sources add ~/work/team-ai-config
+            
+            # Update all sources
+            hyphn sources update
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="cta-buttons">
+            <a href="/hyphn/docs" class="btn btn-primary">Read Documentation</a>
+        </div>
+    </section>
+
+</body>
+</html>

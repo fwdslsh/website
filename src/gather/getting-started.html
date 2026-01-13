@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Getting Started with gather</title>
+</head>
+<body data-unify="_includes/tool-page.layout.html">
+    <section class="tool-hero">
+        <div class="tool-hero-content">
+            <h1>Getting Started with gather</h1>
+            <p class="tagline">Ingest your first dataset</p>
+        </div>
+    </section>
+
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="tool-nav-links">
+                <li><a href="/gather/">Overview</a></li>
+                <li><a href="/gather/getting-started" class="active">Getting Started</a></li>
+                <li><a href="/gather/docs">Documentation</a></li>
+                <li><a href="/gather/examples">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <h2>Prerequisites</h2>
+        <p>Gather requires Bun (v1.0+).</p>
+    </section>
+
+    <section class="tool-section">
+        <h2>Basic Usage</h2>
+        <div class="code-block">
+            # Crawl a documentation site
+            gather https://docs.astro.build
+            
+            # Download a repo folder
+            gather https://github.com/bun-land/bun/tree/main/docs
+            
+            # Ingest a feed
+            gather --feed https://news.ycombinator.com/rss
+        </div>
+    </section>
+</body>
+</html>

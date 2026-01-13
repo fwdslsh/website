@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>hyphn - Agent, Command & Skill Sharing System</title>
+    <meta name="description"
+        content="Share agents, commands, and skills between AI coding tools. Seamlessly integrate OpenCode and Claude Code with a unified configuration system.">
+    <style>
+        /* Page-specific styles */
+        .hyphn-hero {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+        }
+
+        .hyphn-icon {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+
+        .code-demo {
+            background: var(--bg-darker);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 4rem auto;
+            max-width: 800px;
+            font-family: var(--font-mono);
+        }
+
+        .demo-line {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .demo-prompt {
+            color: var(--primary);
+            user-select: none;
+        }
+
+        .demo-cmd {
+            color: var(--text-main);
+        }
+
+        .demo-output {
+            color: var(--text-dim);
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body data-unify="_includes/tool-page.html">
+
+    <section class="tool-hero hyphn-hero">
+        <div class="tool-hero-content">
+            <h1>hyphn</h1>
+            <p class="tagline">Share agents, commands & skills between AI tools</p>
+            <p class="description">
+                The unified bridge for AI coding assistants. Share your custom agents, commands, and skills across
+                OpenCode and Claude Code without duplicating configuration.
+            </p>
+            <div class="cta-buttons">
+                <a href="#install" class="btn btn-primary">
+                    <span>⚡</span> Get Started
+                </a>
+                <a href="https://github.com/fwdslsh/hyphn" class="btn btn-secondary">
+                    View Source
+                </a>
+            </div>
+        </div>
+        
+        <div class="tool-demo">
+            <div class="code-demo">
+                <div class="demo-line">
+                    <span class="demo-prompt">$</span>
+                    <span class="demo-cmd">hyphn init</span>
+                </div>
+                <div class="demo-output">
+                    Initialized ~/.hyphn structure<br>
+                    Created default configuration
+                </div>
+                
+                <div class="demo-line">
+                    <span class="demo-prompt">$</span>
+                    <span class="demo-cmd">hyphn sources add ~/team-hyphn</span>
+                </div>
+                <div class="demo-output">
+                    Added source: team-hyphn<br>
+                    Loaded 3 agents, 5 commands, 2 skills
+                </div>
+
+                <div class="demo-line">
+                    <span class="demo-prompt">$</span>
+                    <span class="demo-cmd">hyphn list</span>
+                </div>
+                <div class="demo-output">
+                    • @agent-review (team-hyphn)<br>
+                    • @skill-deploy (system)<br>
+                    • /test-suite (team-hyphn)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="tool-nav-links">
+                <li><a href="/hyphn/" class="active">Overview</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="examples.html">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="features" class="tool-section">
+        <div class="section-header">
+            <h2>Unified AI Configuration</h2>
+            <p>Write once, use everywhere. Hyphn standardizes your AI assistant capabilities.</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Cross-Platform Sharing</h3>
+                <p>Define agents and skills once in your `~/.hyphn` directory and use them in both OpenCode and Claude Code.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Team Sources</h3>
+                <p>Add shared repositories as sources to instantly distribute custom agents and workflows to your entire team.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔌</div>
+                <h3>MCP Integration</h3>
+                <p>Native support for Model Context Protocol. Expose your Hyphn tools as an MCP server for Claude Desktop.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🛠️</div>
+                <h3>Skill Management</h3>
+                <p>Organize reusable capabilities into skills that any agent can adopt. specific instructions, prompt templates, and tool definitions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="install" class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Installation</h2>
+            <p>Get up and running in seconds</p>
+        </div>
+
+        <div class="install-grid">
+            <div class="install-card">
+                <div class="install-icon">📦</div>
+                <h3>NPM Package</h3>
+                <div class="install-code">
+                    npm install -g @fwdslsh/hyphn
+                </div>
+                <p>Install globally to use the CLI anywhere</p>
+            </div>
+
+            <div class="install-card">
+                <div class="install-icon">⚡</div>
+                <h3>Quick Start</h3>
+                <div class="install-code">
+                    hyphn init
+                    hyphn setup
+                </div>
+                <p>Initialize your local configuration and link to supported tools</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Supported Platforms</h2>
+            <p>Hyphn bridges the gap between your favorite AI tools</p>
+        </div>
+
+        <div class="use-cases">
+            <div class="use-case">
+                <div class="use-case-icon">💻</div>
+                <h4>OpenCode</h4>
+                <p>Full native integration. Hyphn manages your `opencode.json` and extension loading.</p>
+            </div>
+
+            <div class="use-case">
+                <div class="use-case-icon">🤖</div>
+                <h4>Claude Code</h4>
+                <p>Injects custom slash commands and prompts directly into your Claude Code sessions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Ready to Unify Your AI Workflow?</h2>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="/hyphn/getting-started" class="btn btn-primary">
+                🚀 Getting Started Guide
+            </a>
+            <a href="/hyphn/examples" class="btn btn-secondary">
+                📚 View Examples
+            </a>
+        </div>
+    </section>
+
+</body>
+</html>

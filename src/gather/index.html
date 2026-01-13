@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>gather - High-Performance Web Crawler</title>
+    <meta name="description"
+        content="Crawl websites, download Git repositories, and ingest social feeds. Convert everything to clean Markdown for AI consumption.">
+    <style>
+        /* Page-specific styles */
+        .gather-hero {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+        }
+
+        .gather-icon {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+    </style>
+</head>
+
+<body data-unify="_includes/tool-page.layout.html">
+
+    <section class="tool-hero gather-hero">
+        <div class="tool-hero-content">
+            <h1>gather</h1>
+            <p class="tagline">High-performance content ingestion</p>
+            <p class="description">
+                Turn the web into dataset. Crawl sites, download repos, and ingest feeds with a single tool.
+                Automatic HTML-to-Markdown conversion makes everything AI-ready.
+            </p>
+            <div class="cta-buttons">
+                <a href="#install" class="btn btn-primary">
+                    <span>g</span> Start Gathering
+                </a>
+                <a href="https://github.com/fwdslsh/core" class="btn btn-secondary">
+                    View Source
+                </a>
+            </div>
+        </div>
+        
+        <div class="tool-demo">
+            <div class="code-block">
+                <pre>
+$ gather https://docs.example.com
+> Crawling docs.example.com...
+> Converted 45 pages to Markdown
+> Saved to ./content/docs.example.com/
+
+$ gather github.com/owner/repo/tree/main/docs
+> Downloading sparse checkout...
+> Retrieved 12 files
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="tool-nav-links">
+                <li><a href="/gather/" class="active">Overview</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="examples.html">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="features" class="tool-section">
+        <div class="section-header">
+            <h2>Three Modes, One Tool</h2>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🕷️</div>
+                <h3>Web Crawler</h3>
+                <p>Concurrent crawling with respect for robots.txt. Converts HTML to clean Markdown using Turndown.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⬇️</div>
+                <h3>Git Downloader</h3>
+                <p>Download specific subdirectories from GitHub repositories without cloning the entire history.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📡</div>
+                <h3>Feed Ingestion</h3>
+                <p>Monitor RSS/Atom feeds, YouTube channels, and social media feeds for new content.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="install" class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Installation</h2>
+        </div>
+
+        <div class="install-grid">
+            <div class="install-card">
+                <div class="install-icon">📦</div>
+                <h3>Bun Package</h3>
+                <div class="install-code">
+                    bun add -g @fwdslsh/gather
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

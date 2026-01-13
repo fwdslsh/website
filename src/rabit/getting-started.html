@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Getting Started with rabit</title>
+</head>
+<body data-unify="_includes/tool-page.layout.html">
+    <section class="tool-hero">
+        <div class="tool-hero-content">
+            <h1>Getting Started with rabit</h1>
+            <p class="tagline">Build your first burrow</p>
+        </div>
+    </section>
+
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="tool-nav-links">
+                <li><a href="/rabit/">Overview</a></li>
+                <li><a href="/rabit/getting-started" class="active">Getting Started</a></li>
+                <li><a href="/rabit/docs">Documentation</a></li>
+                <li><a href="/rabit/examples">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <h2>1. Create a Manifest</h2>
+        <p>Create a `.burrow.json` file in the root of your project or documentation directory.</p>
+        <div class="code-block">
+            <pre>
+{
+  "version": "1.0",
+  "title": "My Project",
+  "description": "Documentation for My Project",
+  "entries": [
+    {
+      "type": "link",
+      "title": "README",
+      "uri": "README.md",
+      "mediaType": "text/markdown"
+    },
+    {
+      "type": "burrow",
+      "title": "API Docs",
+      "uri": "api/.burrow.json"
+    }
+  ]
+}
+            </pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <h2>2. Add Content</h2>
+        <p>Ensure the files referenced in `uri` exist relative to the manifest.</p>
+    </section>
+
+    <section class="tool-section">
+        <h2>3. Validate</h2>
+        <p>Use the `rabit` CLI (coming soon) or a JSON schema validator to check your manifest.</p>
+    </section>
+</body>
+</html>

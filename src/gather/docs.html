@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>gather Documentation</title>
+</head>
+<body data-unify="_includes/tool-page.layout.html">
+    <section class="tool-hero">
+        <div class="tool-hero-content">
+            <h1>gather Documentation</h1>
+        </div>
+    </section>
+
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="tool-nav-links">
+                <li><a href="/gather/">Overview</a></li>
+                <li><a href="/gather/getting-started">Getting Started</a></li>
+                <li><a href="/gather/docs" class="active">Documentation</a></li>
+                <li><a href="/gather/examples">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <h2>CLI Reference</h2>
+        <div class="code-block">
+            gather [url] [options]
+            
+            Options:
+              --feed        Treat URL as a feed source
+              --output      Output directory (default: ./content)
+              --limit       Max pages to crawl
+              --concurrency Number of parallel requests
+        </div>
+    </section>
+</body>
+</html>

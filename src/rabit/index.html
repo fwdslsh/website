@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>rabit - Burrows for the Agentic Web</title>
+    <meta name="description"
+        content="A convention for publishing content that both humans and AI agents can navigate reliably. The Gopher protocol for the AI age.">
+    <style>
+        /* Page-specific styles */
+        .rabit-hero {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.05) 0%, transparent 50%);
+        }
+
+        .rabit-icon {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        }
+
+        .concept-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        
+        .concept-node {
+            padding: 1rem 2rem;
+            background: var(--bg-dark);
+            border: 2px solid var(--text-secondary);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .concept-arrow {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body data-unify="_includes/tool-page.layout.html">
+
+    <section class="tool-hero rabit-hero">
+        <div class="tool-hero-content">
+            <h1>rabit</h1>
+            <p class="tagline">Burrows for the Agentic Web</p>
+            <p class="description">
+                A simple convention for publishing content that humans can read and AI agents can navigate reliably. 
+                Like Gopher, but for the modern AI era.
+            </p>
+            <div class="cta-buttons">
+                <a href="#concepts" class="btn btn-primary">
+                    <span>r</span> Explore Concepts
+                </a>
+                <a href="https://github.com/itlackey/rabit" class="btn btn-secondary">
+                    View Spec
+                </a>
+            </div>
+        </div>
+        
+        <div class="tool-demo">
+            <div class="code-block">
+                <pre>
+{
+  "version": "1.0",
+  "title": "My Documentation Burrow",
+  "entries": [
+    { "type": "link", "title": "Getting Started", "uri": "/start.md" },
+    { "type": "burrow", "title": "API Reference", "uri": "/api/.burrow.json" }
+  ]
+}
+                </pre>
+                <div class="caption">A simple .burrow.json manifest</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="tool-nav-links">
+                <li><a href="/rabit/" class="active">Overview</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="examples.html">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="concepts" class="tool-section">
+        <div class="section-header">
+            <h2>Core Concepts</h2>
+            <p>Structure your content for reliable discovery</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🕳️</div>
+                <h3>Burrows</h3>
+                <p>A collection of content organized via a `.burrow.json` manifest. Think of it as a directory listing that agents are guaranteed to understand.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🐰</div>
+                <h3>Warrens</h3>
+                <p>A registry or collection of Burrows. A way to index multiple documentation sites or repositories in a central place.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🧭</div>
+                <h3>Navigation</h3>
+                <p>Agents follow links in manifests rather than guessing URLs or scraping HTML soup. Deterministic traversal.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <h3>Transport Agnostic</h3>
+                <p>Works over HTTP, Git, or local files. The protocol is the JSON schema, not the transport layer.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Why Rabit?</h2>
+        </div>
+        
+        <div class="concept-diagram">
+            <div class="concept-node">
+                <h3>HTML Web</h3>
+                <p>Messy, Visual, Unstructured</p>
+            </div>
+            <div class="concept-arrow">vs</div>
+            <div class="concept-node" style="border-color: var(--primary)">
+                <h3>Rabit Web</h3>
+                <p>Structured, JSON-first, Reliable</p>
+            </div>
+        </div>
+
+        <p>
+            The modern web is built for human eyes. AI agents struggle with complex layouts, dynamic JavaScript, and inconsistent navigation. 
+            Rabit provides a parallel structure—a "burrow"—underneath your site that agents can traverse efficiently.
+        </p>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Use Cases</h2>
+        </div>
+        <div class="use-cases">
+            <div class="use-case">
+                <div class="use-case-icon">📚</div>
+                <h4>Documentation</h4>
+                <p>Provide a perfect navigation map for AI coding assistants to read your docs.</p>
+            </div>
+            <div class="use-case">
+                <div class="use-case-icon">🧠</div>
+                <h4>Knowledge Bases</h4>
+                <p>Structure internal wikis so they can be easily ingested by RAG systems.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
