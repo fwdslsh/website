@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head data-unify="_includes/base/head.html"></head>
+<head>
+    <include src="/_includes/base/head.html"></include>
+</head>
 
 <body>
     <div class="page-bg"></div>
 
-    <nav data-unify="base/nav.html">
+    <nav data-unify="/_includes/base/nav.html">
         <!-- Tool-specific navigation replaces main nav-links -->
         <ul class="unify-nav-links nav-links">
             <li><a href="index.html">Overview</a></li>
@@ -21,8 +23,8 @@
         <div class="unify-content"></div>
     </main>
 
-    <include src="base/footer.html"></include>
-    <include src="base/scripts.html"></include>
+        <div data-unify="/_includes/base/footer.html"></div>
+    <div data-unify="/_includes/base/scripts.html"></div>
 </body>
 
 </html>

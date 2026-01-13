@@ -5,7 +5,7 @@
   "type": "module",
   "homepage": "https://fwdslsh.dev",
   "scripts": {
-    "build": "npx @fwdslsh/unify build",
-    "dev": "npx @fwdslsh/unify serve"
+    "build": "bun ../unify/src/cli.js build --source src --output dist",
+    "dev": "bun ../unify/src/cli.js serve --source src --port 3000"
   }
 }
