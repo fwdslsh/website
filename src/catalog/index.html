@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <title>catalog - AI-Ready Documentation Indexer</title>
     <meta name="description"
@@ -242,7 +245,8 @@
     </style>
 </head>
 
-<div data-import="tool-page">
+<body data-unify="_includes/tool-page.html">
+
     <section class="tool-hero catalog-hero">
         <div class="tool-hero-content">
             <h1>catalog</h1>
@@ -320,7 +324,8 @@
                         <div>&nbsp;&nbsp;&nbsp;&nbsp;&lt;priority&gt;1.0&lt;/priority&gt;</div>
                         <div>&nbsp;&nbsp;&lt;/url&gt;</div>
                         <div>&nbsp;&nbsp;&lt;url&gt;</div>
-                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&lt;loc&gt;https://docs.example.com/getting-started&lt;/loc&gt;</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;&lt;loc&gt;https://docs.example.com/getting-started&lt;/loc&gt;
+                        </div>
                         <div>&nbsp;&nbsp;&nbsp;&nbsp;&lt;priority&gt;0.8&lt;/priority&gt;</div>
                         <div>&nbsp;&nbsp;&lt;/url&gt;</div>
                         <div>&lt;/urlset&gt;</div>
@@ -549,7 +554,8 @@
                 <h4>Documentation Sites</h4>
                 <p>Generate navigation and SEO-optimized sitemaps for documentation websites and static site generators.
                 </p>
-                <div class="code-snippet">catalog --sitemap --sitemap-no-extensions --base-url https://docs.example.com</div>
+                <div class="code-snippet">catalog --sitemap --sitemap-no-extensions --base-url https://docs.example.com
+                </div>
             </div>
 
             <div class="use-case">
@@ -659,58 +665,63 @@ giv message</pre>
             </a>
         </div>
     </section>
-</div>
+    </div>
 
-<script>
-    function showDemoTab(tabName) {
-        // Hide all demo content
-        document.querySelectorAll('.demo-content').forEach(content => {
-            content.classList.remove('active');
-        });
+    <script>
+        function showDemoTab(tabName) {
+            // Hide all demo content
+            document.querySelectorAll('.demo-content').forEach(content => {
+                content.classList.remove('active');
+            });
 
-        // Remove active class from all tabs
-        document.querySelectorAll('.demo-tab').forEach(tab => {
-            tab.classList.remove('active');
-        });
+            // Remove active class from all tabs
+            document.querySelectorAll('.demo-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
 
-        // Show selected content and activate tab
-        document.getElementById(tabName + '-demo').classList.add('active');
-        event.target.classList.add('active');
-    }
+            // Show selected content and activate tab
+            document.getElementById(tabName + '-demo').classList.add('active');
+            event.target.classList.add('active');
+        }
 
-    // Animate demo on scroll
-    const demoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const demoContent = entry.target.querySelector('.demo-content.active');
-                if (demoContent) {
-                    demoContent.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        // Animate demo on scroll
+        const demoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const demoContent = entry.target.querySelector('.demo-content.active');
+                    if (demoContent) {
+                        demoContent.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                    }
                 }
-            }
+            });
         });
-    });
 
-    const indexingDemo = document.querySelector('.indexing-demo');
-    if (indexingDemo) {
-        demoObserver.observe(indexingDemo);
-    }
+        const indexingDemo = document.querySelector('.indexing-demo');
+        if (indexingDemo) {
+            demoObserver.observe(indexingDemo);
+        }
 
-    // Animate workflow steps
-    const workflowObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const steps = entry.target.querySelectorAll('.workflow-step');
-                steps.forEach((step, index) => {
-                    setTimeout(() => {
-                        step.style.animation = 'fadeInUp 0.5s ease-out forwards';
-                    }, index * 200);
-                });
-            }
+        // Animate workflow steps
+        const workflowObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const steps = entry.target.querySelectorAll('.workflow-step');
+                    steps.forEach((step, index) => {
+                        setTimeout(() => {
+                            step.style.animation = 'fadeInUp 0.5s ease-out forwards';
+                        }, index * 200);
+                    });
+                }
+            });
         });
-    });
 
-    const workflowDiagram = document.querySelector('.workflow-diagram');
-    if (workflowDiagram) {
-        workflowObserver.observe(workflowDiagram);
-    }
-</script>
+        const workflowDiagram = document.querySelector('.workflow-diagram');
+        if (workflowDiagram) {
+            workflowObserver.observe(workflowDiagram);
+        }
+    </script>
+
+
+</body>
+
+</html>

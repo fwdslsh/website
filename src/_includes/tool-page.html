@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <include src="base/head.html"></include>
-</head>
+<head data-unify="_includes/components/base/head.html"></head>
 
 <body>
     <div class="page-bg"></div>
 
-    <include src="base/nav.html">
+    <nav data-unify="base/nav.html">
         <!-- Tool-specific navigation replaces main nav-links -->
-        <template data-slot="nav-links">
+        <div class="unify-nav-links">
             <li><a href="index.html">Overview</a></li>
             <li><a href="getting-started.html">Getting Started</a></li>
             <li><a href="docs.html">Documentation</a></li>
             <li><a href="examples.html">Examples</a></li>
-        </template>
-    </include>
+        </div>
+    </nav>
 
     <main>
         <!-- Page content goes here -->
-        <div data-slot="default"></div>
+        <div class="unify-content"></div>
     </main>
 
-    <include src="base/footer.html"></include>
-    <include src="base/scripts.html"></include>
+    <include data-unify="_includes/base/footer.html"></include>
+    <include data-unify="_includes/base/scripts.html"></include>
 </body>
 
 </html>
