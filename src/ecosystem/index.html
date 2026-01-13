@@ -331,77 +331,74 @@
     </section>
 
     <!-- Features Section -->
-    <template data-slot="features-section">
-        <section id="workflow" class="tool-section">
-            <div class="section-header">
-                <h2>The Agentic Workflow</h2>
-                <p>A complete pipeline for AI-driven development and interaction</p>
-            </div>
+    <section id="workflow" class="tool-section">
+        <div class="section-header">
+            <h2>The Agentic Workflow</h2>
+            <p>A complete pipeline for AI-driven development and interaction</p>
+        </div>
 
-            <div class="workflow-visualization">
-                <div class="workflow-steps">
-                    <div class="workflow-step">
-                        <div class="step-tool">g</div>
-                        <div class="step-title">Gather</div>
-                        <div class="step-description">Ingest content from web & repos</div>
-                    </div>
+        <div class="workflow-visualization">
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <div class="step-tool">g</div>
+                    <div class="step-title">Gather</div>
+                    <div class="step-description">Ingest content from web & repos</div>
+                </div>
 
-                    <div class="workflow-step">
-                        <div class="step-tool">c</div>
-                        <div class="step-title">Catalog</div>
-                        <div class="step-description">Index documentation</div>
-                    </div>
+                <div class="workflow-step">
+                    <div class="step-tool">c</div>
+                    <div class="step-title">Catalog</div>
+                    <div class="step-description">Index documentation</div>
+                </div>
 
-                    <div class="workflow-step">
-                        <div class="step-tool">x</div>
-                        <div class="step-title">Disclose</div>
-                        <div class="step-description">Bundle context</div>
-                    </div>
+                <div class="workflow-step">
+                    <div class="step-tool">x</div>
+                    <div class="step-title">Disclose</div>
+                    <div class="step-description">Bundle context</div>
+                </div>
 
-                    <div class="workflow-step">
-                        <div class="step-tool">d</div>
-                        <div class="step-title">Dispatch</div>
-                        <div class="step-description">Secure execution</div>
-                    </div>
-                    
-                    <div class="workflow-step">
-                        <div class="step-tool">h</div>
-                        <div class="step-title">Hyphn</div>
-                        <div class="step-description">Share agents</div>
-                    </div>
+                <div class="workflow-step">
+                    <div class="step-tool">d</div>
+                    <div class="step-title">Dispatch</div>
+                    <div class="step-description">Secure execution</div>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-tool">h</div>
+                    <div class="step-title">Hyphn</div>
+                    <div class="step-description">Share agents</div>
                 </div>
             </div>
+        </div>
 
-            <div class="code-block">
-                <pre># The Agentic Pipeline in Action
+        <div class="code-block">
+            <pre># The Agentic Pipeline in Action
 gather https://docs.example.com --output raw-data
 catalog --input raw-data --output indexed
 disclose learnings --query "auth" > context.md
 dispatch start --env-file .env
 hyphn run @agent/coder --context context.md</pre>
-            </div>
-        </section>
-    </template>
+        </div>
+    </section>
 
     <!-- Installation Section -->
-    <template data-slot="install-section">
-        <section id="quick-start" class="tool-section">
-            <div class="section-header">
-                <h2>Quick Start Guide</h2>
-                <p>Initialize your agentic environment in minutes</p>
+    <section id="quick-start" class="tool-section">
+        <div class="section-header">
+            <h2>Quick Start Guide</h2>
+            <p>Initialize your agentic environment in minutes</p>
+        </div>
+
+        <div class="quick-start-section">
+            <div class="quick-start-tabs">
+                <button class="quick-start-tab active" onclick="showQuickStartTab('install')">Installation</button>
+                <button class="quick-start-tab" onclick="showQuickStartTab('workspace')">Workspace</button>
+                <button class="quick-start-tab" onclick="showQuickStartTab('execution')">Execution</button>
             </div>
 
-            <div class="quick-start-section">
-                <div class="quick-start-tabs">
-                    <button class="quick-start-tab active" onclick="showQuickStartTab('install')">Installation</button>
-                    <button class="quick-start-tab" onclick="showQuickStartTab('workspace')">Workspace</button>
-                    <button class="quick-start-tab" onclick="showQuickStartTab('execution')">Execution</button>
-                </div>
-
-                <div id="install-content" class="quick-start-content active">
-                    <h4>Install Core Tools</h4>
-                    <div class="code-block">
-                        <pre># Install Hyphn (the orchestrator)
+            <div id="install-content" class="quick-start-content active">
+                <h4>Install Core Tools</h4>
+                <div class="code-block">
+                    <pre># Install Hyphn (the orchestrator)
 npm install -g @fwdslsh/hyphn
 
 # Install Dispatch (secure sandbox)
@@ -409,14 +406,14 @@ curl -fsSL https://raw.githubusercontent.com/fwdslsh/dispatch/main/install.sh | 
 
 # Install other tools as needed
 npm install -g @fwdslsh/disclose @fwdslsh/gather</pre>
-                    </div>
-                    <p>All tools are designed to work independently or together.</p>
                 </div>
+                <p>All tools are designed to work independently or together.</p>
+            </div>
 
-                <div id="workspace-content" class="quick-start-content">
-                    <h4>Initialize Your Workspace</h4>
-                    <div class="code-block">
-                        <pre># Initialize Hyphn workspace
+            <div id="workspace-content" class="quick-start-content">
+                <h4>Initialize Your Workspace</h4>
+                <div class="code-block">
+                    <pre># Initialize Hyphn workspace
 hyphn init
 
 # Configure your sources
@@ -424,14 +421,14 @@ hyphn sources add ~/my-agents
 
 # Check available agents and skills
 hyphn list</pre>
-                    </div>
-                    <p>Set up your environment to share and reuse agents across projects.</p>
                 </div>
+                <p>Set up your environment to share and reuse agents across projects.</p>
+            </div>
 
-                <div id="execution-content" class="quick-start-content">
-                    <h4>Secure Execution</h4>
-                    <div class="code-block">
-                        <pre># Start a secure dispatch session
+            <div id="execution-content" class="quick-start-content">
+                <h4>Secure Execution</h4>
+                <div class="code-block">
+                    <pre># Start a secure dispatch session
 dispatch start my-session
 
 # Attach to the session
@@ -439,280 +436,271 @@ dispatch attach my-session
 
 # Run an agent safely
 hyphn run @agent/review --safe</pre>
-                    </div>
-                    <p>Run untrusted code or complex agents without risking your host system.</p>
                 </div>
+                <p>Run untrusted code or complex agents without risking your host system.</p>
             </div>
-        </section>
-    </template>
+        </div>
+    </section>
 
     <!-- Additional content for integrations, use cases, and philosophy -->
-    <template data-slot="additional-content">
-        <section class="tool-section alt-bg">
-            <div class="section-header">
-                <h2>Tool Integrations</h2>
-                <p>Composable tools for powerful workflows</p>
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Tool Integrations</h2>
+            <p>Composable tools for powerful workflows</p>
+        </div>
+
+        <div class="integration-matrix">
+            <div class="integration-card">
+                <div class="integration-tools">
+                    <div class="integration-tool-icon">g</div>
+                    <div class="integration-arrow">→</div>
+                    <div class="integration-tool-icon">c</div>
+                </div>
+                <h4>gather → catalog</h4>
+                <p>Crawl websites and repositories, then automatically index them for agent consumption.</p>
+                <div class="code-snippet">gather docs.site.com | catalog --index</div>
             </div>
 
-            <div class="integration-matrix">
-                <div class="integration-card">
-                    <div class="integration-tools">
-                        <div class="integration-tool-icon">g</div>
-                        <div class="integration-arrow">→</div>
-                        <div class="integration-tool-icon">c</div>
-                    </div>
-                    <h4>gather → catalog</h4>
-                    <p>Crawl websites and repositories, then automatically index them for agent consumption.</p>
-                    <div class="code-snippet">gather docs.site.com | catalog --index</div>
+            <div class="integration-card">
+                <div class="integration-tools">
+                    <div class="integration-tool-icon">x</div>
+                    <div class="integration-arrow">→</div>
+                    <div class="integration-tool-icon">d</div>
                 </div>
-
-                <div class="integration-card">
-                    <div class="integration-tools">
-                        <div class="integration-tool-icon">x</div>
-                        <div class="integration-arrow">→</div>
-                        <div class="integration-tool-icon">d</div>
-                    </div>
-                    <h4>disclose → dispatch</h4>
-                    <p>Retrieve focused context bundles and inject them into secure sandboxed sessions.</p>
-                    <div class="code-snippet">disclose pack | dispatch inject</div>
-                </div>
-
-                <div class="integration-card">
-                    <div class="integration-tools">
-                        <div class="integration-tool-icon">h</div>
-                        <div class="integration-arrow">→</div>
-                        <div class="integration-tool-icon">r</div>
-                    </div>
-                    <h4>hyphn → rabit</h4>
-                    <p>Agents share navigation capabilities using Rabit manifests to explore the web.</p>
-                    <div class="code-snippet">hyphn use @skill/nav --manifest .burrow.json</div>
-                </div>
-
-                <div class="integration-card">
-                    <div class="integration-tools">
-                        <div class="integration-tool-icon">d</div>
-                        <div class="integration-arrow">→</div>
-                        <div class="integration-tool-icon">h</div>
-                    </div>
-                    <h4>dispatch → hyphn</h4>
-                    <p>Run shared agents within isolated containers for maximum security.</p>
-                    <div class="code-snippet">dispatch exec -- hyphn run @agent/unsafe</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="tool-section">
-            <div class="section-header">
-                <h2>Use Case Scenarios</h2>
-                <p>Solving real problems with agentic tools</p>
+                <h4>disclose → dispatch</h4>
+                <p>Retrieve focused context bundles and inject them into secure sandboxed sessions.</p>
+                <div class="code-snippet">disclose pack | dispatch inject</div>
             </div>
 
-            <div class="use-case-scenarios">
-                <div class="scenario-card">
-                    <div class="scenario-title">
-                        <span class="scenario-icon">🛡️</span>
-                        Secure AI Development
-                    </div>
-                    <div class="scenario-tools">
-                        <span class="scenario-tool-badge">dispatch</span>
-                        <span class="scenario-tool-badge">hyphn</span>
-                    </div>
-                    <p>Develop with AI agents that have full shell access, but contained within a secure, disposable sandbox. Protect your secrets and system stability.</p>
+            <div class="integration-card">
+                <div class="integration-tools">
+                    <div class="integration-tool-icon">h</div>
+                    <div class="integration-arrow">→</div>
+                    <div class="integration-tool-icon">r</div>
                 </div>
-
-                <div class="scenario-card">
-                    <div class="scenario-title">
-                        <span class="scenario-icon">🧠</span>
-                        Context-Aware Agents
-                    </div>
-                    <div class="scenario-tools">
-                        <span class="scenario-tool-badge">disclose</span>
-                        <span class="scenario-tool-badge">catalog</span>
-                    </div>
-                    <p>Give your agents exactly the context they need - not too little, not too much. Retrieve relevant learnings and documentation dynamically.</p>
-                </div>
-
-                <div class="scenario-card">
-                    <div class="scenario-title">
-                        <span class="scenario-icon">🕸️</span>
-                        The Agentic Web
-                    </div>
-                    <div class="scenario-tools">
-                        <span class="scenario-tool-badge">rabit</span>
-                        <span class="scenario-tool-badge">gather</span>
-                    </div>
-                    <p>Publish content that agents can navigate reliably. Use Rabit manifests to guide agents through your documentation and data.</p>
-                </div>
-
-                <div class="scenario-card">
-                    <div class="scenario-title">
-                        <span class="scenario-icon">🤝</span>
-                        Team Collaboration
-                    </div>
-                    <div class="scenario-tools">
-                        <span class="scenario-tool-badge">hyphn</span>
-                        <span class="scenario-tool-badge">dispatch</span>
-                    </div>
-                    <p>Share agents, skills, and environments across your team. standardize workflows and enable consistent AI assistance for everyone.</p>
-                </div>
+                <h4>hyphn → rabit</h4>
+                <p>Agents share navigation capabilities using Rabit manifests to explore the web.</p>
+                <div class="code-snippet">hyphn use @skill/nav --manifest .burrow.json</div>
             </div>
-        </section>
 
-        <section class="tool-section alt-bg">
-            <div class="philosophy-section">
-                <h2>The fwdslsh Philosophy</h2>
-                <p>Tools that empower, not constrain</p>
+            <div class="integration-card">
+                <div class="integration-tools">
+                    <div class="integration-tool-icon">d</div>
+                    <div class="integration-arrow">→</div>
+                    <div class="integration-tool-icon">h</div>
+                </div>
+                <h4>dispatch → hyphn</h4>
+                <p>Run shared agents within isolated containers for maximum security.</p>
+                <div class="code-snippet">dispatch exec -- hyphn run @agent/unsafe</div>
+            </div>
+        </div>
+    </section>
 
-                <div class="philosophy-principles">
-                    <div class="principle">
-                        <div class="principle-icon">🎯</div>
-                        <div class="principle-content">
-                            <h4>Focused</h4>
-                            <p>Each tool solves one problem well. No bloated frameworks.</p>
-                        </div>
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Use Case Scenarios</h2>
+            <p>Solving real problems with agentic tools</p>
+        </div>
+
+        <div class="use-case-scenarios">
+            <div class="scenario-card">
+                <div class="scenario-title">
+                    <span class="scenario-icon">🛡️</span>
+                    Secure AI Development
+                </div>
+                <div class="scenario-tools">
+                    <span class="scenario-tool-badge">dispatch</span>
+                    <span class="scenario-tool-badge">hyphn</span>
+                </div>
+                <p>Develop with AI agents that have full shell access, but contained within a secure, disposable sandbox. Protect your secrets and system stability.</p>
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-title">
+                    <span class="scenario-icon">🧠</span>
+                    Context-Aware Agents
+                </div>
+                <div class="scenario-tools">
+                    <span class="scenario-tool-badge">disclose</span>
+                    <span class="scenario-tool-badge">catalog</span>
+                </div>
+                <p>Give your agents exactly the context they need - not too little, not too much. Retrieve relevant learnings and documentation dynamically.</p>
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-title">
+                    <span class="scenario-icon">🕸️</span>
+                    The Agentic Web
+                </div>
+                <div class="scenario-tools">
+                    <span class="scenario-tool-badge">rabit</span>
+                    <span class="scenario-tool-badge">gather</span>
+                </div>
+                <p>Publish content that agents can navigate reliably. Use Rabit manifests to guide agents through your documentation and data.</p>
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-title">
+                    <span class="scenario-icon">🤝</span>
+                    Team Collaboration
+                </div>
+                <div class="scenario-tools">
+                    <span class="scenario-tool-badge">hyphn</span>
+                    <span class="scenario-tool-badge">dispatch</span>
+                </div>
+                <p>Share agents, skills, and environments across your team. standardize workflows and enable consistent AI assistance for everyone.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="philosophy-section">
+            <h2>The fwdslsh Philosophy</h2>
+            <p>Tools that empower, not constrain</p>
+
+            <div class="philosophy-principles">
+                <div class="principle">
+                    <div class="principle-icon">🎯</div>
+                    <div class="principle-content">
+                        <h4>Focused</h4>
+                        <p>Each tool solves one problem well. No bloated frameworks.</p>
                     </div>
+                </div>
 
-                    <div class="principle">
-                        <div class="principle-icon">🧩</div>
-                        <div class="principle-content">
-                            <h4>Composable</h4>
-                            <p>Tools work together via standard interfaces (pipes, files, manifests).</p>
-                        </div>
+                <div class="principle">
+                    <div class="principle-icon">🧩</div>
+                    <div class="principle-content">
+                        <h4>Composable</h4>
+                        <p>Tools work together via standard interfaces (pipes, files, manifests).</p>
                     </div>
+                </div>
 
-                    <div class="principle">
-                        <div class="principle-icon">⚡</div>
-                        <div class="principle-content">
-                            <h4>Performant</h4>
-                            <p>Built with Bun and modern runtimes for speed and efficiency.</p>
-                        </div>
+                <div class="principle">
+                    <div class="principle-icon">⚡</div>
+                    <div class="principle-content">
+                        <h4>Performant</h4>
+                        <p>Built with Bun and modern runtimes for speed and efficiency.</p>
                     </div>
+                </div>
 
-                    <div class="principle">
-                        <div class="principle-icon">🤖</div>
-                        <div class="principle-content">
-                            <h4>Agent-First</h4>
-                            <p>Designed from the ground up for both human and AI users.</p>
-                        </div>
+                <div class="principle">
+                    <div class="principle-icon">🤖</div>
+                    <div class="principle-content">
+                        <h4>Agent-First</h4>
+                        <p>Designed from the ground up for both human and AI users.</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </template>
+        </div>
+    </section>
 
     <!-- Stats Section -->
-    <template data-slot="stats-section">
-        <include src="/_includes/components/stats-section.html"></include>
-    </template>
+    <include src="/_includes/components/stats-section.html"></include>
 
     <!-- CTA Section -->
-    <template data-slot="cta-section">
-        <section class="tool-section alt-bg">
-            <div class="section-header">
-                <h2>Build Your Ecosystem</h2>
-                <p>Start with one tool, expand to the full suite</p>
-            </div>
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Build Your Ecosystem</h2>
+            <p>Start with one tool, expand to the full suite</p>
+        </div>
 
-            <div class="cta-buttons">
-                <a href="/hyphn/getting-started" class="btn btn-primary">
-                    Start with Hyphn
-                </a>
-                <a href="/dispatch/getting-started" class="btn btn-secondary">
-                    Secure with Dispatch
-                </a>
-                <a href="/disclose/getting-started" class="btn btn-secondary">
-                    Learn with Disclose
-                </a>
-                <a href="/rabit/getting-started" class="btn btn-secondary">
-                    Navigate with Rabit
-                </a>
-                <a href="/gather/getting-started" class="btn btn-secondary">
-                    Crawl with Gather
-                </a>
-            </div>
+        <div class="cta-buttons">
+            <a href="/hyphn/getting-started" class="btn btn-primary">
+                Start with Hyphn
+            </a>
+            <a href="/dispatch/getting-started" class="btn btn-secondary">
+                Secure with Dispatch
+            </a>
+            <a href="/disclose/getting-started" class="btn btn-secondary">
+                Learn with Disclose
+            </a>
+            <a href="/rabit/getting-started" class="btn btn-secondary">
+                Navigate with Rabit
+            </a>
+            <a href="/gather/getting-started" class="btn btn-secondary">
+                Crawl with Gather
+            </a>
+        </div>
 
-            <div class="quick-links">
-                <a href="https://github.com/fwdslsh" class="quick-link">
-                    <span class="quick-link-icon">🔗</span>
-                    <div class="quick-link-content">
-                        <h4>GitHub Organization</h4>
-                        <p>Open source and community driven</p>
-                    </div>
-                </a>
+        <div class="quick-links">
+            <a href="https://github.com/fwdslsh" class="quick-link">
+                <span class="quick-link-icon">🔗</span>
+                <div class="quick-link-content">
+                    <h4>GitHub Organization</h4>
+                    <p>Open source and community driven</p>
+                </div>
+            </a>
 
-                <a href="https://hub.docker.com/u/fwdslsh" class="quick-link">
-                    <span class="quick-link-icon">🐳</span>
-                    <div class="quick-link-content">
-                        <h4>Docker Hub</h4>
-                        <p>Containerized tools ready to run</p>
-                    </div>
-                </a>
+            <a href="https://hub.docker.com/u/fwdslsh" class="quick-link">
+                <span class="quick-link-icon">🐳</span>
+                <div class="quick-link-content">
+                    <h4>Docker Hub</h4>
+                    <p>Containerized tools ready to run</p>
+                </div>
+            </a>
 
-                <a href="https://npmjs.com/org/fwdslsh" class="quick-link">
-                    <span class="quick-link-icon">📦</span>
-                    <div class="quick-link-content">
-                        <h4>NPM Packages</h4>
-                        <p>Standard installation via npm</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-    </template>
+            <a href="https://npmjs.com/org/fwdslsh" class="quick-link">
+                <span class="quick-link-icon">📦</span>
+                <div class="quick-link-content">
+                    <h4>NPM Packages</h4>
+                    <p>Standard installation via npm</p>
+                </div>
+            </a>
+        </div>
+    </section>
 
     <!-- Scripts -->
-    <template data-slot="scripts">
-        <script>
-            function showQuickStartTab(tabName) {
-                // Hide all content
-                document.querySelectorAll('.quick-start-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-
-                // Remove active class from all tabs
-                document.querySelectorAll('.quick-start-tab').forEach(tab => {
-                    tab.classList.remove('active');
-                });
-
-                // Show selected content and activate tab
-                document.getElementById(tabName + '-content').classList.add('active');
-                event.target.classList.add('active');
-            }
-
-            // Animate workflow steps on scroll
-            const workflowObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const steps = entry.target.querySelectorAll('.workflow-step');
-                        steps.forEach((step, index) => {
-                            setTimeout(() => {
-                                step.style.animation = 'fadeInUp 0.6s ease-out forwards';
-                            }, index * 200);
-                        });
-                    }
-                });
+    <script>
+        function showQuickStartTab(tabName) {
+            // Hide all content
+            document.querySelectorAll('.quick-start-content').forEach(content => {
+                content.classList.remove('active');
             });
 
-            const workflowViz = document.querySelector('.workflow-visualization');
-            if (workflowViz) {
-                workflowObserver.observe(workflowViz);
-            }
+            // Remove active class from all tabs
+            document.querySelectorAll('.quick-start-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
 
-            // Animate integration cards
-            const integrationObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
+            // Show selected content and activate tab
+            document.getElementById(tabName + '-content').classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Animate workflow steps on scroll
+        const workflowObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const steps = entry.target.querySelectorAll('.workflow-step');
+                    steps.forEach((step, index) => {
                         setTimeout(() => {
-                            entry.target.style.animation = 'fadeInUp 0.5s ease-out forwards';
-                        }, index * 100);
-                    }
-                });
+                            step.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                        }, index * 200);
+                    });
+                }
             });
+        });
 
-            document.querySelectorAll('.integration-card, .scenario-card').forEach(card => {
-                card.style.opacity = '0';
-                integrationObserver.observe(card);
+        const workflowViz = document.querySelector('.workflow-visualization');
+        if (workflowViz) {
+            workflowObserver.observe(workflowViz);
+        }
+
+        // Animate integration cards
+        const integrationObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.animation = 'fadeInUp 0.5s ease-out forwards';
+                    }, index * 100);
+                }
             });
-        </script>
-    </template>
+        });
+
+        document.querySelectorAll('.integration-card, .scenario-card').forEach(card => {
+            card.style.opacity = '0';
+            integrationObserver.observe(card);
+        });
+    </script>
 </body>
 </html>
