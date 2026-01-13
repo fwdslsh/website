@@ -227,32 +227,32 @@
       </div>
       <div class="terminal-content">
         <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">inform https://docs.example.com</span>
-          <span class="comment"> # Crawl documentation site</span>
+          <span class="prompt">$</span> <span class="command">hyphn init</span>
+          <span class="comment"> # Share agents & skills</span>
         </div>
         <div class="terminal-line output">
-          ✓ Crawled 42 pages, saved as Markdown
+          ✓ Initialized ~/.hyphn with default sources
         </div>
         <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">catalog --input docs --output build --sitemap</span>
-          <span class="comment"> # Generate llms.txt index</span>
+          <span class="prompt">$</span> <span class="command">gather https://docs.example.com</span>
+          <span class="comment"> # Crawl site to Markdown</span>
         </div>
         <div class="terminal-line output">
-          ✓ Generated llms.txt with 42 files indexed
+          ✓ Processed 42 pages in 1.2s
         </div>
         <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">unify build</span>
-          <span class="comment"> # Static site, zero config</span>
+          <span class="prompt">$</span> <span class="command">disclose session-context</span>
+          <span class="comment"> # Bundle context for AI</span>
         </div>
         <div class="terminal-line output">
-          ✓ Built 23 pages in 847ms
+          ✓ Created context bundle (12k tokens)
         </div>
         <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">git add . && giv message</span>
-          <span class="comment"> # AI-powered commit</span>
+          <span class="prompt">$</span> <span class="command">dispatch start</span>
+          <span class="comment"> # Secure agent sandbox</span>
         </div>
         <div class="terminal-line output">
-          ✓ Generated: "feat: add documentation with automated indexing"
+          ✓ Dispatch environment active on port 3030
         </div>
       </div>
     </div>
@@ -260,49 +260,110 @@
     <div class="tools-grid">
       <div class="tool-card">
         <div class="tool-header">
-          <div class="tool-icon">g</div>
+          <div class="tool-icon">h</div>
           <div>
-            <h3>giv</h3>
-            <div class="subtitle">Git workflows on autopilot</div>
+            <h3>hyphn</h3>
+            <div class="subtitle">Share agents, commands & skills</div>
           </div>
         </div>
-        <p>AI-powered commit messages, changelogs, and release notes. Ships as a static binary, talks to any LLM
-          backend, doesn't break your flow.</p>
+        <p>CLI for sharing extensible assets across OpenCode and Claude Code platforms. Don't silo your workflows.</p>
 
-        <pre class="code-snippet">$ giv message
-$ giv changelog v1.0.0..HEAD
-$ giv release-notes --format markdown</pre>
+        <pre class="code-snippet">$ hyphn init
+$ hyphn setup
+$ hyphn sources add ~/team-hyphn</pre>
 
-        <p><strong>Why we built it:</strong> Writing commit messages is grunt work. Let the machine do grunt work
-          while you build.</p>
+        <p><strong>Why we built it:</strong> AI coding tools shouldn't silo your custom workflows. Share them.</p>
 
         <div class="tool-links">
-          <a href="/giv">Documentation →</a>
-          <a href="https://github.com/fwdslsh/giv">GitHub →</a>
+          <a href="/hyphn">Documentation →</a>
+          <a href="https://github.com/fwdslsh/hyphn">GitHub →</a>
         </div>
       </div>
 
       <div class="tool-card">
         <div class="tool-header">
-          <div class="tool-icon">u</div>
+          <div class="tool-icon">r</div>
           <div>
-            <h3>unify</h3>
-            <div class="subtitle">Static sites for people who remember HTML</div>
+            <h3>rabit</h3>
+            <div class="subtitle">Manifest-based navigation for AI</div>
           </div>
         </div>
-        <p>Build sites with Apache SSI syntax and modern tooling. No JSX, no build step hell, no framework lock-in.
-          Just fast sites that ship.</p>
+        <p>Simple convention for publishing content that both humans and AI can reliably navigate using .burrow.json manifests.</p>
 
-        <pre class="code-snippet">$ unify build
-$ unify serve
-$ unify watch</pre>
+        <pre class="code-snippet">$ cat .burrow.json
+$ rabit validate
+$ rabit-client fetch</pre>
 
-        <p><strong>Why we built it:</strong> Static site generators became more complex than the sites they build. We
-          fixed that.</p>
+        <p><strong>Why we built it:</strong> AI agents need structured paths, not HTML soup.</p>
 
         <div class="tool-links">
-          <a href="/unify">Documentation →</a>
-          <a href="https://github.com/fwdslsh/unify">GitHub →</a>
+          <a href="/rabit">Documentation →</a>
+          <a href="https://github.com/itlackey/rabit">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-icon">d</div>
+          <div>
+            <h3>dispatch</h3>
+            <div class="subtitle">Secure sandboxed execution</div>
+          </div>
+        </div>
+        <p>Containerized dev environment for safely running Claude AI and CLI agents without risking your host system.</p>
+
+        <pre class="code-snippet">$ dispatch init
+$ dispatch start
+$ dispatch attach</pre>
+
+        <p><strong>Why we built it:</strong> Run AI assistants in complete isolation with enterprise-grade security.</p>
+
+        <div class="tool-links">
+          <a href="/dispatch">Documentation →</a>
+          <a href="https://github.com/fwdslsh/dispatch">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-icon">x</div>
+          <div>
+            <h3>disclose</h3>
+            <div class="subtitle">Learning retrieval & context assembly</div>
+          </div>
+        </div>
+        <p>CLI tool for retrieving and bundling relevant context from the Hyph3n learning system with token budget management.</p>
+
+        <pre class="code-snippet">$ disclose learnings --query "auth"
+$ disclose session-context
+$ disclose pack</pre>
+
+        <p><strong>Why we built it:</strong> AI needs the right context, not everything.</p>
+
+        <div class="tool-links">
+          <a href="/disclose">Documentation →</a>
+          <a href="https://github.com/fwdslsh/core/tree/main/packages/disclose">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-icon">g</div>
+          <div>
+            <h3>gather</h3>
+            <div class="subtitle">High-performance web crawler</div>
+          </div>
+        </div>
+        <p>Crawl websites, download Git repos, ingest feeds - all converted to clean Markdown.</p>
+
+        <pre class="code-snippet">$ gather https://docs.example.com
+$ gather github.com/owner/repo/tree/main/docs</pre>
+
+        <p><strong>Why we built it:</strong> Documentation migration shouldn't require frameworks.</p>
+
+        <div class="tool-links">
+          <a href="/gather">Documentation →</a>
+          <a href="https://github.com/fwdslsh/core/tree/main/packages/gather">GitHub →</a>
         </div>
       </div>
 

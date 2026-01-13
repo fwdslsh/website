@@ -10,7 +10,7 @@
 - [x] 1.4 Update Footer
 
 ## Phase 2: Home Page Updates
-- [ ] 2.1 Update Main Landing Page
+- [x] 2.1 Update Main Landing Page
 
 ## Phase 3: Create New Tool Pages
 - [ ] 3.1 hyphn Pages
