@@ -238,7 +238,7 @@
     </style>
 </head>
 
-<body data-layout="/_includes/tool-page.layout.html">
+<body data-unify="/_includes/tool-page.html">
 
 <!-- Hero Section -->
 <section class="tool-hero inform-hero">
@@ -541,26 +541,18 @@
                     <p>Use catalog to create llms.txt files</p>
                 </div>
 
-                <div class="flow-step">
-                    <div class="flow-icon">🏗️</div>
-                    <h4>Build Site</h4>
-                    <p>Create static sites with unify</p>
-                </div>
-
-                <div class="flow-step">
-                    <div class="flow-icon">🚀</div>
-                    <h4>Deploy</h4>
-                    <p>Publish to your hosting platform</p>
-                </div>
+            <div class="flow-step">
+                <div class="flow-icon">🚀</div>
+                <h4>Deploy</h4>
+                <p>Publish to your hosting platform</p>
             </div>
+        </div>
 
-            <div class="code-block">
-                <pre># Complete documentation workflow
+        <div class="code-block">
+            <pre># Complete documentation workflow
 inform https://docs.example.com --output-dir docs
-catalog --input docs --output build --sitemap --base-url https://docs.example.com
-unify build --input build --output dist
-giv message # AI-powered commit for the updates</pre>
-            </div>
+catalog --input docs --output build --sitemap --base-url https://docs.example.com</pre>
+        </div>
 
             <div class="quick-links">
                 <a href="/ecosystem/" class="quick-link">

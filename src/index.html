@@ -66,127 +66,7 @@
       margin-right: auto;
     }
 
-    /* Tools Preview Section - Page specific */
-    .tools-preview {
-      padding: 8rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-top: 4rem;
-    }
-
-    /* Responsive even distribution for tools grid */
-    @media (min-width: 1200px) {
-      .tools-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    .tool-card {
-      background: var(--gradient-2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tool-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--gradient-1);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-
-    .tool-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .tool-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-    }
-
-    .tool-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .tool-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--gradient-1);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-mono);
-      font-weight: bold;
-      color: var(--bg-dark);
-    }
-
-    .tool-card h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      font-family: var(--font-mono);
-    }
-
-    .tool-card .subtitle {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-
-    .tool-card p {
-      color: var(--text-dim);
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-
-    .tool-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .tool-links a {
-      color: var(--primary);
-      text-decoration: none;
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .tool-links a:hover {
-      color: var(--primary-dim);
-      text-decoration: underline;
-    }
-
-    /* Responsive Design - Page specific */
-    @media (max-width: 768px) {
-      .tools-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .tool-card {
-        padding: 1.5rem;
-      }
-    }
+    /* Tools Preview Section styles moved to src/assets/styles.css */
   </style>
 </head>
 
@@ -260,7 +140,15 @@
     <div class="tools-grid">
       <div class="tool-card">
         <div class="tool-header">
-          <div class="tool-icon">h</div>
+          <div class="tool-icon">
+            <svg class="lucide lucide-share-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3" />
+              <circle cx="6" cy="12" r="3" />
+              <circle cx="18" cy="19" r="3" />
+              <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
+              <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
+            </svg>
+          </div>
           <div>
             <h3>hyphn</h3>
             <div class="subtitle">Share agents, commands & skills</div>
@@ -282,7 +170,13 @@ $ hyphn sources add ~/team-hyphn</pre>
 
       <div class="tool-card">
         <div class="tool-header">
-          <div class="tool-icon">r</div>
+          <div class="tool-icon">
+            <svg class="lucide lucide-signpost" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 13v8" />
+              <path d="M12 3v3" />
+              <path d="M18 6a2 2 0 0 1 1.387.56l2.307 2.22a1 1 0 0 1 0 1.44l-2.307 2.22A2 2 0 0 1 18 13H6a2 2 0 0 1-1.387-.56l-2.306-2.22a1 1 0 0 1 0-1.44l2.306-2.22A2 2 0 0 1 6 6z" />
+            </svg>
+          </div>
           <div>
             <h3>rabit</h3>
             <div class="subtitle">Manifest-based navigation for AI</div>
@@ -304,7 +198,13 @@ $ rabit fetch</pre>
 
       <div class="tool-card">
         <div class="tool-header">
-          <div class="tool-icon">d</div>
+          <div class="tool-icon">
+            <svg class="lucide lucide-box" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+              <path d="m3.3 7 8.7 5 8.7-5" />
+              <path d="M12 22V12" />
+            </svg>
+          </div>
           <div>
             <h3>dispatch</h3>
             <div class="subtitle">Secure sandboxed execution</div>
@@ -326,7 +226,12 @@ $ dispatch attach</pre>
 
       <div class="tool-card">
         <div class="tool-header">
-          <div class="tool-icon">x</div>
+          <div class="tool-icon">
+            <svg class="lucide lucide-search" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m21 21-4.34-4.34" />
+              <circle cx="11" cy="11" r="8" />
+            </svg>
+          </div>
           <div>
             <h3>disclose</h3>
             <div class="subtitle">Learning retrieval & context assembly</div>
@@ -348,7 +253,13 @@ $ disclose pack</pre>
 
       <div class="tool-card">
         <div class="tool-header">
-          <div class="tool-icon">g</div>
+          <div class="tool-icon">
+            <svg class="lucide lucide-globe" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+          </div>
           <div>
             <h3>gather</h3>
             <div class="subtitle">High-performance web crawler</div>
@@ -369,7 +280,15 @@ $ gather github.com/owner/repo/tree/main/docs</pre>
 
       <div class="tool-card">
         <div class="tool-header">
-          <div class="tool-icon">i</div>
+          <div class="tool-icon">
+            <svg class="lucide lucide-file-text" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+              <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+              <path d="M10 9H8" />
+              <path d="M16 13H8" />
+              <path d="M16 17H8" />
+            </svg>
+          </div>
           <div>
             <h3>inform</h3>
             <div class="subtitle">High-performance web content crawler</div>
@@ -391,7 +310,14 @@ $ inform --include "*.md" --exclude "temp/*"</pre>
 
       <div class="tool-card">
         <div class="tool-header">
-          <div class="tool-icon">c</div>
+          <div class="tool-icon">
+            <svg class="lucide lucide-library" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m16 6 4 14" />
+              <path d="M12 6v14" />
+              <path d="M8 8v12" />
+              <path d="M4 4v16" />
+            </svg>
+          </div>
           <div>
             <h3>catalog</h3>
             <div class="subtitle">AI-ready documentation indexer</div>

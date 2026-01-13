@@ -138,7 +138,7 @@
     </style>
 </head>
 
-<body data-layout="/_includes/tool-page.layout.html">
+<body data-unify="/_includes/tool-page.html">
 
 <section class="tool-hero">
     <div class="tool-hero-content">
@@ -232,16 +232,12 @@ catalog --input new-docs-site/content \
 
                             <h4>Step 4: Build and Deploy</h4>
                             <div class="code-block">
-                                <code># Build with unify
+                                <code># Build your site
 cd new-docs-site
-unify build --input indexed --output dist
-
-# Generate professional commit message
-giv message
-# "docs: migrate legacy documentation to modern platform"
+npm run build
 
 # Deploy
-git add . && git commit -m "$(giv message)"
+git add . && git commit -m "docs: migrate legacy documentation to modern platform"
 git push origin main</code>
                             </div>
                         </div>
@@ -540,37 +536,6 @@ catalog --input raw-content \
   --index \
   --base-url https://new-docs.example.com \
   --validate</code>
-                                    </div>
-                                </div>
-                                <div class="step-arrow">→</div>
-                            </div>
-
-                            <div class="pipeline-step">
-                                <div class="step-icon">u</div>
-                                <div class="step-content">
-                                    <h4>Site Generation</h4>
-                                    <div class="code-block">
-                                        <code># Build modern static site with navigation
-unify build \
-  --input structured-content \
-  --output production-site \
-  --optimize</code>
-                                    </div>
-                                </div>
-                                <div class="step-arrow">→</div>
-                            </div>
-
-                            <div class="pipeline-step">
-                                <div class="step-icon">g</div>
-                                <div class="step-content">
-                                    <h4>Version Control</h4>
-                                    <div class="code-block">
-                                        <code># Professional commit with AI assistance
-git add .
-giv message
-# "docs: migrate and modernize documentation platform"
-
-git push origin main</code>
                                     </div>
                                 </div>
                             </div>
@@ -927,14 +892,11 @@ if [ $? -eq 0 ]; then
     --index
   
   # Build site
-  unify build \
-    --input "$LOCAL_DOCS-indexed" \
-    --output "./public"
+  npm run build
   
-  # Commit changes with giv
+  # Commit changes
   git add .
-  commit_message=$(giv message)
-  git commit -m "$commit_message"
+  git commit -m "docs: automated sync"
   
   echo "$(date): Sync completed successfully" >> $SYNC_LOG
 else
@@ -1067,7 +1029,7 @@ catalog --input final-output \
                     <a href="/ecosystem/" class="next-step-card">
                         <div class="card-icon">🔄</div>
                         <h3>Ecosystem Integration</h3>
-                        <p>See how inform combines with catalog, unify, and giv for complete workflows</p>
+                        <p>See how inform combines with catalog and other fwdslsh tools for complete workflows</p>
                         <span class="card-arrow">→</span>
                     </a>
 

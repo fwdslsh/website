@@ -274,7 +274,7 @@
     </style>
 </head>
 
-<body data-layout="/_includes/tool-page.layout.html">
+<body data-unify="/_includes/tool-page.html">
 
 <section class="tool-hero">
     <div class="tool-hero-content">
@@ -661,26 +661,6 @@ inform https://site.com \
                             <p>Generate llms.txt indexes</p>
                             <div class="step-code">catalog --input content --output indexed</div>
                         </div>
-                        <div class="step-arrow">→</div>
-                    </div>
-                    
-                    <div class="workflow-step">
-                        <div class="step-icon">u</div>
-                        <div class="step-content">
-                            <h3>unify</h3>
-                            <p>Build static sites</p>
-                            <div class="step-code">unify build --input indexed --output dist</div>
-                        </div>
-                        <div class="step-arrow">→</div>
-                    </div>
-                    
-                    <div class="workflow-step">
-                        <div class="step-icon">g</div>
-                        <div class="step-content">
-                            <h3>giv</h3>
-                            <p>Generate commit messages</p>
-                            <div class="step-code">giv message</div>
-                        </div>
                     </div>
                 </div>
 
@@ -692,14 +672,7 @@ inform https://docs.example.com --output-dir docs
 inform https://api.example.com --output-dir api --include "*/reference/*"
 
 # Generate AI-ready indexes  
-catalog --input docs --input api --output build --sitemap --base-url https://newdocs.com
-
-# Build beautiful static site
-unify build --input build --output dist
-
-# Professional commit with AI
-giv message
-# "docs: migrate complete documentation with API references"</code></pre>
+catalog --input docs --input api --output build --sitemap --base-url https://newdocs.com</code></pre>
                     </div>
                 </div>
 

@@ -156,7 +156,7 @@
     </style>
 </head>
 
-<body data-unify="/_includes/tool-page.layout.html">
+<body data-unify="/_includes/tool-page.html">
 
     <section class="tool-hero">
         <div class="tool-hero-content">
@@ -617,21 +617,11 @@ catalog --input docs --output dist \
             </div>
 
             <div class="workflow-step">
-                <div class="step-icon">u</div>
+                <div class="step-icon">🚀</div>
                 <div class="step-content">
-                    <h3>unify</h3>
-                    <p>Build static sites</p>
-                    <div class="step-code">unify build --input indexed --output dist</div>
-                </div>
-                <div class="step-arrow">→</div>
-            </div>
-
-            <div class="workflow-step">
-                <div class="step-icon">g</div>
-                <div class="step-content">
-                    <h3>giv</h3>
-                    <p>Generate commit messages</p>
-                    <div class="step-code">giv message</div>
+                    <h3>Deploy</h3>
+                    <p>Ready for production</p>
+                    <div class="step-code">npm run build</div>
                 </div>
             </div>
         </div>
@@ -652,14 +642,7 @@ cp -r api-docs/* combined-docs/api/
 catalog --input combined-docs --output production \
   --base-url https://docs.company.com \
   --optional "archive/**/*" \
-  --sitemap --validate --index
-
-# Build final site
-unify build --input production --output public
-
-# Professional commit with AI
-giv message
-# "docs: integrate API and user documentation with comprehensive indexing"</code>
+  --sitemap --validate --index</code>
             </div>
         </div>
 

@@ -1,4 +1,6 @@
-<head data-unify="head-content">
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <template data-slot="title">fwdslsh Ecosystem - The Agentic Web Toolkit</template>
     <meta name="description"
         content="The complete fwdslsh ecosystem: hyphn for sharing, rabit for navigation, dispatch for security, disclose for context, and gather for content.">
@@ -306,9 +308,7 @@
         }
     </style>
 </head>
-<main>
-    <!-- Page metadata -->
-
+<body >
     <!-- Hero content -->
     <template data-slot="tool-name">fwdslsh Ecosystem</template>
     <template data-slot="tagline">Tools for the Agentic Web</template>
@@ -601,7 +601,7 @@ hyphn run @agent/review --safe</pre>
 
     <!-- Stats Section -->
     <template data-slot="stats-section">
-        <include src="components/stats-section.html"></include>
+        <include src="/_includes/components/stats-section.html"></include>
     </template>
 
     <!-- CTA Section -->
@@ -713,4 +713,5 @@ hyphn run @agent/review --safe</pre>
             });
         </script>
     </template>
-    </div>
+</body>
+</html>

@@ -15,7 +15,7 @@
     content="Real-world examples and patterns for using catalog to generate llms.txt files. AI training workflows, documentation sites, and automation patterns.">
 </head>
 
-<body data-unify="/_includes/tool-page.layout.html">
+<body data-unify="/_includes/tool-page.html">
 
   <include src="/_includes/components/hero-section.html">
     <div class="unify-hero-content">
@@ -263,14 +263,7 @@ catalog --input content \
 catalog --input _docs \
   --output _site/generated \
   --base-url https://docs.example.com \
-  --sitemap-no-extensions
-
-# unify integration (fwdslsh ecosystem)
-catalog --input docs --output indexed \
-  --base-url https://docs.example.com \
-  --sitemap --index
-
-unify build --input indexed --output public</code>
+  --sitemap-no-extensions</code>
           </div>
         </div>
       </div>
@@ -586,36 +579,6 @@ catalog --input combined-docs \
   --sitemap --index --validate</code>
               </div>
             </div>
-            <div class="step-arrow">→</div>
-          </div>
-
-          <div class="pipeline-step">
-            <div class="step-icon">u</div>
-            <div class="step-content">
-              <h4>Site Generation</h4>
-              <div class="code-block">
-                <code># Build beautiful documentation site
-unify build \
-  --input indexed-docs \
-  --output production-site</code>
-              </div>
-            </div>
-            <div class="step-arrow">→</div>
-          </div>
-
-          <div class="pipeline-step">
-            <div class="step-icon">g</div>
-            <div class="step-content">
-              <h4>Version Control</h4>
-              <div class="code-block">
-                <code># Professional commit with AI
-git add .
-giv message
-# "docs: integrate legacy and API documentation with comprehensive indexing"
-
-git push origin main</code>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -661,11 +624,7 @@ python enhance-content.py \
 catalog --input enhanced-content \
   --output final-output \
   --base-url https://docs.example.com \
-  --sitemap --index --validate
-
-# Stage 5: AI-powered commit message
-giv message
-# Automatically generates: "docs: enhance documentation with AI-powered content optimization"</code>
+  --sitemap --index --validate</code>
           </div>
 
           <h4>Continuous AI Enhancement</h4>
@@ -1014,7 +973,7 @@ echo "🏁 Pattern testing complete"</code>
       <a href="/ecosystem/" class="next-step-card">
         <div class="card-icon">🔄</div>
         <h3>Ecosystem Integration</h3>
-        <p>See how catalog combines with inform, unify, and giv for complete workflows</p>
+        <p>See how catalog combines with inform and the fwdslsh ecosystem for complete workflows</p>
         <span class="card-arrow">→</span>
       </a>
 

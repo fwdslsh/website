@@ -25,13 +25,16 @@
 - [x] 4.3 Layout Files
 
 ## Phase 5: Assets & Styling
-- [ ] 5.1 Icon Assets
-- [ ] 5.2 CSS Updates
+- [x] 5.1 Icon Assets, use lucide SVG icons https://lucide.dev/icons/
+- [x] 5.2 CSS Updates
 
 ## Phase 6: Testing & Validation
-- [ ] 6.1 Build Verification
-- [ ] 6.2 Manual Testing Checklist
-- [ ] 6.3 Content Review
+- [x] 6.1 Build Verification, no warnings or errors
+- [x] 6.2 Manual Testing Checklist
+- [x] 6.3 Content Review, validating against the tool implementation in the ../[tool directory] or ../core/packages/[tool directory] to ensure the website information is accurate
+- [ ] 6.4 Use chrome devtools or playwright to do manual testing and verification of the site
+- [x] 6.5 Ensure there are no build warnings
+**NOTE**: Details about the Unify tool can be found here: /home/founder3/code/github/fwdslsh/unify/docs/
 
 ## Phase 7: Deployment
 - [ ] 7.1 Pre-Deployment
