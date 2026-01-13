@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head data-unify="/_includes/base/head.html">
+<head>
+    <include src="/_includes/base/head.html"></include>
     <style data-unify-docs="v1">
         /* public areas (tool-page)
            .unify-nav-links : tool-local nav links
@@ -12,7 +13,8 @@
 <body>
     <div class="page-bg"></div>
 
-    <nav data-unify="/_includes/base/nav.html">
+    <nav>
+        <include src="/_includes/base/nav.html"></include>
         <!-- Tool-specific navigation replaces main nav-links -->
         <ul class="unify-nav-links nav-links">
             <li><a href="index.html">Overview</a></li>
@@ -22,13 +24,14 @@
         </ul>
     </nav>
 
-    <main>
+    <main class="unify-content">
         <!-- Page content goes here -->
-        <div class="unify-content"></div>
     </main>
 
-    <div data-unify="/_includes/base/footer.html"></div>
-    <div data-unify="/_includes/base/scripts.html"></div>
+    <div class="footer-container">
+        <include src="/_includes/base/footer.html"></include>
+    </div>
+    <include src="/_includes/base/scripts.html"></include>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-unify="/_includes/tool-page.html">
 <head>
     <template data-slot="title">fwdslsh Ecosystem - The Agentic Web Toolkit</template>
     <meta name="description"
@@ -308,26 +308,27 @@
         }
     </style>
 </head>
-<body data-unify="/_includes/layout.html">
-    <!-- Hero content -->
-    <template data-slot="tool-name">fwdslsh Ecosystem</template>
-    <template data-slot="tagline">Tools for the Agentic Web</template>
-    <template data-slot="description">
-        A modular suite of tools designed for the era of AI agents. 
-        Secure execution, structured navigation, context retrieval, and skill sharing 
-        - all built on modern standards and composable conventions.
-    </template>
-    <template data-slot="cta-buttons">
-        <a href="#workflow" class="btn btn-primary">
-            <span>🔄</span> See the Workflow
-        </a>
-        <a href="#quick-start" class="btn btn-secondary">
-            Quick Start Guide
-        </a>
-    </template>
-    <template data-slot="demo">
-        <!-- Demo section will be handled by additional content -->
-    </template>
+<body>
+    <section class="tool-hero ecosystem-hero">
+        <div class="tool-hero-content">
+            <h1 data-slot="tool-name">fwdslsh Ecosystem</h1>
+            <p class="tagline" data-slot="tagline">Tools for the Agentic Web</p>
+            <p class="description" data-slot="description">
+                A modular suite of tools designed for the era of AI agents. 
+                Secure execution, structured navigation, context retrieval, and skill sharing 
+                - all built on modern standards and composable conventions.
+            </p>
+            <div class="cta-buttons" data-slot="cta-buttons">
+                <a href="#workflow" class="btn btn-primary">
+                    <span>🔄</span> See the Workflow
+                </a>
+                <a href="#quick-start" class="btn btn-secondary">
+                    Quick Start Guide
+                </a>
+            </div>
+        </div>
+        <div class="tool-demo"></div>
+    </section>
 
     <!-- Features Section -->
     <template data-slot="features-section">

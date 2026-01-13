@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head data-unify="/_includes/base/head.html">
+<head>
+    <include src="/_includes/base/head.html"></include>
+    <title data-slot="title">fwdslsh - Slash a path through the bloat</title>
     <style data-unify-docs="v1">
         /* public areas (layout)
            .unify-content : main content mount point
@@ -13,15 +15,19 @@
 <body>
     <div class="page-bg"></div>
 
-    <nav data-unify="/_includes/base/nav.html"></nav>
+    <nav>
+        <include src="/_includes/base/nav.html"></include>
+    </nav>
 
     <main class="unify-content">
         <!-- Main content area -->
     </main>
 
-    <div data-unify="/_includes/base/footer.html"></div>
+    <div class="footer-container">
+        <include src="/_includes/base/footer.html"></include>
+    </div>
 
-    <div data-unify="/_includes/base/scripts.html"></div>
+    <include src="/_includes/base/scripts.html"></include>
 </body>
 
 </html>

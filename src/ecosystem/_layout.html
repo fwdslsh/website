@@ -7,7 +7,7 @@
         /* public areas (ecosystem layout)
            main.unify-content : ecosystem content mount */
     </style>
-    <template data-unify="/_includes/base/head.html"></template>
+    <include src="/_includes/base/head.html"></include>
     <style>
         /* Tool pages specific layout fixes */
         main {
@@ -321,11 +321,17 @@
 <body>
     <div class="page-bg"></div>
 
-    <nav data-unify="/_includes/base/nav.html"></nav>
+    <nav>
+        <include src="/_includes/base/nav.html"></include>
+    </nav>
 
-    <main class="unify-content"></main>
+    <main class="unify-content">
+        <!-- Main content area -->
+    </main>
 
-    <template data-unify="/_includes/base/footer.html"></template>
+    <div class="footer-container">
+        <include src="/_includes/base/footer.html"></include>
+    </div>
 
     <script>
         // Smooth scrolling for anchor links

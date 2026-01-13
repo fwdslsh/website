@@ -32,7 +32,7 @@
 - [x] 6.1 Build Verification, no warnings or errors
 - [x] 6.2 Manual Testing Checklist
 - [x] 6.3 Content Review, validating against the tool implementation in the ../[tool directory] or ../core/packages/[tool directory] to ensure the website information is accurate
-- [ ] 6.4 Use chrome devtools or playwright to do manual testing and verification of the site
+- [x] 6.4 Use chrome devtools or playwright to do manual testing and verification of the site (Playwright smoke on /, /hyphn, /rabit, /dispatch, /disclose, /gather)
 - [x] 6.5 Ensure there are no build warnings
 **NOTE**: Details about the Unify tool can be found here: /home/founder3/code/github/fwdslsh/unify/docs/
 
