@@ -30,9 +30,9 @@ npm run build
 This website showcases key Unify capabilities:
 
 ### 1. Component Architecture
-- **Reusable includes**: Components in `_includes/` using `<include src="...">` tags
-- **Slot-based composition**: Using `data-slot` attributes for flexible content injection
-- **Layout inheritance**: Hierarchical layout discovery and application
+- **Reusable includes**: Components in `_includes/` using `<include src="...">` tags (resolved at build time)
+- **DOM cascade composition**: Pages declare `data-unify="/_includes/layout.html"` on `<html>` and Unify merges page body into layout areas (e.g., `.unify-content`, `.unify-nav-links`).
+- **Layout inheritance**: Layouts can themselves use `data-unify` for nested composition.
 
 ### 2. Build-Time Processing
 - **Server-side includes**: Components resolved at build time for zero runtime overhead
@@ -62,21 +62,23 @@ The website leverages Unify's conventions:
 
 ### Template System
 
-**IMPORTANT**: We prefer the modern `<include>` element syntax over Apache SSI:
+**IMPORTANT**: Use modern `<include>` elements (not SSI) and the `data-unify` attribute for layouts:
 
 ```html
-<!-- PREFERRED: Modern Unify syntax -->
-<include src="_includes/components/header.html"></include>
+<!-- Page declares its layout -->
+<html lang="en" data-unify="/_includes/layout.html">
+  <head>...</head>
+  <body>...page content...</body>
+</html>
 
-<!-- LEGACY: Apache SSI syntax (being phased out) -->
-<!--#include virtual="/_includes/header.html" -->
+<!-- Includes are resolved at build time -->
+<include src="_includes/components/header.html"></include>
 ```
 
-The site demonstrates Unify's powerful slot system:
-- `data-slot="default"` - Main content injection point
-- `data-slot="title"` - Dynamic page titles
-- `data-slot="head-content"` - Additional head elements
-- Custom slots for tool-specific content
+DOM Cascade rules applied by Unify:
+- `data-unify` on `<html>` or `<body>` points to a layout file
+- Page body content flows into layout areas by class (e.g., `.unify-content` for main, `.unify-nav-links` for tool nav)
+- Head elements are merged (styles, scripts, meta) with layout head
 
 ### Modern CSS Practices
 The site demonstrates:
@@ -91,16 +93,15 @@ The site demonstrates:
 
 #### 1. Component Composition
 ```html
-<!-- Main layout using Unify's slot system -->
-<main>
-    <div data-slot="default"></div>
-</main>
-
-<!-- Page providing content for slot -->
-<div>
-    <h1>Page Content</h1>
-    <!-- Content automatically injected into layout's default slot -->
-</div>
+<!-- Page declares layout via data-unify -->
+<html lang="en" data-unify="/_includes/layout.html">
+  <head>...</head>
+  <body>
+    <div class="unify-content">
+      <h1>Page Content</h1>
+    </div>
+  </body>
+</html>
 ```
 
 #### 2. Reusable Components
@@ -112,8 +113,8 @@ The site demonstrates:
 
 #### 3. Layout Hierarchy
 - Unify automatically discovers `_layout.html` files
-- Pages can override with `data-layout` attribute
-- Demonstrates zero-configuration approach
+- Pages declare layouts with `data-unify="/path/to/layout.html"`
+- Layouts themselves can cascade with their own `data-unify`
 
 ### Adding New Tool Pages
 1. Create directory under `src/[tool-name]/` (follows Unify conventions)

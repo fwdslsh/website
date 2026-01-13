@@ -5,8 +5,8 @@
   "type": "module",
   "homepage": "https://fwdslsh.dev",
   "scripts": {
-    "build": "bun ../unify/src/cli.js build --source src --output dist",
-    "dev": "bun ../unify/src/cli.js serve --source src --port 3000"
+    "build": "bun ../unify/src/cli.js build --source src --output dist && node scripts/pretty-urls.js dist",
+    "dev": "bun ../unify/src/cli.js serve --source src"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0"
