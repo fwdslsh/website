@@ -4,3 +4,4 @@ node_modules/
 dist/
 .remove
 test-results/
+tests/visual/

@@ -1,11 +1,11 @@
 {
   "name": "fwdslsh-website",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The official website for fwdslsh",
   "type": "module",
   "homepage": "https://fwdslsh.dev",
   "scripts": {
-    "build": "bun ../unify/src/cli.js build --source src --output dist && node scripts/pretty-urls.js dist",
+    "build": "bun ../unify/src/cli.js build --source src --output dist --pretty-urls",
     "dev": "bun ../unify/src/cli.js serve --source src"
   },
   "devDependencies": {
