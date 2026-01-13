@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- documentation: ecosystem layout wrapper for Unify -->
 <head>
-    <template src="/_includes/base/head.html"></template>
+    <style data-unify-docs="v1">
+        /* public areas (ecosystem layout)
+           main.unify-content : ecosystem content mount */
+    </style>
+    <template data-unify="/_includes/base/head.html"></template>
     <style>
         /* Tool pages specific layout fixes */
         main {
@@ -316,13 +321,9 @@
 <body>
     <div class="page-bg"></div>
 
-    <nav>
-        <template data-unify="/_includes/base/nav.html"></template>
-    </nav>
+    <nav data-unify="/_includes/base/nav.html"></nav>
 
-    <main>
-      
-    </main>
+    <main class="unify-content"></main>
 
     <template data-unify="/_includes/base/footer.html"></template>
 
