@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <include src="base/head.html"></include>
+    <template data-import="base/head.html"></template>
 </head>
 
 <body>
     <div class="page-bg"></div>
 
-        <include src="base/nav.html">
+        <template data-import="base/nav.html">
             <!-- Default homepage navigation -->
-            <template data-slot="nav-links">
+            <ul data-slot="nav-links">
                 <li>
                     <a href="/#about" title="About">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -59,15 +59,15 @@
                         </svg>
                     </a>
                 </li>
-            </template>
-        </include>
+            </ul>
+        </template>
  
 
     <main>
-        <div data-slot="default"></div>
+        <slot></slot>
     </main>
 
-    <include src="base/footer.html"></include>
+    <template data-import="footer"></template>
 
     <script>
         // Smooth scrolling for anchor links

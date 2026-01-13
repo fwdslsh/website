@@ -64,13 +64,13 @@ body::after {
 }
 
 body::before {
-  background-image: url("/assets/bg2.svg");
+  background-image: url("bg2.svg");
   background-size: var(--tile) var(--tile);
   animation: driftA 9s linear infinite alternate;
 }
 
 body::after {
-  background-image: url("/assets/bg2.svg");
+  background-image: url("bg2.svg");
   background-size: calc(var(--tile) * 2) calc(var(--tile) * 2);
   animation: driftB 15s linear infinite alternate-reverse;
   opacity: calc(var(--opacity) * 0.5);
@@ -114,13 +114,14 @@ body {
 }
 
 
+/* Testing */
 .page-bg {
   display: none;
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: url("/assets/bg.svg");
+  background-image: url("bg.svg");
   background-repeat: repeat;
   background-size: var(--tile-size) var(--tile-size);
   opacity: var(--pattern-opacity);

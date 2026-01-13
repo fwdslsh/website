@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <include src="_includes/base/head.html"></include>
+    <template src="_includes/base/head.html"></template>
     <style>
         /* Tool pages specific layout fixes */
         main {
@@ -317,14 +317,14 @@
     <div class="page-bg"></div>
 
     <nav>
-        <include src="_includes/base/nav.html"></include>
+        <template data-import="_includes/base/nav.html"></template>
     </nav>
 
     <main>
-        <div data-slot="default"></div>
+       <slot></slot>
     </main>
 
-    <include src="_includes/base/footer.html"></include>
+    <template data-import="_includes/base/footer.html"></template>
 
     <script>
         // Smooth scrolling for anchor links
