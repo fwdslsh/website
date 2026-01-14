@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-unify="/_includes/tool-page.html">
+
 <head>
-    <title>hyphn Documentation - Reference Guide</title>
+    <title>hyphn - Documentation</title>
+    <meta name="description" content="Complete documentation for hyphn CLI. Commands, configuration, hook system, and file structure.">
 </head>
+
 <body>
-    <section class="tool-hero">
-        <div class="tool-hero-content">
-            <h1>hyphn Documentation</h1>
-            <p class="tagline">Command reference and configuration guide</p>
-        </div>
-    </section>
 
     <section class="tool-nav">
         <div class="tool-nav-container">
@@ -23,26 +20,534 @@
     </section>
 
     <section class="tool-section">
-        <h2>CLI Reference</h2>
+        <div class="section-header">
+            <h1>Command Reference</h1>
+            <p>All available commands and options</p>
+        </div>
+
         <div class="code-block">
-            <pre>
-Usage: hyphn [command] [options]
+            <pre>Usage: hyphn [COMMAND] [OPTIONS]
 
 Commands:
-  init              Initialize ~/.hyphn directory
-  setup             Configure integrations with installed tools
-  list              List available agents, skills, and commands
-  sources add       Add a new source repository
-  sources rm        Remove a source repository
-  sources update    Update all sources
+  init              Initialize ~/.hyphn directory structure
+  setup             Configure integrations with AI tools
   serve             Start MCP server
-            </pre>
+  list              List available assets
+  sources           Manage source repositories
+  validate          Check assets for errors
+  help              Show help message</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>init Command</h2>
+            <p>Initialize the Hyph3n directory structure</p>
+        </div>
+
+        <h3>Syntax</h3>
+        <div class="code-block">
+            <pre>hyphn init [OPTIONS]</pre>
+        </div>
+
+        <h3>Options</h3>
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Short</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--force</code></td>
+                    <td><code>-f</code></td>
+                    <td>Overwrite existing configuration (creates backup first)</td>
+                </tr>
+                <tr>
+                    <td><code>--yes</code></td>
+                    <td><code>-y</code></td>
+                    <td>Skip confirmation prompt (for scripting)</td>
+                </tr>
+                <tr>
+                    <td><code>--minimal</code></td>
+                    <td></td>
+                    <td>Create minimal structure without example assets</td>
+                </tr>
+                <tr>
+                    <td><code>--json</code></td>
+                    <td></td>
+                    <td>Output JSON (also skips confirmation prompts)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Examples</h3>
+        <div class="code-block">
+            <pre># First-time initialization
+hyphn init
+
+# Reinitialize (creates backup, prompts for confirmation)
+hyphn init --force
+
+# Reinitialize without prompt (for scripting)
+hyphn init --force --yes
+
+# Minimal structure (no examples)
+hyphn init --minimal
+
+# JSON output mode (also skips prompts)
+hyphn init --json</pre>
+        </div>
+
+        <h3>Safety Features</h3>
+        <ul>
+            <li>Running <code>init</code> without <code>--force</code> on an existing installation safely exits with an error</li>
+            <li>With <code>--force</code>, a backup is created before overwriting configuration</li>
+            <li>Backups are stored in <code>~/.hyphn/backups/config-{timestamp}/</code></li>
+            <li>User data in runtime directories (<code>history/</code>, <code>cache/</code>, <code>logs/</code>) is preserved</li>
+        </ul>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>setup Command</h2>
+            <p>Configure OpenCode and Claude Code integrations</p>
+        </div>
+
+        <h3>Syntax</h3>
+        <div class="code-block">
+            <pre>hyphn setup [OPTIONS]</pre>
+        </div>
+
+        <h3>Description</h3>
+        <p>The <code>setup</code> command configures your installed AI tools to recognize the Hyph3n directory structure:</p>
+        <ul>
+            <li><strong>OpenCode:</strong> Creates or updates <code>.opencode/config.json</code></li>
+            <li><strong>Claude Code:</strong> Creates or updates <code>.claude/config.json</code></li>
+            <li><strong>Claude Desktop:</strong> Creates or updates <code>~/.claude/config.json</code></li>
+        </ul>
+
+        <h3>Examples</h3>
+        <div class="code-block">
+            <pre># Configure all detected tools
+hyphn setup
+
+# Configure specific tool
+hyphn setup --tool opencode
+hyphn setup --tool claude-code</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>serve Command</h2>
+            <p>Start MCP server for IDE integration</p>
+        </div>
+
+        <h3>Syntax</h3>
+        <div class="code-block">
+            <pre>hyphn serve [OPTIONS]</pre>
+        </div>
+
+        <h3>Options</h3>
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--port</code></td>
+                    <td><code>3000</code></td>
+                    <td>Port for MCP server</td>
+                </tr>
+                <tr>
+                    <td><code>--host</code></td>
+                    <td><code>localhost</code></td>
+                    <td>Host for MCP server</td>
+                </tr>
+                <tr>
+                    <td><code>--stdio</code></td>
+                    <td><code>false</code></td>
+                    <td>Use stdio transport instead of HTTP</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Examples</h3>
+        <div class="code-block">
+            <pre># Start MCP server
+hyphn serve
+
+# Custom port
+hyphn serve --port 8080
+
+# Use stdio transport (for IDEs that require it)
+hyphn serve --stdio</pre>
         </div>
     </section>
 
     <section class="tool-section">
-        <h2>Configuration</h2>
-        <p>Configuration is stored in `~/.hyphn/config.yaml`.</p>
+        <div class="section-header">
+            <h2>list Command</h2>
+            <p>List available agents, commands, and skills</p>
+        </div>
+
+        <h3>Syntax</h3>
+        <div class="code-block">
+            <pre>hyphn list [TYPE]</pre>
+        </div>
+
+        <h3>Types</h3>
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>agents</code></td>
+                    <td>List available agents</td>
+                </tr>
+                <tr>
+                    <td><code>commands</code></td>
+                    <td>List available commands</td>
+                </tr>
+                <tr>
+                    <td><code>skills</code></td>
+                    <td>List available skills</td>
+                </tr>
+                <tr>
+                    <td><code>all</code></td>
+                    <td>List everything (default)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Examples</h3>
+        <div class="code-block">
+            <pre># List all assets
+hyphn list
+
+# List only agents
+hyphn list agents
+
+# List only skills
+hyphn list skills</pre>
+        </div>
     </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>sources Command</h2>
+            <p>Manage external source repositories</p>
+        </div>
+
+        <h3>sources add</h3>
+        <div class="code-block">
+            <pre>hyphn sources add <PATH> [OPTIONS]</pre>
+        </div>
+        <p>Add a local directory or git repository as a source for agents, skills, and commands.</p>
+
+        <h3>sources rm</h3>
+        <div class="code-block">
+            <pre>hyphn sources rm <PATH></pre>
+        </div>
+        <p>Remove a previously added source.</p>
+
+        <h3>Examples</h3>
+        <div class="code-block">
+            <pre># Add team hyphn directory
+hyphn sources add ~/team-hyphn
+
+# Add company shared directory
+hyphn sources add /shared/company/ai-config
+
+# Add git repository
+git clone https://github.com/my-org/ai-config.git ~/shared-config
+hyphn sources add ~/shared-config
+
+# Remove a source
+hyphn sources rm ~/old-config</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>validate Command</h2>
+            <p>Check assets for errors</p>
+        </div>
+
+        <h3>Syntax</h3>
+        <div class="code-block">
+            <pre>hyphn validate [OPTIONS]</pre>
+        </div>
+
+        <h3>Description</h3>
+        <p>Validates all assets in <code>~/.hyphn</code> for common errors:</p>
+        <ul>
+            <li>Invalid YAML frontmatter in agent/skill definitions</li>
+            <li>Missing required fields</li>
+            <li>Malformed configuration files</li>
+            <li>Duplicate asset names</li>
+        </ul>
+
+        <h3>Examples</h3>
+        <div class="code-block">
+            <pre># Validate all assets
+hyphn validate
+
+# Validate with detailed output
+hyphn validate --verbose</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Environment Variables</h2>
+            <p>Configure hyphn behavior</p>
+        </div>
+
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>HYPHN_HOME</code></td>
+                    <td><code>~/.hyphn</code></td>
+                    <td>Primary directory for hyphn configuration and assets</td>
+                </tr>
+                <tr>
+                    <td><code>HYPHN_PATH</code></td>
+                    <td></td>
+                    <td>Additional sources (colon-separated paths)</td>
+                </tr>
+                <tr>
+                    <td><code>HYPHN_NO_COLOR</code></td>
+                    <td><code>false</code></td>
+                    <td>Disable colored output (set to any value)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Examples</h3>
+        <div class="code-block">
+            <pre># Set custom hyphn home
+export HYPHN_HOME="/opt/hyphn"
+hyphn init
+
+# Add multiple sources to path
+export HYPHN_PATH="$HOME/team-hyphn:$HOME/company-hyphn"
+hyphn list
+
+# Disable colors
+export HYPHN_NO_COLOR=1
+hyphn list</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>File Structure</h2>
+            <p>Understanding ~/.hyphn directory layout</p>
+        </div>
+
+        <h3>Directory Layout</h3>
+        <div class="code-block">
+            <pre>~/.hyphn/
+├── agents/                 # Agent definitions
+│   ├── my-agent.md
+│   └── db-expert.md
+├── commands/               # Custom slash commands
+│   ├── deploy.sh
+│   └── test.sh
+├── skills/                # Reusable skills
+│   ├── deployment/
+│   └── database/
+├── config/                # Configuration files
+│   ├── config.yaml
+│   └── hooks.yaml
+├── sources/               # Source repository references
+├── history/               # Session history (optional)
+├── cache/                # Cached data (optional)
+├── logs/                  # Log files (optional)
+└── backups/               # Configuration backups
+    └── config-{timestamp}/</pre>
+        </div>
+
+        <h3>Agent Format</h3>
+        <div class="code-block">
+            <pre># agents/db-expert.md
+---
+name: db-expert
+description: Expert in PostgreSQL database operations
+version: 1.0.0
+---
+
+You are a database expert specializing in PostgreSQL.
+
+## Expertise
+
+- Database schema design
+- Query optimization
+- Indexing strategies
+- Migration planning
+
+## Guidelines
+
+- Always use parameterized queries to prevent SQL injection
+- Consider indexing for frequently queried columns
+- Test migrations on staging first
+- Use transactions for multi-table operations</pre>
+        </div>
+
+        <h3>Skill Format</h3>
+        <div class="code-block">
+            <pre># skills/deployment/
+---
+name: deploy
+description: Handle deployment workflows
+triggers:
+  - "deploy"
+  - "ship it"
+  - "production deployment"
+---
+
+## When to Use
+
+Use this skill when you need to:
+- Deploy to production
+- Rollback a deployment
+- Check deployment status
+
+## Workflow
+
+1. Run tests: <code>npm test</code>
+2. Build application: <code>npm run build</code>
+3. Deploy to staging
+4. Verify staging deployment
+5. Promote to production
+6. Monitor production logs</pre>
+        </div>
+
+        <h3>Command Format</h3>
+        <div class="code-block">
+            <pre># commands/test.sh
+#!/bin/bash
+# Test command for project
+
+echo "Running tests..."
+bun test
+
+echo "Running type checking..."
+bun run typecheck</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Hook System</h2>
+            <p>Automate workflows with hooks</p>
+        </div>
+
+        <h3>Configuration</h3>
+        <p>Hooks are configured in <code>~/.hyphn/config/hooks.yaml</code>:</p>
+        <div class="code-block">
+            <pre># hooks.yaml
+hooks:
+  - event: pre-init
+    command: echo "Initializing hyphn..."
+  - event: post-init
+    command: echo "Hyphn initialized successfully!"</pre>
+        </div>
+
+        <h3>Available Hooks</h3>
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>pre-init</code></td>
+                    <td>Before initialization begins</td>
+                </tr>
+                <tr>
+                    <td><code>post-init</code></td>
+                    <td>After initialization completes</td>
+                </tr>
+                <tr>
+                    <td><code>pre-setup</code></td>
+                    <td>Before setup command runs</td>
+                </tr>
+                <tr>
+                    <td><code>post-setup</code></td>
+                    <td>After setup command completes</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Troubleshooting</h2>
+            <p>Common issues and solutions</p>
+        </div>
+
+        <h3>Configuration Not Found</h3>
+        <p>If tools don't recognize hyphn assets:</p>
+        <div class="code-block">
+            <pre># Re-run setup
+hyphn setup
+
+# Verify directory exists
+ls -la ~/.hyphn
+
+# Check tool config files
+cat .claude/config.json
+cat .opencode/config.json</pre>
+        </div>
+
+        <h3>Asset Not Loading</h3>
+        <p>If an asset isn't showing up:</p>
+        <div class="code-block">
+            <pre># Validate assets for errors
+hyphn validate
+
+# Check file permissions
+ls -l ~/.hyphn/agents/
+
+# Verify YAML frontmatter
+cat ~/.hyphn/agents/my-agent.md</pre>
+        </div>
+
+        <h3>Source Not Found</h3>
+        <div class="code-block">
+            <pre># Check sources list
+cat ~/.hyphn/config/sources.yaml
+
+# Verify source path exists
+ls -la ~/team-hyphn
+
+# Re-add source
+hyphn sources add ~/team-hyphn</pre>
+        </div>
+    </section>
+
 </body>
+
 </html>

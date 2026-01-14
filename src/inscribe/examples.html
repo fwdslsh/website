@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-unify="/_includes/tool-page.html">
+<head>
+    <title>inscribe - Examples</title>
+    <meta name="description" content="Real-world examples for inscribe learning capture. Pattern discovery, problem-solutions, session tracking, and CI/CD workflows.">
+</head>
+<body>
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="unify-nav-links">
+                <li><a href="/inscribe/">Overview</a></li>
+                <li><a href="/inscribe/getting-started">Getting Started</a></li>
+                <li><a href="/inscribe/docs">Documentation</a></li>
+                <li><a href="/inscribe/examples" class="active">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="tool-section">
+        <div class="section-header">
+            <h1>Learning Capture Examples</h1>
+        </div>
+
+        <h2>Capturing Patterns</h2>
+        <div class="code-block">
+            <pre># During development, capture discovered patterns
+inscribe learning add \
+  --type pattern \
+  --summary "Bun.serve() handles async differently" \
+  --content-file pattern-notes.md \
+  --domains bun,http \
+  --confidence 0.85 \
+  --session $HYPHN_SESSION_ID</pre>
+        </div>
+
+        <h2>Recording Problem-Solutions</h2>
+        <div class="code-block">
+            <pre>inscribe learning add \
+  --type problem-solution \
+  --summary "Fix Bun test stdin reading" \
+  --content "## Problem\nBun tests hang when reading stdin\n\n## Solution\nUse --content or --content-file flags explicitly" \
+  --domains bun,testing \
+  --confidence 0.9</pre>
+        </div>
+
+        <h2>Mistake Documentation</h2>
+        <div class="code-block">
+            <pre>inscribe learning add \
+  --type mistake \
+  --summary "Don't use fs.readFile() in Bun.serve()" \
+  --content "Bun.serve() request handlers cannot read from stdin. Always read from file or use --content flag." \
+  --domains bun,http \
+  --confidence 0.95</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h1>Session Tracking Examples</h1>
+        </div>
+
+        <h2>Feature Development Session</h2>
+        <div class="code-block">
+            <pre># Start session
+inscribe session start \
+  --name "implement-auth" \
+  --repo /path/to/project \
+  --branch feature/auth \
+  --tags "auth,security"
+
+# Work happens...
+
+# Stop with success
+inscribe session stop --status ok</pre>
+        </div>
+
+        <h2>Failed Session</h2>
+        <div class="code-block">
+            <pre>inscribe session stop --status failed</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h1>Event Recording Examples</h1>
+        </div>
+
+        <h2>Decision Tracking</h2>
+        <div class="code-block">
+            <pre>inscribe add decision "Switch to TypeScript 5.4" \
+  --tags architecture,typescript,migration</pre>
+        </div>
+
+        <h2>Milestone Events</h2>
+        <div class="code-block">
+            <pre>echo "MVP completed" | inscribe add event --tags milestone
+echo "Beta release" | inscribe add event --tags release,beta</pre>
+        </div>
+
+        <h2>Custom Events</h2>
+        <div class="code-block">
+            <pre>inscribe add event "Performance optimization complete" \
+  --tags optimization,performance</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h1>CI/CD Integration</h1>
+        </div>
+
+        <h2>GitHub Actions</h2>
+        <div class="code-block">
+            <pre>name: Record Learning
+on:
+  workflow_run:
+    types:
+      - completed
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Record learning
+        run: |
+          # Extract learning from PR description or comments
+          # and record it
+          inscribe learning add \
+            --type pattern \
+            --summary "$LEARNING_SUMMARY" \
+            --content "$LEARNING_CONTENT"</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h1>Hook Integration Examples</h1>
+        </div>
+
+        <h2>Claude Code Hook</h2>
+        <div class="code-block">
+            <pre># .claude/config.json
+{
+  "hooks": {
+    "onPromptSubmit": "inscribe hook user-prompt-submit --source claude-code",
+    "postToolUse": "inscribe hook post-tool-use --source claude-code"
+  }
+}</pre>
+        </div>
+    </section>
+</body>
+</html>

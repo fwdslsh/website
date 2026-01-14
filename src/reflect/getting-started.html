@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-unify="/_includes/tool-page.html">
+<head>
+    <title>reflect - Getting Started</title>
+    <meta name="description" content="Get started with reflect learning analytics. Installation, usage analysis, and reporting setup.">
+</head>
+<body>
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="unify-nav-links">
+                <li><a href="/reflect/">Overview</a></li>
+                <li><a href="/reflect/getting-started" class="active">Getting Started</a></li>
+                <li><a href="/reflect/docs">Documentation</a></li>
+                <li><a href="/reflect/examples">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h1>Getting Started</h1>
+            <p>Usage tracking and learning analytics</p>
+        </div>
+
+        <h2>Installation</h2>
+        <div class="code-block">
+            <pre># From monorepo root
+npm install
+# or
+bun install</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Basic Usage</h2>
+        </div>
+
+        <h3>Analyze Usage</h3>
+        <div class="code-block">
+            <pre># Analyze all usage events
+reflect analyze usage
+
+# Filter by time range
+reflect analyze usage \
+  --time-start 2025-01-01T00:00:00Z \
+  --time-end 2025-01-31T23:59:59Z</pre>
+        </div>
+
+        <h3>Generate Reports</h3>
+        <div class="code-block">
+            <pre># Comprehensive report
+reflect report comprehensive --output-path report.md
+
+# Specific sections
+reflect report comprehensive --sections usage,procedures</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Environment Variables</h2>
+        </div>
+
+        <table class="options-table">
+            <thead><tr><th>Variable</th><th>Default</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>HYPHN_HISTORY_ROOT</td><td>~/.hyphn/history</td><td>History logs directory</td></tr>
+                <tr><td>HYPHN_SESSIONS_ROOT</td><td>~/.hyphn/sessions</td><td>Sessions directory</td></tr>
+                <tr><td>HYPHN_INDEX_ROOT</td><td>~/.hyphn/index</td><td>Index directory</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Configuration File</h2>
+        </div>
+
+        <div class="code-block">
+            <pre># ~/.reflectrc.json
+{
+  "historyRoot": "/home/user/.hyphn/history",
+  "sessionsRoot": "/home/user/.hyphn/sessions",
+  "indexRoot": "/home/user/.hyphn/index"
+}</pre>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-unify="/_includes/tool-page.html">
+<head>
+    <title>inscribe - Getting Started</title>
+    <meta name="description" content="Get started with inscribe learning capture. Installation, learning management, session tracking, and event recording.">
+</head>
+<body>
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="unify-nav-links">
+                <li><a href="/inscribe/">Overview</a></li>
+                <li><a href="/inscribe/getting-started" class="active">Getting Started</a></li>
+                <li><a href="/inscribe/docs">Documentation</a></li>
+                <li><a href="/inscribe/examples">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="tool-section">
+        <div class="section-header">
+            <h1>Getting Started</h1>
+            <p>Installation and basic usage</p>
+        </div>
+
+        <h2>Installation</h2>
+        <div class="code-block">
+            <pre># From monorepo root
+npm install
+# or
+bun install
+
+# Available in workspace</bun run packages/inscribe/src/cli.ts --help</pre>
+        </div>
+
+        <h2>Learning Capture</h2>
+        <div class="code-block">
+            <pre># Add a learning
+inscribe learning add \
+  --type pattern \
+  --summary "Use Bun native APIs" \
+  --content "Prefer Bun.file() over fs.readFile()" \
+  --domains bun,typescript \
+  --confidence 0.9
+
+# Read from file
+inscribe learning add \
+  --type problem-solution \
+  --content-file solution.md \
+  --domains bun</pre>
+        </div>
+
+        <h2>Session Management</h2>
+        <div class="code-block">
+            <pre># Start session
+inscribe session start \
+  --name "feature-work" \
+  --repo /path/to/repo \
+  --branch feature
+
+# Stop session
+inscribe session stop --status ok</pre>
+        </div>
+
+        <h2>Event Recording</h2>
+        <div class="code-block">
+            <pre># Record decision
+inscribe add decision "Switch to TypeScript strict mode" \
+  --tags architecture,typescript
+
+# Record event
+echo "Task completed" | inscribe add event --stdin</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Environment Variables</h2>
+        </div>
+        <table class="options-table">
+            <thead><tr><th>Variable</th><th>Default</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>HYPHN_HOME</td><td>~/.hyphn</td><td>System root directory</td></tr>
+                <tr><td>HYPHN_HISTORY_ROOT</td><td>$HYPHN_HOME/history</td><td>History storage location</td></tr>
+                <tr><td>HYPHN_SESSION_ID</td><td>(none)</td><td>Current session ID</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Next Steps</h2>
+        </div>
+        <div class="quick-links">
+            <a href="/inscribe/docs" class="quick-link">
+                <span class="quick-link-icon">📚</span>
+                <h4>Full Documentation</h4>
+            </a>
+            <a href="/inscribe/examples" class="quick-link">
+                <span class="quick-link-icon">🔧</span>
+                <h4>Examples</h4>
+            </a>
+        </div>
+    </section>
+</body>
+</html>

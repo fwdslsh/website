@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" data-unify="/_includes/tool-page.html">
 <head>
-    <title>disclose Examples</title>
+    <title>disclose - Examples</title>
+    <meta name="description" content="Real-world examples for disclose learning retrieval. Search workflows, session management, context bundling, and CI/CD integration.">
 </head>
 <body>
-    <section class="tool-hero">
-        <div class="tool-hero-content">
-            <h1>disclose Examples</h1>
-        </div>
-    </section>
-
     <section class="tool-nav">
         <div class="tool-nav-container">
             <ul class="unify-nav-links">
@@ -22,11 +17,264 @@
     </section>
 
     <section class="tool-section">
-        <h2>CI/CD Integration</h2>
-        <p>Inject learnings into your automated PR review agent.</p>
+        <div class="section-header">
+            <h1>Real-World Examples</h1>
+            <p>Practical workflows for learning retrieval and context bundling</p>
+        </div>
+
+        <h2>Learning Search Workflows</h2>
+
+        <h3>Topic-Specific Searches</h3>
         <div class="code-block">
-            disclose pack --query "code-review" --output context.json
-            agent run --context context.json --task "Review PR"
+            <pre># Search authentication patterns
+disclose learnings --query "authentication" --domains security
+
+# Search TypeScript learnings
+disclose learnings --query "async" --domains typescript --confidence 0.8
+
+# Search for patterns and gotchas
+disclose learnings --types pattern,gotcha --min-confidence 0.7</pre>
+        </div>
+
+        <h3>Recent High-Confidence Learnings</h3>
+        <div class="code-block">
+            <pre># Get top 10 highest confidence learnings
+disclose learnings --limit 10 --sort-by confidence --sort-order desc</pre>
+        </div>
+
+        <h3>Multi-Domain Search</h3>
+        <div class="code-block">
+            <pre># Search across multiple domains
+disclose learnings --query "database" \
+  --domains sql,postgres,mongodb \
+  --min-confidence 0.75</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h1>Session Management</h1>
+            <p>Generate context for AI coding sessions</p>
+        </div>
+
+        <h2>Session Context Generation</h2>
+
+        <h3>Domain-Specific Context</h3>
+        <div class="code-block">
+            <pre># Generate context for React development
+disclose session-context \
+  --domains react,javascript \
+  --token-budget 1000 \
+  --min-confidence 0.8 > session-context.md</pre>
+        </div>
+
+        <h3>High-Quality Context</h3>
+        <div class="code-block">
+            <pre># Only include high-confidence learnings
+disclose session-context \
+  --min-confidence 0.9 \
+  --token-budget 500 > high-quality-context.md</pre>
+        </div>
+
+        <h3>Pattern-Focused Context</h3>
+        <div class="code-block">
+            <pre># Focus on design patterns only
+disclose session-context \
+  --types pattern \
+  --domains design,architecture \
+  --token-budget 800</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h1>Context Bundling</h1>
+            <p>Assemble multi-source context for AI tools</p>
+        </div>
+
+        <h2>Advanced Context Packs</h2>
+
+        <h3>Comprehensive RAG Bundle</h3>
+        <div class="code-block">
+            <pre># Include all sources with history
+disclose pack \
+  --query "API design patterns" \
+  --scope all \
+  --include-history \
+  --history-limit 10 \
+  --token-budget 3000 > rag-bundle.md</pre>
+        </div>
+
+        <h3>History-Only Bundle</h3>
+        <div class="code-block">
+            <pre># Bundle only from history (no learnings)
+disclose pack \
+  --query "database migration" \
+  --scope history \
+  --max-files 8 \
+  --token-budget 2000</pre>
+        </div>
+
+        <h3>Context for Specific Task</h3>
+        <div class="code-block">
+            <pre># Context for authentication implementation
+disclose pack \
+  --query "JWT token implementation" \
+  --domains security,authentication \
+  --scope all \
+  --token-budget 1500 > auth-context.md</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h1>Multi-Domain Search</h1>
+            <p>Search across different knowledge domains</p>
+        </div>
+
+        <h2>Cross-Domain Examples</h2>
+
+        <h3>Full Stack Search</h3>
+        <div class="code-block">
+            <pre># Search entire stack
+disclose learnings \
+  --query "error handling" \
+  --domains typescript,bun,http,testing \
+  --limit 15</pre>
+        </div>
+
+        <h3>Comparing Implementations</h3>
+        <div class="code-block">
+            <pre># Search different approaches
+disclose learnings \
+  --query "async patterns" \
+  --domains javascript,typescript,golang,rust \
+  --min-confidence 0.7</pre>
+        </div>
+
+        <h3>Technology Research</h3>
+        <div class="code-block">
+            <pre># Research specific technologies
+disclose learnings \
+  --query "docker compose" \
+  --domains docker,kubernetes,devops \
+  --limit 10</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h1>CI/CD Integration</h1>
+            <p>Automate learning retrieval in pipelines</p>
+        </div>
+
+        <h2>Automation Workflows</h2>
+
+        <h3>PR Review Context</h3>
+        <div class="code-block">
+            <pre>#!/bin/bash
+# Generate context for AI code review
+CONTEXT=$(disclose pack \
+  --query "code review guidelines" \
+  --scope all \
+  --token-budget 2000)
+
+# Use context in review agent
+agent run --context "$CONTEXT" --task "Review PR"</pre>
+        </div>
+
+        <h3>Pre-Commit Validation</h3>
+        <div class="code-block">
+            <pre>#!/bin/bash
+# Check for related learnings before commit
+git diff --name-only HEAD^ HEAD | while read file; do
+  disclose learnings \
+    --query "$(basename "$file" implementation)" \
+    --domains "$(git config --get remote.origin.url | grep -o '[^/]*\([^/]*\)' | cut -d/ -f2)" \
+    --format json
+done</pre>
+        </div>
+
+        <h3>Daily Knowledge Sync</h3>
+        <div class="code-block">
+            <pre>name: Sync Knowledge Daily
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 6 AM
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for new learnings
+        run: |
+          COUNT=$(disclose learnings --format json | jq '.total')
+          echo "Total learnings: $COUNT"</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h1>Advanced Workflows</h1>
+            <p>Complex patterns and integrations</p>
+        </div>
+
+        <h2>Performance Optimization</h2>
+
+        <h3>Incremental Context Loading</h3>
+        <div class="code-block">
+            <pre># Load context in stages for large codebases
+STAGE_1=$(disclose pack --query "core patterns" --token-budget 500)
+STAGE_2=$(disclose pack --query "api patterns" --token-budget 500)
+STAGE_3=$(disclose pack --query "ui patterns" --token-budget 500)
+
+# Combine as needed
+cat <(echo "$STAGE_1") <(echo "$STAGE_2") <(echo "$STAGE_3")</pre>
+        </div>
+
+        <h3>Context Caching Strategy</h3>
+        <div class="code-block">
+            <pre># Cache common context bundles
+# Generate once
+disclose pack --query "authentication" --token-budget 1000 > .cache/auth-context.md
+
+# Reuse in sessions
+cat .cache/auth-context.md
+
+# Update cache weekly
+cron: "0 0 * * 0" disclose pack --query "authentication" > .cache/auth-context.md</pre>
+        </div>
+
+        <h2>Integration with Ecosystem</h2>
+
+        <h3>Complete Learning Workflow</h3>
+        <div class="code-block">
+            <pre># Capture learning
+inscribe learning add \
+  --type pattern \
+  --summary "Use Bun.serve() for HTTP servers" \
+  --content "Bun.serve() handles async request handlers differently..." \
+  --domains bun,http \
+  --confidence 0.9
+
+# Index automatically via catalog hook
+# (Learning is automatically indexed by catalog-index hook)
+
+# Retrieve later
+disclose learnings --query "Bun.serve async" --domains bun</pre>
+        </div>
+
+        <h3>Multi-Tool Pipeline</h3>
+        <div class="code-block">
+            <pre># Gather knowledge from multiple sources
+inscribe list learnings --limit 100 > recent-learnings.txt
+reflect analyze usage --limit 50 > usage-stats.json
+
+# Combine with other sources
+disclose pack \
+  --query "best practices" \
+  --scope all \
+  --token-budget 2500 > complete-context.md</pre>
         </div>
     </section>
 </body>

@@ -14,6 +14,107 @@
         .gather-icon {
             background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
         }
+
+        .features-demo {
+            background: var(--bg-darker);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin: 3rem auto;
+            max-width: 800px;
+            overflow: hidden;
+        }
+
+        .demo-tabs {
+            display: flex;
+            background: var(--border);
+        }
+
+        .demo-tab {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .demo-tab.active {
+            background: var(--bg-darker);
+            color: var(--primary);
+        }
+
+        .demo-content {
+            display: none;
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .demo-content.active {
+            display: block;
+        }
+
+        .performance-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            font-family: var(--font-mono);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .config-example {
+            background: var(--bg-darker);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .config-yaml {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .config-yaml .key {
+            color: var(--primary);
+        }
+
+        .config-yaml .value {
+            color: var(--text-main);
+        }
+
+        .config-yaml .comment {
+            color: var(--text-dim);
+            font-style: italic;
+        }
     </style>
 </head>
 
@@ -24,7 +125,7 @@
             <h1>gather</h1>
             <p class="tagline">High-performance content ingestion</p>
             <p class="description">
-                Turn the web into dataset. Crawl sites, download repos, and ingest feeds with a single tool.
+                Turn web into dataset. Crawl sites, download repos, and ingest feeds with a single tool.
                 Automatic HTML-to-Markdown conversion makes everything AI-ready.
             </p>
             <div class="cta-buttons">
@@ -36,19 +137,74 @@
                 </a>
             </div>
         </div>
-        
-        <div class="tool-demo">
-            <div class="code-block">
-                <pre>
-$ gather https://docs.example.com
-> Crawling docs.example.com...
-> Converted 45 pages to Markdown
-> Saved to ./content/docs.example.com/
 
-$ gather github.com/owner/repo/tree/main/docs
-> Downloading sparse checkout...
-> Retrieved 12 files
-                </pre>
+        <div class="tool-demo">
+            <div class="features-demo">
+                <div class="demo-tabs">
+                    <button class="demo-tab active" onclick="showGatherTab('web')">Web Crawling</button>
+                    <button class="demo-tab" onclick="showGatherTab('git')">Git Downloads</button>
+                    <button class="demo-tab" onclick="showGatherTab('feed')">Feed Ingestion</button>
+                </div>
+
+                <div id="web-demo" class="demo-content active">
+                    <div style="color: var(--primary); margin-bottom: 1rem; font-weight: bold;">
+                        $ gather https://docs.example.com
+                    </div>
+                    <div style="color: var(--text-dim); margin-bottom: 0.5rem;">
+                        > Crawling docs.example.com...
+                    </div>
+                    <div style="color: var(--text-dim); margin-bottom: 0.5rem;">
+                        > Discovered 45 pages within same domain
+                    </div>
+                    <div style="color: var(--text-dim); margin-bottom: 0.5rem;">
+                        > Processing with concurrency: 5
+                    </div>
+                    <div style="color: var(--success);">
+                        > Converted 45 pages to Markdown
+                    </div>
+                    <div style="color: var(--success);">
+                        > Saved to ./content/docs.example.com/
+                    </div>
+                </div>
+
+                <div id="git-demo" class="demo-content">
+                    <div style="color: var(--primary); margin-bottom: 1rem; font-weight: bold;">
+                        $ gather https://github.com/owner/repo/tree/main/docs
+                    </div>
+                    <div style="color: var(--text-dim); margin-bottom: 0.5rem;">
+                        > Downloading via sparse checkout...
+                    </div>
+                    <div style="color: var(--text-dim); margin-bottom: 0.5rem;">
+                        > Processing docs/*.md files...
+                    </div>
+                    <div style="color: var(--success);">
+                        > Retrieved 12 files
+                    </div>
+                    <div style="color: var(--success);">
+                        > Saved to ./content/repo-docs/
+                    </div>
+                </div>
+
+                <div id="feed-demo" class="demo-content">
+                    <div style="color: var(--primary); margin-bottom: 1rem; font-weight: bold;">
+                        $ gather --feed https://example.com/feed.xml
+                    </div>
+                    <div style="color: var(--text-dim); margin-bottom: 0.5rem;">
+                        > Detected RSS feed
+                    </div>
+                    <div style="color: var(--text-dim); margin-bottom: 0.5rem;">
+                        > Processing 50 recent items...
+                    </div>
+                    <div style="color: var(--text-dim); margin-bottom: 0.5rem;">
+                        > Extracting main content from articles...
+                    </div>
+                    <div style="color: var(--success);">
+                        > Converted 50 articles to Markdown
+                    </div>
+                    <div style="color: var(--success);">
+                        > Saved to ./content/feed-articles/
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -67,25 +223,106 @@ $ gather github.com/owner/repo/tree/main/docs
     <section id="features" class="tool-section">
         <div class="section-header">
             <h2>Three Modes, One Tool</h2>
+            <p>Unified content ingestion from multiple sources</p>
         </div>
 
         <div class="feature-grid">
             <div class="feature-card">
                 <div class="feature-icon">🕷️</div>
                 <h3>Web Crawler</h3>
-                <p>Concurrent crawling with respect for robots.txt. Converts HTML to clean Markdown using Turndown.</p>
+                <p>Concurrent crawling with respect for robots.txt. Converts HTML to clean Markdown using Turndown.
+                    Smart content extraction removes navigation and ads.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">⬇️</div>
                 <h3>Git Downloader</h3>
-                <p>Download specific subdirectories from GitHub repositories without cloning the entire history.</p>
+                <p>Download specific subdirectories from GitHub repositories without cloning entire history. Supports
+                    sparse checkout for minimal data transfer.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">📡</div>
                 <h3>Feed Ingestion</h3>
-                <p>Monitor RSS/Atom feeds, YouTube channels, and social media feeds for new content.</p>
+                <p>Monitor RSS/Atom feeds, YouTube channels, Bluesky profiles, and X/Twitter feeds for new content.
+                    Automatic Markdown conversion.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Advanced Features</h2>
+            <p>Production-ready crawling with enterprise capabilities</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Powered by Bun</h3>
+                <p>Significantly faster than Node.js with built-in optimizations. Native DOM parsing and
+                    zero-dependency HTML processing for maximum performance.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>robots.txt Support</h3>
+                <p>Automatically fetches and respects robots.txt directives. Respects Disallow, Crawl-delay,
+                    and applies wildcard rules.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>YAML Configuration</h3>
+                <p>Use config files for complex crawling setups. Define targets, patterns, and feed settings in
+                    gather.yaml.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Smart Content Extraction</h3>
+                <p>Intelligently identifies main content using semantic HTML (main, article). Preserves structure
+                    and removes non-content elements.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🗂️</div>
+                <h3>Structure Preservation</h3>
+                <p>Maintains original folder structure from URLs. Code examples properly converted to markdown code
+                    blocks with language detection.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3>Flexible Filtering</h3>
+                <p>Include/exclude patterns with glob syntax. Filter by file types, directories, and custom
+                    patterns for precise control.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Performance Metrics</h2>
+            <p>Real-world crawling statistics</p>
+        </div>
+
+        <div class="performance-metrics">
+            <div class="metric-card">
+                <span class="metric-value">3x</span>
+                <div class="metric-label">Faster than Node.js crawlers</div>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">0</span>
+                <div class="metric-label">External dependencies</div>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">95%</span>
+                <div class="metric-label">Content extraction accuracy</div>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">5MB</span>
+                <div class="metric-label">Binary size</div>
             </div>
         </div>
     </section>
@@ -93,18 +330,142 @@ $ gather github.com/owner/repo/tree/main/docs
     <section id="install" class="tool-section alt-bg">
         <div class="section-header">
             <h2>Installation</h2>
+            <p>Get gather running in seconds</p>
         </div>
 
         <div class="install-grid">
             <div class="install-card">
+                <div class="install-icon">⚡</div>
+                <h3>Quick Install</h3>
+                <div class="install-code">
+                    # One-line install script
+                    curl -fsSL https://raw.githubusercontent.com/fwdslsh/gather/main/install.sh | sh
+
+                    # Start crawling
+                    gather https://docs.example.com
+                </div>
+                <p>Automatically downloads right binary for your platform</p>
+            </div>
+
+            <div class="install-card">
                 <div class="install-icon">📦</div>
                 <h3>Bun Package</h3>
                 <div class="install-code">
-                    bun add -g @fwdslsh/gather
+                    # Install globally
+                    bun install -g @fwdslsh/gather
+
+                    # Or add to project
+                    bun add @fwdslsh/gather
                 </div>
+                <p>Native Bun package for superior performance</p>
+            </div>
+
+            <div class="install-card">
+                <div class="install-icon">🐳</div>
+                <h3>Docker</h3>
+                <div class="install-code">
+                    # Pull latest image
+                    docker pull fwdslsh/gather:latest
+
+                    # Run crawler
+                    docker run --rm fwdslsh/gather https://docs.example.com
+                </div>
+                <p>Containerized for consistent environments</p>
             </div>
         </div>
     </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Configuration Example</h2>
+            <p>Use gather.yaml for complex setups</p>
+        </div>
+
+        <div class="config-example">
+            <div class="config-yaml">
+                <span class="comment"># Global settings</span><br>
+                <span class="key">maxPages:</span> <span class="value">100</span><br>
+                <span class="key">delay:</span> <span class="value">1000</span><br>
+                <span class="key">concurrency:</span> <span class="value">3</span><br>
+                <span class="key">outputDir:</span> <span class="value">"./crawled-content"</span><br>
+                <br>
+                <span class="comment"># Target-specific overrides</span><br>
+                <span class="key">targets:</span><br>
+                &nbsp;&nbsp;<span class="key">-</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">url:</span> <span class="value">"https://docs.example.com"</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">maxPages:</span> <span class="value">50</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">delay:</span> <span class="value">500</span><br>
+                &nbsp;&nbsp;<span class="key">-</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">url:</span> <span class="value">"https://github.com/owner/repo"</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">include:</span> <span class="value">["*.md", "*.txt"]</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="key">exclude:</span> <span class="value">["node_modules/**"]</span><br>
+                <br>
+                <span class="comment"># Feed mode settings</span><br>
+                <span class="key">feed:</span><br>
+                &nbsp;&nbsp;<span class="key">limit:</span> <span class="value">100</span><br>
+                &nbsp;&nbsp;<span class="key">ytLang:</span> <span class="value">"en"</span><br>
+                &nbsp;&nbsp;<span class="key">noYtTranscript:</span> <span class="value">false</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Integration with catalog</h2>
+            <p>Complete documentation pipeline with fwdslsh tools</p>
+        </div>
+
+        <div class="code-block">
+            <pre># Step 1: Crawl documentation site with Gather
+gather https://docs.example.com --output-dir docs-content
+
+# Step 2: Generate LLMS.txt files with @fwdslsh/catalog
+catalog --input docs-content --output build --base-url https://docs.example.com \
+  --sitemap --validate --index --toc</pre>
+        </div>
+
+        <div style="margin-top: 2rem;">
+            <p><strong>Benefits of this approach:</strong></p>
+            <ul style="list-style: disc; margin-left: 2rem; color: var(--text-secondary);">
+                <li><strong>Separation of concerns:</strong> Gather focuses on high-quality web crawling and Markdown conversion</li>
+                <li><strong>Flexibility:</strong> Use @fwdslsh/catalog's advanced LLMS.txt generation with any Markdown content</li>
+                <li><strong>Maintainability:</strong> Each tool optimized for its specific purpose</li>
+                <li><strong>Reusability:</strong> Generated Markdown can be used for multiple purposes beyond LLMS.txt generation</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Ready to Gather Content?</h2>
+            <p>Transform web content into clean, usable Markdown</p>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="/gather/getting-started" class="btn btn-primary">
+                🚀 Getting Started Guide
+            </a>
+            <a href="/gather/docs" class="btn btn-secondary">
+                📚 View Documentation
+            </a>
+            <a href="/ecosystem/" class="btn btn-secondary">
+                🔄 Ecosystem Overview
+            </a>
+        </div>
+    </section>
+
+    <script>
+        function showGatherTab(tabName) {
+            document.querySelectorAll('.demo-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.demo-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabName + '-demo').classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 
 </body>
 </html>

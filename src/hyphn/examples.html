@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-unify="/_includes/tool-page.html">
+
 <head>
-    <title>hyphn Examples - Workflows & Patterns</title>
+    <title>hyphn - Examples</title>
+    <meta name="description" content="Real-world examples for hyphn. Team collaboration, custom agents, skill sharing, and CI/CD workflows.">
 </head>
+
 <body>
-    <section class="tool-hero">
-        <div class="tool-hero-content">
-            <h1>hyphn Examples</h1>
-            <p class="tagline">Common patterns for team collaboration</p>
-        </div>
-    </section>
 
     <section class="tool-nav">
         <div class="tool-nav-container">
@@ -23,26 +20,594 @@
     </section>
 
     <section class="tool-section">
-        <h2>Team Collaboration</h2>
-        <p>Create a shared git repository for your team's AI prompts and agents.</p>
+        <div class="section-header">
+            <h1>Team Collaboration Examples</h1>
+            <p>Share agents and skills across your team</p>
+        </div>
+
+        <h2>Shared Git Repository</h2>
+        <p>Create a centralized repository for your team's AI assets:</p>
         <div class="code-block">
-            git clone git@github.com:my-org/ai-config.git ~/ai-config
-            hyphn sources add ~/ai-config
+            <pre># Clone or create team repository
+git clone git@github.com:my-org/ai-config.git ~/team-hyphn
+
+# Add as source to hyphn
+hyphn sources add ~/team-hyphn
+
+# Team structure
+~/team-hyphn/
+├── agents/
+│   ├── code-reviewer.md
+│   ├── db-expert.md
+│   └── security-auditor.md
+├── skills/
+│   ├── deployment/
+│   ├── testing/
+│   └── documentation/
+└── commands/
+    ├── run-tests.sh
+    └── deploy.sh</pre>
+        </div>
+
+        <h2>Team Agent Sharing</h2>
+        <div class="code-block">
+            <pre># agents/code-reviewer.md
+---
+name: code-reviewer
+description: Senior engineer specializing in code reviews
+version: 2.1.0
+author: "@team-lead"
+tags: [review, quality, best-practices]
+---
+
+You are a senior code reviewer. When reviewing code, focus on:
+
+## Code Quality
+
+- Code readability and maintainability
+- Proper error handling
+- Consistent coding style
+- Adequate documentation
+
+## Security
+
+- SQL injection prevention
+- XSS vulnerabilities
+- Authentication and authorization
+- Input validation
+
+## Performance
+
+- Algorithm efficiency
+- Database query optimization
+- Memory usage
+- Caching strategies
+
+## Testing
+
+- Test coverage
+- Edge cases handled
+- Integration tests included
+
+Always provide constructive feedback with actionable suggestions.</pre>
+        </div>
+
+        <h2>Skill Sharing</h2>
+        <div class="code-block">
+            <pre># skills/deployment/
+---
+name: production-deployment
+description: Handle all production deployment workflows
+version: 1.0.0
+author: "@devops-team"
+---
+
+## When to Use
+
+Use this skill when deploying to production environment.
+
+## Prerequisites
+
+1. All tests passing
+2. Staging deployment verified
+3. Code review approved
+4. Release notes prepared
+
+## Deployment Process
+
+1. **Pre-deployment checks**
+   - Run: <code>./scripts/pre-deploy.sh</code>
+   - Verify database migrations
+   - Check environment variables
+
+2. **Build and deploy**
+   - Build: <code>npm run build</code>
+   - Deploy: <code>./scripts/deploy.sh production</code>
+
+3. **Post-deployment verification**
+   - Health check: <code>./scripts/health-check.sh</code>
+   - Smoke tests: <code>./scripts/smoke-tests.sh</code>
+   - Monitor logs for 5 minutes
+
+4. **Rollback plan**
+   - If critical issues detected
+   - Rollback: <code>./scripts/rollback.sh</code>
+   - Notify team immediately</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h1>Custom Agent Creation</h1>
+            <p>Build specialized agents for your codebase</p>
+        </div>
+
+        <h2>Database Expert Agent</h2>
+        <div class="code-block">
+            <pre># agents/db-expert.md
+---
+name: db-expert
+description: PostgreSQL database specialist
+version: 1.5.0
+---
+
+You are a PostgreSQL database expert.
+
+## Knowledge Areas
+
+- Database schema design
+- Query optimization
+- Indexing strategies
+- Migration planning
+- Replication and sharding
+
+## Schema Review Guidelines
+
+- Normalize to appropriate form (3NF typically)
+- Use appropriate data types
+- Add foreign keys for relationships
+- Create indexes for frequently queried columns
+- Use constraints for data integrity
+
+## Query Optimization Checklist
+
+- EXPLAIN ANALYZE slow queries
+- Check for sequential scans
+- Verify index usage
+- Look for N+1 query patterns
+- Consider partitioning for large tables
+
+## Migration Best Practices
+
+- Always test on staging first
+- Create rollback migration
+- Use transactions for schema changes
+- Update application code compatibility
+- Document breaking changes</pre>
+        </div>
+
+        <h2>Framework-Specific Agent</h2>
+        <div class="code-block">
+            <pre># agents/react-expert.md
+---
+name: react-expert
+description: React.js framework specialist
+version: 1.0.0
+---
+
+You are a React.js expert specializing in modern React patterns.
+
+## Core Concepts
+
+- Functional components with hooks
+- Context API for state management
+- Custom hooks for logic reuse
+- React Query for server state
+- TypeScript integration
+
+## Component Design Principles
+
+- Single responsibility
+- Composability
+- Props drilling minimization
+- Memoization when needed
+- Proper TypeScript types
+
+## Performance Optimization
+
+- Use React.memo for expensive renders
+- Implement virtualization for long lists
+- Lazy load routes with React.lazy
+- Optimize re-renders with useCallback/useMemo
+- Profile with React DevTools
+
+## Common Patterns
+
+### Data Fetching
+```typescript
+const { data, error, isLoading } = useQuery({
+  queryKey: ['posts'],
+  queryFn: fetchPosts
+});
+```
+
+### Form Handling
+```typescript
+const { register, handleSubmit } = useForm({
+  resolver: zodResolver(schema)
+});
+```</pre>
+        </div>
+
+        <h2>DevOps Agent</h2>
+        <div class="code-block">
+            <pre># agents/devops.md
+---
+name: devops-engineer
+description: DevOps and infrastructure specialist
+version: 1.2.0
+---
+
+You are a DevOps engineer focused on CI/CD and infrastructure.
+
+## Expertise
+
+- Docker containerization
+- Kubernetes orchestration
+- CI/CD pipeline design
+- Infrastructure as Code (Terraform)
+- Monitoring and alerting
+- Security best practices
+
+## Pipeline Design
+
+### Stages
+1. **Lint & Test**
+2. **Build**
+3. **Security Scan**
+4. **Deploy to Staging**
+5. **Integration Tests**
+6. **Deploy to Production**
+
+### Best Practices
+
+- Fast feedback loops
+- Parallel execution where possible
+- Fail fast on errors
+- Immutable deployments
+- Rollback capability
+
+## Infrastructure Checklist
+
+- Infrastructure as Code
+- Zero-downtime deployments
+- Auto-scaling configured
+- Monitoring in place
+- Backup strategy defined
+- Disaster recovery plan</pre>
         </div>
     </section>
 
     <section class="tool-section">
-        <h2>Custom Agents</h2>
-        <p>Define specialized agents for your specific codebase.</p>
+        <div class="section-header">
+            <h1>Skill Libraries</h1>
+            <p>Organize reusable skills by domain</p>
+        </div>
+
+        <h2>API Development Skills</h2>
         <div class="code-block">
-            # ~/.hyphn/agents/db-expert.md
-            ---
-            name: db-expert
-            description: Expert in our PostgreSQL schema
-            ---
-            You are a database expert. Always use parameterized queries.
-            Refer to schema.sql for table definitions.
+            <pre># skills/api-endpoint/
+---
+name: create-api-endpoint
+description: Create RESTful API endpoint with best practices
+---
+
+## When to Use
+
+When creating a new API endpoint for any CRUD operation.
+
+## Implementation Steps
+
+1. **Define route and controller**
+2. **Implement request validation**
+3. **Add authentication/authorization**
+4. **Implement business logic**
+5. **Add error handling**
+6. **Write API documentation**
+7. **Add unit tests**
+
+## Best Practices
+
+- Use proper HTTP methods (GET, POST, PUT, DELETE)
+- Return appropriate status codes
+- Validate all input
+- Sanitize output
+- Rate limit where appropriate
+- Version your API
+- Document with OpenAPI/Swagger</pre>
+        </div>
+
+        <h2>Testing Skills</h2>
+        <div class="code-block">
+            <pre># skills/comprehensive-testing/
+---
+name: write-comprehensive-tests
+description: Write test suites with coverage
+---
+
+## Testing Types to Include
+
+1. **Unit Tests**
+   - Test individual functions
+   - Mock external dependencies
+   - Cover edge cases
+   - Test error conditions
+
+2. **Integration Tests**
+   - Test module interactions
+   - Use test database
+   - Test API endpoints
+   - Verify database operations
+
+3. **End-to-End Tests**
+   - Test user flows
+   - Use real browser
+   - Test critical paths
+   - Verify UI interactions
+
+## Coverage Targets
+
+- Unit: 80%+
+- Integration: 70%+
+- E2E: Critical paths
+
+## Framework-Specific Tips
+
+**React Testing**
+- Use React Testing Library
+- Test behavior, not implementation
+- Mock API calls
+
+**Node.js Testing**
+- Use Jest or Mocha
+- Test async code properly
+- Mock filesystem and network</pre>
         </div>
     </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h1>MCP Server Setup</h1>
+            <p>Configure Model Context Protocol for IDE integration</p>
+        </div>
+
+        <h2>Claude Code Integration</h2>
+        <div class="code-block">
+            <pre># Start MCP server
+hyphn serve --stdio
+
+# Claude Code automatically connects via stdio
+
+# Or use HTTP mode
+hyphn serve --port 3000
+
+# Configure in Claude Code
+# Settings → Model Context Protocol → Add Server
+# Name: hyphn
+# Command: hyphn serve --stdio</pre>
+        </div>
+
+        <h2>Cursor IDE Integration</h2>
+        <div class="code-block">
+            <pre># Start MCP server
+hyphn serve --port 3000
+
+# Configure in Cursor
+# Settings → MCP Servers → Add Server
+# Name: hyphn
+# URL: http://localhost:3000
+
+# Access agents from Cursor
+# /hyphn db-expert
+# /hyphn code-reviewer</pre>
+        </div>
+
+        <h2>OpenCode Integration</h2>
+        <div class="code-block">
+            <pre># Configure in .opencode/config.json
+{
+  "name": "hyphn",
+  "type": "mcp-server",
+  "command": "hyphn",
+  "args": ["serve", "--stdio"]
+}
+
+# Or use setup command
+hyphn setup --tool opencode</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h1>CI/CD Workflows</h1>
+            <p>Automate hyphn in your pipeline</p>
+        </div>
+
+        <h2>GitHub Actions</h2>
+        <div class="code-block">
+            <pre>name: Validate Hyphn Assets
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install hyphn
+        run: npm install -g @fwdslsh/hyphn
+
+      - name: Validate agents
+        run: hyphn validate
+
+      - name: List assets
+        run: hyphn list all</pre>
+        </div>
+
+        <h2>Team Asset Sync</h2>
+        <div class="code-block">
+            <pre>#!/bin/bash
+# sync-team-assets.sh - Keep local hyphn in sync with team repo
+
+TEAM_REPO="git@github.com:my-org/ai-config.git"
+LOCAL_REPO="$HOME/team-hyphn"
+
+# Clone or update team repository
+if [ ! -d "$LOCAL_REPO" ]; then
+  git clone "$TEAM_REPO" "$LOCAL_REPO"
+else
+  cd "$LOCAL_REPO"
+  git pull origin main
+fi
+
+# Re-add source to pick up changes
+hyphn sources rm "$LOCAL_REPO" 2>/dev/null || true
+hyphn sources add "$LOCAL_REPO"
+
+echo "Team assets synced successfully!"
+hyphn list agents
+hyphn list skills</pre>
+        </div>
+
+        <h2>Pre-Commit Validation</h2>
+        <div class="code-block">
+            <pre># .git/hooks/pre-commit
+#!/bin/bash
+# Validate hyphn assets before committing
+
+echo "Validating hyphn assets..."
+
+# Check if this is a hyphn repo
+if [ -f "agents" ] && [ -f "skills" ]; then
+  # Validate YAML frontmatter
+  for file in agents/*.md skills/*/*.md; do
+    if [ -f "$file" ]; then
+      if ! grep -q '^---' "$file"; then
+        echo "Error: Missing YAML frontmatter in $file"
+        exit 1
+      fi
+    fi
+  done
+
+  echo "✓ All assets validated"
+fi
+
+exit 0</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h1>Command Integration</h1>
+            <p>Create custom slash commands for common workflows</p>
+        </div>
+
+        <h2>Deployment Command</h2>
+        <div class="code-block">
+            <pre># commands/deploy.sh
+#!/bin/bash
+# Handle deployment workflow
+
+ENVIRONMENT=${1:-staging}
+
+echo "Deploying to $ENVIRONMENT..."
+
+# Run tests
+npm test
+
+if [ $? -ne 0 ]; then
+  echo "Tests failed. Aborting deployment."
+  exit 1
+fi
+
+# Build
+npm run build
+
+# Deploy based on environment
+if [ "$ENVIRONMENT" = "production" ]; then
+  npm run deploy:prod
+else
+  npm run deploy:staging
+fi
+
+echo "Deployment to $ENVIRONMENT complete!"
+echo "Verify at: https://$ENVIRONMENT.example.com"</pre>
+        </div>
+
+        <h2>Database Migration Command</h2>
+        <div class="code-block">
+            <pre># commands/migrate.sh
+#!/bin/bash
+# Run database migrations
+
+echo "Running database migrations..."
+
+# Check migration status
+if [ ! -d ".migrations" ]; then
+  echo "No migrations found."
+  exit 0
+fi
+
+# Run pending migrations
+for migration in .migrations/*.sql; do
+  echo "Running: $migration"
+  psql $DATABASE_URL -f "$migration"
+done
+
+echo "All migrations completed successfully."</pre>
+        </div>
+
+        <h2>Code Quality Command</h2>
+        <div class="code-block">
+            <pre># commands/quality.sh
+#!/bin/bash
+# Run all code quality checks
+
+echo "Running code quality checks..."
+
+# Linting
+echo "Linting..."
+npm run lint
+LINT_EXIT=$?
+
+# Type checking
+echo "Type checking..."
+npm run typecheck
+TYPE_EXIT=$?
+
+# Tests
+echo "Running tests..."
+npm test
+TEST_EXIT=$?
+
+# Report results
+if [ $LINT_EXIT -eq 0 ] && [ $TYPE_EXIT -eq 0 ] && [ $TEST_EXIT -eq 0 ]; then
+  echo "✓ All checks passed!"
+  exit 0
+else
+  echo "✗ Some checks failed:"
+  [ $LINT_EXIT -ne 0 ] && echo "  - Linting"
+  [ $TYPE_EXIT -ne 0 ] && echo "  - Type checking"
+  [ $TEST_EXIT -ne 0 ] && echo "  - Tests"
+  exit 1
+fi</pre>
+        </div>
+    </section>
+
 </body>
+
 </html>

@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" data-unify="/_includes/tool-page.html">
 <head>
-    <title>disclose Documentation</title>
+    <title>disclose - Documentation</title>
+    <meta name="description" content="Complete command reference for disclose learning retrieval. Learning search, session context, context bundling, and file location.">
 </head>
 <body>
-    <section class="tool-hero">
-        <div class="tool-hero-content">
-            <h1>disclose Documentation</h1>
-        </div>
-    </section>
-
     <section class="tool-nav">
         <div class="tool-nav-container">
             <ul class="unify-nav-links">
@@ -22,12 +17,446 @@
     </section>
 
     <section class="tool-section">
-        <h2>Commands</h2>
+        <div class="section-header">
+            <h1>Command Reference</h1>
+            <p>All commands and options</p>
+        </div>
+
+        <h2>Learning Commands</h2>
+        <h3>learnings</h3>
+        <p>Search and retrieve learnings with FTS5 full-text search</p>
         <div class="code-block">
-            disclose learnings [options]
-            disclose session-context
-            disclose pack
-            disclose locate
+            <pre>disclose learnings [OPTIONS]</pre>
+        </div>
+
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--query</code></td>
+                    <td>Keyword search query</td>
+                </tr>
+                <tr>
+                    <td><code>--domains</code></td>
+                    <td>Filter by domains (comma-separated)</td>
+                </tr>
+                <tr>
+                    <td><code>--types</code></td>
+                    <td>Filter by learning types (pattern, problem-solution, mistake, insight)</td>
+                </tr>
+                <tr>
+                    <td><code>--min-confidence</code></td>
+                    <td>Minimum confidence threshold (0.0-1.0)</td>
+                </tr>
+                <tr>
+                    <td><code>--limit</code></td>
+                    <td>Maximum results to return (default: 10)</td>
+                </tr>
+                <tr>
+                    <td><code>--sort-by</code></td>
+                    <td>Sort by: relevance, date, confidence</td>
+                </tr>
+                <tr>
+                    <td><code>--sort-order</code></td>
+                    <td>Sort order: asc, desc</td>
+                </tr>
+                <tr>
+                    <td><code>--format</code></td>
+                    <td>Output format: markdown, json</td>
+                </tr>
+                <tr>
+                    <td><code>--db-path</code></td>
+                    <td>Path to learnings database</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>session-context</h3>
+        <p>Generate learning bundles for session start injection</p>
+        <div class="code-block">
+            <pre>disclose session-context [OPTIONS]</pre>
+        </div>
+
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--token-budget</code></td>
+                    <td>Maximum tokens for bundle (default: 800)</td>
+                </tr>
+                <tr>
+                    <td><code>--domains</code></td>
+                    <td>Filter by domains (comma-separated)</td>
+                </tr>
+                <tr>
+                    <td><code>--types</code></td>
+                    <td>Filter by learning types</td>
+                </tr>
+                <tr>
+                    <td><code>--min-confidence</code></td>
+                    <td>Minimum confidence (default: 0.7)</td>
+                </tr>
+                <tr>
+                    <td><code>--strategy</code></td>
+                    <td>Ranking strategy: confidence_recency</td>
+                </tr>
+                <tr>
+                    <td><code>--format</code></td>
+                    <td>Output format: markdown, json</td>
+                </tr>
+                <tr>
+                    <td><code>--db-path</code></td>
+                    <td>Path to learnings database</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Context Commands</h2>
+            <p>Create token-budgeted context packs from multiple sources</p>
+        </div>
+
+        <h3>pack</h3>
+        <p>Create context bundle (preferred command)</p>
+        <div class="code-block">
+            <pre>disclose pack --query <text> [OPTIONS]</pre>
+        </div>
+
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--query</code></td>
+                    <td>Search query for context discovery (required)</td>
+                </tr>
+                <tr>
+                    <td><code>--scope</code></td>
+                    <td>Scope: context, history, skills, all (default: all)</td>
+                </tr>
+                <tr>
+                    <td><code>--token-budget</code></td>
+                    <td>Maximum tokens for bundle (default: 2000)</td>
+                </tr>
+                <tr>
+                    <td><code>--max-files</code></td>
+                    <td>Maximum files to include (default: 6)</td>
+                </tr>
+                <tr>
+                    <td><code>--include-history</code></td>
+                    <td>Include recent history entries in bundle</td>
+                </tr>
+                <tr>
+                    <td><code>--history-limit</code></td>
+                    <td>Max history entries to include (default: 10)</td>
+                </tr>
+                <tr>
+                    <td><code>--out</code></td>
+                    <td>Output path (use "-" for stdout)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>bundle</h3>
+        <p>Alias for pack command (same options)</p>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Discovery Commands</h2>
+            <p>File and skill discovery</p>
+        </div>
+
+        <h3>locate</h3>
+        <p>Return file locator plan</p>
+        <div class="code-block">
+            <pre>disclose locate --query <text> [OPTIONS]</pre>
+        </div>
+
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--query</code></td>
+                    <td>Search query (required)</td>
+                </tr>
+                <tr>
+                    <td><code>--scope</code></td>
+                    <td>Scope: context, history, skills, all</td>
+                </tr>
+                <tr>
+                    <td><code>--token-budget</code></td>
+                    <td>Token budget for ranking (default: 2000)</td>
+                </tr>
+                <tr>
+                    <td><code>--max-files</code></td>
+                    <td>Maximum files to return (default: 6)</td>
+                </tr>
+                <tr>
+                    <td><code>--no-index-build</code></td>
+                    <td>Skip building catalog index</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>skill-search</h3>
+        <p>Find matching skill directories</p>
+        <div class="code-block">
+            <pre>disclose skill-search --query <text> [OPTIONS]</pre>
+        </div>
+
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--query</code></td>
+                    <td>Search query (required)</td>
+                </tr>
+                <tr>
+                    <td><code>--max-results</code></td>
+                    <td>Maximum results (default: 5)</td>
+                </tr>
+                <tr>
+                    <td><code>--skills-root</code></td>
+                    <td>Override skills directory root</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Index Commands</h2>
+            <p>Manage catalog indexes for domains</p>
+        </div>
+
+        <h3>ensure-index</h3>
+        <p>Ensure catalog indexes exist for domains</p>
+        <div class="code-block">
+            <pre>disclose ensure-index --type <domain> [OPTIONS]</pre>
+        </div>
+
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--type</code></td>
+                    <td>Domain: context, history, skills, or home</td>
+                </tr>
+                <tr>
+                    <td><code>--input-root</code></td>
+                    <td>Input directory to index</td>
+                </tr>
+                <tr>
+                    <td><code>--output-index</code></td>
+                    <td>Output directory for index files</td>
+                </tr>
+                <tr>
+                    <td><code>--force</code></td>
+                    <td>Force rebuild even if index exists</td>
+                </tr>
+                <tr>
+                    <td><code>--no-validate</code></td>
+                    <td>Skip validation of generated index</td>
+                </tr>
+                <tr>
+                    <td><code>--no-silent</code></td>
+                    <td>Show catalog output</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>index</h3>
+        <p>Build catalog index (wrapper for ensure-index)</p>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Global Options</h2>
+        </div>
+
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Short</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--config</code></td>
+                    <td><code>-c</code></td>
+                    <td>Load config from specified path</td>
+                </tr>
+                <tr>
+                    <td><code>--no-config</code></td>
+                    <td></td>
+                    <td>Skip config file loading</td>
+                </tr>
+                <tr>
+                    <td><code>--json</code></td>
+                    <td></td>
+                    <td>Output structured JSON envelope</td>
+                </tr>
+                <tr>
+                    <td><code>--quiet</code></td>
+                    <td><code>-q</code></td>
+                    <td>Suppress non-essential output</td>
+                </tr>
+                <tr>
+                    <td><code>--no-color</code></td>
+                    <td></td>
+                    <td>Disable ANSI colors</td>
+                </tr>
+                <tr>
+                    <td><code>--verbose</code></td>
+                    <td></td>
+                    <td>Show debug information</td>
+                </tr>
+                <tr>
+                    <td><code>--print-config</code></td>
+                    <td></td>
+                    <td>Print effective merged configuration</td>
+                </tr>
+                <tr>
+                    <td><code>--dry-run</code></td>
+                    <td></td>
+                    <td>Show what would be done without writing</td>
+                </tr>
+                <tr>
+                    <td><code>--help</code></td>
+                    <td><code>-h</code></td>
+                    <td>Show help message</td>
+                </tr>
+                <tr>
+                    <td><code>--version</code></td>
+                    <td><code>-v</code></td>
+                    <td>Print version and exit</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Root Overrides</h2>
+            <p>Override configured root directories</p>
+        </div>
+
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--context-root</code></td>
+                    <td>Override context documents root</td>
+                </tr>
+                <tr>
+                    <td><code>--history-root</code></td>
+                    <td>Override history documents root</td>
+                </tr>
+                <tr>
+                    <td><code>--skills-root</code></td>
+                    <td>Override skills directory root</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Output Formats</h2>
+            <p>Markdown and JSON output options</p>
+        </div>
+
+        <h3>Markdown Results</h3>
+        <div class="code-block">
+            <pre># Learning Search Results
+
+- Query: authentication
+- Domains: security
+- Minimum Confidence: 0.7
+- Results: 5 of 12
+- Search Time: 15ms
+---
+
+## JWT token validation pattern
+
+**ID:** learning_abc123
+**Type:** pattern
+**Confidence:** 0.85
+**Status:** active
+**Domains:** security, authentication
+**Tools:** jwt, jsonwebtoken
+**Created:** 2025-01-15T10:30:00Z
+
+Always validate JWT tokens on server side...
+---
+
+</pre>
+        </div>
+
+        <h3>JSON Results</h3>
+        <div class="code-block">
+            <pre>{
+  "query": "authentication",
+  "filters": {
+    "domains": ["security"],
+    "types": null,
+    "minConfidence": 0.7
+  },
+  "results": [
+    {
+      "id": "learning_abc123",
+      "type": "pattern",
+      "summary": "JWT token validation pattern",
+      "content": "Always validate JWT tokens...",
+      "confidence": 0.85,
+      "status": "active",
+      "domains": ["security", "authentication"],
+      "tools": ["jwt", "jsonwebtoken"],
+      "created_at": "2025-01-15T10:30:00Z"
+    }
+  ],
+  "total": 12,
+  "took": 15
+}</pre>
         </div>
     </section>
 </body>

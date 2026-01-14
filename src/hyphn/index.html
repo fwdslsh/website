@@ -15,36 +15,98 @@
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
         }
 
-        .code-demo {
+        .init-demo {
             background: var(--bg-darker);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 1.5rem;
-            margin: 4rem auto;
+            padding: 2rem;
+            margin: 3rem auto;
             max-width: 800px;
             font-family: var(--font-mono);
+            font-size: 0.9rem;
         }
 
-        .demo-line {
+        .init-step {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 0.5rem;
+            align-items: center;
+            margin-bottom: 1rem;
             color: var(--text-secondary);
         }
 
-        .demo-prompt {
-            color: var(--primary);
-            user-select: none;
+        .step-number {
+            background: var(--gradient-primary);
+            color: var(--bg-dark);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
         }
 
-        .demo-cmd {
-            color: var(--text-main);
+        .step-content {
+            flex: 1;
         }
 
-        .demo-output {
+        .step-output {
             color: var(--text-dim);
-            padding-left: 1.5rem;
+            padding-left: 4rem;
             margin-bottom: 1rem;
+        }
+
+        .safety-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .safety-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .safety-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--bg-dark);
+            margin-bottom: 1rem;
+        }
+
+        .env-vars {
+            background: var(--bg-darker);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+
+        .env-item {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .env-name {
+            color: var(--primary);
+            font-weight: bold;
+            min-width: 180px;
+        }
+
+        .env-desc {
+            color: var(--text-secondary);
         }
     </style>
 </head>
@@ -68,32 +130,51 @@
                 </a>
             </div>
         </div>
-        
+
         <div class="tool-demo">
-            <div class="code-demo">
-                <div class="demo-line">
-                    <span class="demo-prompt">$</span>
-                    <span class="demo-cmd">hyphn init</span>
+            <div class="init-demo">
+                <div class="init-step">
+                    <span class="step-number">1</span>
+                    <span class="step-content">
+                        <span style="color: var(--primary);">$</span> hyphn init
+                    </span>
                 </div>
-                <div class="demo-output">
+                <div class="step-output">
                     Initialized ~/.hyphn structure<br>
-                    Created default configuration
+                    Created default configuration<br>
+                    Added example assets
                 </div>
-                
-                <div class="demo-line">
-                    <span class="demo-prompt">$</span>
-                    <span class="demo-cmd">hyphn sources add ~/team-hyphn</span>
+
+                <div class="init-step">
+                    <span class="step-number">2</span>
+                    <span class="step-content">
+                        <span style="color: var(--primary);">$</span> hyphn setup
+                    </span>
                 </div>
-                <div class="demo-output">
+                <div class="step-output">
+                    Configured OpenCode integration<br>
+                    Configured Claude Code integration<br>
+                    Ready to share assets
+                </div>
+
+                <div class="init-step">
+                    <span class="step-number">3</span>
+                    <span class="step-content">
+                        <span style="color: var(--primary);">$</span> hyphn sources add ~/team-hyphn
+                    </span>
+                </div>
+                <div class="step-output">
                     Added source: team-hyphn<br>
                     Loaded 3 agents, 5 commands, 2 skills
                 </div>
 
-                <div class="demo-line">
-                    <span class="demo-prompt">$</span>
-                    <span class="demo-cmd">hyphn list</span>
+                <div class="init-step">
+                    <span class="step-number">4</span>
+                    <span class="step-content">
+                        <span style="color: var(--primary);">$</span> hyphn list
+                    </span>
                 </div>
-                <div class="demo-output">
+                <div class="step-output">
                     • @agent-review (team-hyphn)<br>
                     • @skill-deploy (system)<br>
                     • /test-suite (team-hyphn)
@@ -123,25 +204,127 @@
             <div class="feature-card">
                 <div class="feature-icon">🔄</div>
                 <h3>Cross-Platform Sharing</h3>
-                <p>Define agents and skills once in your `~/.hyphn` directory and use them in both OpenCode and Claude Code.</p>
+                <p>Define agents and skills once in your <code>~/.hyphn</code> directory and use them in both
+                    OpenCode and Claude Code.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">👥</div>
                 <h3>Team Sources</h3>
-                <p>Add shared repositories as sources to instantly distribute custom agents and workflows to your entire team.</p>
+                <p>Add shared repositories as sources to instantly distribute custom agents and workflows to your entire
+                    team.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">🔌</div>
                 <h3>MCP Integration</h3>
-                <p>Native support for Model Context Protocol. Expose your Hyphn tools as an MCP server for Claude Desktop.</p>
+                <p>Native support for Model Context Protocol. Expose your Hyphn tools as an MCP server for Claude
+                    Desktop.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">🛠️</div>
                 <h3>Skill Management</h3>
-                <p>Organize reusable capabilities into skills that any agent can adopt. specific instructions, prompt templates, and tool definitions.</p>
+                <p>Organize reusable capabilities into skills that any agent can adopt. Specific instructions, prompt
+                    templates, and tool definitions.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Safety Features</h3>
+                <p>Automatic backups before overwrites, preservation of runtime data, and confirmation prompts for destructive
+                    operations.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Configuration Management</h3>
+                <p>Flexible initialization with force, minimal, and JSON modes. Supports multiple source paths and environment
+                    variable overrides.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="init" class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>hyphn init</h2>
+            <p>Initialize <code>~/.hyphn/</code> directory structure</p>
+        </div>
+
+        <div class="install-grid">
+            <div class="install-card">
+                <div class="install-icon">⚡</div>
+                <h3>Default Initialization</h3>
+                <div class="install-code">
+                    # First-time initialization
+                    hyphn init
+                </div>
+                <p>Creates complete structure with examples</p>
+            </div>
+
+            <div class="install-card">
+                <div class="install-icon">🔄</div>
+                <h3>Force Reinitialization</h3>
+                <div class="install-code">
+                    # Reinitialize (creates backup first)
+                    hyphn init --force
+
+                    # Skip confirmation prompts
+                    hyphn init --force --yes
+                </div>
+                <p>Backs up existing config before overwriting</p>
+            </div>
+
+            <div class="install-card">
+                <div class="install-icon">📦</div>
+                <h3>Minimal Structure</h3>
+                <div class="install-code">
+                    # Create minimal structure (no examples)
+                    hyphn init --minimal
+
+                    # JSON output mode
+                    hyphn init --json
+                </div>
+                <p>For scripting or custom setups</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Safety Features</h2>
+            <p>Protect your configuration and data</p>
+        </div>
+
+        <div class="safety-features">
+            <div class="safety-card">
+                <div class="safety-icon">💾</div>
+                <h4>Automatic Backups</h4>
+                <p>Running <code>init</code> without <code>--force</code> on an existing installation safely exits
+                    with an error. With <code>--force</code>, a backup is created before overwriting.</p>
+                <div class="code-snippet" style="margin-top: 1rem;">
+                    ~/.hyphn/backups/config-{timestamp}/
+                </div>
+            </div>
+
+            <div class="safety-card">
+                <div class="safety-icon">🔒</div>
+                <h4>Data Preservation</h4>
+                <p>User data in runtime directories (<code>history/</code>, <code>cache/</code>, <code>logs/</code>) is
+                    preserved during reinitialization.</p>
+            </div>
+
+            <div class="safety-card">
+                <div class="safety-icon">✅</div>
+                <h4>Confirmation Prompts</h4>
+                <p>Destructive operations require user confirmation unless <code>--yes</code> or <code>--json</code> flag
+                    is specified.</p>
+            </div>
+
+            <div class="safety-card">
+                <div class="safety-icon">📂</div>
+                <h4>Complete Backups</h4>
+                <p>Backups include configuration files, agents, commands, skills, hooks, and .gitignore settings.</p>
             </div>
         </div>
     </section>
@@ -159,7 +342,7 @@
                 <div class="install-code">
                     npm install -g @fwdslsh/hyphn
                 </div>
-                <p>Install globally to use the CLI anywhere</p>
+                <p>Install globally to use CLI anywhere</p>
             </div>
 
             <div class="install-card">
@@ -170,6 +353,57 @@
                     hyphn setup
                 </div>
                 <p>Initialize your local configuration and link to supported tools</p>
+            </div>
+
+            <div class="install-card">
+                <div class="install-icon">👥</div>
+                <h3>Team Setup</h3>
+                <div class="install-code">
+                    hyphn sources add ~/team-hyphn
+                    hyphn sources add /shared/company
+                </div>
+                <p>Add shared repositories to distribute assets</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Commands</h2>
+            <p>Complete CLI reference</p>
+        </div>
+
+        <div class="code-block">
+            <pre>hyphn init              # Create ~/.hyphn/ with examples
+hyphn init --force     # Overwrite existing configuration (creates backup)
+hyphn init --minimal    # Create minimal structure without examples
+hyphn init --json       # JSON output mode (skips prompts)
+
+hyphn setup             # Configure OpenCode and Claude Code
+hyphn serve             # Start MCP server (for Claude Code)
+hyphn list              # List all loaded assets
+hyphn sources           # Show configured sources
+hyphn sources add PATH  # Add a source directory
+hyphn sources rm PATH   # Remove a source directory
+hyphn validate          # Check assets for errors
+hyphn help              # Show help</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Environment Variables</h2>
+            <p>Configure behavior with environment variables</p>
+        </div>
+
+        <div class="env-vars">
+            <div class="env-item">
+                <span class="env-name">HYPHN_HOME</span>
+                <span class="env-desc">Primary directory (default: ~/.hyphn)</span>
+            </div>
+            <div class="env-item">
+                <span class="env-name">HYPHN_PATH</span>
+                <span class="env-desc">Additional sources (colon-separated)</span>
             </div>
         </div>
     </section>
@@ -184,13 +418,19 @@
             <div class="use-case">
                 <div class="use-case-icon">💻</div>
                 <h4>OpenCode</h4>
-                <p>Full native integration. Hyphn manages your `opencode.json` and extension loading.</p>
+                <p>Full native integration. Hyphn manages your <code>opencode.json</code> and extension loading.</p>
             </div>
 
             <div class="use-case">
                 <div class="use-case-icon">🤖</div>
                 <h4>Claude Code</h4>
                 <p>Injects custom slash commands and prompts directly into your Claude Code sessions.</p>
+            </div>
+
+            <div class="use-case">
+                <div class="use-case-icon">🖥️</div>
+                <h4>Claude Desktop</h4>
+                <p>MCP server support exposes Hyphn tools via Model Context Protocol.</p>
             </div>
         </div>
     </section>
@@ -203,6 +443,9 @@
         <div class="cta-buttons">
             <a href="/hyphn/getting-started" class="btn btn-primary">
                 🚀 Getting Started Guide
+            </a>
+            <a href="/hyphn/docs" class="btn btn-secondary">
+                📚 View Documentation
             </a>
             <a href="/hyphn/examples" class="btn btn-secondary">
                 📚 View Examples

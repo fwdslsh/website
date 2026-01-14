@@ -4,7 +4,7 @@
 <head>
     <title>disclose - Learning Retrieval & Context Assembly</title>
     <meta name="description"
-        content="Retrieve and bundle relevant context from the Hyphn learning system. Manage token budgets and assemble session contexts for AI tools.">
+        content="Retrieve and bundle relevant context from Hyphn learning system. Manage token budgets and assemble session contexts for AI tools.">
     <style>
         /* Page-specific styles */
         .disclose-hero {
@@ -14,6 +14,138 @@
         .disclose-icon {
             background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
         }
+
+        .commands-demo {
+            background: var(--bg-darker);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 900px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .command-category {
+            margin-bottom: 2rem;
+        }
+
+        .category-title {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .command-line {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .command-prompt {
+            color: var(--primary);
+            margin-right: 0.5rem;
+            user-select: none;
+        }
+
+        .command-cmd {
+            color: var(--text-main);
+            flex: 1;
+        }
+
+        .command-output {
+            color: var(--text-dim);
+            padding-left: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .context-demo {
+            background: var(--bg-darker);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .context-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .context-header {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .context-stat {
+            color: var(--text-dim);
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .search-demo {
+            background: var(--bg-darker);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 800px;
+        }
+
+        .search-result {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .result-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .meta-label {
+            color: var(--text-dim);
+        }
+
+        .meta-value {
+            color: var(--text-secondary);
+            font-weight: bold;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .filter-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .filter-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--bg-dark);
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 
@@ -22,9 +154,9 @@
     <section class="tool-hero disclose-hero">
         <div class="tool-hero-content">
             <h1>disclose</h1>
-            <p class="tagline">Context assembly for the AI age</p>
+            <p class="tagline">Context assembly for AI age</p>
             <p class="description">
-                Don't flood your context window. Retrieve exactly the learnings and documentation you need 
+                Don't flood your context window. Retrieve exactly the learnings and documentation you need
                 within a strict token budget.
             </p>
             <div class="cta-buttons">
@@ -36,15 +168,26 @@
                 </a>
             </div>
         </div>
-        
+
         <div class="tool-demo">
-            <div class="code-block">
-                <pre>
-$ disclose learnings --query "auth" --budget 1000
-> Found 5 learnings related to "auth"
-> Selected 3 top matches (850 tokens)
-> Output written to context.md
-                </pre>
+            <div class="context-demo">
+                <div class="context-section">
+                    <div class="context-header">$ disclose learnings --query "auth" --domains security --min-confidence 0.7</div>
+                    <div class="context-stat">Searching 42 learnings...</div>
+                </div>
+
+                <div class="search-result">
+                    <div class="result-meta">
+                        <div><span class="meta-label">Results:</span> <span class="meta-value">5</span></div>
+                        <div><span class="meta-label">Time:</span> <span class="meta-value">15ms</span></div>
+                        <div><span class="meta-label">Max Confidence:</span> <span class="meta-value">0.92</span></div>
+                    </div>
+                    <div>
+                        <strong>## JWT token validation pattern</strong><br>
+                        <em>Type: pattern | Confidence: 0.92 | Status: active</em><br>
+                        Always validate JWT tokens on server side...
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -63,25 +206,245 @@ $ disclose learnings --query "auth" --budget 1000
     <section id="features" class="tool-section">
         <div class="section-header">
             <h2>Smart Context Management</h2>
+            <p>Retrieve, bundle, and assemble context for AI workflows</p>
         </div>
 
         <div class="feature-grid">
             <div class="feature-card">
                 <div class="feature-icon">🧠</div>
                 <h3>Learning Retrieval</h3>
-                <p>Use hybrid search (semantic + keyword) to find relevant past learnings and solutions.</p>
+                <p>FTS5 full-text search with advanced filtering by domains, types, confidence, and status. Multiple
+                    output formats (Markdown, JSON) and sort options.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">💰</div>
                 <h3>Token Budgeting</h3>
-                <p>Specify a max token count. Disclose prioritizes the most valuable context to fit your budget.</p>
+                <p>Specify a max token count. Disclose prioritizes most valuable context to fit your budget with smart
+                    truncation.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">📦</div>
                 <h3>Context Bundling</h3>
-                <p>Pack documentation, learnings, and file snippets into a single optimized context package.</p>
+                <p>Pack documentation, learnings, and file snippets into a single optimized context package with
+                    keyword-based slicing.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Session Context</h3>
+                <p>Generate learning context for LLM session start injection with confidence-recency and relevance-based
+                    ranking strategies.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>File Location</h3>
+                <p>Intelligent file discovery across context, history, and skills domains. Search by query with
+                    token-budgeted ranking.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Index Management</h3>
+                <p>Ensure catalog indexes exist with <code>ensure-index</code>. Build indexes for specific domains
+                    with custom paths and validation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Core Commands</h2>
+            <p>Complete command reference for context management</p>
+        </div>
+
+        <div class="commands-demo">
+            <div class="command-category">
+                <div class="category-title">Learning Retrieval</div>
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose learnings --query "error handling"</span>
+                </div>
+                <div class="command-output">
+                    Search all learnings with FTS5 full-text search
+                </div>
+
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose learnings --query "bun testing" --domains bun,typescript --min-confidence 0.7 --limit 10</span>
+                </div>
+                <div class="command-output">
+                    Filter by domains and confidence with result limit
+                </div>
+
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose learnings --types pattern,gotcha --sort-by confidence --format json</span>
+                </div>
+                <div class="command-output">
+                    Filter by learning types, sort by confidence, JSON output
+                </div>
+            </div>
+
+            <div class="command-category">
+                <div class="category-title">Session Context</div>
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose session-context</span>
+                </div>
+                <div class="command-output">
+                    Default session context (800 tokens, confidence 0.7+)
+                </div>
+
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose session-context --token-budget 1200 --domains typescript,react --min-confidence 0.8</span>
+                </div>
+                <div class="command-output">
+                    Custom token budget and domain filtering
+                </div>
+
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose session-context --types pattern,gotcha --strategy confidence_recency --format json</span>
+                </div>
+                <div class="command-output">
+                    Focus on specific learning types with ranking strategy
+                </div>
+            </div>
+
+            <div class="command-category">
+                <div class="category-title">Context Bundling</div>
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose pack --query "auth implementation" --scope history --token-budget 2000</span>
+                </div>
+                <div class="command-output">
+                    Create context pack from query with history scope
+                </div>
+
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose pack --query "database schema" --include-history --history-limit 5 --max-files 8</span>
+                </div>
+                <div class="command-output">
+                    Include recent history entries in bundle
+                </div>
+
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose pack --query "API design" --scope all --token-budget 3000 --out custom-bundle.md</span>
+                </div>
+                <div class="command-output">
+                    Multi-domain search with custom output path
+                </div>
+            </div>
+
+            <div class="command-category">
+                <div class="category-title">File Location</div>
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose locate --query "error handling patterns" --scope all --max-files 10</span>
+                </div>
+                <div class="command-output">
+                    Locate relevant files across all domains
+                </div>
+
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose locate --query "SQL queries" --scope context --token-budget 1500</span>
+                </div>
+                <div class="command-output">
+                    Search specific domain with token budget
+                </div>
+
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose locate --query "configuration" --no-index-build</span>
+                </div>
+                <div class="command-output">
+                    Skip index building for faster results
+                </div>
+            </div>
+
+            <div class="command-category">
+                <div class="category-title">Index Management</div>
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose ensure-index --type history</span>
+                </div>
+                <div class="command-output">
+                    Ensure catalog index exists for history domain
+                </div>
+
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose index --type context --force</span>
+                </div>
+                <div class="command-output">
+                    Rebuild index for context domain
+                </div>
+
+                <div class="command-line">
+                    <span class="command-prompt">$</span>
+                    <span class="command-cmd">disclose index --type history --input-root /path/to/history --output-index /path/to/index</span>
+                </div>
+                <div class="command-output">
+                    Build index with custom paths
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Advanced Filtering</h2>
+            <p>Precise control over learning retrieval</p>
+        </div>
+
+        <div class="filter-grid">
+            <div class="filter-card">
+                <div class="filter-icon">🏷️</div>
+                <h4>Domains Filter</h4>
+                <div class="code-snippet">--domains bun,typescript,security</div>
+                <p>Filter by knowledge domains for targeted retrieval</p>
+            </div>
+
+            <div class="filter-card">
+                <div class="filter-icon">📝</div>
+                <h4>Types Filter</h4>
+                <div class="code-snippet">--types pattern,problem-solution,insight</div>
+                <p>Select specific learning types (pattern, mistake, insight)</p>
+            </div>
+
+            <div class="filter-card">
+                <div class="filter-icon">📊</div>
+                <h4>Confidence Filter</h4>
+                <div class="code-snippet">--min-confidence 0.8</div>
+                <p>Retrieve only high-confidence learnings</p>
+            </div>
+
+            <div class="filter-card">
+                <div class="filter-icon">📅</div>
+                <h4>Status Filter</h4>
+                <div class="code-snippet">--status active,pending_review</div>
+                <p>Filter by learning status (active, deprecated, flagged)</p>
+            </div>
+
+            <div class="filter-card">
+                <div class="filter-icon">🔄</div>
+                <h4>Sort Options</h4>
+                <div class="code-snippet">--sort-by confidence --sort-order desc</div>
+                <p>Sort by relevance, date, or confidence (asc/desc)</p>
+            </div>
+
+            <div class="filter-card">
+                <div class="filter-icon">📊</div>
+                <h4>Limit Results</h4>
+                <div class="code-snippet">--limit 20</div>
+                <p>Control maximum number of results returned</p>
             </div>
         </div>
     </section>
@@ -96,9 +459,29 @@ $ disclose learnings --query "auth" --budget 1000
                 <div class="install-icon">📦</div>
                 <h3>Bun Package</h3>
                 <div class="install-code">
-                    bun add -g @fwdslsh/disclose
+                    bun install -g @fwdslsh/disclose
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Integration with Hyphn Tools</h2>
+        </div>
+
+        <div class="code-block">
+            <pre># Capture a learning
+inscribe learning add \
+  --type pattern \
+  --summary "Bun native APIs for performance" \
+  --domains "bun,typescript"
+
+# Search learnings
+disclose learnings --query "bun performance" --domains bun
+
+# Generate session context
+disclose session-context --token-budget 800 --min-confidence 0.7</pre>
         </div>
     </section>
 

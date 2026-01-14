@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" data-unify="/_includes/tool-page.html">
+
+<head>
+    <title>inscribe - Learning Capture & Session Management</title>
+    <meta name="description"
+        content="Record insights, patterns, mistakes, and problem-solutions with rich metadata. Track work sessions with start/stop boundaries.">
+    <style>
+        /* Page-specific styles */
+        .inscribe-hero {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
+        }
+
+        .inscribe-icon {
+            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+        }
+
+        .learning-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .type-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .type-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .type-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 1rem;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--bg-dark);
+        }
+
+        .type-name {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .type-desc {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .learning-demo {
+            background: var(--bg-darker);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 3rem auto;
+            max-width: 800px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .session-demo {
+            background: var(--bg-darker);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 3rem auto;
+            max-width: 800px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .env-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .env-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .env-var {
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .env-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="tool-hero inscribe-hero">
+        <div class="tool-hero-content">
+            <h1>inscribe</h1>
+            <p class="tagline">Learning Capture & Session Management</p>
+            <p class="description">
+                Record insights, patterns, mistakes, and problem-solutions with rich metadata. Track work sessions with
+                start/stop boundaries. Capture events and decisions in append-only format.
+            </p>
+            <div class="cta-buttons">
+                <a href="#install" class="btn btn-primary">
+                    <span>📝</span> Get Started
+                </a>
+                <a href="https://github.com/fwdslsh/core" class="btn btn-secondary">
+                    View Source
+                </a>
+            </div>
+        </div>
+
+        <div class="tool-demo">
+            <div class="learning-demo">
+                <div style="color: var(--primary); margin-bottom: 1rem; font-weight: bold;">
+                    $ inscribe learning add \
+                </div>
+                <div style="color: var(--text-dim); margin-bottom: 0.5rem; margin-left: 2rem;">
+                    --type pattern \
+                </div>
+                <div style="color: var(--text-dim); margin-bottom: 0.5rem; margin-left: 2rem;">
+                    --summary "Use Bun native APIs for performance" \
+                </div>
+                <div style="color: var(--text-dim); margin-bottom: 0.5rem; margin-left: 2rem;">
+                    --content "Prefer Bun.file() over fs.readFile()..." \
+                </div>
+                <div style="color: var(--text-dim); margin-bottom: 0.5rem; margin-left: 2rem;">
+                    --domains "bun,typescript"
+                </div>
+                <div style="color: var(--success); margin-top: 1rem;">
+                    ✓ Learning created: learn_2025-01-15_a3f9b2c4.md
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="unify-nav-links">
+                <li><a href="/inscribe/" class="active">Overview</a></li>
+                <li><a href="/inscribe/getting-started">Getting Started</a></li>
+                <li><a href="/inscribe/docs">Documentation</a></li>
+                <li><a href="/inscribe/examples">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="features" class="tool-section">
+        <div class="section-header">
+            <h2>Learning Types</h2>
+            <p>Capture different kinds of knowledge</p>
+        </div>
+
+        <div class="learning-types">
+            <div class="type-card">
+                <div class="type-icon">🔄</div>
+                <div class="type-name">Pattern</div>
+                <div class="type-desc">Recurring design pattern or best practice</div>
+            </div>
+
+            <div class="type-card">
+                <div class="type-icon">🔧</div>
+                <div class="type-name">Problem-Solution</div>
+                <div class="type-desc">Specific problem encountered with solution</div>
+            </div>
+
+            <div class="type-card">
+                <div class="type-icon">❌</div>
+                <div class="type-name">Mistake</div>
+                <div class="type-desc">Anti-pattern or error to avoid</div>
+            </div>
+
+            <div class="type-card">
+                <div class="type-icon">💡</div>
+                <div class="type-name">Insight</div>
+                <div class="type-desc">Deeper understanding or realization</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Core Features</h2>
+            <p>Comprehensive knowledge capture system</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Learning Capture</h3>
+                <p>Record insights, patterns, mistakes, and problem-solutions with rich metadata including
+                    domains, tools, and confidence scores.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Session Management</h3>
+                <p>Track work sessions with explicit start/stop boundaries. Attach repository, branch, and tags to
+                    sessions for organization.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Event Recording</h3>
+                <p>Record generic events and decisions with timestamps. Append-only JSONL format for reliable history
+                    tracking.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔌</div>
+                <h3>Hook Integration</h3>
+                <p>Drop-in handler for platform hooks. Automatically index learnings via catalog hook on creation.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>History Listing</h3>
+                <p>List learnings, sessions, decisions, and events with flexible filtering by tags, time ranges,
+                    and metadata.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3>System Validation</h3>
+                <p>Check environment and validate history integrity. Auto-fix issues where possible with strict mode
+                    for failures.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Session Management</h2>
+            <p>Track work sessions with boundaries and metadata</p>
+        </div>
+
+        <div class="session-demo">
+            <div style="color: var(--primary); margin-bottom: 1rem; font-weight: bold;">
+                $ inscribe session start \
+            </div>
+            <div style="color: var(--text-dim); margin-bottom: 0.5rem; margin-left: 2rem;">
+                --name "implement-auth-refactor" \
+            </div>
+            <div style="color: var(--text-dim); margin-bottom: 0.5rem; margin-left: 2rem;">
+                --repo /path/to/repo \
+            </div>
+            <div style="color: var(--text-dim); margin-bottom: 0.5rem; margin-left: 2rem;">
+                --branch feature/auth \
+            </div>
+            <div style="color: var(--text-dim); margin-bottom: 0.5rem; margin-left: 2rem;">
+                --tags "auth,refactor"
+            </div>
+            <div style="color: var(--success); margin-top: 1rem;">
+                ✓ Session started: abc-123-def456
+            </div>
+            <br><br>
+            <div style="color: var(--primary); margin-bottom: 1rem; font-weight: bold;">
+                $ inscribe session stop --status ok
+            </div>
+            <div style="color: var(--success);">
+                ✓ Session stopped: duration 2h 34m
+            </div>
+        </div>
+    </section>
+
+    <section id="install" class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Installation</h2>
+        </div>
+
+        <div class="install-grid">
+            <div class="install-card">
+                <div class="install-icon">📦</div>
+                <h3>Bun Package</h3>
+                <div class="install-code">
+                    bun install -g @fwdslsh/inscribe
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Environment Variables</h2>
+            <p>Configure behavior with environment variables</p>
+        </div>
+
+        <div class="env-grid">
+            <div class="env-item">
+                <div class="env-var">HYPHN_HOME</div>
+                <div class="env-desc">System root directory (default: ~/.hyphn)</div>
+            </div>
+
+            <div class="env-item">
+                <div class="env-var">HYPHN_HISTORY_ROOT</div>
+                <div class="env-desc">History storage location</div>
+            </div>
+
+            <div class="env-item">
+                <div class="env-var">HYPHN_SESSION_ID</div>
+                <div class="env-desc">Current session ID</div>
+            </div>
+
+            <div class="env-item">
+                <div class="env-var">HYPHN_HOSTNAME</div>
+                <div class="env-desc">Override hostname (auto-detected)</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Integration with Hyphn Tools</h2>
+        </div>
+
+        <div class="code-block">
+            <pre># Capture a learning
+inscribe learning add \
+  --type pattern \
+  --summary "Use Bun.spawn for subprocesses" \
+  --domains "bun" \
+  --confidence 0.9
+
+# Search learnings
+disclose learnings --query "bun performance" --domains bun
+
+# Record usage
+reflect use learn_2025-01-15_a3f9b2c4
+
+# Record outcome
+reflect outcome learn_2025-01-15_a3f9b2c4 --result success</pre>
+        </div>
+    </section>
+
+</body>
+</html>

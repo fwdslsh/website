@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" data-unify="/_includes/tool-page.html">
 <head>
-    <title>Getting Started with disclose</title>
+    <title>disclose - Getting Started</title>
+    <meta name="description" content="Get started with disclose learning retrieval. Installation, learning search, session context generation, and configuration setup.">
 </head>
 <body>
-    <section class="tool-hero">
-        <div class="tool-hero-content">
-            <h1>Getting Started with disclose</h1>
-            <p class="tagline">Assemble your first context bundle</p>
-        </div>
-    </section>
-
     <section class="tool-nav">
         <div class="tool-nav-container">
             <ul class="unify-nav-links">
@@ -23,18 +17,120 @@
     </section>
 
     <section class="tool-section">
-        <h2>Prerequisites</h2>
-        <p>Disclose runs on Bun (v1.3+). Make sure you have the Hyphn ecosystem initialized.</p>
+        <div class="section-header">
+            <h1>Getting Started</h1>
+            <p>Learning retrieval and context bundling</p>
+        </div>
+
+        <h2>Installation</h2>
+        <div class="code-block">
+            <pre># From monorepo root
+npm install
+# or
+bun install</pre>
+        </div>
+
+        <h2>Basic Learning Retrieval</h2>
+        <div class="code-block">
+            <pre># Search learnings
+disclose learnings --query "authentication"
+
+# Filter by domains
+disclose learnings --query "bun performance" --domains bun,typescript
+
+# Filter by confidence
+disclose learnings --min-confidence 0.7 --limit 10</pre>
+        </div>
+
+        <h2>Session Context Generation</h2>
+        <div class="code-block">
+            <pre># Generate session context
+disclose session-context --token-budget 800 --domains typescript,react
+
+# Custom token budget
+disclose session-context --token-budget 2000 --min-confidence 0.8</pre>
+        </div>
+
+        <h2>Context Bundling</h2>
+        <div class="code-block">
+            <pre># Create context pack
+disclose pack --query "database schema" --scope history --token-budget 1500
+
+# Include recent history
+disclose pack --query "API design" --include-history --history-limit 5</pre>
+        </div>
+
+        <h2>Environment Variables</h2>
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>HYPHN_HOME</code></td>
+                    <td>Hyph3n home directory (~/.hyphn)</td>
+                </tr>
+                <tr>
+                    <td><code>HYPHN_CONTEXT_ROOT</code></td>
+                    <td>Context documents root</td>
+                </tr>
+                <tr>
+                    <td><code>HYPHN_HISTORY_ROOT</code></td>
+                    <td>History documents root</td>
+                </tr>
+                <tr>
+                    <td><code>HYPHN_SKILLS_ROOT</code></td>
+                    <td>Skills directory root</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Configuration</h2>
+        </div>
+
+        <div class="code-block">
+            <pre># ~/.hyphn/disclose.yaml
+roots:
+  context: /path/to/context
+  history: /path/to/history
+  skills: /path/to/skills
+
+defaults:
+  scope: all
+  token_budget: 2000
+  max_files: 6
+
+catalog:
+  validate: true
+  silent: true</pre>
+        </div>
     </section>
 
     <section class="tool-section">
-        <h2>Basic Usage</h2>
-        <div class="code-block">
-            # Find learnings about a topic
-            disclose learnings --query "docker"
-            
-            # Generate session context
-            disclose session-context > context.md
+        <div class="section-header">
+            <h2>Next Steps</h2>
+        </div>
+        <div class="quick-links">
+            <a href="/disclose/docs" class="quick-link">
+                <span class="quick-link-icon">📚</span>
+                <div class="quick-link-content">
+                    <h4>Full Documentation</h4>
+                    <p>All commands and options</p>
+                </div>
+            </a>
+            <a href="/disclose/examples" class="quick-link">
+                <span class="quick-link-icon">🔧</span>
+                <div class="quick-link-content">
+                    <h4>Real-World Examples</h4>
+                    <p>Workflows and patterns</p>
+                </div>
+            </a>
         </div>
     </section>
 </body>

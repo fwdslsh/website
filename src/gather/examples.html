@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-unify="/_includes/tool-page.html">
+
 <head>
-    <title>gather Examples</title>
+    <title>gather - Examples</title>
+    <meta name="description" content="Real-world examples for gather web crawler. Common workflows, CI/CD integration, and ecosystem patterns.">
 </head>
+
 <body>
-    <section class="tool-hero">
-        <div class="tool-hero-content">
-            <h1>gather Examples</h1>
-        </div>
-    </section>
 
     <section class="tool-nav">
         <div class="tool-nav-container">
@@ -22,12 +20,468 @@
     </section>
 
     <section class="tool-section">
-        <h2>Documentation Migration</h2>
-        <p>Migrate an old documentation site to a new system.</p>
+        <div class="section-header">
+            <h1>Real-World Examples</h1>
+            <p>Common workflows and integration patterns</p>
+        </div>
+
+        <h2>Web Crawling Examples</h2>
+
+        <h3>Crawl Large Documentation Sites</h3>
+        <p>Scrape comprehensive documentation sites with high concurrency:</p>
         <div class="code-block">
-            gather https://old-docs.example.com --output ./migration-source
-            # Convert to new format...
+            <pre># Crawl official docs with aggressive settings
+gather https://docs.example.com \
+  --max-pages 1000 \
+  --delay 200 \
+  --concurrency 10 \
+  --output-dir ./official-docs
+
+# With robots.txt respect
+gather https://docs.example.com \
+  --max-pages 500 \
+  --delay 500 \
+  --concurrency 5 \
+  --output-dir ./docs</pre>
+        </div>
+
+        <h3>Blog and Content Sites</h3>
+        <div class="code-block">
+            <pre># Crawl a blog with custom output
+gather https://blog.example.com \
+  --max-pages 200 \
+  --output-dir ./blog-archive
+
+# Extract content from specific sections
+gather https://medium.com/@author \
+  --include "*article*" \
+  --max-pages 50 \
+  --output-dir ./medium-posts</pre>
+        </div>
+
+        <h3>Recursive Site Crawling</h3>
+        <div class="code-block">
+            <pre># Crawl entire site staying within domain
+gather https://example.com \
+  --max-pages 500 \
+  --delay 1000 \
+  --concurrency 3
+
+# Crawl specific subdirectory
+gather https://example.com/docs/api \
+  --max-pages 100 \
+  --output-dir ./api-docs</pre>
         </div>
     </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Git Repository Examples</h2>
+            <p>Download specific content from GitHub repositories</p>
+        </div>
+
+        <h3>Download Multiple Repositories</h3>
+        <div class="code-block">
+            <pre># Download docs from multiple repos
+gather https://github.com/owner/project-1/tree/main/docs \
+  --output-dir ./repos/project-1
+
+gather https://github.com/owner/project-2/tree/main/docs \
+  --output-dir ./repos/project-2
+
+gather https://github.com/owner/project-3/tree/main/docs \
+  --output-dir ./repos/project-3</pre>
+        </div>
+
+        <h3>Authenticated Repository Access</h3>
+        <div class="code-block">
+            <pre># Set token for higher rate limits
+export GITHUB_TOKEN="ghp_your_token_here"
+
+# Download private repository
+gather https://github.com/owner/private-repo/tree/main/docs \
+  --output-dir ./private-docs</pre>
+        </div>
+
+        <h3>Selective File Download</h3>
+        <div class="code-block">
+            <pre># Download only documentation files
+gather https://github.com/owner/repo \
+  --include "*.md" \
+  --include "*.txt" \
+  --exclude "node_modules/**" \
+  --exclude "**/test/**" \
+  --output-dir ./clean-docs
+
+# Download specific file types
+gather https://github.com/owner/repo \
+  --include "*.md" \
+  --include "*.json" \
+  --exclude "**/*.test.*"</pre>
+        </div>
+
+        <h3>Documentation from Multiple Branches</h3>
+        <div class="code-block">
+            <pre># Download docs from different versions
+gather https://github.com/owner/repo/tree/v1.0/docs \
+  --output-dir ./docs/v1.0
+
+gather https://github.com/owner/repo/tree/v2.0/docs \
+  --output-dir ./docs/v2.0
+
+gather https://github.com/owner/repo/tree/main/docs \
+  --output-dir ./docs/latest</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Feed Ingestion Examples</h2>
+            <p>Ingest content from various feed sources</p>
+        </div>
+
+        <h3>RSS and Atom Feeds</h3>
+        <div class="code-block">
+            <pre># Ingest RSS feed
+gather --feed https://example.com/feed.xml \
+  --limit 100 \
+  --output-dir ./articles
+
+# Ingest Atom feed
+gather --feed https://blog.example.com/atom.xml \
+  --limit 50 \
+  --output-dir ./blog-posts
+
+# Multiple feeds
+gather --feed https://site1.com/rss \
+  --output-dir ./feeds/site1
+
+gather --feed https://site2.com/atom \
+  --output-dir ./feeds/site2</pre>
+        </div>
+
+        <h3>YouTube Channels and Playlists</h3>
+        <div class="code-block">
+            <pre># Ingest entire channel with transcripts
+gather --feed https://www.youtube.com/c/ExampleChannel \
+  --limit 100 \
+  --yt-lang en \
+  --output-dir ./youtube-channel
+
+# Ingest specific playlist
+gather --feed "https://www.youtube.com/playlist?list=PLExample" \
+  --limit 50 \
+  --output-dir ./playlist-content
+
+# Without transcripts (faster)
+gather --feed https://www.youtube.com/c/ChannelName \
+  --no-yt-transcript \
+  --limit 100</pre>
+        </div>
+
+        <h3>Bluesky and X/Twitter Profiles</h3>
+        <div class="code-block">
+            <pre># Bluesky profile
+gather --feed https://bsky.app/profile/example.bsky.social \
+  --limit 100 \
+  --output-dir ./bluesky-posts
+
+# X/Twitter (requires bearer token)
+export X_BEARER_TOKEN="your_bearer_token"
+
+gather --feed https://x.com/example_user \
+  --limit 100 \
+  --output-dir ./x-posts
+
+# Custom RSS template for X
+gather --feed https://x.com/example_user \
+  --x-rss-template "https://nitter.net/example_user/rss" \
+  --limit 100</pre>
+        </div>
+
+        <h3>Multi-Feed Aggregation</h3>
+        <div class="code-block">
+            <pre># Aggregate content from multiple sources
+gather --feed https://blog1.com/rss --output-dir ./feeds/blog1
+gather --feed https://blog2.com/rss --output-dir ./feeds/blog2
+gather --feed https://youtube.com/channel --output-dir ./feeds/yt
+gather --feed https://bsky.app/profile --output-dir ./feeds/bsky</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>CI/CD Integration</h2>
+            <p>Automate gathering in your deployment pipeline</p>
+        </div>
+
+        <h3>GitHub Actions Workflow</h3>
+        <div class="code-block">
+            <pre>name: Sync Documentation
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight
+
+jobs:
+  gather-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Gather
+        run: curl -fsSL https://raw.githubusercontent.com/fwdslsh/gather/main/install.sh | sh
+
+      - name: Gather Documentation
+        run: |
+          gather https://docs.example.com \
+            --max-pages 1000 \
+            --delay 500 \
+            --output-dir ./docs
+
+      - name: Generate AI-Ready Artifacts
+        run: |
+          catalog ./docs \
+            --output ./build \
+            --base-url https://docs.example.com \
+            --sitemap --validate
+
+      - name: Deploy
+        run: |
+          # Upload to CDN or deploy to hosting
+          # ...</pre>
+        </div>
+
+        <h3>Daily Documentation Sync</h3>
+        <div class="code-block">
+            <pre>#!/bin/bash
+# sync-docs.sh - Daily documentation sync script
+
+set -e
+
+# Timestamp
+DATE=$(date +%Y-%m-%d)
+LOG_FILE="./logs/sync-${DATE}.log"
+
+echo "[$(date)] Starting documentation sync..." >> "$LOG_FILE"
+
+# Gather latest documentation
+echo "[$(date)] Gathering docs..." >> "$LOG_FILE"
+gather https://docs.example.com \
+  --max-pages 1000 \
+  --delay 500 \
+  --output-dir ./docs \
+  >> "$LOG_FILE" 2>&1
+
+# Generate artifacts
+echo "[$(date)] Generating artifacts..." >> "$LOG_FILE"
+catalog ./docs \
+  --output ./build \
+  --base-url https://docs.example.com \
+  --sitemap --validate \
+  >> "$LOG_FILE" 2>&1
+
+echo "[$(date)] Sync complete!" >> "$LOG_FILE"</pre>
+        </div>
+
+        <h3>Docker-Based Pipeline</h3>
+        <div class="code-block">
+            <pre># Dockerfile
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y curl
+RUN curl -fsSL https://raw.githubusercontent.com/fwdslsh/gather/main/install.sh | sh
+
+WORKDIR /workspace
+COPY . .
+
+# Entry point script
+ENTRYPOINT ["bash", "sync.sh"]</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Integration with catalog</h2>
+            <p>Complete AI-ready documentation pipeline</p>
+        </div>
+
+        <h3>Basic Pipeline</h3>
+        <div class="code-block">
+            <pre># Step 1: Gather web content
+gather https://docs.example.com \
+  --output-dir ./docs-content
+
+# Step 2: Generate llms.txt
+catalog ./docs-content \
+  --output ./ai-ready \
+  --base-url https://docs.example.com \
+  --sitemap --validate
+
+# Step 3: Use with AI tools
+# Feed ./ai-ready/llms.txt to your LLM</pre>
+        </div>
+
+        <h3>Advanced Pipeline with Indexing</h3>
+        <div class="code-block">
+            <pre># Gather multiple sources
+gather https://docs.example.com --output-dir ./official-docs
+gather https://wiki.example.com --output-dir ./community-docs
+gather https://github.com/owner/repo/tree/main/docs --output-dir ./github-docs
+
+# Combine and generate comprehensive index
+catalog ./official-docs ./community-docs ./github-docs \
+  --output ./combined \
+  --base-url https://docs.example.com \
+  --sitemap --validate --index --toc --ast js,ts,py</pre>
+        </div>
+
+        <h3>RAG Pipeline Setup</h3>
+        <div class="code-block">
+            <pre># Step 1: Gather documentation
+gather https://docs.example.com \
+  --max-pages 2000 \
+  --output-dir ./docs
+
+# Step 2: Generate RAG-ready chunks
+catalog ./docs \
+  --output ./rag-ready \
+  --base-url https://docs.example.com \
+  --chunks --chunk-profile code-heavy \
+  --tags --graph
+
+# Step 3: Output files ready for vector database
+# - chunks.jsonl: Pre-chunked documents
+# - tags.json: Semantic classification
+# - graph.json: Document relationships</pre>
+        </div>
+
+        <h3>MCP Server Integration</h3>
+        <div class="code-block">
+            <pre># Generate MCP server for IDE integration
+gather https://docs.example.com --output-dir ./docs
+
+catalog ./docs \
+  --output ./mcp-server \
+  --base-url https://docs.example.com \
+  --mcp
+
+# Output includes:
+# - mcp-server.js: Executable MCP server
+# - mcp-server.json: Server configuration
+# - cursor-mcp.json: Cursor IDE config
+# - claude-mcp.json: Claude Code config</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Configuration File Examples</h2>
+            <p>Complex setups with gather.yaml</p>
+        </div>
+
+        <h3>Multi-Target Configuration</h3>
+        <div class="code-block">
+            <pre># gather.yaml
+maxPages: 100
+delay: 1000
+concurrency: 3
+outputDir: "./crawled-content"
+
+targets:
+  # Official documentation
+  - url: "https://docs.example.com"
+    maxPages: 500
+    delay: 500
+    outputDir: "./docs/official"
+
+  # Community wiki
+  - url: "https://wiki.example.com"
+    maxPages: 200
+    outputDir: "./docs/community"
+
+  # GitHub repository
+  - url: "https://github.com/owner/repo/tree/main/docs"
+    include: ["*.md", "*.txt"]
+    exclude: ["node_modules/**", "**/test/**"]
+    outputDir: "./docs/github"
+
+# Feed configuration
+feed:
+  limit: 100
+  ytLang: "en"
+  noYtTranscript: false</pre>
+        </div>
+
+        <h3>Production Configuration</h3>
+        <div class="code-block">
+            <pre># production-gather.yaml
+maxPages: 1000
+delay: 200
+concurrency: 10
+ignoreErrors: false
+
+targets:
+  - url: "https://docs.example.com"
+    outputDir: "./docs/prod"
+
+  - url: "https://github.com/owner/repo/tree/main/docs"
+    outputDir: "./docs/prod/github"</pre>
+        </div>
+
+        <h3>Development Configuration</h3>
+        <div class="code-block">
+            <pre># dev-gather.yaml
+maxPages: 50
+delay: 1000
+concurrency: 2
+outputDir: "./docs/dev"
+
+targets:
+  - url: "http://localhost:3000"
+    maxPages: 50
+    outputDir: "./docs/local"</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Troubleshooting Examples</h2>
+            <p>Common issues and solutions</p>
+        </div>
+
+        <h3>Handling Rate Limits</h3>
+        <div class="code-block">
+            <pre># Increase delay to respect rate limits
+gather https://docs.example.com \
+  --delay 2000 \
+  --concurrency 1
+
+# Use authentication for GitHub
+export GITHUB_TOKEN="your_token"
+gather https://github.com/owner/repo</pre>
+        </div>
+
+        <h3>Timeout Issues</h3>
+        <div class="code-block">
+            <pre># Reduce concurrency for slow sites
+gather https://slow-docs.example.com \
+  --concurrency 1 \
+  --delay 3000 \
+  --max-retries 5</pre>
+        </div>
+
+        <h3>Partial Content</h3>
+        <div class="code-block">
+            <pre># Use --ignore-errors to continue on partial failures
+gather https://docs.example.com \
+  --ignore-errors \
+  --max-pages 500
+
+# Check output logs for failed pages
+# Gather continues even if some pages fail</pre>
+        </div>
+    </section>
+
 </body>
+
 </html>

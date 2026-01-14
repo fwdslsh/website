@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-unify="/_includes/tool-page.html">
+<head>
+    <title>inscribe - Documentation</title>
+    <meta name="description" content="Complete command reference for inscribe learning capture. Learning management, session tracking, event recording, and hook integration.">
+</head>
+<body>
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="unify-nav-links">
+                <li><a href="/inscribe/">Overview</a></li>
+                <li><a href="/inscribe/getting-started">Getting Started</a></li>
+                <li><a href="/inscribe/docs" class="active">Documentation</a></li>
+                <li><a href="/inscribe/examples">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="tool-section">
+        <div class="section-header">
+            <h1>Command Reference</h1>
+            <p>All commands and options</p>
+        </div>
+
+        <h2>Learning Commands</h2>
+        <h3>learning add</h3>
+        <div class="code-block">
+            <pre>inscribe learning add [OPTIONS]</pre>
+        </div>
+        <table class="options-table">
+            <thead><tr><th>Flag</th><th>Short</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>--type</td><td>-t</td><td>Learning type: pattern, problem-solution, mistake, insight</td></tr>
+                <tr><td>--summary</td><td>-s</td><td>Brief description (50-100 chars)</td></tr>
+                <tr><td>--content</td><td>-c</td><td>Full markdown content</td></tr>
+                <tr><td>--content-file</td><td></td><td>Read content from file</td></tr>
+                <tr><td>--domains</td><td>-d</td><td>Knowledge domains (comma-separated)</td></tr>
+                <tr><td>--tools</td><td></td><td>Tools used (comma-separated)</td></tr>
+                <tr><td>--confidence</td><td></td><td>Confidence 0.0-1.0 (default: 0.5)</td></tr>
+                <tr><td>--session</td><td></td><td>Source session ID</td></tr>
+                <tr><td>--output</td><td>-o</td><td>Override output directory</td></tr>
+                <tr><td>--dry-run</td><td></td><td>Preview without writing</td></tr>
+            </tbody>
+        </table>
+
+        <h3>learning edit/delete</h3>
+        <div class="code-block">
+            <pre>inscribe learning edit <learning-id>
+inscribe learning delete <learning-id></pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <h2>Session Commands</h2>
+        <div class="code-block">
+            <pre>inscribe session start [OPTIONS]
+inscribe session stop [OPTIONS]</pre>
+        </div>
+        <table class="options-table">
+            <thead><tr><th>Flag</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>--name</td><td>Session identifier</td></tr>
+                <tr><td>--repo</td><td>Repository path</td></tr>
+                <tr><td>--branch</td><td>Git branch</td></tr>
+                <tr><td>--tags</td><td>Session tags (comma-separated)</td></tr>
+                <tr><td>--status</td><td>Completion status (ok, failed, partial)</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section">
+        <h2>Event Commands</h2>
+        <div class="code-block">
+            <pre>inscribe add <type> <message> [OPTIONS]</pre>
+        </div>
+        <table class="options-table">
+            <thead><tr><th>Flag</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>--json-file</td><td>Read event data from JSON file</td></tr>
+                <tr><td>--stdin</td><td>Read from stdin</td></tr>
+                <tr><td>--tags</td><td>Tags (comma-separated)</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <h2>List Commands</h2>
+        <div class="code-block">
+            <pre>inscribe list <type> [OPTIONS]
+
+Types:
+  learnings    List captured learnings
+  sessions     List work sessions
+  events       List all events
+  decisions    List decisions</pre>
+        </div>
+        <table class="options-table">
+            <thead><tr><th>Flag</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>--limit</td><td>Maximum results to return</td></tr>
+                <tr><td>--tags</td><td>Filter by tags</td></tr>
+                <tr><td>--since</td><td>Filter by date (YYYY-MM-DD)</td></tr>
+                <tr><td>--until</td><td>Filter by date (YYYY-MM-DD)</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section">
+        <h2>Hook Integration</h2>
+        <div class="code-block">
+            <pre># Platform hook integration
+inscribe hook <hook-type> --source <source> [OPTIONS]
+
+# Examples:
+cat hook-payload.json | inscribe hook post-tool-use --source claude-code
+cat hook-payload.json | inscribe hook user-prompt-submit --source opencode</pre>
+        </div>
+
+        <h3>PostLearningCreated Hook</h3>
+        <p>Emitted after a learning is written. Automatically triggers <code>catalog-index</code> hook.</p>
+
+        <h3>Disable Hooks</h3>
+        <div class="code-block">
+            <pre>export HYPHN_DISABLE_HOOKS=catalog-index</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <h2>Global Options</h2>
+        <table class="options-table">
+            <thead><tr><th>Flag</th><th>Short</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>--json</td><td></td><td>Output structured JSON envelope</td></tr>
+                <tr><td>--quiet</td><td>-q</td><td>Suppress non-essential output</td></tr>
+                <tr><td>--verbose</td><td></td><td>Show debug information</td></tr>
+                <tr><td>--no-color</td><td></td><td>Disable ANSI colors</td></tr>
+                <tr><td>--dry-run</td><td></td><td>Preview without executing</td></tr>
+                <tr><td>--help</td><td>-h</td><td>Show help message</td></tr>
+                <tr><td>--version</td><td>-v</td><td>Print version and exit</td></tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Exit Codes</h2>
+        </div>
+        <table class="options-table">
+            <thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+            <tbody>
+                <tr><td>0</td><td>Success</td></tr>
+                <tr><td>1</td><td>General failure</td></tr>
+                <tr><td>2</td><td>Usage error</td></tr>
+                <tr><td>3</td><td>External failure</td></tr>
+                <tr><td>4</td><td>Partial success</td></tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>

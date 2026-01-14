@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-unify="/_includes/tool-page.html">
+<head>
+    <title>reflect - Documentation</title>
+    <meta name="description" content="Complete command reference for reflect learning analytics. Usage analysis, report generation, and DataHarvester API.">
+</head>
+<body>
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="unify-nav-links">
+                <li><a href="/reflect/">Overview</a></li>
+                <li><a href="/reflect/getting-started">Getting Started</a></li>
+                <li><a href="/reflect/docs" class="active">Documentation</a></li>
+                <li><a href="/reflect/examples">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h1>Command Reference</h1>
+            <p>All commands and DataHarvester API</p>
+        </div>
+
+        <h2>Analyze Commands</h2>
+        <div class="code-block">
+            <pre>reflect analyze [TYPE] [OPTIONS]
+
+Types:
+  usage          Analyze usage events
+  procedures     Analyze procedures
+  learnings     Analyze learning quality
+  sessions       Analyze session patterns
+  cross          Cross-correlation analysis</pre>
+        </div>
+
+        <h3>analyze usage</h3>
+        <table class="options-table">
+            <thead><tr><th>Option</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>--time-start</td><td>Start of time range (ISO 8601)</td></tr>
+                <tr><td>--time-end</td><td>End of time range (ISO 8601)</td></tr>
+                <tr><td>--limit</td><td>Maximum results to return</td></tr>
+                <tr><td>--json</td><td>Output JSON format</td></tr>
+            </tbody>
+        </table>
+
+        <h3>analyze procedures/learnings/sessions</h3>
+        <div class="code-block">
+            <pre># Analyze procedures
+reflect analyze procedures
+
+# Analyze learning quality
+reflect analyze learnings --min-confidence 0.7
+
+# Analyze session patterns
+reflect analyze sessions --session-id session-123</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Report Commands</h2>
+        </div>
+
+        <h3>report comprehensive</h3>
+        <div class="code-block">
+            <pre># Generate full report
+reflect report comprehensive --output-path report.md
+
+# Include specific sections
+reflect report comprehensive --sections usage,procedures</pre>
+        </div>
+
+        <table class="options-table">
+            <thead><tr><th>Option</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>--output-path</td><td>Output file path</td></tr>
+                <tr><td>--sections</td><td>Sections to include (comma-separated)</td></tr>
+                <tr><td>--format</td><td>Output format (markdown, json)</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>DataHarvester API</h2>
+            <p>Programmatic access to learning data</p>
+        </div>
+
+        <div class="code-block">
+            <pre>import { createHarvesterConfig, DataHarvester } from "@fwdslsh/reflect";
+
+const config = createHarvesterConfig();
+const harvester = new DataHarvester(config);
+
+// Harvest usage events
+const events = await harvester.harvestUsage({
+  timeRange: { 
+    start: "2025-01-01T00:00:00Z", 
+    end: "2025-01-31T23:59:59Z" 
+  },
+  limit: 100
+});
+
+// Harvest learnings
+const learnings = await harvester.harvestLearnings({
+  domains: ["typescript"],
+  minConfidence: 0.7
+});</pre>
+        </div>
+
+        <h3>Environment Variables</h3>
+        <table class="options-table">
+            <thead><tr><th>Variable</th><th>Default</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr><td>HYPHN_HISTORY_ROOT</td><td>~/.hyphn/history</td><td>History logs directory</td></tr>
+                <tr><td>HYPHN_SESSIONS_ROOT</td><td>~/.hyphn/sessions</td><td>Sessions directory</td></tr>
+                <tr><td>HYPHN_INDEX_ROOT</td><td>~/.hyphn/index</td><td>Index directory</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Output Formats</h2>
+        </div>
+
+        <h3>Markdown Report</h3>
+        <p>Human-readable summary with sections and metrics.</p>
+
+        <h3>JSON Report</h3>
+        <p>Structured data for programmatic processing and analysis.</p>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Integration with disclose</h2>
+            <p>Usage tracking for learning retrieval</p>
+        </div>
+
+        <div class="code-block">
+            <pre># Track when a learning is used
+reflect use learning_abc123
+
+# Analyze learning popularity
+reflect analyze usage --limit 50
+
+# Correlate usage with outcomes
+reflect analyze cross</pre>
+        </div>
+    </section>
+</body>
+</html>

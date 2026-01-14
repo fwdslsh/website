@@ -249,12 +249,12 @@
 
     <section class="tool-hero catalog-hero">
         <div class="tool-hero-content">
-            <h1>catalog</h1>
-            <p class="tagline">AI-Ready Documentation Indexer</p>
-            <p class="description">
-                Generate llms.txt and llms-full.txt from Markdown/HTML directories. Complete llms.txt standard
-                compliance with enterprise-grade features for AI-powered documentation workflows.
-            </p>
+                <h1>catalog</h1>
+                <p class="tagline">AI-Ready Documentation Indexer</p>
+                <p class="description">
+                    Generate llms.txt, llms-full.txt with PAI (Programmable AI) features. Complete llms.txt
+                    standard compliance with advanced embeddings, chunking, and RAG optimization.
+                </p>
             <div class="cta-buttons">
                 <a href="#install" class="btn btn-primary">
                     <span>📋</span> Get Started
@@ -399,7 +399,104 @@
 
     <section class="tool-section alt-bg">
         <div class="section-header">
+            <h2>PAI (Programmable AI) Features - Version 0.2.0</h2>
+            <p>Advanced AI optimization for documentation workflows</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>Semantic Search with Embeddings</h3>
+                <p>Generate embeddings for learnings and perform semantic similarity search. Hybrid search combining
+                    FTS5 full-text + semantic. Supports OpenAI, Ollama, and custom providers (~10 embeddings/sec).</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">✂️</div>
+                <h3>RAG-Ready Document Chunking</h3>
+                <p>Intelligent document splitting at heading boundaries with multiple profiles: default, code-heavy, faq,
+                    granular, large-context. Optimized for vector database ingestion.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3>Link Graph Analysis</h3>
+                <p>Creates <code>graph.json</code> with document relationships, importance scoring, and broken link detection.
+                    Analyze content structure and connectivity.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🏷️</div>
+                <h3>Semantic Tag Generation</h3>
+                <p>Rule-based content classification with <code>tags.json</code> for filtering and search. Automatic
+                    categorization improves document discovery.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3>Context Bundle Generation</h3>
+                <p>Creates <code>llms-ctx-{size}.txt</code> files for different LLM context windows (2k, 8k, 32k
+                    tokens). Optimized context delivery.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>MCP Server Generation</h3>
+                <p>Generate Model Context Protocol server for IDE integration (Cursor, Claude Code). Complete with
+                    configuration files for easy setup.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📥</div>
+                <h3>Source Integration</h3>
+                <p>Pull documentation from remote sources before processing: GitHub, Git, HTTP, S3. Seamless
+                    integration with external documentation systems.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Framework Integrations</h3>
+                <p>Ready-to-use integrations for LangChain and LlamaIndex. Quick integration with popular AI
+                    frameworks.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Learning Indexing</h2>
+            <p>Automatic integration with inscribe learning system</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Automatic Indexing</h3>
+                <p>Learnings created with <code>inscribe</code> are automatically indexed via hook system.
+                    PostLearningCreated hook spawns <code>catalog index-file</code> subprocess.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Fast Indexing</h3>
+                <p>Average indexing time ~15ms per learning. Content hash deduplication skips re-indexing unchanged files.
+                    Upsert semantics update existing or insert new.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>index-file Command</h3>
+                <p>Index a single learning file: <code>catalog index-file &lt;path&gt;</code>. Supports custom database
+                    paths and automatic FTS index updates.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
             <h2>Output Formats</h2>
+            <p>Multiple formats for different use cases</p>
+        </div>
             <p>Multiple formats for different use cases</p>
         </div>
 

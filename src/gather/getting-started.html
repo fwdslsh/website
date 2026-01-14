@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" data-unify="/_includes/tool-page.html">
 <head>
-    <title>Getting Started with gather</title>
+    <title>gather - Getting Started</title>
+    <meta name="description" content="Get started with gather web crawler. Installation, basic usage, and configuration guide.">
 </head>
 <body>
-    <section class="tool-hero">
-        <div class="tool-hero-content">
-            <h1>Getting Started with gather</h1>
-            <p class="tagline">Ingest your first dataset</p>
-        </div>
-    </section>
 
     <section class="tool-nav">
         <div class="tool-nav-container">
@@ -23,22 +18,237 @@
     </section>
 
     <section class="tool-section">
-        <h2>Prerequisites</h2>
-        <p>Gather requires Bun (v1.0+).</p>
-    </section>
+        <div class="section-header">
+            <h1>Getting Started with gather</h1>
+            <p>Installation and basic usage guide</p>
+        </div>
 
-    <section class="tool-section">
-        <h2>Basic Usage</h2>
+        <h2>Installation</h2>
+
+        <h3>Quick Install Script</h3>
         <div class="code-block">
-            # Crawl a documentation site
-            gather https://docs.astro.build
-            
-            # Download a repo folder
-            gather https://github.com/bun-land/bun/tree/main/docs
-            
-            # Ingest a feed
-            gather --feed https://news.ycombinator.com/rss
+            <pre># One-line install script
+curl -fsSL https://raw.githubusercontent.com/fwdslsh/gather/main/install.sh | sh
+
+# Verify installation
+gather --version</pre>
+        </div>
+        <p>This automatically downloads the correct binary for your platform (Linux, macOS, Windows) and installs it to your PATH.</p>
+
+        <h3>Bun Package</h3>
+        <div class="code-block">
+            <pre># Install globally with Bun
+bun install -g @fwdslsh/gather
+
+# Or add to specific project
+bun add @fwdslsh/gather</pre>
+        </div>
+
+        <h3>Docker</h3>
+        <div class="code-block">
+            <pre># Pull latest image
+docker pull fwdslsh/gather:latest
+
+# Run crawler
+docker run --rm fwdslsh/gather https://docs.example.com</pre>
+        </div>
+
+        <h3>Build from Source</h3>
+        <div class="code-block">
+            <pre># Clone repository
+git clone https://github.com/fwdslsh/gather.git
+cd gather
+
+# Install dependencies
+bun install
+
+# Build for current platform
+bun run build
+
+# Run from source
+bun src/cli.js https://docs.example.com</pre>
+        </div>
+
+        <h2>Basic Usage</h2>
+
+        <h3>Web Crawling</h3>
+        <p>Crawl any website with automatic link discovery:</p>
+        <div class="code-block">
+            <pre># Basic crawl
+gather https://docs.example.com
+
+# With options
+gather https://docs.example.com \
+  --max-pages 100 \
+  --delay 500 \
+  --concurrency 5 \
+  --output-dir ./docs</pre>
+        </div>
+
+        <h3>Git Repository Downloads</h3>
+        <p>Download specific directories from GitHub repositories without cloning the entire history:</p>
+        <div class="code-block">
+            <pre># Download entire repository
+gather https://github.com/owner/repo
+
+# Download specific directory
+gather https://github.com/owner/repo/tree/main/docs
+
+# With filtering
+gather https://github.com/owner/repo \
+  --include "*.md" \
+  --exclude "node_modules/**"</pre>
+        </div>
+
+        <h4>GitHub Authentication</h4>
+        <p>For unauthenticated requests, GitHub limits you to 60 requests per hour. With authentication, this increases to 5,000 requests per hour:</p>
+        <div class="code-block">
+            <pre># Set GitHub token
+export GITHUB_TOKEN="your_github_personal_access_token"
+
+# Crawl with authenticated access
+gather https://github.com/owner/repo</pre>
+        </div>
+
+        <h3>Feed Ingestion</h3>
+        <p>Ingest content from RSS/Atom feeds, YouTube channels, Bluesky profiles, and X/Twitter feeds:</p>
+        <div class="code-block">
+            <pre># RSS/Atom feeds (auto-detected)
+gather --feed https://example.com/feed.xml
+gather --feed https://blog.example.com/rss
+
+# YouTube channels and playlists
+gather --feed https://www.youtube.com/c/ExampleChannel
+gather --feed https://www.youtube.com/playlist?list=PLExample
+
+# Bluesky profiles
+gather --feed https://bsky.app/profile/example.bsky.social
+
+# X/Twitter profiles (requires Bearer token)
+export X_BEARER_TOKEN="your_x_bearer_token"
+gather --feed https://x.com/example_user</pre>
+        </div>
+
+        <h2>Configuration</h2>
+
+        <h3>Command Line Options</h3>
+        <div class="code-block">
+            <pre># Web & Git Crawling Options
+-o, --output-dir <path>      Output directory (default: crawled-pages)
+--max-pages <number>         Maximum pages to crawl (default: 100)
+--delay <ms>                Delay between requests in ms (default: 1000)
+--concurrency <number>       Number of concurrent requests (default: 3)
+--max-queue-size <number>    Maximum URLs in queue (default: 10000)
+--max-retries <number>       Maximum retry attempts (default: 3)
+--ignore-robots            Ignore robots.txt directives (use with caution)
+--raw                      Output raw HTML without Markdown conversion
+--include <pattern>          Include files matching glob pattern
+--exclude <pattern>          Exclude files matching glob pattern
+--ignore-errors             Exit with code 0 even if some pages fail
+--verbose                   Enable verbose logging
+--quiet                     Suppress non-essential output
+
+# Feed Mode Options
+--feed                      Enable feed ingestion mode
+--limit <number>            Maximum items to ingest (default: 50)
+--yt-lang <code>            YouTube transcript language (default: 'en')
+--no-yt-transcript         Skip YouTube transcript extraction
+--x-rss-template <url>    Custom X RSS template URL
+--bsky-api-base <url>      Custom Bluesky API endpoint
+
+# Configuration File
+--config <path>             Path to YAML configuration file
+--init                      Generate sample configuration</pre>
+        </div>
+
+        <h3>YAML Configuration File</h3>
+        <p>Create a <code>gather.yaml</code> file in your project root for complex setups:</p>
+        <div class="code-block">
+            <pre># gather.yaml
+# Global settings
+maxPages: 100
+delay: 1000
+concurrency: 3
+outputDir: "./crawled-content"
+
+# Target-specific overrides
+targets:
+  - url: "https://docs.example.com"
+    maxPages: 50
+    delay: 500
+
+  - url: "https://github.com/owner/repo"
+    include: ["*.md", "*.txt"]
+    exclude: ["node_modules/**"]
+
+# Feed mode settings
+feed:
+  limit: 100
+  ytLang: "en"
+  noYtTranscript: false</pre>
+        </div>
+
+        <h2>Understanding Output</h2>
+
+        <h3>Folder Structure</h3>
+        <p>Gather maintains the original website structure in the output directory:</p>
+        <div class="code-block">
+            <pre>crawled-content/
+├── docs.example.com/
+│   ├── index.md                    # Root page
+│   ├── api/
+│   │   ├── authentication.md       # /docs/api/authentication
+│   │   └── endpoints.md           # /docs/api/endpoints
+│   ├── guides/
+│   │   └── setup.md               # /docs/guides/setup
+│   └── tutorials/
+│       └── index.md               # /docs/tutorials
+└── github.com/
+    └── owner/
+        └── repo/
+            └── main/
+                └── docs/
+                    ├── README.md
+                    ├── api.md
+                    └── guide.md</pre>
+        </div>
+
+        <h3>File Naming</h3>
+        <ul>
+            <li>Root pages become <code>index.md</code></li>
+            <li>Query parameters included in filenames (e.g., <code>page?id=123.md</code>)</li>
+            <li>Markdown files end in <code>.md</code> or <code>.mdx</code></li>
+            <li>Raw HTML files end in <code>.html</code> when using <code>--raw</code></li>
+        </ul>
+
+        <h2>Next Steps</h2>
+
+        <div class="quick-links">
+            <a href="/gather/docs" class="quick-link">
+                <span class="quick-link-icon">📚</span>
+                <div class="quick-link-content">
+                    <h4>Full Documentation</h4>
+                    <p>Complete command reference and advanced features</p>
+                </div>
+            </a>
+
+            <a href="/gather/examples" class="quick-link">
+                <span class="quick-link-icon">🔧</span>
+                <div class="quick-link-content">
+                    <h4>Real-World Examples</h4>
+                    <p>Common patterns and use cases</p>
+                </div>
+            </a>
+
+            <a href="/ecosystem/" class="quick-link">
+                <span class="quick-link-icon">🔄</span>
+                <div class="quick-link-content">
+                    <h4>Ecosystem Integration</h4>
+                    <p>Combine with catalog for AI-ready docs</p>
+                </div>
+            </a>
         </div>
     </section>
+
 </body>
 </html>

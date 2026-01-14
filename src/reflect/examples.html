@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-unify="/_includes/tool-page.html">
+<head>
+    <title>reflect - Examples</title>
+    <meta name="description" content="Real-world examples for reflect learning analytics. Usage tracking, confidence scoring, and automation workflows.">
+</head>
+<body>
+    <section class="tool-nav">
+        <div class="tool-nav-container">
+            <ul class="unify-nav-links">
+                <li><a href="/reflect/">Overview</a></li>
+                <li><a href="/reflect/getting-started">Getting Started</a></li>
+                <li><a href="/reflect/docs">Documentation</a></li>
+                <li><a href="/reflect/examples" class="active">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h1>Usage Tracking Workflows</h1>
+            <p>Practical analytics patterns</p>
+        </div>
+
+        <h2>Daily Usage Analysis</h2>
+        <div class="code-block">
+            <pre># Analyze daily usage
+reflect analyze usage \
+  --time-start $(date -d yesterday +%Y-%m-%dT00:00:00Z) \
+  --time-end $(date -d today +%Y-%m-%dT23:59:59Z)</pre>
+        </div>
+
+        <h2>Confidence Scoring</h2>
+        <div class="code-block">
+            <pre># Track learning outcomes
+reflect use learning_abc123
+
+# Record successful application
+reflect outcome learning_abc123 --result success
+
+# Record learning failure
+reflect outcome learning_abc123 --result failure</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h1>Knowledge Gap Analysis</h1>
+        </div>
+
+        <h2>Identify Missing Learnings</h2>
+        <div class="code-block">
+            <pre># Find low-confidence learnings
+reflect analyze learnings --max-confidence 0.6
+
+# Find learnings not used recently
+reflect analyze usage --time-start $(date -d '30 days ago' +%Y-%m-%dT00:00:00Z)</pre>
+        </div>
+
+        <h2>Trend Analysis</h2>
+        <div class="code-block">
+            <pre># Analyze learning creation trends
+reflect analyze learnings --time-start 2025-01-01T00:00:00Z</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h1>Automation Examples</h1>
+        </div>
+
+        <h2>Weekly Reports</h2>
+        <div class="code-block">
+            <pre>#!/bin/bash
+# weekly-report.sh
+START=$(date -d '7 days ago' +%Y-%m-%dT00:00:00Z)
+END=$(date +%Y-%m-%dT23:59:59Z)
+
+reflect analyze usage --time-start "$START" --time-end "$END" \
+  --output "weekly-$(date +%Y-%m-%d).md"</pre>
+        </div>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h1>DataHarvester API</h1>
+        </div>
+
+        <h2>Programmatic Access</h2>
+        <div class="code-block">
+            <pre>import { createHarvesterConfig, DataHarvester } from "@fwdslsh/reflect";
+
+const config = createHarvesterConfig();
+const harvester = new DataHarvester(config);
+
+// Harvest all data types
+const [usage, procedures, learnings, sessions] = await Promise.all([
+  harvester.harvestUsage({ limit: 100 }),
+  harvester.harvestProcedures(),
+  harvester.harvestLearnings({ minConfidence: 0.7 }),
+  harvester.harvestSessions()
+]);</pre>
+        </div>
+    </section>
+</body>
+</html>

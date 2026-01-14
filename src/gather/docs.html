@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-unify="/_includes/tool-page.html">
+
 <head>
-    <title>gather Documentation</title>
+    <title>gather - Documentation</title>
+    <meta name="description" content="Complete command reference for gather web crawler. All CLI options, advanced features, and configuration.">
 </head>
+
 <body>
-    <section class="tool-hero">
-        <div class="tool-hero-content">
-            <h1>gather Documentation</h1>
-        </div>
-    </section>
 
     <section class="tool-nav">
         <div class="tool-nav-container">
@@ -22,16 +20,465 @@
     </section>
 
     <section class="tool-section">
-        <h2>CLI Reference</h2>
+        <div class="section-header">
+            <h1>Command Reference</h1>
+            <p>Complete CLI options and advanced features</p>
+        </div>
+
+        <h2>Basic Syntax</h2>
         <div class="code-block">
-            gather [url] [options]
-            
-            Options:
-              --feed        Treat URL as a feed source
-              --output      Output directory (default: ./content)
-              --limit       Max pages to crawl
-              --concurrency Number of parallel requests
+            <pre>gather [URL] [OPTIONS]
+gather --feed [FEED_URL] [OPTIONS]</pre>
+        </div>
+
+        <h2>Web & Git Crawling Options</h2>
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Short</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--output-dir</code></td>
+                    <td><code>-o</code></td>
+                    <td><code>crawled-pages</code></td>
+                    <td>Output directory for saved files</td>
+                </tr>
+                <tr>
+                    <td><code>--max-pages</code></td>
+                    <td></td>
+                    <td><code>100</code></td>
+                    <td>Maximum number of pages to crawl</td>
+                </tr>
+                <tr>
+                    <td><code>--delay</code></td>
+                    <td></td>
+                    <td><code>1000</code></td>
+                    <td>Delay between requests in milliseconds</td>
+                </tr>
+                <tr>
+                    <td><code>--concurrency</code></td>
+                    <td></td>
+                    <td><code>3</code></td>
+                    <td>Number of concurrent requests</td>
+                </tr>
+                <tr>
+                    <td><code>--max-queue-size</code></td>
+                    <td></td>
+                    <td><code>10000</code></td>
+                    <td>Maximum URLs in queue before skipping new links</td>
+                </tr>
+                <tr>
+                    <td><code>--max-retries</code></td>
+                    <td></td>
+                    <td><code>3</code></td>
+                    <td>Maximum retry attempts for failed requests</td>
+                </tr>
+                <tr>
+                    <td><code>--ignore-robots</code></td>
+                    <td></td>
+                    <td><code>false</code></td>
+                    <td>Ignore robots.txt directives (use with caution)</td>
+                </tr>
+                <tr>
+                    <td><code>--raw</code></td>
+                    <td></td>
+                    <td><code>false</code></td>
+                    <td>Output raw HTML without Markdown conversion</td>
+                </tr>
+                <tr>
+                    <td><code>--include</code></td>
+                    <td></td>
+                    <td><code>*</code></td>
+                    <td>Include files matching glob pattern (can be used multiple times)</td>
+                </tr>
+                <tr>
+                    <td><code>--exclude</code></td>
+                    <td></td>
+                    <td></td>
+                    <td>Exclude files matching glob pattern (can be used multiple times)</td>
+                </tr>
+                <tr>
+                    <td><code>--ignore-errors</code></td>
+                    <td></td>
+                    <td><code>false</code></td>
+                    <td>Exit with code 0 even if some pages fail</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Feed Mode Options</h2>
+        <p>Feed ingestion is enabled with <code>--feed</code> flag. Supports RSS, Atom, YouTube, Bluesky, and X/Twitter.</p>
+
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--feed</code></td>
+                    <td><code>false</code></td>
+                    <td>Enable feed ingestion mode</td>
+                </tr>
+                <tr>
+                    <td><code>--limit</code></td>
+                    <td><code>50</code></td>
+                    <td>Maximum number of items to ingest</td>
+                </tr>
+                <tr>
+                    <td><code>--yt-lang</code></td>
+                    <td><code>'en'</code></td>
+                    <td>YouTube transcript language code</td>
+                </tr>
+                <tr>
+                    <td><code>--no-yt-transcript</code></td>
+                    <td><code>false</code></td>
+                    <td>Skip YouTube transcript extraction</td>
+                </tr>
+                <tr>
+                    <td><code>--x-rss-template</code></td>
+                    <td>default</td>
+                    <td>Custom X/Twitter RSS template URL</td>
+                </tr>
+                <tr>
+                    <td><code>--bsky-api-base</code></td>
+                    <td>default</td>
+                    <td>Custom Bluesky API endpoint</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>General Options</h2>
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Short</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--config</code></td>
+                    <td></td>
+                    <td>Path to YAML configuration file (defaults to gather.yaml)</td>
+                </tr>
+                <tr>
+                    <td><code>--init</code></td>
+                    <td></td>
+                    <td>Generate sample configuration file to stdout</td>
+                </tr>
+                <tr>
+                    <td><code>--verbose</code></td>
+                    <td></td>
+                    <td>Enable verbose logging (detailed output including retries, skipped files, and queue status)</td>
+                </tr>
+                <tr>
+                    <td><code>--quiet</code></td>
+                    <td><code>-q</code></td>
+                    <td>Enable quiet mode (errors only, no progress messages)</td>
+                </tr>
+                <tr>
+                    <td><code>--help</code></td>
+                    <td><code>-h</code></td>
+                    <td>Show help message</td>
+                </tr>
+                <tr>
+                    <td><code>--version</code></td>
+                    <td><code>-v</code></td>
+                    <td>Show version information</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>Advanced Features</h2>
+            <p>Production-ready crawling capabilities</p>
+        </div>
+
+        <h3>robots.txt Support</h3>
+        <p>Gather automatically respects robots.txt files to follow web crawling best practices:</p>
+        <ul>
+            <li><strong>Automatic fetching:</strong> Fetches and parses robots.txt from target sites</li>
+            <li><strong>User agent compliance:</strong> Identifies as "Gather/1.0" user agent</li>
+            <li><strong>Directive respect:</strong> Honors Disallow, Allow, and Crawl-delay directives</li>
+            <li><strong>Wildcard support:</strong> Follows "*" wildcard rules for all user agents</li>
+            <li><strong>Logging:</strong> Logs blocked URLs with reason for transparency</li>
+        </ul>
+        <div class="warning-box">
+            <strong>Note:</strong> Use <code>--ignore-robots</code> only if you have explicit permission from the site owner. Violating robots.txt may violate terms of service.
+        </div>
+
+        <h3>Content Extraction Strategy</h3>
+        <p>Gather intelligently extracts main content from web pages using semantic HTML:</p>
+        <ol>
+            <li>Searches for <code>&lt;main&gt;</code> element (HTML5 semantic element)</li>
+            <li>Checks for <code>[role="main"]</code> ARIA attribute</li>
+            <li>Looks for common content class names (e.g., <code>.main-content</code>, <code>.content</code>, <code>.article</code>)</li>
+            <li>Finds <code>&lt;article&gt;</code> elements for blog posts</li>
+            <li>Detects Bootstrap-style containers</li>
+            <li>Falls back to <code>&lt;body&gt;</code> content if nothing found</li>
+        </ol>
+
+        <h4>Content Cleanup</h4>
+        <p>These elements are automatically removed during extraction:</p>
+        <ul>
+            <li>Navigation elements (<code>nav</code>, <code>.menu</code>, <code>.navigation</code>)</li>
+            <li>Headers and footers</li>
+            <li>Advertisement blocks (<code>.ad</code>, <code>.advertisement</code>)</li>
+            <li>Social sharing buttons</li>
+            <li>Comments sections</li>
+            <li>Scripts and styles</li>
+        </ul>
+
+        <h3>Configuration Files</h3>
+        <p>Use YAML configuration files for complex crawling setups. Create <code>gather.yaml</code> in your project root:</p>
+        <div class="code-block">
+            <pre># gather.yaml
+# Global settings
+maxPages: 100
+delay: 1000
+concurrency: 3
+outputDir: "./crawled-content"
+
+# Target-specific overrides
+targets:
+  - url: "https://docs.example.com"
+    maxPages: 50
+    delay: 500
+
+  - url: "https://github.com/owner/repo"
+    include: ["*.md", "*.txt"]
+    exclude: ["node_modules/**", "**/test/**"]
+
+# Feed mode settings
+feed:
+  limit: 100
+  ytLang: "en"
+  noYtTranscript: false</pre>
+        </div>
+
+        <h4>Using Configuration Files</h4>
+        <div class="code-block">
+            <pre># Auto-detect gather.yaml in current directory
+gather
+
+# Specify custom configuration file
+gather --config production-crawl.yaml
+
+# Generate sample configuration
+gather --init > gather.yaml</pre>
+        </div>
+
+        <h3>Markdown Conversion</h3>
+        <p>Gather converts HTML to clean Markdown using Turndown:</p>
+        <ul>
+            <li><strong>Code blocks:</strong> Properly converted from <code>&lt;pre&gt;</code> and <code>&lt;code&gt;</code> elements with language detection</li>
+            <li><strong>Links:</strong> Converted to Markdown link syntax with relative URL preservation</li>
+            <li><strong>Tables:</strong> Converted to Markdown table format</li>
+            <li><strong>Headers:</strong> Preserved with correct nesting (h1-h6)</li>
+            <li><strong>Lists:</strong> Ordered and unordered lists maintained</li>
+            <li><strong>Images:</strong> Converted to Markdown image syntax</li>
+        </ul>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Integration Patterns</h2>
+            <p>Combine gather with other fwdslsh tools</p>
+        </div>
+
+        <h3>Complete Documentation Pipeline</h3>
+        <p>Use gather with catalog for AI-ready documentation:</p>
+        <div class="code-block">
+            <pre># Step 1: Crawl documentation site with Gather
+gather https://docs.example.com --output-dir ./docs
+
+# Step 2: Generate llms.txt files with catalog
+catalog ./docs --output build --base-url https://docs.example.com \
+  --sitemap --validate --index --toc
+
+# Step 3: Use with AI tools
+# Now feed build/llms.txt to your LLM for context</pre>
+        </div>
+
+        <h3>CI/CD Integration</h3>
+        <div class="code-block">
+            <pre>#!/bin/bash
+# .github/workflows/docs-sync.yml
+
+# Crawl latest documentation
+gather https://docs.example.com \
+  --max-pages 1000 \
+  --output-dir ./docs
+
+# Generate AI-ready artifacts
+catalog ./docs \
+  --output ./build \
+  --base-url https://docs.example.com \
+  --sitemap --validate
+
+# Upload to deployment location
+# ...</pre>
+        </div>
+
+        <h3>Multi-Source Crawling</h3>
+        <div class="code-block">
+            <pre># gather.yaml configuration for multiple sources
+maxPages: 50
+delay: 1000
+
+targets:
+  # Main documentation site
+  - url: "https://docs.example.com"
+    outputDir: "./docs/official"
+
+  # Community wiki
+  - url: "https://wiki.example.com"
+    outputDir: "./docs/community"
+
+  # GitHub repository docs
+  - url: "https://github.com/owner/repo/tree/main/docs"
+    include: ["*.md"]
+    exclude: ["**/draft/**"]
+    outputDir: "./docs/github"</pre>
         </div>
     </section>
+
+    <section class="tool-section alt-bg">
+        <div class="section-header">
+            <h2>GitHub Integration</h2>
+            <p>Download repositories and specific directories</p>
+        </div>
+
+        <h3>Authentication</h3>
+        <p>For authenticated access to private repositories or higher rate limits:</p>
+        <div class="code-block">
+            <pre># Set GitHub token (unauthenticated: 60 req/hour, authenticated: 5,000 req/hour)
+export GITHUB_TOKEN="your_github_personal_access_token"
+
+# Crawl with authenticated access
+gather https://github.com/owner/repo</pre>
+        </div>
+
+        <h3>Sparse Checkout</h3>
+        <p>Download only specific directories using Git sparse checkout:</p>
+        <div class="code-block">
+            <pre># Download entire repository
+gather https://github.com/owner/repo
+
+# Download specific directory
+gather https://github.com/owner/repo/tree/main/docs
+
+# Download specific file path
+gather https://github.com/owner/repo/blob/main/README.md</pre>
+        </div>
+
+        <h3>File Filtering</h3>
+        <div class="code-block">
+            <pre># Include only markdown files
+gather https://github.com/owner/repo --include "*.md"
+
+# Exclude node_modules and test directories
+gather https://github.com/owner/repo \
+  --exclude "node_modules/**" \
+  --exclude "**/*.test.md" \
+  --exclude "**/__tests__/**"
+
+# Multiple include patterns
+gather https://github.com/owner/repo \
+  --include "*.md" \
+  --include "*.txt" \
+  --include "*.json"</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Environment Variables</h2>
+            <p>Configure behavior via environment variables</p>
+        </div>
+
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>GITHUB_TOKEN</code></td>
+                    <td>GitHub Personal Access Token for API authentication</td>
+                </tr>
+                <tr>
+                    <td><code>X_BEARER_TOKEN</code></td>
+                    <td>X/Twitter Bearer token for feed ingestion</td>
+                </tr>
+                <tr>
+                    <td><code>HTTP_PROXY</code></td>
+                    <td>HTTP proxy URL for web requests</td>
+                </tr>
+                <tr>
+                    <td><code>HTTPS_PROXY</code></td>
+                    <td>HTTPS proxy URL for web requests</td>
+                </tr>
+                <tr>
+                    <td><code>NO_PROXY</code></td>
+                    <td>Comma-separated list of hosts to bypass proxy</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="tool-section">
+        <div class="section-header">
+            <h2>Exit Codes</h2>
+            <p>CLI exit codes for automation</p>
+        </div>
+
+        <table class="options-table">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>0</code></td>
+                    <td>Success - all pages/files crawled successfully</td>
+                </tr>
+                <tr>
+                    <td><code>1</code></td>
+                    <td>General failure - unrecoverable error</td>
+                </tr>
+                <tr>
+                    <td><code>2</code></td>
+                    <td>Usage error - invalid arguments or options</td>
+                </tr>
+                <tr>
+                    <td><code>3</code></td>
+                    <td>Network error - connection failed, timeout, or DNS issue</td>
+                </tr>
+                <tr>
+                    <td><code>4</code></td>
+                    <td>Partial success - some pages failed but operation completed</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
 </body>
+
 </html>
