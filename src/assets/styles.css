@@ -63,7 +63,7 @@
   --icon-2xl: 48px;
 
   --font-body: 'Share Tech Mono', monospace;
-  --font-display: 'Staatliches', sans-serif;
+  --font-display: 'Protest Revolution', sans-serif;
   --font-mono: 'Share Tech Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
   --font-sans: 'Exo 2', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
@@ -239,7 +239,7 @@ h1 {
 
 /* Typography Hierarchy */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.3;
   color: var(--text-primary);
@@ -346,11 +346,11 @@ h4 {
 /* Section Headers */
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 .section-header h2 {
@@ -369,53 +369,46 @@ h4 {
 /* Code Styles */
 .code-snippet,
 .code-block {
-  background: var(--bg-code);
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 1.25rem 1.5rem;
+  background: #0d1117; /* Matches github-dark default */
+  border: 1px solid #30363d;
+  border-radius: 6px;
   margin: 1.5rem 0;
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  overflow-x: auto;
   position: relative;
   text-align: left;
 }
 
-/* Pre element specific styling for proper formatting */
-pre.code-snippet,
-pre.code-block,
-.code-block pre {
-  white-space: pre;
-  word-wrap: normal;
-  overflow-wrap: normal;
-  margin: 0;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  text-align: left;
-}
-
-.code-block {
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-}
-
-.code-block pre {
+/* Ensure speed-highlight container fits nicely */
+.code-block > [class*="shj-lang-"],
+.code-snippet[class*="shj-lang-"],
+.install-code[class*="shj-lang-"] {
   font-family: var(--font-mono);
-  font-size: 0.875rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre;
+  padding: 1rem; /* Add padding here as it replaces the pre */
+  border-radius: 6px;
+  overflow-x: auto;
+  tab-size: 2; /* Ensure consistent tab size */
+}
+
+/* Remove default padding from container if the child handles it */
+.code-block {
+  padding: 0;
 }
 
 .code-block .language-label {
   position: absolute;
-  top: 0.5rem;
-  right: 1rem;
+  top: 0;
+  right: 0;
+  padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
   color: var(--text-dim);
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-family: var(--font-sans);
+  background: var(--border);
+  border-bottom-left-radius: 6px;
+  border-top-right-radius: 6px;
+  z-index: 10;
+  pointer-events: none;
 }
 
 /* Inline code styling */
@@ -437,12 +430,8 @@ code {
   text-align: left;
 }
 
-/* Code block syntax highlighting colors */
-.code-block .comment { color: var(--text-dim); }
-.code-block .keyword { color: #ff7b72; }
-.code-block .string { color: #a5d6ff; }
-.code-block .function { color: #d2a8ff; }
-.code-block .number { color: var(--text-code); }
+/* Code block syntax highlighting colors - DEPRECATED: Handled by speed-highlight theme */
+/* Left empty intentionally to override legacy styles if any leak */
 
 /* Terminal Styles */
 .terminal-demo {
@@ -722,12 +711,68 @@ tr:hover td {
   margin: 0;
 }
 
+/* Stats Section */
+.stats-section {
+  padding: 4rem 2rem;
+  background: var(--bg-darker);
+  text-align: center;
+}
+
+.stats-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.stat-item {
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle, #30363d);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--primary);
+  font-family: var(--font-mono);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+}
+
 /* Footer */
 footer {
   background: var(--bg-darker);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-subtle, #30363d);
   padding: 4rem 2rem 2rem;
-  margin-top: 8rem;
+  margin-top: 6rem;
 }
 
 .footer-content {
@@ -931,7 +976,7 @@ footer {
 
 /* Tools Grid Styles (Moved from index.html) */
 .tools-preview {
-  padding: 6rem 2rem;
+  padding: 5rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -1062,18 +1107,19 @@ footer {
 
 /* Tool Card Code Snippets */
 .tool-card pre.code-snippet {
-  background: var(--bg-code);
-  border: 1px solid var(--border-subtle);
-  border-radius: 6px;
-  padding: 0.75rem 1rem;
+  background: #0b111a;
+  border: 1px solid #2b333b;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
   margin: 1rem 0;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-dim);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
   text-align: left;
   white-space: pre;
   overflow-x: auto;
-  line-height: 1.5;
+  line-height: 1.6;
+  tab-size: 2;
 }
 
 .tool-card pre.code-snippet:hover {

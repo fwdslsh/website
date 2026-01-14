@@ -93,7 +93,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 4rem;
+            margin-top: 2.5rem;
         }
 
         .integration-card {
@@ -138,9 +138,9 @@
 
         .use-case-scenarios {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-top: 4rem;
+            margin-top: 2.5rem;
         }
 
         .scenario-card {
@@ -594,7 +594,33 @@ hyphn run @agent/review --safe</pre>
     </section>
 
     <!-- Stats Section -->
-    <include src="/_includes/components/stats-section.html"></include>
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="section-header">
+                <h2>Performance That Matters</h2>
+                <p>Benchmarks from real-world usage</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Focused Tools</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Agent</div>
+                    <div class="stat-label">Native Arch</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Platforms</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Open Source</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- CTA Section -->
     <section class="tool-section alt-bg">
@@ -697,7 +723,6 @@ hyphn run @agent/review --safe</pre>
         });
 
         document.querySelectorAll('.integration-card, .scenario-card').forEach(card => {
-            card.style.opacity = '0';
             integrationObserver.observe(card);
         });
     </script>

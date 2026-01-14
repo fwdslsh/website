@@ -5,10 +5,13 @@
   "type": "module",
   "homepage": "https://fwdslsh.dev",
   "scripts": {
-    "build": "bun ../unify/src/cli.js build --source src --output dist --pretty-urls",
+    "build": "bun ../unify/src/cli.js build --source src --copy .well-known/*.json --output dist --pretty-urls --verbose",
     "dev": "bun ../unify/src/cli.js serve --source src"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0"
+  },
+  "dependencies": {
+    "@speed-highlight/core": "^1.2.14"
   }
 }

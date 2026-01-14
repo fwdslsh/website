@@ -16,17 +16,18 @@
         }
 
         .features-demo {
-            background: var(--bg-darker);
-            border: 1px solid var(--border);
+            background: var(--bg-code, #0d1117);
+            border: 1px solid var(--border-subtle, #30363d);
             border-radius: 12px;
-            margin: 3rem auto;
+            margin: 2.5rem auto;
             max-width: 800px;
             overflow: hidden;
         }
 
         .demo-tabs {
             display: flex;
-            background: var(--border);
+            background: var(--bg-card, #161b22);
+            border-bottom: 1px solid var(--border-subtle, #30363d);
         }
 
         .demo-tab {
@@ -42,7 +43,7 @@
         }
 
         .demo-tab.active {
-            background: var(--bg-darker);
+            background: var(--bg-code, #0d1117);
             color: var(--primary);
         }
 
@@ -68,7 +69,7 @@
 
         .metric-card {
             background: var(--bg-card);
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-subtle, #30363d);
             border-radius: 8px;
             padding: 2rem;
             text-align: center;
@@ -89,8 +90,8 @@
         }
 
         .config-example {
-            background: var(--bg-darker);
-            border: 1px solid var(--border);
+            background: var(--bg-code, #0d1117);
+            border: 1px solid var(--border-subtle, #30363d);
             border-radius: 12px;
             padding: 2rem;
             margin-top: 2rem;
@@ -108,7 +109,7 @@
         }
 
         .config-yaml .value {
-            color: var(--text-main);
+            color: var(--text-primary);
         }
 
         .config-yaml .comment {

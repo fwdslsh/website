@@ -54,10 +54,11 @@ nav {
 
 /* Tool Hero Sections */
 .tool-hero {
-    min-height: 80vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
-    padding: 8rem 2rem 4rem;
+    gap: 3rem;
+    padding: 6rem 2rem 3rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -95,37 +96,52 @@ nav {
 
 .tool-demo {
     flex: 1;
-    margin-left: 4rem;
+    margin-left: 0;
     animation: fadeInRight 1s ease-out 0.3s both;
+}
+
+.tool-demo .code-block {
+    width: 100%;
+    max-width: 620px;
+    padding: 1.25rem 1.5rem;
+}
+
+.tool-demo .code-block pre {
+    white-space: pre;
+    font-size: 0.85rem;
+    line-height: 1.6;
 }
 
 /* Tool Navigation */
 .tool-nav {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: none;
+    padding: 0;
     margin: 0 auto 2rem;
     max-width: 1200px;
     position: sticky;
     top: 80px;
     z-index: 100;
-    backdrop-filter: blur(12px);
-    border-radius: 14px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .tool-nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
     padding: 0;
 }
 
 .tool-nav-links {
-    display: flex;
-    gap: 2rem;
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0.35rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle, #30363d);
+    border-radius: 999px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .tool-nav-links li {
@@ -136,36 +152,24 @@ nav {
     color: var(--text-secondary);
     text-decoration: none;
     font-family: var(--font-mono);
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.01em;
-    padding: 0.55rem 1.1rem;
-    border-radius: 10px;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
     transition: all 0.25s ease;
     display: block;
-    position: relative;
 }
 
 .tool-nav-links a:hover,
 .tool-nav-links a.active {
     color: var(--primary);
-    background: rgba(0, 255, 65, 0.1);
-}
-
-.tool-nav-links a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 2px;
-    background: var(--primary);
+    background: rgba(0, 255, 65, 0.12);
 }
 
 /* Tool Sections */
 .tool-section {
-    padding: 5rem 2rem;
+    padding: 4rem 2rem;
     max-width: 1000px;
     margin: 0 auto;
     gap: 1rem;
@@ -179,7 +183,7 @@ nav {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    padding: 5rem 2rem;
+    padding: 4rem 2rem;
     max-width: none;
 }
 

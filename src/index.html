@@ -13,19 +13,19 @@
     }
 
     /* Hero Section - Page specific */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-      background-image: url("assets/cables-bg.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-    }
+.hero {
+       min-height: 85vh;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       text-align: center;
+       padding: 2rem;
+       position: relative;
+       background-image: url("assets/cables-bg.png");
+       background-repeat: no-repeat;
+       background-position: center;
+       background-size: contain;
+     }
 
     .hero-content {
       max-width: 800px;
@@ -416,7 +416,6 @@ $ catalog --optional "drafts/**/*" --validate</pre>
   });
 
   terminalLines.forEach((line, index) => {
-    line.style.opacity = '0';
     line.style.animationDelay = `${index * 0.2}s`;
     observer.observe(line);
   });

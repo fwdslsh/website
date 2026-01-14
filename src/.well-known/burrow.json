@@ -1,0 +1,548 @@
+{
+  "specVersion": "fwdslsh.dev/rabit/schemas/0.4.0/burrow",
+  "kind": "burrow",
+  "title": "dist",
+  "description": "Auto-generated burrow from /home/founder3/code/github/fwdslsh/website/dist",
+  "updated": "2026-01-14T04:53:04.820Z",
+  "entries": [
+    {
+      "id": "assets",
+      "kind": "burrow",
+      "uri": "assets/",
+      "title": "assets",
+      "summary": "Burrow containing 10 entries",
+      "priority": 70
+    },
+    {
+      "id": "catalog-docs",
+      "kind": "dir",
+      "uri": "catalog/docs/",
+      "title": "docs",
+      "priority": 70
+    },
+    {
+      "id": "catalog-docs",
+      "kind": "file",
+      "uri": "catalog/docs.html",
+      "title": "docs.html",
+      "mediaType": "text/html",
+      "sizeBytes": 437274,
+      "priority": 80
+    },
+    {
+      "id": "catalog-examples",
+      "kind": "dir",
+      "uri": "catalog/examples/",
+      "title": "examples",
+      "priority": 70
+    },
+    {
+      "id": "catalog-examples",
+      "kind": "file",
+      "uri": "catalog/examples.html",
+      "title": "examples.html",
+      "mediaType": "text/html",
+      "sizeBytes": 256187,
+      "priority": 80
+    },
+    {
+      "id": "catalog-getting-started",
+      "kind": "dir",
+      "uri": "catalog/getting-started/",
+      "title": "getting-started",
+      "priority": 70
+    },
+    {
+      "id": "catalog-getting-started",
+      "kind": "file",
+      "uri": "catalog/getting-started.html",
+      "title": "getting-started.html",
+      "mediaType": "text/html",
+      "sizeBytes": 215310,
+      "priority": 80
+    },
+    {
+      "id": "catalog-index",
+      "kind": "file",
+      "uri": "catalog/index.html",
+      "title": "index.html",
+      "mediaType": "text/html",
+      "sizeBytes": 338511,
+      "priority": 95
+    },
+    {
+      "id": "disclose-docs",
+      "kind": "dir",
+      "uri": "disclose/docs/",
+      "title": "docs",
+      "priority": 70
+    },
+    {
+      "id": "disclose-docs",
+      "kind": "file",
+      "uri": "disclose/docs.html",
+      "title": "docs.html",
+      "mediaType": "text/html",
+      "sizeBytes": 228086,
+      "priority": 80
+    },
+    {
+      "id": "disclose-examples",
+      "kind": "dir",
+      "uri": "disclose/examples/",
+      "title": "examples",
+      "priority": 70
+    },
+    {
+      "id": "disclose-examples",
+      "kind": "file",
+      "uri": "disclose/examples.html",
+      "title": "examples.html",
+      "mediaType": "text/html",
+      "sizeBytes": 107762,
+      "priority": 80
+    },
+    {
+      "id": "disclose-getting-started",
+      "kind": "dir",
+      "uri": "disclose/getting-started/",
+      "title": "getting-started",
+      "priority": 70
+    },
+    {
+      "id": "disclose-getting-started",
+      "kind": "file",
+      "uri": "disclose/getting-started.html",
+      "title": "getting-started.html",
+      "mediaType": "text/html",
+      "sizeBytes": 54431,
+      "priority": 80
+    },
+    {
+      "id": "disclose-index",
+      "kind": "file",
+      "uri": "disclose/index.html",
+      "title": "index.html",
+      "mediaType": "text/html",
+      "sizeBytes": 116642,
+      "priority": 95
+    },
+    {
+      "id": "dispatch-docs",
+      "kind": "dir",
+      "uri": "dispatch/docs/",
+      "title": "docs",
+      "priority": 70
+    },
+    {
+      "id": "dispatch-docs",
+      "kind": "file",
+      "uri": "dispatch/docs.html",
+      "title": "docs.html",
+      "mediaType": "text/html",
+      "sizeBytes": 30998,
+      "priority": 80
+    },
+    {
+      "id": "dispatch-examples",
+      "kind": "dir",
+      "uri": "dispatch/examples/",
+      "title": "examples",
+      "priority": 70
+    },
+    {
+      "id": "dispatch-examples",
+      "kind": "file",
+      "uri": "dispatch/examples.html",
+      "title": "examples.html",
+      "mediaType": "text/html",
+      "sizeBytes": 31649,
+      "priority": 80
+    },
+    {
+      "id": "dispatch-getting-started",
+      "kind": "dir",
+      "uri": "dispatch/getting-started/",
+      "title": "getting-started",
+      "priority": 70
+    },
+    {
+      "id": "dispatch-getting-started",
+      "kind": "file",
+      "uri": "dispatch/getting-started.html",
+      "title": "getting-started.html",
+      "mediaType": "text/html",
+      "sizeBytes": 34120,
+      "priority": 80
+    },
+    {
+      "id": "dispatch-index",
+      "kind": "file",
+      "uri": "dispatch/index.html",
+      "title": "index.html",
+      "mediaType": "text/html",
+      "sizeBytes": 44062,
+      "priority": 95
+    },
+    {
+      "id": "ecosystem-index",
+      "kind": "file",
+      "uri": "ecosystem/index.html",
+      "title": "index.html",
+      "mediaType": "text/html",
+      "sizeBytes": 190705,
+      "priority": 95
+    },
+    {
+      "id": "gather-docs",
+      "kind": "dir",
+      "uri": "gather/docs/",
+      "title": "docs",
+      "priority": 70
+    },
+    {
+      "id": "gather-docs",
+      "kind": "file",
+      "uri": "gather/docs.html",
+      "title": "docs.html",
+      "mediaType": "text/html",
+      "sizeBytes": 231456,
+      "priority": 80
+    },
+    {
+      "id": "gather-examples",
+      "kind": "dir",
+      "uri": "gather/examples/",
+      "title": "examples",
+      "priority": 70
+    },
+    {
+      "id": "gather-examples",
+      "kind": "file",
+      "uri": "gather/examples.html",
+      "title": "examples.html",
+      "mediaType": "text/html",
+      "sizeBytes": 144752,
+      "priority": 80
+    },
+    {
+      "id": "gather-getting-started",
+      "kind": "dir",
+      "uri": "gather/getting-started/",
+      "title": "getting-started",
+      "priority": 70
+    },
+    {
+      "id": "gather-getting-started",
+      "kind": "file",
+      "uri": "gather/getting-started.html",
+      "title": "getting-started.html",
+      "mediaType": "text/html",
+      "sizeBytes": 85580,
+      "priority": 80
+    },
+    {
+      "id": "gather-index",
+      "kind": "file",
+      "uri": "gather/index.html",
+      "title": "index.html",
+      "mediaType": "text/html",
+      "sizeBytes": 111569,
+      "priority": 95
+    },
+    {
+      "id": "hyphn-docs",
+      "kind": "dir",
+      "uri": "hyphn/docs/",
+      "title": "docs",
+      "priority": 70
+    },
+    {
+      "id": "hyphn-docs",
+      "kind": "file",
+      "uri": "hyphn/docs.html",
+      "title": "docs.html",
+      "mediaType": "text/html",
+      "sizeBytes": 243457,
+      "priority": 80
+    },
+    {
+      "id": "hyphn-examples",
+      "kind": "dir",
+      "uri": "hyphn/examples/",
+      "title": "examples",
+      "priority": 70
+    },
+    {
+      "id": "hyphn-examples",
+      "kind": "file",
+      "uri": "hyphn/examples.html",
+      "title": "examples.html",
+      "mediaType": "text/html",
+      "sizeBytes": 126975,
+      "priority": 80
+    },
+    {
+      "id": "hyphn-getting-started",
+      "kind": "dir",
+      "uri": "hyphn/getting-started/",
+      "title": "getting-started",
+      "priority": 70
+    },
+    {
+      "id": "hyphn-getting-started",
+      "kind": "file",
+      "uri": "hyphn/getting-started.html",
+      "title": "getting-started.html",
+      "mediaType": "text/html",
+      "sizeBytes": 47727,
+      "priority": 80
+    },
+    {
+      "id": "hyphn-index",
+      "kind": "file",
+      "uri": "hyphn/index.html",
+      "title": "index.html",
+      "mediaType": "text/html",
+      "sizeBytes": 119162,
+      "priority": 95
+    },
+    {
+      "id": "index",
+      "kind": "file",
+      "uri": "index.html",
+      "title": "index.html",
+      "mediaType": "text/html",
+      "sizeBytes": 87889,
+      "priority": 95
+    },
+    {
+      "id": "inform-docs",
+      "kind": "dir",
+      "uri": "inform/docs/",
+      "title": "docs",
+      "priority": 70
+    },
+    {
+      "id": "inform-docs",
+      "kind": "file",
+      "uri": "inform/docs.html",
+      "title": "docs.html",
+      "mediaType": "text/html",
+      "sizeBytes": 83568,
+      "priority": 80
+    },
+    {
+      "id": "inform-examples",
+      "kind": "dir",
+      "uri": "inform/examples/",
+      "title": "examples",
+      "priority": 70
+    },
+    {
+      "id": "inform-examples",
+      "kind": "file",
+      "uri": "inform/examples.html",
+      "title": "examples.html",
+      "mediaType": "text/html",
+      "sizeBytes": 46332,
+      "priority": 80
+    },
+    {
+      "id": "inform-getting-started",
+      "kind": "dir",
+      "uri": "inform/getting-started/",
+      "title": "getting-started",
+      "priority": 70
+    },
+    {
+      "id": "inform-getting-started",
+      "kind": "file",
+      "uri": "inform/getting-started.html",
+      "title": "getting-started.html",
+      "mediaType": "text/html",
+      "sizeBytes": 153858,
+      "priority": 80
+    },
+    {
+      "id": "inform-index",
+      "kind": "file",
+      "uri": "inform/index.html",
+      "title": "index.html",
+      "mediaType": "text/html",
+      "sizeBytes": 124640,
+      "priority": 95
+    },
+    {
+      "id": "inscribe-docs",
+      "kind": "dir",
+      "uri": "inscribe/docs/",
+      "title": "docs",
+      "priority": 70
+    },
+    {
+      "id": "inscribe-docs",
+      "kind": "file",
+      "uri": "inscribe/docs.html",
+      "title": "docs.html",
+      "mediaType": "text/html",
+      "sizeBytes": 94389,
+      "priority": 80
+    },
+    {
+      "id": "inscribe-examples",
+      "kind": "dir",
+      "uri": "inscribe/examples/",
+      "title": "examples",
+      "priority": 70
+    },
+    {
+      "id": "inscribe-examples",
+      "kind": "file",
+      "uri": "inscribe/examples.html",
+      "title": "examples.html",
+      "mediaType": "text/html",
+      "sizeBytes": 57982,
+      "priority": 80
+    },
+    {
+      "id": "inscribe-getting-started",
+      "kind": "dir",
+      "uri": "inscribe/getting-started/",
+      "title": "getting-started",
+      "priority": 70
+    },
+    {
+      "id": "inscribe-getting-started",
+      "kind": "file",
+      "uri": "inscribe/getting-started.html",
+      "title": "getting-started.html",
+      "mediaType": "text/html",
+      "sizeBytes": 46223,
+      "priority": 80
+    },
+    {
+      "id": "inscribe-index",
+      "kind": "file",
+      "uri": "inscribe/index.html",
+      "title": "index.html",
+      "mediaType": "text/html",
+      "sizeBytes": 95136,
+      "priority": 95
+    },
+    {
+      "id": "rabit-docs",
+      "kind": "dir",
+      "uri": "rabit/docs/",
+      "title": "docs",
+      "priority": 70
+    },
+    {
+      "id": "rabit-docs",
+      "kind": "file",
+      "uri": "rabit/docs.html",
+      "title": "docs.html",
+      "mediaType": "text/html",
+      "sizeBytes": 34217,
+      "priority": 80
+    },
+    {
+      "id": "rabit-examples",
+      "kind": "dir",
+      "uri": "rabit/examples/",
+      "title": "examples",
+      "priority": 70
+    },
+    {
+      "id": "rabit-examples",
+      "kind": "file",
+      "uri": "rabit/examples.html",
+      "title": "examples.html",
+      "mediaType": "text/html",
+      "sizeBytes": 32044,
+      "priority": 80
+    },
+    {
+      "id": "rabit-getting-started",
+      "kind": "dir",
+      "uri": "rabit/getting-started/",
+      "title": "getting-started",
+      "priority": 70
+    },
+    {
+      "id": "rabit-getting-started",
+      "kind": "file",
+      "uri": "rabit/getting-started.html",
+      "title": "getting-started.html",
+      "mediaType": "text/html",
+      "sizeBytes": 36828,
+      "priority": 80
+    },
+    {
+      "id": "rabit-index",
+      "kind": "file",
+      "uri": "rabit/index.html",
+      "title": "index.html",
+      "mediaType": "text/html",
+      "sizeBytes": 57178,
+      "priority": 95
+    },
+    {
+      "id": "reflect-docs",
+      "kind": "dir",
+      "uri": "reflect/docs/",
+      "title": "docs",
+      "priority": 70
+    },
+    {
+      "id": "reflect-docs",
+      "kind": "file",
+      "uri": "reflect/docs.html",
+      "title": "docs.html",
+      "mediaType": "text/html",
+      "sizeBytes": 67168,
+      "priority": 80
+    },
+    {
+      "id": "reflect-examples",
+      "kind": "dir",
+      "uri": "reflect/examples/",
+      "title": "examples",
+      "priority": 70
+    },
+    {
+      "id": "reflect-examples",
+      "kind": "file",
+      "uri": "reflect/examples.html",
+      "title": "examples.html",
+      "mediaType": "text/html",
+      "sizeBytes": 47103,
+      "priority": 80
+    },
+    {
+      "id": "reflect-getting-started",
+      "kind": "dir",
+      "uri": "reflect/getting-started/",
+      "title": "getting-started",
+      "priority": 70
+    },
+    {
+      "id": "reflect-getting-started",
+      "kind": "file",
+      "uri": "reflect/getting-started.html",
+      "title": "getting-started.html",
+      "mediaType": "text/html",
+      "sizeBytes": 44925,
+      "priority": 80
+    },
+    {
+      "id": "reflect-index",
+      "kind": "file",
+      "uri": "reflect/index.html",
+      "title": "index.html",
+      "mediaType": "text/html",
+      "sizeBytes": 147682,
+      "priority": 95
+    }
+  ]
+}

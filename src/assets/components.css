@@ -111,7 +111,7 @@
 /* Section Headers */
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
 }
 
 .section-header h2 {
@@ -125,7 +125,7 @@
 }
 
 .section-header p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
@@ -183,43 +183,50 @@
 
 /* Code Blocks */
 .code-block {
-    background: var(--bg-darker);
-    border: 1px solid var(--border-subtle, #30363d);
-    border-radius: 12px;
-    padding: 1.5rem;
+    background: #0d1117; /* GitHub dark bg */
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 0; /* Remove padding here so nested elements handle it */
     margin: 2rem 0;
     overflow-x: auto;
     text-align: left;
+    position: relative;
 }
 
-.code-block pre {
-    margin: 0;
-    color: var(--text-secondary, #c9d1d9);
+.code-block > [class*="shj-lang-"] {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
     line-height: 1.7;
     white-space: pre;
-    overflow-wrap: normal;
-    word-wrap: normal;
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    text-align: left;
+    padding: 1.25rem 1.5rem; /* Re-add padding inside the container */
+    display: block;
+    width: 100%;
+    min-height: 100%;
 }
 
 .code-snippet {
-    background: var(--bg-darker);
-    border: 1px solid var(--border-subtle, #30363d);
+    background: #0d1117;
+    border: 1px solid #30363d;
     border-radius: 6px;
     padding: 0.75rem 1rem;
     font-family: var(--font-mono);
     font-size: 0.85rem;
-    color: var(--text-dim, #8b949e);
     margin-top: 1rem;
     cursor: pointer;
     transition: all 0.2s ease;
     text-align: left;
+    white-space: pre;
+}
+
+.code-snippet[class*="shj-lang-"],
+.install-code[class*="shj-lang-"] {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.6;
 }
 
 .code-snippet:hover {
-    background: rgba(63, 185, 80, 0.1);
+    background: rgba(63, 185, 80, 0.12);
     border-color: var(--primary, #3fb950);
 }
 
