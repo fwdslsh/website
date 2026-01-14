@@ -1,0 +1,6 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "/home/founder3/code/github/fwdslsh/core/packages/hyphn-opencode"
+  ]
+}

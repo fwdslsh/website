@@ -40,8 +40,8 @@
 }
 
 .install-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
+    background: var(--bg-card, #161b22);
+    border: 1px solid var(--border-subtle, #30363d);
     border-radius: 12px;
     padding: 2rem;
     text-align: center;
@@ -91,21 +91,24 @@
 }
 
 .install-code {
-    background: var(--bg-darker);
-    border: 1px solid var(--border);
+    background: var(--bg-code, #0d1117);
+    border: 1px solid var(--border-subtle, #30363d);
     border-radius: 8px;
     padding: 1rem;
     margin: 1rem 0;
     font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: var(--primary);
+    font-size: 0.85rem;
+    color: var(--text-dim, #8b949e);
     text-align: left;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
+    white-space: pre;
+    line-height: 1.5;
 }
 
 .install-code:hover {
-    background: rgba(0, 255, 65, 0.1);
+    background: rgba(63, 185, 80, 0.1);
+    border-color: var(--primary, #3fb950);
 }
 
 .install-card p {

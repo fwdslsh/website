@@ -166,18 +166,39 @@ nav {
 /* Tool Sections */
 .tool-section {
     padding: 5rem 2rem;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     gap: 1rem;
 }
 
 .tool-section.alt-bg {
     background: var(--bg-darker);
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    padding-left: calc(50vw - 50%);
-    padding-right: calc(50vw - 50%);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 5rem 2rem;
     max-width: none;
+}
+
+.tool-section.alt-bg > .section-header,
+.tool-section.alt-bg > h2,
+.tool-section.alt-bg > h3,
+.tool-section.alt-bg > h4,
+.tool-section.alt-bg > p,
+.tool-section.alt-bg > .code-block,
+.tool-section.alt-bg > table,
+.tool-section.alt-bg > ul,
+.tool-section.alt-bg > ol,
+.tool-section.alt-bg > .install-grid,
+.tool-section.alt-bg > .safety-features,
+.tool-section.alt-bg > .env-vars,
+.tool-section.alt-bg > .warning-box {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .tool-section.full-width {
