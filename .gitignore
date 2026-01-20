@@ -5,3 +5,4 @@ dist/
 .remove
 test-results/
 tests/visual/
+tmp-screenshots/
