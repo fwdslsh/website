@@ -74,7 +74,7 @@ function setupSmoothScroll() {
 
 function highlightActiveLinks() {
     const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll('.unify-nav-links a');
+    const navLinks = document.querySelectorAll('.tool-nav-links a');
     
     navLinks.forEach(link => {
         // Exact match or sub-path match for tools

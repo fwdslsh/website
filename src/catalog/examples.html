@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-unify="/_includes/tool-page.html">
+<html lang="en" data-layout="/_includes/tool-page.html">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +19,8 @@
 
 <body>
 
-  <include src="/_includes/components/hero-section.html">
-    <div class="unify-hero-content">
+  <include src="/_includes/components/hero-section.fragment.html">
+    <div slot="hero-content">
       <h1>catalog Examples</h1>
       <div class="tagline">Real-world patterns for AI-ready documentation indexing</div>
       <div class="description">Practical examples, proven workflows, and automation patterns for generating llms.txt
@@ -965,7 +965,7 @@ echo "🏁 Pattern testing complete"</code>
     </div>
 
     <div class="next-steps-grid">
-      <a href="/catalog/docs" class="next-step-card">
+      <a href="/catalog/docs/" class="next-step-card">
         <div class="card-icon">📚</div>
         <h3>Complete Documentation</h3>
         <p>Master all catalog features with comprehensive guides and CLI reference</p>

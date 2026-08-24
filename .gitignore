@@ -1,7 +1,8 @@
 # Ignore node_modules directory
 node_modules/
 .unify-cache/
-dist/
+/dist/
+!src/assets/vendor/**
 .remove
 test-results/
 tests/visual/
