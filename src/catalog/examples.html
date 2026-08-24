@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-unify="/_includes/tool-page.html">
+<html lang="en" data-layout="/_includes/tool-page.html">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +19,8 @@
 
 <body>
 
-  <include src="/_includes/components/hero-section.html">
-    <div class="unify-hero-content">
+  <include src="/_includes/components/hero-section.fragment.html">
+    <div slot="hero-content">
       <h1>catalog Examples</h1>
       <div class="tagline">Real-world patterns for AI-ready documentation indexing</div>
       <div class="description">Practical examples, proven workflows, and automation patterns for generating llms.txt
@@ -972,7 +972,7 @@ echo "🏁 Pattern testing complete"</code>
         <span class="card-arrow">→</span>
       </a>
 
-      <a href="/ecosystem/" class="next-step-card">
+      <a href="/ecosystem" class="next-step-card">
         <div class="card-icon">🔄</div>
         <h3>Ecosystem Integration</h3>
         <p>See how catalog combines with inform and the fwdslsh ecosystem for complete workflows</p>
