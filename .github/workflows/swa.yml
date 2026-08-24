@@ -17,8 +17,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Gate before publishing: either failing check stops the deploy.
+      # --copy is gone from unify; assets/ ships byte-for-byte under mirror copy.
+      - name: Verify — build --dry-run --strict
+        run: npm run check
+
+      - name: Verify — audit --strict
+        run: npm run audit
+
       - name: Build site
-        run: npx @fwdslsh/unify build --source src --output dist --pretty-urls --copy "assets/**/*"
+        run: npm run build
 
       - name: List Files
         run: tree -r ./dist
