@@ -1,5 +1,6 @@
 <!-- Member card template. Copy one block per member into members.md under the members heading.
-     Every field is written or confirmed by the member. No counts, rankings, or stats. -->
+     Every field is written or confirmed by the member. No counts, rankings, or stats.
+     A member's own repos go only under "Own repos listed" (shown in "From our members"), never under "Maintains (supported)". -->
 
 ### {handle}
 
