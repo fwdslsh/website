@@ -4,20 +4,6 @@
 import { applySpeedHighlight } from './speed-highlight-wrapper.js';
 
 const runSiteScripts = () => {
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
     // Add scroll effect to navigation
     window.addEventListener('scroll', () => {
         const nav = document.querySelector('nav');
@@ -73,9 +59,6 @@ const runSiteScripts = () => {
 
     // Apply syntax highlighting
     applySpeedHighlight();
-
-    // Tool-specific page logic
-    initializeToolPageFeatures();
 };
 
 if (document.readyState === 'loading') {
@@ -83,79 +66,3 @@ if (document.readyState === 'loading') {
 } else {
     runSiteScripts();
 }
-
-// Initialize tool-specific page features
-function initializeToolPageFeatures() {
-    // Set active state for tool navigation
-    setActiveToolNavigation();
-    
-    // Initialize any tab functionality
-    initializeTabs();
-}
-
-// Set active state based on current page
-function setActiveToolNavigation() {
-    const currentPath = window.location.pathname;
-    const fileName = currentPath.split('/').pop() || 'index.html';
-    
-    document.querySelectorAll('.tool-nav-links a').forEach(link => {
-        const linkHref = link.getAttribute('href');
-        if (linkHref === fileName || 
-            (fileName === '' && linkHref === 'index.html') ||
-            (fileName === '/' && linkHref === 'index.html')) {
-            link.classList.add('active');
-        }
-    });
-}
-
-// Initialize tab functionality
-function initializeTabs() {
-    document.querySelectorAll('[data-tab]').forEach(tab => {
-        tab.addEventListener('click', function(e) {
-            e.preventDefault();
-            const tabGroup = this.dataset.tabGroup || 'default';
-            const targetTab = this.dataset.tab;
-            
-            // Remove active class from all tabs in group
-            document.querySelectorAll(`[data-tab-group="${tabGroup}"]`).forEach(t => {
-                t.classList.remove('active');
-            });
-            
-            // Hide all content in group
-            document.querySelectorAll(`[data-tab-content-group="${tabGroup}"]`).forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Activate clicked tab
-            this.classList.add('active');
-            
-            // Show corresponding content
-            const targetContent = document.querySelector(`[data-tab-content="${targetTab}"]`);
-            if (targetContent) {
-                targetContent.classList.add('active');
-            }
-        });
-    });
-}
-
-// Global utility functions exposed to window
-window.fwdslsh = {
-    // Show a tab (used by inline handlers)
-    showTab: function(tabName, groupName = 'default') {
-        const tab = document.querySelector(`[data-tab="${tabName}"][data-tab-group="${groupName}"]`);
-        if (tab) {
-            tab.click();
-        }
-    },
-    
-    // Smooth scroll to element
-    scrollTo: function(elementId) {
-        const element = document.getElementById(elementId);
-        if (element) {
-            element.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    }
-};

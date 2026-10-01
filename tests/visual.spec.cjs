@@ -1,26 +1,13 @@
 const { test, expect } = require('@playwright/test');
 
-test('visual inspection of home page', async ({ page }) => {
+test('visual inspection of home page', async ({ page }, testInfo) => {
   await page.goto('/');
   await expect(page).toHaveTitle(/fwdslsh/);
-  await page.screenshot({ path: 'tests/visual/home-desktop.png', fullPage: true });
+  await page.screenshot({ path: `tests/visual/home-${testInfo.project.name}.png`, fullPage: true });
 });
 
-test('visual inspection of ecosystem page', async ({ page }) => {
-  await page.goto('/ecosystem/');
-  await expect(page.locator('h1')).toContainText('fwdslsh');
-  await page.screenshot({ path: 'tests/visual/ecosystem-desktop.png', fullPage: true });
-});
-
-test('visual inspection of hyphn tool page', async ({ page }) => {
-  await page.goto('/hyphn/');
-  await expect(page.locator('h1')).toBeVisible();
-  await page.screenshot({ path: 'tests/visual/hyphn-desktop.png', fullPage: true });
-});
-
-test('mobile visual inspection of home page', async ({ page, isMobile }) => {
-  if (isMobile) {
-    await page.goto('/');
-    await page.screenshot({ path: 'tests/visual/home-mobile.png', fullPage: true });
-  }
+test('visual inspection of rabit page', async ({ page }, testInfo) => {
+  await page.goto('/rabit/');
+  await expect(page.locator('h1')).toHaveText('rabit');
+  await page.screenshot({ path: `tests/visual/rabit-${testInfo.project.name}.png`, fullPage: true });
 });

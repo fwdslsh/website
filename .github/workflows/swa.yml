@@ -26,7 +26,7 @@ jobs:
         run: npm ci
 
       # Gate before publishing: either failing check stops the deploy.
-      # --copy is gone from unify; assets/ ships byte-for-byte under mirror copy.
+      # Shared flags (--pretty-urls, --base-url, --canonical) live in src/unify.yaml.
       - name: Verify — build --dry-run --strict
         run: npm run check
 

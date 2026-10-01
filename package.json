@@ -5,17 +5,21 @@
   "type": "module",
   "homepage": "https://fwdslsh.dev",
   "scripts": {
-    "build": "unify build --source src --output dist --pretty-urls --base-url https://fwdslsh.dev/ --canonical auto",
+    "build": "unify build --source src --output dist",
     "dev": "unify dev --source src",
-    "check": "unify build --source src --output dist --pretty-urls --base-url https://fwdslsh.dev/ --canonical auto --dry-run --strict",
-    "audit": "unify audit --source src --output dist --pretty-urls --base-url https://fwdslsh.dev/ --canonical auto --strict",
+    "check": "unify build --source src --output dist --dry-run --strict",
+    "audit": "unify audit --source src --output dist --strict",
+    "audit:external": "unify audit --source src --output dist --external",
     "test": "playwright test"
   },
   "devDependencies": {
-    "@fwdslsh/unify": "^0.8.3",
+    "@fwdslsh/unify": "^0.9.0",
     "@playwright/test": "^1.57.0"
   },
   "dependencies": {
     "@speed-highlight/core": "^1.2.14"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }
