@@ -24,24 +24,12 @@ fi
 
 # Define projects to check (relative to repo root)
 PROJECTS=(
-  "core/packages/disclose"
-  "core/packages/gather"
-  "core/packages/catalog"
-  "core/packages/inform"
-  "core/packages/hyphn"
-  "dispatch"
+  "rabit"
+  "unify"
 )
 
-# Try to find repo root
-REPO_ROOT=""
-if [ -d "$WEBSITE_DIR/../core" ]; then
-  REPO_ROOT="$(cd "$WEBSITE_DIR/.." && pwd)"
-elif [ -d "$WEBSITE_DIR/../../fwdslsh" ]; then
-  REPO_ROOT="$(cd "$WEBSITE_DIR/../../fwdslsh" && pwd)"
-else
-  # Assume current structure
-  REPO_ROOT="/home/founder3/code/github/fwdslsh"
-fi
+# Sibling checkouts of the fwdslsh repositories (e.g. ../rabit, ../unify)
+REPO_ROOT="$(cd "$WEBSITE_DIR/.." && pwd)"
 
 echo "Checking for changes in projects..."
 echo "Repository root: $REPO_ROOT"

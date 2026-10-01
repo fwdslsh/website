@@ -69,7 +69,7 @@ Before running this skill:
 Run the automated discovery script:
 
 ```bash
-cd /home/founder3/code/github/fwdslsh/website
+cd website   # sibling checkouts: ../rabit, ../unify
 ./scripts/full-sync.sh
 ```
 
@@ -107,28 +107,15 @@ For each changed project, identify website pages to update:
 
 **Project → Page Mapping:**
 ```
-disclose → src/disclose/index.html
-          src/disclose/getting-started.html
-          src/disclose/docs.html
-          src/disclose/examples.html
-          src/index.html (tool card)
-          src/ecosystem/index.html
-
-gather → src/gather/index.html
-        src/gather/getting-started.html
-        src/gather/docs.html
-        src/gather/examples.html
+rabit → src/rabit/index.html
+        src/rabit/getting-started.html
+        src/rabit/docs.html
+        src/rabit/examples.html
+        src/.well-known/burrow.json, src/.well-known/warren.json
         src/index.html (tool card)
-        src/ecosystem/index.html
 
-dispatch → src/dispatch/index.html
-          src/dispatch/getting-started.html
-          src/dispatch/docs.html
-          src/dispatch/examples.html
-          src/index.html (tool card)
-          src/ecosystem/index.html
-
-# Similar mappings for other projects
+unify → src/index.html (tool card)
+        package.json (@fwdslsh/unify version), src/unify.yaml
 ```
 
 **Step 2.2: Create Update Checklist**
@@ -202,8 +189,8 @@ cat src/[project]/[page].html
 
 2. **Read source material:**
 ```bash
-cat ../core/packages/[project]/README.md
-cat ../core/packages/[project]/CLAUDE.md
+cat ../[project]/README.md
+cat ../[project]/CLAUDE.md
 ```
 
 3. **Make changes:**
@@ -285,7 +272,7 @@ Expected: All versions match
 **Step 4.3: Link Validation**
 
 ```bash
-./scripts/validate-links.sh
+npm run check && npm run audit:external
 ```
 
 Expected: No broken links
@@ -424,7 +411,7 @@ Check all locations:
 
 **Issue: Links broken after restructuring**
 ```bash
-./scripts/validate-links.sh
+npm run check && npm run audit:external
 # Fix hrefs in source files
 ```
 
@@ -522,7 +509,7 @@ After each sync:
 ./scripts/check-version-sync.sh
 
 # Validate links
-./scripts/validate-links.sh
+npm run check && npm run audit:external
 
 # Create branch
 git checkout -b website-sync-$(date +%Y%m%d)

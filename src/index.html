@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>fwdslsh - Slash a path through the bloat</title>
+  <title>Slash a path through the bloat</title>
   <meta name="description"
     content="Sharp tools for hackers who remember when software didn't fight you. Zero deps, instant setup, no frameworks to babysit.">
 
@@ -21,7 +21,7 @@
        text-align: center;
        padding: 2rem;
        position: relative;
-       background-image: url("assets/cables-bg.png");
+       background-image: url("/assets/cables-bg.png");
        background-repeat: no-repeat;
        background-position: center;
        background-size: contain;
@@ -110,32 +110,20 @@
       </div>
       <div class="terminal-content">
         <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">hyphn init</span>
-          <span class="comment"> # Share agents & skills</span>
-        </div>
-        <div class="terminal-line output">
-          ✓ Initialized ~/.hyphn with default sources
+          <span class="prompt">$</span> <span class="command">unify init</span>
+          <span class="comment"> # Scaffold a plain-HTML site</span>
         </div>
         <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">gather https://docs.example.com</span>
-          <span class="comment"> # Crawl site to Markdown</span>
-        </div>
-        <div class="terminal-line output">
-          ✓ Processed 42 pages in 1.2s
+          <span class="prompt">$</span> <span class="command">unify build</span>
+          <span class="comment"> # Layouts + includes, rendered at build time</span>
         </div>
         <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">disclose session-context</span>
-          <span class="comment"> # Bundle context for AI</span>
-        </div>
-        <div class="terminal-line output">
-          ✓ Created context bundle (12k tokens)
+          <span class="prompt">$</span> <span class="command">rabit discover https://fwdslsh.dev</span>
+          <span class="comment"> # Find a site's agent manifest</span>
         </div>
         <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">dispatch start</span>
-          <span class="comment"> # Secure agent sandbox</span>
-        </div>
-        <div class="terminal-line output">
-          ✓ Dispatch environment active on port 3030
+          <span class="prompt">$</span> <span class="command">rabit traverse https://fwdslsh.dev</span>
+          <span class="comment"> # Walk every entry, deterministically</span>
         </div>
       </div>
     </div>
@@ -144,37 +132,7 @@
       <div class="tool-card">
         <div class="tool-header">
           <div class="tool-icon">
-            <svg class="lucide lucide-share-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="18" cy="5" r="3" />
-              <circle cx="6" cy="12" r="3" />
-              <circle cx="18" cy="19" r="3" />
-              <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
-              <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
-            </svg>
-          </div>
-          <div>
-            <h3>hyphn</h3>
-            <div class="subtitle">Share agents, commands & skills</div>
-          </div>
-        </div>
-        <p>CLI for sharing extensible assets across OpenCode and Claude Code platforms. Don't silo your workflows.</p>
-
-        <pre class="code-snippet">$ hyphn init
-$ hyphn setup
-$ hyphn sources add ~/team-hyphn</pre>
-
-        <p><strong>Why we built it:</strong> AI coding tools shouldn't silo your custom workflows. Share them.</p>
-
-        <div class="tool-links">
-          <a href="/hyphn">Documentation →</a>
-          <a href="https://github.com/fwdslsh/hyphn">GitHub →</a>
-        </div>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-header">
-          <div class="tool-icon">
-            <svg class="lucide lucide-signpost" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="lucide lucide-signpost" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M12 13v8" />
               <path d="M12 3v3" />
               <path d="M18 6a2 2 0 0 1 1.387.56l2.307 2.22a1 1 0 0 1 0 1.44l-2.307 2.22A2 2 0 0 1 18 13H6a2 2 0 0 1-1.387-.56l-2.306-2.22a1 1 0 0 1 0-1.44l2.306-2.22A2 2 0 0 1 6 6z" />
@@ -185,158 +143,45 @@ $ hyphn sources add ~/team-hyphn</pre>
             <div class="subtitle">Manifest-based navigation for AI</div>
           </div>
         </div>
-        <p>Simple convention for publishing content that both humans and AI can reliably navigate using .burrow.json manifests.</p>
+        <p>A simple convention for publishing content that both humans and AI agents can navigate reliably, using <code>.burrow.json</code> manifests.</p>
 
-        <pre class="code-snippet">$ cat .burrow.json
-$ rabit validate
-$ rabit fetch</pre>
+        <pre class="code-snippet">$ rabit map ./docs --title "My Docs"
+$ rabit validate docs/.burrow.json
+$ rabit list https://example.com/docs</pre>
 
         <p><strong>Why we built it:</strong> AI agents need structured paths, not HTML soup.</p>
 
         <div class="tool-links">
-          <a href="/rabit">Documentation →</a>
-          <a href="https://github.com/itlackey/rabit">GitHub →</a>
+          <a href="/rabit/index.html">Documentation →</a>
+          <a href="https://github.com/fwdslsh/rabit">GitHub →</a>
         </div>
       </div>
 
       <div class="tool-card">
         <div class="tool-header">
           <div class="tool-icon">
-            <svg class="lucide lucide-box" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
-              <path d="m3.3 7 8.7 5 8.7-5" />
-              <path d="M12 22V12" />
+            <svg class="lucide lucide-layout-template" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="18" height="7" x="3" y="3" rx="1" />
+              <rect width="9" height="7" x="3" y="14" rx="1" />
+              <rect width="5" height="7" x="16" y="14" rx="1" />
             </svg>
           </div>
           <div>
-            <h3>dispatch</h3>
-            <div class="subtitle">Secure sandboxed execution</div>
+            <h3>unify</h3>
+            <div class="subtitle">HTML-native static site generator</div>
           </div>
         </div>
-        <p>Containerized dev environment for safely running Claude AI and CLI agents without risking your host system.</p>
+        <p>Write a header, nav, footer, or layout once in plain HTML and unify renders it into every page. No expression language, no client runtime &mdash; this site is built with it.</p>
 
-        <pre class="code-snippet">$ dispatch init
-$ dispatch start
-$ dispatch attach</pre>
+        <pre class="code-snippet">$ npm install -g @fwdslsh/unify
+$ unify init
+$ unify build</pre>
 
-        <p><strong>Why we built it:</strong> Run AI assistants in complete isolation with enterprise-grade security.</p>
+        <p><strong>Why we built it:</strong> Sharing chrome across pages shouldn't require a framework.</p>
 
         <div class="tool-links">
-          <a href="/dispatch">Documentation →</a>
-          <a href="https://github.com/fwdslsh/dispatch">GitHub →</a>
-        </div>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-header">
-          <div class="tool-icon">
-            <svg class="lucide lucide-search" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m21 21-4.34-4.34" />
-              <circle cx="11" cy="11" r="8" />
-            </svg>
-          </div>
-          <div>
-            <h3>disclose</h3>
-            <div class="subtitle">Learning retrieval & context assembly</div>
-          </div>
-        </div>
-        <p>CLI tool for retrieving and bundling relevant context from the Hyph3n learning system with token budget management.</p>
-
-        <pre class="code-snippet">$ disclose learnings --query "auth"
-$ disclose session-context
-$ disclose pack</pre>
-
-        <p><strong>Why we built it:</strong> AI needs the right context, not everything.</p>
-
-        <div class="tool-links">
-          <a href="/disclose">Documentation →</a>
-          <a href="https://github.com/fwdslsh/core/tree/main/packages/disclose">GitHub →</a>
-        </div>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-header">
-          <div class="tool-icon">
-            <svg class="lucide lucide-globe" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-              <path d="M2 12h20" />
-            </svg>
-          </div>
-          <div>
-            <h3>gather</h3>
-            <div class="subtitle">High-performance web crawler</div>
-          </div>
-        </div>
-        <p>Crawl websites, download Git repos, ingest feeds - all converted to clean Markdown.</p>
-
-        <pre class="code-snippet">$ gather https://docs.example.com
-$ gather github.com/owner/repo/tree/main/docs</pre>
-
-        <p><strong>Why we built it:</strong> Documentation migration shouldn't require frameworks.</p>
-
-        <div class="tool-links">
-          <a href="/gather">Documentation →</a>
-          <a href="https://github.com/fwdslsh/core/tree/main/packages/gather">GitHub →</a>
-        </div>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-header">
-          <div class="tool-icon">
-            <svg class="lucide lucide-file-text" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
-              <path d="M14 2v5a1 1 0 0 0 1 1h5" />
-              <path d="M10 9H8" />
-              <path d="M16 13H8" />
-              <path d="M16 17H8" />
-            </svg>
-          </div>
-          <div>
-            <h3>inform</h3>
-            <div class="subtitle">High-performance web content crawler</div>
-          </div>
-        </div>
-        <p>Crawl websites, extract main content, and convert to clean Markdown. Powered by Bun for maximum performance with zero dependencies.</p>
-
-        <pre class="code-snippet">$ inform https://docs.example.com
-$ inform github.com/owner/repo/tree/main/docs
-$ inform --include "*.md" --exclude "temp/*"</pre>
-
-        <p><strong>Why we built it:</strong> Documentation migration and content extraction shouldn't require heavy frameworks. Fast, focused, effective.</p>
-
-        <div class="tool-links">
-          <a href="/inform">Documentation →</a>
-          <a href="https://github.com/fwdslsh/inform">GitHub →</a>
-        </div>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-header">
-          <div class="tool-icon">
-            <svg class="lucide lucide-library" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m16 6 4 14" />
-              <path d="M12 6v14" />
-              <path d="M8 8v12" />
-              <path d="M4 4v16" />
-            </svg>
-          </div>
-          <div>
-            <h3>catalog</h3>
-            <div class="subtitle">AI-ready documentation indexer</div>
-          </div>
-        </div>
-        <p>Generate llms.txt and llms-full.txt from Markdown/HTML directories. Perfect for AI-powered documentation workflows and searchable knowledge bases.</p>
-
-        <pre class="code-snippet">$ catalog --input docs --output build
-$ catalog --sitemap --base-url https://docs.example.com
-$ catalog --optional "drafts/**/*" --validate</pre>
-
-        <p><strong>Why we built it:</strong> AI tools need structured, indexed content. We made it trivial to prepare documentation for AI consumption.</p>
-
-        <div class="tool-links">
-          <a href="/catalog">Documentation →</a>
-          <a href="https://github.com/fwdslsh/catalog">GitHub →</a>
+          <a href="https://github.com/fwdslsh/unify#readme">Documentation →</a>
+          <a href="https://github.com/fwdslsh/unify">GitHub →</a>
         </div>
       </div>
     </div>
@@ -378,45 +223,3 @@ $ catalog --optional "drafts/**/*" --validate</pre>
   </section>
 </body>
 </html>
-
-
-<script>
-  // Smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
-
-  // Add scroll effect to navigation
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-      nav.style.background = 'rgba(10, 14, 10, 0.95)';
-    } else {
-      nav.style.background = 'rgba(10, 14, 10, 0.9)';
-    }
-  });
-
-  // Terminal typing animation (optional enhancement)
-  const terminalLines = document.querySelectorAll('.terminal-line');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.animation = 'fadeInUp 0.5s ease-out forwards';
-      }
-    });
-  });
-
-  terminalLines.forEach((line, index) => {
-    line.style.animationDelay = `${index * 0.2}s`;
-    observer.observe(line);
-  });
-</script>

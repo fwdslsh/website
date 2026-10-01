@@ -3,8 +3,8 @@
     "specVersion": "fwdslsh.dev/rabit/schemas/0.4.0/warren",
     "kind": "warren",
     "title": "fwdslsh warren",
-    "description": "Registry containing a burrow reference for the fwdslsh digthub repositories.",
-    "updated": "2026-01-13T00:00:00Z",
+    "description": "Registry of burrows for the fwdslsh repositories.",
+    "updated": "2026-10-01T00:00:00Z",
     "burrows": [
         {
             "id": "rabit",
@@ -21,6 +21,24 @@
                 "source": "github",
                 "git": {
                     "remote": "https://github.com/fwdslsh/rabit",
+                    "defaultBranch": "main"
+                }
+            }
+        },
+        {
+            "id": "unify",
+            "title": "fwdslsh/unify",
+            "description": "unify repository - HTML-native static site generator.",
+            "uri": "https://github.com/fwdslsh/unify",
+            "tags": [
+                "repo",
+                "unify"
+            ],
+            "priority": 5,
+            "metadata": {
+                "source": "github",
+                "git": {
+                    "remote": "https://github.com/fwdslsh/unify",
                     "defaultBranch": "main"
                 }
             }

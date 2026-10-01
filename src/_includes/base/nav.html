@@ -1,40 +1,22 @@
-<nav>
+<nav aria-label="Main">
     <div class="nav-container">
         <div class="nav-logo-container">
-            <a href="/" class="logo">/</a>
+            <a href="/" class="logo" aria-label="fwdslsh home">/</a>
         </div>
 
         <!-- Tool context with dropdown - positioned left -->
         <div class="tool-context">
-            <!-- Default tools dropdown -->
             <div class="nav-dropdown">
-                <a href="/#tools" title="Tools">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        class="bi bi-tools" viewBox="0 0 16 16">
-                        <path
-                            d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
+                <a href="/#tools" title="Tools" aria-label="Tools">
+                    <svg class="lucide lucide-wrench" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" />
                     </svg>
                 </a>
                 <div class="nav-dropdown-content">
                     <div class="nav-dropdown-section">
-                        <a href="/hyphn" class="nav-tool-link">
+                        <a href="/rabit/index.html" class="nav-tool-link">
                             <span class="nav-tool-icon">
-                                <svg class="lucide lucide-share-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                  <circle cx="18" cy="5" r="3" />
-                                  <circle cx="6" cy="12" r="3" />
-                                  <circle cx="18" cy="19" r="3" />
-                                  <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
-                                  <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
-                                </svg>
-                            </span>
-                            <div>
-                                <div class="nav-tool-name">hyphn</div>
-                                <div class="nav-tool-desc">Agent sharing</div>
-                            </div>
-                        </a>
-                        <a href="/rabit" class="nav-tool-link">
-                            <span class="nav-tool-icon">
-                                <svg class="lucide lucide-signpost" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="lucide lucide-signpost" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                   <path d="M12 13v8" />
                                   <path d="M12 3v3" />
                                   <path d="M18 6a2 2 0 0 1 1.387.56l2.307 2.22a1 1 0 0 1 0 1.44l-2.307 2.22A2 2 0 0 1 18 13H6a2 2 0 0 1-1.387-.56l-2.306-2.22a1 1 0 0 1 0-1.44l2.306-2.22A2 2 0 0 1 6 6z" />
@@ -45,71 +27,17 @@
                                 <div class="nav-tool-desc">Agent navigation</div>
                             </div>
                         </a>
-                        <a href="/dispatch" class="nav-tool-link">
+                        <a href="https://github.com/fwdslsh/unify" class="nav-tool-link">
                             <span class="nav-tool-icon">
-                                <svg class="lucide lucide-box" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
-                                  <path d="m3.3 7 8.7 5 8.7-5" />
-                                  <path d="M12 22V12" />
+                                <svg class="lucide lucide-layout-template" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                  <rect width="18" height="7" x="3" y="3" rx="1" />
+                                  <rect width="9" height="7" x="3" y="14" rx="1" />
+                                  <rect width="5" height="7" x="16" y="14" rx="1" />
                                 </svg>
                             </span>
                             <div>
-                                <div class="nav-tool-name">dispatch</div>
-                                <div class="nav-tool-desc">Secure sandbox</div>
-                            </div>
-                        </a>
-                        <a href="/disclose" class="nav-tool-link">
-                            <span class="nav-tool-icon">
-                                <svg class="lucide lucide-search" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                  <path d="m21 21-4.34-4.34" />
-                                  <circle cx="11" cy="11" r="8" />
-                                </svg>
-                            </span>
-                            <div>
-                                <div class="nav-tool-name">disclose</div>
-                                <div class="nav-tool-desc">Context bundling</div>
-                            </div>
-                        </a>
-                        <a href="/gather" class="nav-tool-link">
-                            <span class="nav-tool-icon">
-                                <svg class="lucide lucide-globe" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                  <circle cx="12" cy="12" r="10" />
-                                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-                                  <path d="M2 12h20" />
-                                </svg>
-                            </span>
-                            <div>
-                                <div class="nav-tool-name">gather</div>
-                                <div class="nav-tool-desc">Web crawler</div>
-                            </div>
-                        </a>
-                        <a href="/inform" class="nav-tool-link">
-                            <span class="nav-tool-icon">
-                                <svg class="lucide lucide-file-text" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                  <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
-                                  <path d="M14 2v5a1 1 0 0 0 1 1h5" />
-                                  <path d="M10 9H8" />
-                                  <path d="M16 13H8" />
-                                  <path d="M16 17H8" />
-                                </svg>
-                            </span>
-                            <div>
-                                <div class="nav-tool-name">inform</div>
-                                <div class="nav-tool-desc">Web crawler</div>
-                            </div>
-                        </a>
-                        <a href="/catalog" class="nav-tool-link">
-                            <span class="nav-tool-icon">
-                                <svg class="lucide lucide-library" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                  <path d="m16 6 4 14" />
-                                  <path d="M12 6v14" />
-                                  <path d="M8 8v12" />
-                                  <path d="M4 4v16" />
-                                </svg>
-                            </span>
-                            <div>
-                                <div class="nav-tool-name">catalog</div>
-                                <div class="nav-tool-desc">Documentation indexer</div>
+                                <div class="nav-tool-name">unify</div>
+                                <div class="nav-tool-desc">Static site generator</div>
                             </div>
                         </a>
                     </div>
@@ -119,50 +47,39 @@
 
         <ul class="nav-links">
             <li>
-                <a href="/#about" title="About">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        class="bi bi-question-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                        <path
-                            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                <a href="/#about" title="About" aria-label="About">
+                    <svg class="lucide lucide-circle-help" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                        <path d="M12 17h.01" />
                     </svg>
                 </a>
             </li>
             <li>
-                <a href="https://github.com/fwdslsh" aria-label="GitHub Repository" title="GitHub" target="_blank">
-                    <svg height="24" fill="currentcolor" viewBox="3 3 18 18">
-                        <path
-                            d="M12 3C7.0275 3 3 7.12937 3 12.2276c0 4.0833 2.57625 7.5321 6.15374 8.7548C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441 9.77249 20.3249 9.76125 19.5982 9.76125 18.8254 7.5 19.2522 6.915 18.2602 6.735 17.7412 6.63375 17.4759 6.19499 16.6569 5.8125 16.4378 5.4975 16.2647 5.0475 15.838 7.1175 15.8264 7.01625 16.4954 7.18499 16.7723 7.99499 18.1679 9.28875 17.7758 9.80625 17.5335 9.885 16.9337 10.1212 16.53 10.38 16.2993 8.3775 16.0687 6.285 15.2728 6.285 11.7432c0-1.0035.34875-1.834.92249-2.47994C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794c0 0 .753749999999999-.24223 2.47499.94583.72001-.20762 1.48501-.31143 2.25001-.31143C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377c1.7212-1.19959 2.475-.94583 2.475-.94583C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326 17.4113 9.9092 17.76 10.7281 17.76 11.7432c0 3.5411-2.1037 4.3255-4.1063 4.5561C13.98 16.5877 14.2613 17.1414 14.2613 18.0065 14.2613 19.2407 14.25 20.2326 14.25 20.5441 14.25 20.7863 14.4188 21.0746 14.8688 20.9824 16.6554 20.364 18.2079 19.1866 19.3078 17.6162c1.0999-1.5705 1.6917-3.4551 1.6922-5.3886C21 7.12937 16.9725 3 12 3z">
-                        </path>
-                    </svg>
-                </a>
-            </li>
-            <li><a href="https://hub.docker.com/u/fwdslsh" aria-label="Docker Hub" title="Docker Hub" target="_blank">
-
-                    <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg" color="currentColor" fill="currentColor"
-                        width="24" height="24">
-                        <path
-                            d="M23.6096 7.78281C23.0211 7.38668 21.4751 7.21752 20.3513 7.52051C20.291 6.40098 19.7132 5.45739 18.6572 4.63407L18.2664 4.37177L18.0059 4.7654C17.4937 5.54269 17.2778 6.5787 17.3542 7.52051C17.4145 8.10079 17.6162 8.75281 18.0059 9.22603C16.543 10.0747 15.1944 9.88197 9.22236 9.88197H0.00204151C-0.0247244 11.2306 0.191901 13.8244 1.84139 15.9361C2.02376 16.1695 2.22326 16.395 2.44024 16.6124C3.78139 17.9553 5.80775 18.9403 8.83765 18.9428C13.4603 18.9471 17.4206 16.4482 19.8299 10.4069C20.6225 10.4198 22.7152 10.549 23.7395 8.57009C23.7645 8.5369 24 8.04548 24 8.04548L23.6096 7.78317V7.78281ZM6.01938 6.5498H3.42665V9.14252H6.01938V6.5498ZM9.36868 6.5498H6.77596V9.14252H9.36868V6.5498ZM12.7183 6.5498H10.1256V9.14252H12.7183V6.5498ZM16.068 6.5498H13.4753V9.14252H16.068V6.5498ZM2.66971 6.5498H0.0769861V9.14252H2.66971V6.5498ZM6.01938 3.27508H3.42665V5.8678H6.01938V3.27508ZM9.36868 3.27508H6.77596V5.8678H9.36868V3.27508ZM12.7183 3.27508H10.1256V5.8678H12.7183V3.27508ZM12.7183 0H10.1256V2.59272H12.7183V0Z">
-                        </path>
+                <a href="https://github.com/fwdslsh" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
                     </svg>
                 </a>
             </li>
             <li>
-                <a href="https://www.npmjs.com/org/fwdslsh" aria-label="NPM Packages" target="_blank" title="npm">
-                    <svg fill="currentColor" width="24" height="24" viewBox="0 0 32 32" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M7.415 7.656l17.291 0.024-0.011 17.29h-4.329l0.012-12.974h-4.319l-0.010 12.964h-8.656zM3.207 1.004c-0.002 0-0.003 0-0.005 0-1.214 0-2.198 0.984-2.198 2.198 0 0.002 0 0.004 0 0.006v-0 25.585c0 0.002 0 0.003 0 0.005 0 1.214 0.984 2.198 2.198 2.198 0.002 0 0.004 0 0.006 0h25.585c0.002 0 0.003 0 0.005 0 1.214 0 2.198-0.984 2.198-2.198 0-0.002 0-0.004 0-0.006 0h0z">
-                        </path>
+                <a href="https://hub.docker.com/u/fwdslsh" title="Docker Hub" aria-label="Docker Hub" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z" />
                     </svg>
                 </a>
             </li>
-                <li>
-                <a href="https://bsky.app/profile/fwdslsh.dev" title="Bluesky" target="_blank" aria-label="Bluesky Profile">
-                    <svg height="24" viewBox="0 0 600 530">
-                        <path fill="currentcolor"
-                            d="M136 44c66 50 138 151 164 205 26-54 98-155 164-205 48-36 126-64 126 25 0 18-10 149-16 170-21 74-96 93-163 81 117 20 147 86 82 153-122 125-176-32-189-72-3-8-4-11-4-8 0-3-1 0-4 8-13 40-67 197-189 72-65-67-35-133 82-153-67 12-142-7-163-81-6-21-16-152-16-170 0-89 78-61 126-25z">
-                        </path>
+            <li>
+                <a href="https://www.npmjs.com/org/fwdslsh" title="npm" aria-label="npm" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://bsky.app/profile/fwdslsh.dev" title="Bluesky" aria-label="Bluesky" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M5.202 2.857C7.954 4.922 10.913 9.11 12 11.358c1.087-2.247 4.046-6.436 6.798-8.501C20.783 1.366 24 .213 24 3.883c0 .732-.42 6.156-.667 7.037-.856 3.061-3.978 3.842-6.755 3.37 4.854.826 6.089 3.562 3.422 6.299-5.065 5.196-7.28-1.304-7.847-2.97-.104-.305-.152-.448-.153-.327 0-.121-.05.022-.153.327-.568 1.666-2.782 8.166-7.847 2.97-2.667-2.737-1.432-5.473 3.422-6.3-2.777.473-5.899-.308-6.755-3.369C.42 10.04 0 4.615 0 3.883c0-3.67 3.217-2.517 5.202-1.026" />
                     </svg>
                 </a>
             </li>
@@ -291,6 +208,15 @@
         width: 100%;
     }
 
+    /* One size for every top-bar icon */
+    nav .nav-links svg,
+    nav .nav-dropdown>a svg {
+        display: block;
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+
     nav .nav-links a.active::before {
         width: 100%;
     }
@@ -324,7 +250,8 @@
         background: rgba(0, 255, 65, 0.1);
     }
 
-    nav .nav-dropdown:hover>a::after {
+    nav .nav-dropdown:hover>a::after,
+    nav .nav-dropdown:focus-within>a::after {
         transform: rotate(180deg);
     }
 
@@ -346,7 +273,18 @@
         margin-top: 0.5rem;
     }
 
-    nav .nav-dropdown:hover .nav-dropdown-content {
+    /* Bridges the margin-top gap so the menu stays open while the pointer crosses it */
+    nav .nav-dropdown-content::before {
+        content: '';
+        position: absolute;
+        top: -0.5rem;
+        left: 0;
+        right: 0;
+        height: 0.5rem;
+    }
+
+    nav .nav-dropdown:hover .nav-dropdown-content,
+    nav .nav-dropdown:focus-within .nav-dropdown-content {
         opacity: 1;
         visibility: visible;
     }

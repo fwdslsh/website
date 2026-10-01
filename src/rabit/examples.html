@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-layout="/_includes/tool-page.html">
+<html lang="en">
 <head>
     <title>rabit Examples</title>
     <meta name="description" content="Worked rabit examples: publishing navigable indexes, structuring entries, and wiring agent traversal into an existing site.">
@@ -14,28 +14,61 @@
     <section class="tool-nav">
         <div class="tool-nav-container">
             <ul class="tool-nav-links">
-                <li><a href="/rabit">Overview</a></li>
-                <li><a href="/rabit/getting-started">Getting Started</a></li>
-                <li><a href="/rabit/docs">Documentation</a></li>
-                <li><a href="/rabit/examples" class="active">Examples</a></li>
+                <li><a href="/rabit/index.html">Overview</a></li>
+                <li><a href="/rabit/getting-started.html">Getting Started</a></li>
+                <li><a href="/rabit/docs.html">Documentation</a></li>
+                <li><a href="/rabit/examples.html" class="active">Examples</a></li>
             </ul>
         </div>
     </section>
 
     <section class="tool-section">
         <h2>Multi-Repository Warren</h2>
-        <p>A central "warren" repo that points to other repos.</p>
+        <p>A central warren that points at the burrows in other repositories.</p>
         <div class="code-block">
-            <pre>
-{
+<pre>{
+  "specVersion": "fwdslsh.dev/rabit/schemas/0.4.0/warren",
+  "kind": "warren",
   "title": "My Organization Docs",
+  "burrows": [
+    { "id": "frontend", "title": "Frontend", "uri": "https://github.com/org/frontend" },
+    { "id": "backend", "title": "Backend", "uri": "https://github.com/org/backend" }
+  ]
+}</pre>
+        </div>
+    </section>
+
+    <section class="tool-section">
+        <h2>Nested Burrows</h2>
+        <p>A root burrow points into a sub-burrow, so an agent loads only what it needs at each level.</p>
+        <div class="code-block">
+<pre>// /.burrow.json
+{
+  "specVersion": "fwdslsh.dev/rabit/schemas/0.4.0/burrow",
+  "kind": "burrow",
+  "title": "Project Root",
   "entries": [
-    { "type": "burrow", "title": "Frontend", "uri": "https://github.com/org/frontend/raw/main/.burrow.json" },
-    { "type": "burrow", "title": "Backend", "uri": "https://github.com/org/backend/raw/main/.burrow.json" }
+    { "id": "readme", "kind": "file", "uri": "README.md" },
+    { "id": "docs", "kind": "burrow", "uri": "docs/", "summary": "Documentation collection" }
   ]
 }
-            </pre>
+
+// /docs/.burrow.json
+{
+  "specVersion": "fwdslsh.dev/rabit/schemas/0.4.0/burrow",
+  "kind": "burrow",
+  "title": "Documentation",
+  "entries": [
+    { "id": "getting-started", "kind": "file", "uri": "getting-started.md" },
+    { "id": "api", "kind": "burrow", "uri": "api/", "summary": "API reference" }
+  ]
+}</pre>
         </div>
+    </section>
+
+    <section class="tool-section">
+        <h2>This Site</h2>
+        <p>fwdslsh.dev publishes its own burrow at <a href="/.well-known/burrow.json"><code>/.well-known/burrow.json</code></a> and a warren at <a href="/.well-known/warren.json"><code>/.well-known/warren.json</code></a>.</p>
     </section>
 </body>
 </html>

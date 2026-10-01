@@ -1,45 +1,27 @@
-# Unify Starter Kit
+# fwdslsh.dev
 
-Welcome to the **Unify Starter Kit**, a minimal scaffolding to get started building static sites with [Unify](https://npmjs.com/package/unify).
+The website for [fwdslsh](https://github.com/fwdslsh): documentation for
+[rabit](https://github.com/fwdslsh/rabit), built with [unify](https://github.com/fwdslsh/unify).
 
-Unify is a zero-boilerplate, convention-based static site generator that uses only standard HTML and a single `<include />` element to provide layouts, component includes, and scoped styles/scripts — all at build time.
+## Develop
 
-## 🚀 Getting Started
-
-### 1. Clone this repo
-
-```bash
-git clone https://github.com/yourname/unify-starter my-site
-cd my-site
-```
-
-### 2. Install dependencies
+Requires Node >= 22.12.0.
 
 ```bash
 npm install
+npm run dev      # http://localhost:3000, rebuilds and reloads on save
 ```
 
-### 3. Build your site
+## Build and check
 
 ```bash
-npm run build
+npm run check    # full build and every check, writes nothing
+npm run audit    # page-level findings
+npm run build    # writes dist/
+npm test         # Playwright smoke tests
 ```
 
-The built site will appear in the `dist/` folder.
-
-## 📁 Project Structure
-
-```
-my-site/
-├── components/
-│   └── card.html
-├── layouts/
-│   └── default.html
-├── pages/
-│   └── index.html
-├── dist/
-├── package.json
-└── README.md
-```
-
-Happy hacking with ✨ **Unify** ✨
+Build flags shared by every command live in `src/unify.yaml`. Source is plain HTML in `src/`: one layout
+(`src/_layout.html`), shared pieces in `src/_includes/`, and the rabit docs in `src/rabit/`. See
+[CLAUDE.md](CLAUDE.md) for how the site is put together, and unify's
+[authoring rules](https://github.com/fwdslsh/unify/blob/main/docs/authoring-rules.md) for the composition model.

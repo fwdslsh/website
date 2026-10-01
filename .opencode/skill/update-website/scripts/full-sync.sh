@@ -71,15 +71,12 @@ echo ""
 
 # Define projects
 PROJECTS=(
-  "core/packages/disclose"
-  "core/packages/gather"
-  "core/packages/catalog"
-  "core/packages/inform"
-  "core/packages/hyphn"
-  "dispatch"
+  "rabit"
+  "unify"
 )
 
-REPO_ROOT="/home/founder3/code/github/fwdslsh"
+# Sibling checkouts of the fwdslsh repositories (e.g. ../rabit, ../unify)
+REPO_ROOT="$(cd "$WEBSITE_DIR/.." && pwd)"
 
 if [ "$SKIP_EXTRACTION" = false ]; then
   echo "Step 2: Extract Project Information"
@@ -137,13 +134,13 @@ echo ""
 if [ "$SKIP_VALIDATION" = false ]; then
   echo "Step 5: Validate Links (Optional)"
   echo "----------------------------------"
-  echo "Note: This can take several minutes..."
+  echo "Runs unify audit --external (fetches every off-site link)..."
   echo ""
 
   read -p "Run link validation? (y/n) " -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
-    "$SCRIPT_DIR/validate-links.sh" || LINK_ISSUES=$?
+    npm run --silent audit:external || LINK_ISSUES=$?
 
     if [ "${LINK_ISSUES:-0}" -eq 1 ]; then
       echo ""

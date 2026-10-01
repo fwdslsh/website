@@ -2,7 +2,7 @@ import { chromium } from 'playwright';
 
 const baseURL = 'http://localhost:3000';
 const rounds = 3;
-const toolPaths = ['/ecosystem/', '/hyphn/', '/rabit/', '/dispatch/', '/disclose/', '/gather/', '/catalog/', '/inform/'];
+const toolPaths = ['/', '/rabit/', '/rabit/getting-started/', '/rabit/docs/', '/rabit/examples/'];
 
 async function navigateAll(page, selector, label) {
   const hrefs = await page.locator(selector).evaluateAll((as) => as.map((a) => a.getAttribute('href')));
@@ -26,7 +26,7 @@ async function main() {
     console.log(`\n=== Round ${i + 1} ===`);
     for (const path of toolPaths) {
       await page.goto(new URL(path, baseURL).toString(), { waitUntil: 'domcontentloaded' });
-      await navigateAll(page, '.unify-nav-links a', `tool ${path}`);
+      await navigateAll(page, 'nav a, .tool-nav-links a', `tool ${path}`);
     }
   }
 
