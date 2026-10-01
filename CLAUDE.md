@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 The **fwdslsh website** (https://fwdslsh.dev) — documentation for **rabit** and a showcase for **unify**, the
 static site generator it is built with. The site lists two tools: rabit (documented under `src/rabit/`) and
-unify (linked to its GitHub repository). It doubles as a reference unify site: plain HTML composed at build
+unify (linked to https://unify.fwdslsh.dev/, opened in a new tab). It doubles as a reference unify site: plain HTML composed at build
 time, no framework, minimal JavaScript.
 
 ## Development Commands

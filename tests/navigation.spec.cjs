@@ -68,4 +68,7 @@ test('tools menu lists rabit and unify and opens from the keyboard', async ({ pa
   const menu = page.locator('.nav-dropdown-content');
   await expect(menu).toBeVisible();
   await expect(menu.locator('.nav-tool-name')).toHaveText(['rabit', 'unify']);
+  const unify = menu.locator('a', { hasText: 'unify' });
+  await expect(unify).toHaveAttribute('href', 'https://unify.fwdslsh.dev/');
+  await expect(unify).toHaveAttribute('target', '_blank');
 });
