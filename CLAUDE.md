@@ -88,8 +88,7 @@ src/
 └── unify.yaml                # saved CLI flags (never shipped)
 ```
 
-Deployment: `.github/workflows/swa.yml` (Azure Static Web Apps; runs `check` and `audit` before building) and
-`.github/workflows/static.yml` (GitHub Pages).
+Deployment: `.github/workflows/swa.yml` (Azure Static Web Apps; runs `check` and `audit` before building).
 
 ## Publishing a blog post
 
