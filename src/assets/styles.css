@@ -193,56 +193,52 @@ main {
   padding-bottom: var(--space-8);
 }
 
-/* Reading measure and vertical rhythm for flowing content, on every page */
-:where(main, main > section) > :is(p, ul, ol, blockquote, h2, h3, h4) { max-width: var(--measure); }
-:where(main, main > section) > :is(p, ul, ol, blockquote, pre, table, .code-block) { margin-bottom: var(--space-4); }
-:where(main, main > section) > :is(ul, ol) { padding-left: 1.25rem; }
-:where(main, main > section) > :is(ul, ol) li + li { margin-top: var(--space-2); }
-:where(main, main > section) > h2 { margin: var(--space-7) 0 var(--space-3); }
-:where(main, main > section) > h3 { margin: var(--space-6) 0 var(--space-2); }
+/* Pages are plain Markdown or HTML with no wrappers, so these rules style what a page
+   already contains: its <h1>, the paragraph after it, and an <h2> per section. */
+:where(main, .post) > :is(p, ul, ol, blockquote, h2, h3, h4) { max-width: var(--measure); }
+:where(main, .post) > :is(p, ul, ol, blockquote, pre, table, .code-wrap) { margin-bottom: var(--space-4); }
+:where(main, .post) > :is(ul, ol) { padding-left: 1.25rem; }
+:where(main, .post) > :is(ul, ol) li + li { margin-top: var(--space-2); }
+:where(main, .post) > h3 { margin: var(--space-6) 0 var(--space-2); }
 
-/* The slash motif on section headings */
+/* The page heading, and the paragraph after it as the page's introduction */
+:where(main, .post) > h1 { margin: var(--space-8) 0 var(--space-4); }
+main > .subnav + h1 { margin-top: var(--space-6); }
+
+:where(main, .post, .hero) > h1 + p {
+  font-size: 1.125rem;
+  max-width: 52ch;
+  margin-bottom: var(--space-6);
+}
+
+/* Each <h2> opens a section: a rule above it and the slash motif */
 main h2::before {
   content: "/ ";
   color: var(--primary);
 }
 
-main > section > h2:first-child { margin-top: 0; }
-
-main > section {
-  padding-block: var(--space-7);
+:where(main, .post) > h2 {
+  margin: var(--space-7) 0 var(--space-3);
+  padding-top: var(--space-7);
   border-top: 1px solid var(--border-subtle);
 }
 
-main > .page-header + section,
-main > .subnav + section { border-top: 0; padding-top: var(--space-6); }
+/* ===== Home hero ===== */
 
-/* ===== Page header ===== */
-
-.page-header {
+.hero {
   padding-block: var(--space-8) var(--space-6);
   display: grid;
   gap: var(--space-4);
 }
 
-.page-header > * { max-width: var(--measure); }
-.page-header > h1 { max-width: none; }
+.hero > * { max-width: var(--measure); margin: 0; }
+.hero > h1 { max-width: none; }
+.hero > h1 + p { margin: 0; }
 
-.eyebrow {
+.prompt {
   font: 400 0.8125rem/1.4 var(--font-mono);
   color: var(--text-dim);
 }
-
-.eyebrow a { color: inherit; text-decoration: none; }
-.eyebrow a:hover { color: var(--primary); }
-
-.lede {
-  font-size: 1.125rem;
-  color: var(--text-secondary);
-  max-width: 52ch;
-}
-
-.page-header > p:not(.eyebrow):not(.lede) { color: var(--text-secondary); }
 
 .actions {
   display: flex;
@@ -252,7 +248,7 @@ main > .subnav + section { border-top: 0; padding-top: var(--space-6); }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .page-header { animation: rise 0.4s ease-out both; }
+  .hero, main > h1, .post > h1 { animation: rise 0.4s ease-out both; }
 }
 
 @keyframes rise {
@@ -333,7 +329,7 @@ main > .subnav + section { border-top: 0; padding-top: var(--space-6); }
   font-size: 1.0625rem;
 }
 
-.card h3 svg { width: 20px; height: 20px; color: var(--primary); flex-shrink: 0; }
+.card h3 img { width: 20px; height: 20px; flex-shrink: 0; }
 .card h3 a { color: inherit; text-decoration: none; }
 .card h3 a:hover { color: var(--primary); }
 
@@ -363,25 +359,9 @@ main > .subnav + section { border-top: 0; padding-top: var(--space-6); }
 .card-links a { color: var(--primary); text-decoration: none; }
 .card-links a:hover { color: var(--primary-bright); text-decoration: underline; }
 
-.card .icon { width: 20px; height: 20px; color: var(--primary); }
-
-/* ===== Two-up blocks (home) ===== */
-
-.split {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-6);
-}
-
-.split > div > h2 { margin: 0 0 var(--space-3); }
-.split > div > p + p { margin-top: var(--space-3); }
-
-.more { font: 400 0.875rem var(--font-mono); }
-
 /* ===== Code ===== */
 
-main pre,
-.code-block pre {
+main pre {
   position: relative;
   max-width: var(--code-max);
   margin: var(--space-5) 0 var(--space-3);
@@ -403,38 +383,6 @@ main pre code {
   background: none;
   border: 0;
   padding: 0;
-}
-
-/* The "Needs Node… · Docs · GitHub" line under an install block */
-main pre + p.meta,
-.meta {
-  font: 400 0.8125rem/1.6 var(--font-mono);
-  color: var(--text-dim);
-}
-
-.code-block {
-  max-width: var(--code-max);
-  margin-block: var(--space-5) var(--space-3);
-}
-
-.code-block > pre { margin: 0; }
-
-/* Filename tab, added by main.js from data-filename */
-.code-title {
-  display: inline-block;
-  font: 400 0.75rem var(--font-mono);
-  color: var(--text-dim);
-  background: var(--bg-code);
-  border: 1px solid var(--border-subtle);
-  border-bottom: 0;
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
-  padding: var(--space-1) var(--space-3);
-  margin-top: var(--space-5);
-}
-
-.code-title + pre {
-  margin-top: 0;
-  border-top-left-radius: 0;
 }
 
 .code-wrap { position: relative; max-width: var(--code-max); }
@@ -464,12 +412,6 @@ main pre + p.meta,
 .copy-btn:hover { color: var(--primary); border-color: var(--primary); }
 .copy-btn[data-copied] { color: var(--primary); opacity: 1; }
 
-.caption {
-  font: 400 0.8125rem var(--font-mono);
-  color: var(--text-dim);
-  margin-top: var(--space-2);
-}
-
 /* Syntax colors (speed-highlight token classes), in the site palette */
 .shj-syn-cmnt { color: var(--text-dim); font-style: italic; }
 .shj-syn-str,
@@ -488,9 +430,7 @@ main pre + p.meta,
 
 @media (max-width: 767px) {
   main pre,
-  .code-block pre,
-  .code-wrap,
-  .code-title + pre {
+  .code-wrap {
     margin-inline: calc(-1 * var(--gutter));
     border-radius: 0;
     border-left-width: 3px;
@@ -498,7 +438,6 @@ main pre + p.meta,
   }
   .code-wrap { max-width: none; }
   .code-wrap > pre { margin-inline: 0; }
-  .code-title { margin-left: calc(-1 * var(--gutter) + 3px); }
 }
 
 /* ===== Tables ===== */
@@ -524,6 +463,7 @@ main th { font: 600 0.8125rem var(--font-mono); color: var(--text-primary); back
 /* ===== Section sub-nav (rabit docs) ===== */
 
 .subnav {
+  margin-top: var(--space-5);
   border-bottom: 1px solid var(--border-subtle);
   overflow-x: auto;
 }
@@ -548,7 +488,11 @@ main th { font: 600 0.8125rem var(--font-mono); color: var(--text-primary); back
 
 .subnav a:hover { color: var(--text-primary); }
 
-.subnav a[aria-current="page"] {
+/* The current tab: each rabit page's body class (from its frontmatter) names it */
+body.rabit-overview .tab-overview,
+body.rabit-start .tab-start,
+body.rabit-spec .tab-spec,
+body.rabit-examples .tab-examples {
   color: var(--primary);
   box-shadow: inset 0 -2px 0 var(--primary-bright);
 }
@@ -579,16 +523,10 @@ main th { font: 600 0.8125rem var(--font-mono); color: var(--text-primary); back
 
 /* ===== Members ===== */
 
-.member-list {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  gap: var(--space-4);
-  max-width: var(--code-max);
-}
-
 .member {
   display: flex;
+  max-width: var(--code-max);
+  margin-bottom: var(--space-4);
   gap: var(--space-4);
   align-items: flex-start;
   padding: var(--space-5);
@@ -613,28 +551,6 @@ main th { font: 600 0.8125rem var(--font-mono); color: var(--text-primary); back
 .member h2 a:hover { color: var(--primary); }
 
 .member p { margin: 0; font-size: 0.9375rem; }
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  list-style: none;
-  padding: 0;
-  font: 400 0.75rem var(--font-mono);
-  color: var(--text-dim);
-  align-items: center;
-}
-
-.chips a {
-  display: inline-block;
-  padding: 2px var(--space-2);
-  border: 1px solid var(--border-subtle);
-  border-radius: 999px;
-  color: var(--primary);
-  text-decoration: none;
-}
-
-.chips a:hover { border-color: var(--primary); }
 
 /* ===== Blog ===== */
 
@@ -678,18 +594,14 @@ main th { font: 600 0.8125rem var(--font-mono); color: var(--text-primary); back
   padding: var(--space-6);
   border: 1px dashed var(--border-strong);
   border-radius: var(--radius-lg);
-  display: grid;
-  gap: var(--space-3);
 }
 
-.empty-state .prompt {
-  font: 400 0.875rem/1.7 var(--font-mono);
-  color: var(--text-primary);
-}
+.post { max-width: var(--site); }
 
-.empty-state .prompt span { color: var(--primary); }
-.empty-state .prompt .out { color: var(--text-dim); display: block; }
-.empty-state p { margin: 0; }
+.post-back {
+  margin-top: var(--space-7);
+  font: 400 0.875rem var(--font-mono);
+}
 
 /* ===== Footer ===== */
 

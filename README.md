@@ -1,7 +1,7 @@
 # fwdslsh.dev
 
-The website for [fwdslsh](https://github.com/fwdslsh): documentation for
-[rabit](https://github.com/fwdslsh/rabit), built with [unify](https://github.com/fwdslsh/unify).
+The website for [fwdslsh](https://github.com/fwdslsh), a small group of indie devs: our tools, the
+[rabit](https://github.com/fwdslsh/rabit) docs, and a blog. Built with [unify](https://github.com/fwdslsh/unify).
 
 ## Develop
 
@@ -21,7 +21,7 @@ npm run build    # writes dist/
 npm test         # Playwright smoke tests
 ```
 
-Build flags shared by every command live in `src/unify.yaml`. Source is plain HTML in `src/`: one layout
-(`src/_layout.html`), shared pieces in `src/_includes/`, and the rabit docs in `src/rabit/`. See
-[CLAUDE.md](CLAUDE.md) for how the site is put together, and unify's
+Build flags shared by every command live in `src/unify.yaml`. Source is plain HTML and Markdown in `src/`.
+To write a blog post, copy `src/blog/posts/_template.md`. See [CLAUDE.md](CLAUDE.md) for how the site is put
+together, and unify's
 [authoring rules](https://github.com/fwdslsh/unify/blob/main/docs/authoring-rules.md) for the composition model.

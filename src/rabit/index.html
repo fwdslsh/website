@@ -1,30 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <title>rabit</title>
-    <meta name="description" content="A convention for publishing content that both humans and AI agents can navigate reliably.">
+  <title>Overview</title>
+  <meta name="description" content="rabit is a small JSON manifest convention that lets people and AI agents navigate a site's content without crawling it.">
 </head>
-<body>
-    <header class="page-header">
-      <p class="eyebrow"><a href="/tools.html">~/tools</a> / rabit</p>
-      <h1>rabit</h1>
-      <p class="lede">A small JSON manifest that tells agents what your site or repo holds and where, so they can find things without crawling. People get a readable map too.</p>
-      <p class="actions"><a href="/rabit/getting-started.html" class="btn btn-primary">Get started</a> <a href="https://github.com/fwdslsh/rabit/blob/main/docs/rabit-spec.md" class="btn btn-secondary">Read the spec</a></p>
-    </header>
+<body class="rabit-overview">
+  <h1>rabit</h1>
+  <p>A small JSON manifest that tells agents what your site or repo holds and where, so they can find things without crawling. People get a readable map too.</p>
+  <p class="actions">
+    <a class="btn btn-primary" href="/rabit/getting-started.html">Get started</a>
+    <a class="btn btn-secondary" href="https://github.com/fwdslsh/rabit/blob/main/docs/rabit-spec.md">Read the spec</a>
+  </p>
 
-    <nav class="subnav" aria-label="rabit">
-      <ul>
-        <li><a href="/rabit/index.html" aria-current="page">Overview</a></li>
-        <li><a href="/rabit/getting-started.html">Getting started</a></li>
-        <li><a href="/rabit/docs.html">Specification</a></li>
-        <li><a href="/rabit/examples.html">Examples</a></li>
-      </ul>
-    </nav>
-
-    <section>
-        <h2>A burrow at a glance</h2>
-        <p>One file at the root of your site or repo lists what's there. Each entry has an id, a kind and a URI.</p>
-<pre data-filename=".burrow.json">{
+  <h2>A burrow at a glance</h2>
+  <p>One file at the root of your site or repo lists what's there. Each entry has an id, a kind and a URI.</p>
+  <pre><code class="language-json">{
   "specVersion": "fwdslsh.dev/rabit/schemas/0.4.0/burrow",
   "kind": "burrow",
   "title": "My Documentation",
@@ -32,65 +22,52 @@
     { "id": "start", "kind": "file", "uri": "start.md" },
     { "id": "api", "kind": "burrow", "uri": "api/" }
   ]
-}</pre>
-    </section>
+}</code></pre>
 
-    <section id="concepts">
-        <h2>Core concepts</h2>
-        <div class="card-grid">
-            <article class="card">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2.5a1 1 0 0 1-.8-.4l-.9-1.2A1 1 0 0 0 15 3h-2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z" /><path d="M20 21a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-2.9a1 1 0 0 1-.88-.55l-.42-.85a1 1 0 0 0-.92-.6H13a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z" /><path d="M3 5a2 2 0 0 0 2 2h3" /><path d="M3 3v13a2 2 0 0 0 2 2h3" /></svg>
-                <h3>Burrows</h3>
-                <p>A collection of content described by a <code>.burrow.json</code> manifest. A table of contents an agent can read before it starts crawling.</p>
-            </article>
-            <article class="card">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1" /><rect x="2" y="16" width="6" height="6" rx="1" /><rect x="9" y="2" width="6" height="6" rx="1" /><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" /><path d="M12 12V8" /></svg>
-                <h3>Warrens</h3>
-                <p>A registry of burrows, published as a <code>.warren.json</code>. One place to index several docs sites or repos.</p>
-            </article>
-            <article class="card">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 13v8" /><path d="M12 3v3" /><path d="M2.354 10.354a1.207 1.207 0 0 1 0-1.708l2.06-2.06A2 2 0 0 1 5.828 6h12.344a2 2 0 0 1 1.414.586l2.06 2.06a1.207 1.207 0 0 1 0 1.708l-2.06 2.06a2 2 0 0 1-1.414.586H5.828a2 2 0 0 1-1.414-.586z" /></svg>
-                <h3>Navigation</h3>
-                <p>Agents follow links in manifests instead of guessing URLs or scraping HTML.</p>
-            </article>
-            <article class="card">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" /></svg>
-                <h3>Any transport</h3>
-                <p>Works over HTTP, Git or local files. The format is the JSON, not the transport.</p>
-            </article>
-        </div>
-    </section>
+  <h2>Core concepts</h2>
+<div class="card-grid">
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/folder-tree.svg" alt="" width="20" height="20">
+    <span slot="title">Burrows</span>
+    <p>A collection of content described by a <code>.burrow.json</code> manifest. A table of contents an agent can read before it starts crawling.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/network.svg" alt="" width="20" height="20">
+    <span slot="title">Warrens</span>
+    <p>A registry of burrows, published as a <code>.warren.json</code>. One place to index several docs sites or repos.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/signpost.svg" alt="" width="20" height="20">
+    <span slot="title">Navigation</span>
+    <p>Agents follow links in manifests instead of guessing URLs or scraping HTML.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/globe.svg" alt="" width="20" height="20">
+    <span slot="title">Any transport</span>
+    <p>Works over HTTP, Git or local files. The format is the JSON, not the transport.</p>
+  </include>
+</div>
 
-    <section>
-        <h2>Why rabit?</h2>
-        <p>The web is built for human eyes. Agents struggle with complex layouts, client-side JavaScript and inconsistent navigation. A burrow gives them a plain map that sits beside your site.</p>
-        <div class="compare">
-            <div class="card">
-                <h3>HTML only</h3>
-                <p>Visual, unstructured, crawled and guessed at.</p>
-            </div>
-            <span class="vs">vs</span>
-            <div class="card is-accent">
-                <h3>HTML + a burrow</h3>
-                <p>Structured, JSON-first, read directly.</p>
-            </div>
-        </div>
-    </section>
+  <h2>Why rabit?</h2>
+  <p>The web is built for human eyes. Agents struggle with complex layouts, client-side JavaScript and inconsistent navigation. A burrow gives them a plain map that sits beside your site.</p>
+  <div class="compare">
+    <div class="card"><h3>HTML only</h3><p>Visual, unstructured, crawled and guessed at.</p></div>
+    <span class="vs">vs</span>
+    <div class="card is-accent"><h3>HTML + a burrow</h3><p>Structured, JSON-first, read directly.</p></div>
+  </div>
 
-    <section>
-        <h2>Use cases</h2>
-        <div class="card-grid">
-            <article class="card">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v16" /><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /></svg>
-                <h3>Documentation</h3>
-                <p>Give AI coding assistants a reliable map of your docs.</p>
-            </article>
-            <article class="card">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 18V5" /><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4" /><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5" /><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77" /><path d="M18 18a4 4 0 0 0 2-7.464" /><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517" /><path d="M6 18a4 4 0 0 1-2-7.464" /><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77" /></svg>
-                <h3>Knowledge bases</h3>
-                <p>Structure internal wikis so retrieval systems can ingest them.</p>
-            </article>
-        </div>
-    </section>
+  <h2>Use cases</h2>
+<div class="card-grid">
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/book-open.svg" alt="" width="20" height="20">
+    <span slot="title">Documentation</span>
+    <p>Give AI coding assistants a reliable map of your docs.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/brain.svg" alt="" width="20" height="20">
+    <span slot="title">Knowledge bases</span>
+    <p>Structure internal wikis so retrieval systems can ingest them.</p>
+  </include>
+</div>
 </body>
 </html>

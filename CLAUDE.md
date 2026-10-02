@@ -7,13 +7,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 The **fwdslsh website** (https://fwdslsh.dev): fwdslsh is a small group of indie devs who build open-source tools
 and write up what they learn in the fwdslsh lab. Keep the tone plain and informal. The site has the tools (unify,
 linked to https://unify.fwdslsh.dev/; rabit, documented under `src/rabit/`; akm, github.com/itlackey/akm), a blog
-members publish to, a members page and an about page. It is built with unify: plain HTML and Markdown composed at
-build time, no framework, minimal JavaScript. Background market research is in `drafts/`.
+members publish to, a members page and an about page. Background market research is in `drafts/`.
+
+The site is also a reference unify site: it should use unify's own features the way unify's docs describe them,
+and never work around them with wrappers or scripts.
 
 ## Development Commands
 
 ```bash
 npm run dev             # unify dev: build + watch + serve on http://localhost:3000 with live reload
+                        #   http://localhost:3000/_unify/ shows every audit finding by page
 npm run build           # unify build → dist/
 npm run check           # the whole build and every check, writing nothing (--dry-run --strict); CI gate
 npm run audit           # unify audit --strict: page-level findings (titles, h1s, metadata, links); CI gate
@@ -21,51 +24,67 @@ npm run audit:external  # audit plus fetching every off-site link
 npm test                # Playwright smoke tests against `npm run dev`
 ```
 
-Shared build flags (`--pretty-urls`, `--base-url https://fwdslsh.dev/`, `--canonical auto`) are saved in
-`src/unify.yaml`, so every command above builds the same site. `unify.yaml` is never published. unify requires
-Node >= 22.12.0 (or Bun >= 1.2.0).
+Every build flag lives in `src/unify.yaml` (`pretty-urls`, `base-url: https://fwdslsh.dev/`, `canonical: auto`,
+`generate: _scripts/gen.mjs`), so every command above builds the same site. unify finds `src/` and `dist/` by
+default. `unify.yaml` is never published. unify requires Node >= 22.12.0 (or Bun >= 1.2.0).
 
 ## How unify composes this site
 
-**unify's own docs are authoritative** — read
+**unify's own docs are authoritative**: read
 [`docs/authoring-rules.md`](https://github.com/fwdslsh/unify/blob/main/docs/authoring-rules.md) before
-changing markup. The short version:
+changing markup. How this site uses each feature:
 
-- **Layout**: every page is wrapped by the nearest `_layout.html` (here, `src/_layout.html` for every page).
-  The page says nothing; `data-layout="/path.html"` on a page's `<html>` picks a different one. Layouts don't chain.
-- **Main**: page body content replaces the children of the layout's `<main>`. A page's own `<main>` is unwrapped.
-- **Slots**: a layout may declare `<slot name="x">fallback</slot>`; a page fills it with `slot="x"` on a
-  top-level element. (This site's layout has none.)
-- **Head**: the layout's `<head>` is the base. A page writes only its own `<title>` (the layout's
-  `<title>· fwdslsh</title>` carries the separator); page `<meta>` replaces the layout's same-name meta; page
-  CSS/scripts append.
-- **Includes**: `<include src="/_includes/base/nav.html"></include>`, always with the closing tag; resolved at
-  build time.
-- **Underscore**: `_includes/`, `_layout.html`, and any `_`-prefixed path never ship.
+- **Layouts** (nearest `_layout.html` wins; layouts don't chain, so each is a complete page):
+  - `src/_layout.html`: most pages. `<main id="main"><slot></slot></main>` between nav and footer.
+  - `src/rabit/_layout.html`: the rabit section. Adds the rabit tabs and `<body class="tools">`.
+  - `src/blog/posts/_layout.html`: blog posts. Wraps the post in `<article class="post">` and declares
+    `og:type article` and `<meta name="schema" content="BlogPosting">` for every post at once.
+  - The shared `<head>`, nav and footer are `src/_includes/base/*.html`, included by all three layouts.
+- **Pages**: prose pages are **pure Markdown** (`tools`, `members`, `about`, `blog/index`, `rabit/*` except the
+  overview, posts). Frontmatter sets `title`, `description` and `class`. Never wrap Markdown in HTML to style
+  it: CSS styles what the Markdown produces (the `<h1>`, the paragraph after it as the intro, an `<h2>` per
+  section). Designed pages are HTML documents (`index.html`, `rabit/index.html`, `404.html`) with their own
+  `<head>` (title and description only) and no chrome.
+- **Titles**: a page writes only its own title; the layout's `<title>· fwdslsh</title>` (or `· rabit · fwdslsh`)
+  carries the suffix. The `<h1>` must be contained in the title or contain it (`unify audit` checks).
+- **Current section**: the page's `<body>` class (`class: about` in frontmatter, `<body class="home">` in HTML,
+  or the rabit layout's `tools`) merges into the layout's `<body>`. CSS in `nav.html` (`body.about .nav-about`)
+  and `styles.css` (`body.rabit-spec .tab-spec`) highlights the link. No script.
+- **Slotted includes**: `_includes/card.fragment.html` (tool and rabit cards) and `_includes/member.fragment.html`
+  declare named slots; a non-empty `<include>` fills them with `slot=` on its top-level elements. Card icons are
+  `<img>`s of `src/assets/icons/*.svg`: an `<include>` inside a slotted include's content breaks
+  ([fwdslsh/unify#90](https://github.com/fwdslsh/unify/issues/90)).
+- **Generated content**: `src/_scripts/gen.mjs` runs before every build, dev rebuild and audit (`--generate`).
+  It reads `src/blog/posts/*.md` frontmatter and writes `_includes/post-list.html` and
+  `_includes/latest-posts.html` into unify's overlay; it never writes into `src/`.
+- **Generated by unify**: `feed.xml` (Atom, from every page declaring `BlogPosting` with a timed `date`),
+  `sitemap.xml`, a canonical link and a JSON-LD block on every page (`WebPage` from the root and rabit layouts).
+- **Includes**: `<include src="/_includes/x.html"></include>`, always with the closing tag. Includes in Markdown
+  start a line; a non-empty one must have no blank lines inside.
+- **Underscore**: `_includes/`, `_scripts/`, `_layout.html` and any `_`-prefixed file (`_template.md`) never ship.
 - **Links**: link the real file (`/rabit/docs.html`); `--pretty-urls` rewrites it to `/rabit/docs/`.
-- **Everything else ships byte-for-byte**, including `src/.well-known/` (the site's rabit burrow and warren).
-- **Markdown pages** set `title` and `description` in frontmatter. Never put a `<head>` in Markdown.
-- Content after `</html>` is dropped by unify when a layout applies — keep scripts inside `<body>` or in
-  `src/assets/js/main.js`.
-
-The retired DOM Cascade vocabulary (`data-unify`, `unify-*` area classes) is a build error in current unify.
+- **Everything else ships byte-for-byte**: `robots.txt`, `src/.well-known/` (the site's rabit burrow and warren),
+  `staticwebapp.config.json`, `assets/`.
+- Addresses fetched by JavaScript are relative to the script (`import('../vendor/…')`); unify rewrites only HTML.
 
 ## Site Structure
 
 ```
 src/
-├── _layout.html              # the one layout: head include, nav, <main>, footer, scripts
-├── _includes/base/           # head.html, nav.html (scoped <style>), footer.html, scripts.html
-├── _includes/tool-cards.html # the unify/rabit/akm cards (home and /tools/)
-├── _includes/members/        # one <li class="member"> per member, included by members.md
-├── index.md                  # home
-├── tools.md                  # unify, rabit, akm
-├── members.md, about.md      # who we are
-├── blog/                     # index.md (post list), one .md per post, _post-template.md (never ships)
-├── rabit/                    # index, getting-started, docs, examples
+├── _layout.html              # root layout
+├── _includes/base/           # head.html, nav.html (scoped <style>), footer.html
+├── _includes/                # card.fragment.html, member.fragment.html, tool-cards.html
+├── _scripts/gen.mjs          # writes the post lists (run by unify via --generate)
+├── index.html                # home (HTML)
+├── tools.md, members.md, about.md
+├── 404.html                  # noindex; Azure serves it via staticwebapp.config.json
+├── blog/index.md             # the post list
+├── blog/posts/               # _layout.html, _template.md, one .md per post
+├── rabit/                    # _layout.html, index.html, getting-started.md, docs.md, examples.md
 ├── .well-known/              # burrow.json and warren.json (rabit v0.4.0; validate against rabit's schemas)
-├── assets/                   # styles.css (the one global stylesheet), js/main.js, vendor/speed-highlight
-├── staticwebapp.config.json  # Azure Static Web Apps headers
+├── assets/                   # styles.css (the one stylesheet), og.png (1200×630), icons/, js/main.js, vendor/
+├── robots.txt
+├── staticwebapp.config.json  # Azure Static Web Apps headers and 404
 └── unify.yaml                # saved CLI flags (never shipped)
 ```
 
@@ -74,34 +93,33 @@ Deployment: `.github/workflows/swa.yml` (Azure Static Web Apps; runs `check` and
 
 ## Publishing a blog post
 
-1. Copy `src/blog/_post-template.md` to `src/blog/<slug>.md` and fill in the frontmatter. Keep `schema: BlogPosting`
-   and give `date` a time (`2026-10-02T09:00:00Z`): a date with no time is left out of the feed.
-2. Add a link to it at the top of the list in `src/blog/index.md` (`- [Title](/blog/<slug>.html)`).
-3. `npm run check`. The build writes `/feed.xml` (Atom) from every `BlogPosting` page. Link the feed from the blog
-   index once the first post exists; before that it isn't generated, and a link to it fails the build.
+1. Copy `src/blog/posts/_template.md` to `src/blog/posts/<slug>.md` and fill in the frontmatter. Give `date` a
+   time (`2026-10-02T09:00:00Z`): the generator refuses a post without one, and the feed leaves out a date with
+   no time.
+2. `npm run check`. The post appears in the blog index, on the home page and in `/feed.xml` automatically.
+
+## Adding a member
+
+Add an `<include src="/_includes/member.fragment.html">` block to `src/members.md`, filling `avatar`, `name` and
+a bio paragraph, like the existing one.
 
 ## Conventions
 
-- Page pattern: open with `<header class="page-header">` (`p.eyebrow` path, the `<h1>`, `p.lede`), then plain
-  `<section>`s, each starting with an `<h2>` (styled with a `/ ` prefix). Components available in `styles.css`:
-  `.card-grid`/`.card`, `.split`, `.subnav` (set `aria-current="page"` on the current tab), `.member-list`,
-  `.post-list`, `.empty-state`, `.btn-primary`/`.btn-secondary`, `.meta`.
+- Component styles live with the component (the `<style>` in `nav.html`, scoped under `.site-nav`); everything
+  else is in `src/assets/styles.css`. Don't duplicate rules across both.
+- Every page has its own `<title>`, `<meta name="description">` (the layouts carry none, so a missing one is an
+  audit finding), and exactly one `<h1>` inside `<main>`.
 - Type: Protest Revolution for `<h1>` only, JetBrains Mono for h2–h6, nav and code, Inter for body text.
-- Code blocks: `main.js` adds a copy button and syntax highlighting to every `main pre`; `data-filename="x"` on a
-  `<pre>` adds a filename tab. Top-nav links carry `data-match` path prefixes so `main.js` can mark the current one.
-
-- Component styles live with the component (e.g. the `<style>` in `nav.html`, scoped under `nav`) and handle
-  layout only; truly global styles go in `src/assets/styles.css`. Don't duplicate rules across both.
-- Every page has its own `<title>`, `<meta name="description">`, and exactly one `<h1>` inside the content
-  (unify audit checks the h1 inside `<main>`).
+- `main.js` is progressive enhancement only: a copy button and syntax highlighting on every `main pre`.
 - Icons: Lucide (stroke) for site UI, Simple Icons (fill) for brand marks; top-bar icons are 20px with an
-  `aria-label` on the link. Copy path data from the icon packages — never retype it.
+  `aria-label` on the link. Copy path data from the icon packages, never retype it.
 - Designs must work from 320px wide up.
-- When rabit's spec changes, update `src/rabit/*.html` and `src/.well-known/*.json`; `scripts/check-version-sync.sh`
+- When rabit's spec changes, update `src/rabit/*` and `src/.well-known/*.json`; `scripts/check-version-sync.sh`
   compares them against a sibling `../rabit` checkout.
 
 ## Testing
 
 - `npm run check && npm run audit` must both exit 0.
 - `npm test` covers same-site links on every page, one `<nav>`/`<h1>` per page, no console errors, the top-bar
-  icons, and the tools menu (mouse and keyboard).
+  icons, the tools menu (mouse and keyboard), the current-section highlight, the generated post list and the
+  copy buttons.

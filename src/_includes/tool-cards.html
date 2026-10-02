@@ -1,20 +1,23 @@
 <div class="card-grid">
-  <article class="card">
-    <h3><svg class="lucide lucide-layout-template" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="7" x="3" y="3" rx="1" /><rect width="9" height="7" x="3" y="14" rx="1" /><rect width="5" height="7" x="16" y="14" rx="1" /></svg><a href="https://unify.fwdslsh.dev/" target="_blank" rel="noopener">unify</a></h3>
-    <p>A static site generator for plain HTML. Write a layout or nav once and it lands on every page. This site is built with it.</p>
-    <code class="install">npm install -g @fwdslsh/unify</code>
-    <div class="card-links"><a href="https://unify.fwdslsh.dev/" target="_blank" rel="noopener">docs ↗</a><a href="https://github.com/fwdslsh/unify" target="_blank" rel="noopener">github ↗</a></div>
-  </article>
-  <article class="card">
-    <h3><svg class="lucide lucide-signpost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 13v8" /><path d="M12 3v3" /><path d="M2.354 10.354a1.207 1.207 0 0 1 0-1.708l2.06-2.06A2 2 0 0 1 5.828 6h12.344a2 2 0 0 1 1.414.586l2.06 2.06a1.207 1.207 0 0 1 0 1.708l-2.06 2.06a2 2 0 0 1-1.414.586H5.828a2 2 0 0 1-1.414-.586z" /></svg><a href="/rabit/index.html">rabit</a></h3>
-    <p>A small JSON manifest that tells agents what a site holds and where, so they don't have to crawl for it.</p>
-    <code class="install">bun add -g @fwdslsh/rabit-client</code>
-    <div class="card-links"><a href="/rabit/index.html">docs</a><a href="https://github.com/fwdslsh/rabit" target="_blank" rel="noopener">github ↗</a></div>
-  </article>
-  <article class="card">
-    <h3><svg class="lucide lucide-library" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 6 4 14" /><path d="M12 6v14" /><path d="M8 8v12" /><path d="M4 4v16" /></svg><a href="https://github.com/itlackey/akm" target="_blank" rel="noopener">akm</a></h3>
-    <p>One library of skills, scripts and knowledge for any coding agent that can run shell commands.</p>
-    <code class="install">npm install -g akm-cli</code>
-    <div class="card-links"><a href="https://github.com/itlackey/akm" target="_blank" rel="noopener">github ↗</a></div>
-  </article>
+<include src="/_includes/card.fragment.html">
+  <img slot="icon" src="/assets/icons/layout-template.svg" alt="" width="20" height="20">
+  <a slot="title" href="https://unify.fwdslsh.dev/" target="_blank" rel="noopener">unify</a>
+  <p>A static site generator for plain HTML. Write a layout or nav once and it lands on every page. This site is built with it.</p>
+  <code class="install">npm install -g @fwdslsh/unify</code>
+  <p class="card-links"><a href="https://unify.fwdslsh.dev/" target="_blank" rel="noopener">docs ↗</a> <a href="https://github.com/fwdslsh/unify" target="_blank" rel="noopener">github ↗</a></p>
+</include>
+<include src="/_includes/card.fragment.html">
+  <img slot="icon" src="/assets/icons/signpost.svg" alt="" width="20" height="20">
+  <a slot="title" href="/rabit/index.html">rabit</a>
+  <p>A small JSON manifest that tells agents what a site holds and where, so they don't have to crawl for it.</p>
+  <code class="install">bun add -g @fwdslsh/rabit-client</code>
+  <p class="card-links"><a href="/rabit/index.html">docs</a> <a href="https://github.com/fwdslsh/rabit" target="_blank" rel="noopener">github ↗</a></p>
+</include>
+<include src="/_includes/card.fragment.html">
+  <img slot="icon" src="/assets/icons/library.svg" alt="" width="20" height="20">
+  <a slot="title" href="https://github.com/itlackey/akm" target="_blank" rel="noopener">akm</a>
+  <p>One library of skills, scripts and knowledge for any coding agent that can run shell commands.</p>
+  <code class="install">npm install -g akm-cli</code>
+  <p class="card-links"><a href="https://github.com/itlackey/akm" target="_blank" rel="noopener">github ↗</a></p>
+</include>
 </div>

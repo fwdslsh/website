@@ -5,11 +5,11 @@
   "type": "module",
   "homepage": "https://fwdslsh.dev",
   "scripts": {
-    "build": "unify build --source src --output dist --clean",
-    "dev": "unify dev --source src",
-    "check": "unify build --source src --output dist --dry-run --strict",
-    "audit": "unify audit --source src --output dist --strict",
-    "audit:external": "unify audit --source src --output dist --external",
+    "build": "unify build --clean",
+    "dev": "unify dev",
+    "check": "unify build --dry-run --strict",
+    "audit": "unify audit --strict",
+    "audit:external": "unify audit --external",
     "test": "playwright test"
   },
   "devDependencies": {

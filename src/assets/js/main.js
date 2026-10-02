@@ -1,13 +1,6 @@
 // Site script: progressive enhancement only. The site works without it.
 
-// Mark the current section in the nav.
-const here = location.pathname;
-document.querySelectorAll('.site-nav [data-match]').forEach((link) => {
-    const matches = link.dataset.match.split(' ').some((prefix) => here.startsWith(prefix));
-    if (matches) link.setAttribute('aria-current', 'page');
-});
-
-// Code blocks: wrap, add a filename tab and a copy button, then highlight.
+// Code blocks: wrap, add a copy button, then highlight.
 const COPY_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg>';
 const CHECK_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>';
 
@@ -16,13 +9,6 @@ blocks.forEach((pre) => {
     const wrap = document.createElement('div');
     wrap.className = 'code-wrap';
     pre.replaceWith(wrap);
-
-    if (pre.dataset.filename) {
-        const title = document.createElement('div');
-        title.className = 'code-title';
-        title.textContent = pre.dataset.filename;
-        wrap.before(title);
-    }
     wrap.append(pre);
 
     const button = document.createElement('button');
@@ -49,10 +35,11 @@ blocks.forEach((pre) => {
     wrap.append(button);
 });
 
+// Imports resolve against this file, so they survive a --base-url with a path prefix.
 if (blocks.length) {
     Promise.all([
-        import('/assets/vendor/speed-highlight/dist/index.js'),
-        import('/assets/vendor/speed-highlight/dist/detect.js'),
+        import('../vendor/speed-highlight/dist/index.js'),
+        import('../vendor/speed-highlight/dist/detect.js'),
     ]).then(([{ highlightElement }, { detectLanguage }]) => {
         blocks.forEach((pre) => {
             const text = pre.textContent;

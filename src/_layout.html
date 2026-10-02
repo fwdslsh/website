@@ -1,21 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <include src="/_includes/base/head.html"></include>
-    <title>· fwdslsh</title>
+  <include src="/_includes/base/head.html"></include>
+  <title>· fwdslsh</title>
+  <meta property="og:type" content="website">
+  <!-- unify writes each page's JSON-LD from what the page declares. -->
+  <meta name="schema" content="WebPage">
 </head>
-
 <body>
-    <a href="#main" class="skip-link">Skip to main content</a>
-    <include src="/_includes/base/nav.html"></include>
-
-    <main id="main">
-        <!-- Page content is merged here. -->
-    </main>
-
-    <include src="/_includes/base/footer.html"></include>
-    <include src="/_includes/base/scripts.html"></include>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <include src="/_includes/base/nav.html"></include>
+  <main id="main"><slot></slot></main>
+  <include src="/_includes/base/footer.html"></include>
 </body>
-
 </html>

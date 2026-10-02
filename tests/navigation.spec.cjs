@@ -6,10 +6,12 @@ const paths = [
   '/members/',
   '/about/',
   '/blog/',
+  '/blog/posts/how-this-site-is-built/',
   '/rabit/',
   '/rabit/getting-started/',
   '/rabit/docs/',
   '/rabit/examples/',
+  '/404.html',
 ];
 
 // Same-site links in the top nav, the rabit sub-nav, and the footer.
@@ -80,11 +82,23 @@ test('tools menu lists all three tools, opens from the keyboard, and stays on sc
   expect(box.x + box.width).toBeLessThanOrEqual(width);
 });
 
+// The current section is marked by a body class plus CSS (no script), so compare colors.
+const color = (locator) => locator.evaluate((el) => getComputedStyle(el).color);
+
 test('the nav marks the current section', async ({ page, isMobile }) => {
   test.skip(isMobile, 'desktop links are hidden on phones');
   await page.goto('/rabit/docs/');
-  await expect(page.locator('.site-nav .nav-links a[aria-current]')).toHaveText(/tools/);
-  await expect(page.locator('.subnav a[aria-current]')).toHaveText('Specification');
+  await expect(page.locator('body')).toHaveClass(/\btools\b/);
+  const tools = await color(page.locator('.site-nav .nav-links .nav-tools'));
+  expect(tools).not.toBe(await color(page.locator('.site-nav .nav-links .nav-blog')));
+  const spec = await color(page.locator('.subnav .tab-spec'));
+  expect(spec).toBe(tools);
+  expect(spec).not.toBe(await color(page.locator('.subnav .tab-overview')));
+});
+
+test('the blog lists the post that the generator found', async ({ page }) => {
+  await page.goto('/blog/');
+  await expect(page.locator('.post-list a').first()).toHaveAttribute('href', '/blog/posts/how-this-site-is-built/');
 });
 
 test('the phone menu opens and lists every section', async ({ page, isMobile }) => {

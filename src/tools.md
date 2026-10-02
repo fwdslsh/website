@@ -1,20 +1,14 @@
 ---
 title: Tools
 description: Open-source tools from the fwdslsh lab, unify, rabit and akm, with what each does and how to install it.
+class: tools
 ---
-
-<header class="page-header">
-<p class="eyebrow">~/tools</p>
 
 # Tools
 
-<p class="lede">Open-source tools built by fwdslsh members. Each one lives in its own repo, so that's the place for docs, issues and releases.</p>
-
-</header>
+Open-source tools built by fwdslsh members. Each one lives in its own repo, so that's the place for docs, issues and releases.
 
 <include src="/_includes/tool-cards.html"></include>
-
-<section>
 
 ## unify
 
@@ -26,11 +20,7 @@ unify init
 unify build
 ```
 
-<p class="meta">Needs Node 22.12+ or Bun 1.2+ · MPL-2.0 · <a href="https://unify.fwdslsh.dev/">docs</a> · <a href="https://github.com/fwdslsh/unify">github</a></p>
-
-</section>
-
-<section>
+Needs Node 22.12+ or Bun 1.2+. MPL-2.0. [Docs](https://unify.fwdslsh.dev/) · [GitHub](https://github.com/fwdslsh/unify)
 
 ## rabit
 
@@ -41,11 +31,7 @@ bun add -g @fwdslsh/rabit-client
 rabit validate .burrow.json
 ```
 
-<p class="meta">The CLI needs Bun · CC-BY-4.0 · <a href="/rabit/index.html">docs</a> · <a href="https://github.com/fwdslsh/rabit">github</a></p>
-
-</section>
-
-<section>
+The CLI needs Bun. CC-BY-4.0. [Docs](/rabit/index.html) · [GitHub](https://github.com/fwdslsh/rabit)
 
 ## akm
 
@@ -56,6 +42,4 @@ npm install -g akm-cli
 akm setup --yes
 ```
 
-<p class="meta">Needs Node 22+ · MPL-2.0 · <a href="https://github.com/itlackey/akm">github</a></p>
-
-</section>
+Needs Node 22+. MPL-2.0. [GitHub](https://github.com/itlackey/akm)
