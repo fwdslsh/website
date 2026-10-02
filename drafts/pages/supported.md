@@ -5,6 +5,8 @@ description: "What 'supported by fwdslsh' means: the criteria a tool meets, what
 
 # Supported by fwdslsh
 
+> **Draft.** The criteria, commitments and lifecycle on this page are a draft. fwdslsh is one member today, itlackey, and we will tune these rules with the members who join.
+
 fwdslsh is a collective of independent developers building open tools for a web that agents and people both use. Members share their work under one name and help each other build and maintain a few of those tools. A tool that is supported by fwdslsh has members of the collective helping to build, review, release and maintain it.
 
 The tool stays where it already lives, under its own license: unify and rabit in the fwdslsh GitHub organization, akm in its author's account.
@@ -36,10 +38,6 @@ A supported tool meets these, or has a dated plan to meet them:
 6. **Agent instructions** (an AGENTS.md or equivalent), and the tool works with at least one open agent format, such as MCP, AGENTS.md or Agent Skills.
 7. **At least two people who can review and release.**
 8. **A written succession clause.** If the author can't be reached for a stated period, named members may publish security fixes or point users to a maintained fork.
-
-> **Review note:** Decide how strict these criteria are. Recommended default: publish all eight as targets, and add a date for every 'No' and 'Partial' in the table before launch. Add a SECURITY.md to unify, and update rabit's (it still lists 0.3.x). The code of conduct and rabit's code license are separate decisions, on /join.html and under Lifecycle.
-
-> **Review note:** The succession clause needs an unreachability period. Recommended default: 90 days. The clause only has teeth once a second person can release, so agree it with itlackey and name that second person.
 
 ## Where each tool stands today (2026-10-01)
 
@@ -83,7 +81,7 @@ Every supported tool shows one status label:
 
 Leaving is normal. An author can withdraw a tool at any time by opening an issue. The code stays where it always was.
 
-> **Review note:** Confirm the dormancy period. Recommended default: six months with no release and no check-in. rabit's spec 0.4.0 is dated 2026-01-13 and its last visible commit is 2026-01-15, more than six months ago, and no check-in has happened yet. Recommended default: record a first check-in for rabit at launch with a dated plan (publish rabit-mcp, fix the README and install drift, and relicense the code packages under an OSI license while keeping CC-BY-4.0 for the spec) and keep the "Draft spec · 0.4.0" label. Otherwise, label it Dormant.
+> **Review note:** rabit's spec 0.4.0 is dated 2026-01-13 and its last visible commit is 2026-01-15, more than six months ago, and no check-in has happened yet. Recommended default: record a first check-in for rabit at launch with a dated plan (publish rabit-mcp, fix the README and install drift, and relicense the code packages under an OSI license while keeping CC-BY-4.0 for the spec) and keep the "Draft spec · 0.4.0" label. Otherwise, label it Dormant.
 
 ## Propose a tool
 

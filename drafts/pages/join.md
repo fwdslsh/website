@@ -5,7 +5,7 @@ description: How to join fwdslsh as a member or propose a tool for support. Both
 
 # Join
 
-fwdslsh is a collective of independent developers building open tools for the next epoch of technology, where AI agents and people both publish, find and navigate the web. We are small. Today one member is listed, the founding member itlackey, and three supported tools: unify, rabit and akm. That is where we start, and it is why we want more people.
+fwdslsh is a collective of independent developers building open tools for the next epoch of technology, where AI agents and people both publish, find and navigate the web. We are small. Today there is one member, the founding member itlackey, and three supported tools: unify, rabit and akm. That is where we start, and it is why we want more people.
 
 You can come in two ways, and each is decided separately. Being a member does not put your tools on the supported list. Having a supported tool does not make you a member.
 
@@ -20,6 +20,8 @@ Both start with a public GitHub issue, and the decision is recorded on that issu
 
 ## Become a member
 
+> **Draft.** The membership rules below are a draft. fwdslsh is one member today, itlackey, and we will tune these rules with the members who join.
+
 **Who it is for:** independent developers who care about tools for a web that agents and people both use. You don't need a big project or a following.
 
 **Requirements:**
@@ -33,8 +35,6 @@ Both start with a public GitHub issue, and the decision is recorded on that issu
 **How to apply:** [Open a membership issue](https://github.com/fwdslsh/.github/issues/new/choose). Include your GitHub handle, one line about what you build, links to your public repos, and a statement that you accept the code of conduct.
 
 **Vouching:** two existing members vouch for you in the issue. Until there are three members, the [steward](/about.html) decides.
-
-> **Review note:** Confirm the interim rule above. Recommended default: keep it as written, and remove the second sentence once there are three members.
 
 **What you get:** a card on [Members](/members.html) with a bio you write yourself, a place to share your work, and members you can ask for review, as time allows.
 

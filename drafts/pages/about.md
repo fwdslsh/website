@@ -30,11 +30,11 @@ Craft over hype. If a claim on this site can't be checked in a repo, open an iss
 
 ## Who holds the keys
 
-fwdslsh is small, and we want that to be visible. Today there is one steward: itlackey ([github.com/itlackey](https://github.com/itlackey)). itlackey maintains all three supported tools and is the only npm maintainer of `@fwdslsh/unify`, `@fwdslsh/rabit-client` and `akm-cli`. If itlackey were unreachable, nobody else could publish a new version to npm. We know that is a risk. The [supported page](/supported.html) sets a target of two people who can release each tool, and no tool meets it yet.
+> **Draft.** How fwdslsh makes decisions is a draft. fwdslsh is one member today, itlackey, and we will tune these rules with the members who join.
+
+fwdslsh is small, and we want that to be visible. Today there is one member and one steward: itlackey ([github.com/itlackey](https://github.com/itlackey)). itlackey maintains all three supported tools and is the only npm maintainer of `@fwdslsh/unify`, `@fwdslsh/rabit-client` and `akm-cli`. If itlackey were unreachable, nobody else could publish a new version to npm. We know that is a risk. The [supported page](/supported.html) sets a target of two people who can release each tool, and no tool meets it yet.
 
 We plan to decide membership and supported tools in public GitHub issues. Until there are three members, the steward (today, itlackey) decides. After that, we propose lazy consensus: a proposal passes if no member objects within a stated period.
-
-> **Review note:** Name a second steward, or keep the honest statement that itlackey is the only one and add a target date for a second (recommended: 2027-01). Also confirm lazy consensus and the objection period (recommended: 14 days).
 
 > **Review note:** Before launch, record two holders for each credential (GitHub org, npm `@fwdslsh` scope, domain/DNS, hosting). This is not page copy. Default: keep the list private and say on this page only that it exists.
 
@@ -48,13 +48,9 @@ Draft policy for contributions to supported tools:
 2. **Name an accountable human.** A person posts the pull request, reads every line of it, answers review comments and owns the result.
 3. **No autonomous-agent pull requests.** An agent may draft a change. A person decides to send it. Pull requests opened by an agent with no human behind them will be closed.
 
-> **Review note:** Decide whether agent-drafted pull requests from people outside the collective are welcome. The recommended default is to welcome them when they follow the three rules above.
-
 ## Funding
 
 fwdslsh holds no money, takes no donations and pays no one. Members may accept support for their own work through their own GitHub Sponsors pages, and a supported tool's repo may point to its author's page.
-
-> **Review note:** Confirm "none collectively" as the funding stance (recommended).
 
 ## Contact
 

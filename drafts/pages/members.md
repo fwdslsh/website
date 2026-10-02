@@ -9,11 +9,11 @@ fwdslsh members are independent developers building small, open tools for the ne
 
 Membership does not come with push access to the supported tools or to other members' repos. Elevated rights are given per tool, by invitation. Membership also doesn't make every member repo supported. Only the three tools on [the tools page](/tools.html) are supported ([what that means](/supported.html)). Members write their own bios.
 
-> **Review note:** The no-push-access rule is stated on /join.html and /supported.html. Recommended default: also put it in a GOVERNANCE.md in github.com/fwdslsh/.github.
+> **Draft.** These membership rules are a draft. fwdslsh is one member today, itlackey, and we will tune these rules with the members who join.
 
 ## Founding member
 
-One member is listed so far. Others will be added as they confirm their cards, and the invitation is open.
+itlackey is the only member today. The invitation is open.
 
 ### itlackey
 
@@ -36,8 +36,5 @@ The invitation is open. You may be a good fit if you build in the open, care abo
 
 [Join fwdslsh](/join.html)
 
-> **Review note:** Choose how to launch. A single card made to look like a crowd would mislead readers. Recommended default: launch now as "founding member plus open invitation", as drafted above. Once a second person has confirmed, change the "Founding member" heading to "Current members".
-
 > **Review note:** Fill in itlackey's card. Confirm the display name, since the commit history also uses "IT Lackey". Get the one-line bio, a website if wanted, a "member since" month, and any of itlackey's own repos to list. Recommended default for "member since": the month this page launches (2026-10).
 
-> **Review note:** Add the other members you know, using the card template in `drafts/pages/_member-template.md` (it becomes `src/_member-template.md`, which never ships). Each one needs to give consent, write their own bio and provide their GitHub handle. Also confirm whether the fwdslsh-dev account is a separate person. Recommended default: list no one who hasn't confirmed, and leave fwdslsh-dev off the page.

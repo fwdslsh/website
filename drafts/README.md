@@ -9,12 +9,12 @@ Nothing here is live. `drafts/` sits outside `src/`, so it never publishes.
 | [pages/index.md](pages/index.md) | New home page |
 | [pages/tools.md](pages/tools.md) | Supported tools: unify, rabit, akm, plus a separate "From our members" section |
 | [pages/supported.md](pages/supported.md) | What "supported by fwdslsh" means: criteria, where each tool stands, lifecycle, leaving |
-| [pages/members.md](pages/members.md) | Members list: itlackey as founding member, plus an open invitation |
+| [pages/members.md](pages/members.md) | Members list: itlackey, the only member today, plus an open invitation |
 | [pages/about.md](pages/about.md) | How fwdslsh works: organization, stewards, AI-contribution policy, funding |
 | [pages/join.md](pages/join.md) | Two paths: become a member, or propose a tool for support |
 | [pages/_member-template.md](pages/_member-template.md) | Card template for adding members |
 
-Each page is a valid unify Markdown page. A scratch build with them dropped into `src/` passes `build --strict` and `audit --strict`. Lines starting with **Review note** mark something you need to decide or supply; all of them are listed below.
+Each page is a valid unify Markdown page. A scratch build with them dropped into `src/` passes `build --strict` and `audit --strict`. Lines starting with **Review note** mark something you need to decide or supply before launch; all of them are listed below.
 
 ## Wording choices that differ from your request
 
@@ -27,36 +27,36 @@ Each page is a valid unify Markdown page. A scratch build with them dropped into
   - rabit as "the Gopher protocol" or "guaranteed to understand".
   - Implying the rabit MCP server can be installed. It is in the repo but not on npm.
 
-## Decisions for you
+## Draft rules
 
-Each item has the recommended default from the drafts.
+The support and governance rules are marked **Draft** on the pages themselves. That covers the criteria and lifecycle on `supported.md`, decision-making on `about.md`, and the membership rules on `join.md` and `members.md`. fwdslsh is one member today, itlackey, so these rules get tuned as members join. These questions are deferred until then:
 
-1. **Home title.** Use "Slash a path to the next epoch", because the layout appends " · fwdslsh".
-2. **Issue templates.** Create "Membership" and "Tool proposal" templates in `fwdslsh/.github`, and enable issues there.
-3. **Code of conduct.** Adopt Contributor Covenant 2.1 for the org and in akm's repo. None of the three repos has one today.
-4. **Support criteria.** Publish all eight criteria as targets. Date every "No" or "Partial" before launch. Add a SECURITY.md to unify, and update rabit's, which still lists 0.3.x.
-5. **Succession clause.** 90 days of unreachability. Agree it with itlackey and name a second person who can release.
-6. **Dormancy period.** Six months with no release and no check-in.
-7. **rabit status.** Last visible commit 2026-01-15; code licensed CC-BY-4.0, which is not an OSI licence. Keep it Active with a dated plan:
+- How strict the support criteria are, and when each "No" or "Partial" in the table gets a date
+- The succession clause's unreachability period (proposed 90 days) and a second person who can release
+- The dormancy period (proposed six months)
+- A second steward, lazy consensus, and the objection period (proposed 14 days)
+- The interim membership rule (the steward decides until there are three members) and two-member vouching
+- A GOVERNANCE.md in `fwdslsh/.github`
+- Whether agent-drafted PRs from non-members are welcome (proposed: yes, under the three disclosure rules)
+- Funding (proposed: none collectively)
+
+## Still needed before launch
+
+1. **Home title.** Keep "Slash a path to the next epoch". The layout appends " · fwdslsh".
+2. **Issue templates.** Create "Membership" and "Tool proposal" in `fwdslsh/.github`, and enable issues there.
+3. **Code of conduct.** Adopt Contributor Covenant 2.1 for the org and in akm's repo. None of the three repos has one, and `join.md` links to it.
+4. **rabit status.** rabit has no visible commits since 2026-01-15. Record a first check-in with a dated plan:
    - publish rabit-mcp;
    - fix the docs and install drift;
-   - relicense the code under an OSI licence, keeping CC-BY-4.0 for the spec.
+   - relicense the code under an OSI license.
 
    Otherwise label it Dormant.
-8. **"Supported since".** 2026-10 for all three tools.
-9. **unify version on the card.** 0.9.0, the npm latest, unless 0.9.1 gets published (fwdslsh/unify#89).
-10. **warren.json.** Add akm, and fix the `digthub` tag typo.
-11. **"From our members".** Publish it empty until a member opts in.
-12. **Second steward.** Say honestly that itlackey is the only one, with a target of 2027-01.
-13. **Decision-making.** Lazy consensus with a 14-day objection period.
-14. **Interim membership rule.** The steward decides until there are three members; after that, two members vouch for each new one.
-15. **Credential register.** Two holders each for the GitHub org, the npm scope, domain/DNS and hosting. Keep the list private; the About page says only that it exists.
-16. **No push access by default.** Also write this into a GOVERNANCE.md in `fwdslsh/.github`.
-17. **Agent-drafted PRs from non-members.** Welcome, if they follow the three disclosure rules.
-18. **Funding.** None collectively; members use their own GitHub Sponsors pages.
-19. **Members page launch.** "Founding member plus open invitation". Switch to "Current members" once a second person confirms.
-20. **itlackey's card.** Confirm the display name ("itlackey" or "IT Lackey"), plus bio, website and "member since".
-21. **Other members.** You know who they are; I could only verify itlackey. List only people who have confirmed and written their own bio. Leave the `fwdslsh-dev` account off unless it is a separate person.
+5. **"Supported since".** 2026-10 for all three tools.
+6. **unify version on the card.** 0.9.0, unless 0.9.1 gets published (fwdslsh/unify#89).
+7. **warren.json.** Add akm, and fix the `digthub` tag typo.
+8. **"From our members".** Publish it empty until itlackey opts in.
+9. **Credential register.** Two holders each for the GitHub org, the npm scope, domain/DNS and hosting. The list stays private.
+10. **itlackey's card.** Confirm the display name ("itlackey" or "IT Lackey"), plus bio, website, "member since", and any own repos to list.
 
 ## When these become site pages
 

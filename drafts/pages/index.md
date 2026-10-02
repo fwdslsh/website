@@ -45,7 +45,7 @@ fwdslsh is a collective, not a company, co-op or foundation. It has no legal ent
 
 ## Members
 
-Founding member: [itlackey](https://github.com/itlackey), who maintains unify, rabit and akm. More members will be listed as they confirm their profiles, and as new developers join. Each member gets a profile and can share the repos they choose.
+Founding member: [itlackey](https://github.com/itlackey), who maintains unify, rabit and akm. itlackey is the only member today, and the invitation is open. Each member gets a profile and can share the repos they choose.
 
 Members can also list their own repos on the members page, kept apart from the supported tools and marked 'Listed by their authors. Not reviewed or supported by fwdslsh.'
 
