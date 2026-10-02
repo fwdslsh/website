@@ -3,10 +3,9 @@ const { test, expect } = require('@playwright/test');
 const paths = [
   '/',
   '/tools/',
-  '/supported/',
   '/members/',
   '/about/',
-  '/join/',
+  '/blog/',
   '/rabit/',
   '/rabit/getting-started/',
   '/rabit/docs/',

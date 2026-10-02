@@ -4,12 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-The **fwdslsh website** (https://fwdslsh.dev): fwdslsh is a collective of independent developers building open tools
-for a web that AI agents and people both use. The site presents the collective, its members, and the three tools
-"supported by fwdslsh": unify (linked to https://unify.fwdslsh.dev/, new tab), rabit (documented under `src/rabit/`)
-and akm (github.com/itlackey/akm, a member's repo). It is built with unify: plain HTML and Markdown composed at build
-time, no framework, minimal JavaScript. The support and governance rules on the site are marked Draft; fwdslsh is
-one member today (itlackey). Background research and the messaging framework are in `drafts/`.
+The **fwdslsh website** (https://fwdslsh.dev): fwdslsh is a small group of indie devs who build open-source tools
+and write up what they learn in the fwdslsh lab. Keep the tone plain and informal. The site has the tools (unify,
+linked to https://unify.fwdslsh.dev/; rabit, documented under `src/rabit/`; akm, github.com/itlackey/akm), a blog
+members publish to, a members page and an about page. It is built with unify: plain HTML and Markdown composed at
+build time, no framework, minimal JavaScript. Background market research is in `drafts/`.
 
 ## Development Commands
 
@@ -59,10 +58,9 @@ src/
 ├── _layout.html              # the one layout: head include, nav, <main>, footer, scripts
 ├── _includes/base/           # head.html, nav.html (scoped <style>), footer.html, scripts.html
 ├── index.md                  # home
-├── tools.md, supported.md    # the supported tools; what "supported by fwdslsh" means (Draft rules)
-├── members.md, about.md      # members list; how fwdslsh works (Draft governance)
-├── join.md                   # membership and tool proposals
-├── _member-template.md       # member card template (never ships)
+├── tools.md                  # unify, rabit, akm
+├── members.md, about.md      # who we are
+├── blog/                     # index.md (post list), one .md per post, _post-template.md (never ships)
 ├── rabit/                    # index, getting-started, docs, examples
 ├── .well-known/              # burrow.json and warren.json (rabit v0.4.0; validate against rabit's schemas)
 ├── assets/                   # styles.css (global), components.css, layouts.css, utilities.css, js/, vendor/
@@ -72,6 +70,14 @@ src/
 
 Deployment: `.github/workflows/swa.yml` (Azure Static Web Apps; runs `check` and `audit` before building) and
 `.github/workflows/static.yml` (GitHub Pages).
+
+## Publishing a blog post
+
+1. Copy `src/blog/_post-template.md` to `src/blog/<slug>.md` and fill in the frontmatter. Keep `schema: BlogPosting`
+   and give `date` a time (`2026-10-02T09:00:00Z`): a date with no time is left out of the feed.
+2. Add a link to it at the top of the list in `src/blog/index.md` (`- [Title](/blog/<slug>.html)`).
+3. `npm run check`. The build writes `/feed.xml` (Atom) from every `BlogPosting` page. Link the feed from the blog
+   index once the first post exists; before that it isn't generated, and a link to it fails the build.
 
 ## Conventions
 
