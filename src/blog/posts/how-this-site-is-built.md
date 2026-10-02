@@ -57,7 +57,7 @@ Change the card's markup once and every card follows.
 
 ## The post list
 
-unify doesn't build collections. A list of posts is derived content, and derived content comes from a script you own. Ours is `src/_scripts/gen.mjs`, about 60 lines with no dependencies. unify runs it before every build. It reads each post's frontmatter and writes the list as an include, which the blog index and the home page pull in.
+unify doesn't build collections. A list of posts is derived content, and derived content comes from a script you own. Ours is `src/_scripts/gen.mjs`, about 50 lines with no dependencies. unify runs it before every build and, because of `source-inventory: true`, hands it a list of every source page with its title, description and date, so the script never parses frontmatter itself. It keeps the posts, sorts them newest first, and writes the list as an include, which the blog index and the home page pull in.
 
 The [Atom feed](/feed.xml) needs no script at all. Because the posts layout declares `BlogPosting` and every post has a `date`, unify writes `feed.xml` itself, along with each post's JSON-LD.
 
@@ -70,6 +70,7 @@ pretty-urls: true
 base-url: https://fwdslsh.dev/
 canonical: auto
 generate: _scripts/gen.mjs
+source-inventory: true
 ```
 
 Before anything deploys, two commands have to pass. `unify build --dry-run --strict` runs the whole build and every check without writing anything. `unify audit --strict` checks every page for a title, a description, one `<h1>`, working links and more. If either fails, nothing ships.

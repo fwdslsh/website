@@ -3,3 +3,4 @@ pretty-urls: true
 base-url: https://fwdslsh.dev/
 canonical: auto
 generate: _scripts/gen.mjs
+source-inventory: true
