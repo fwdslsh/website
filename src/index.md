@@ -1,6 +1,7 @@
 ---
 title: Slash a path to the next epoch
 description: fwdslsh is a collective of independent developers building open-source tools that help AI agents and people publish, find and navigate the web.
+class: prose
 ---
 
 # Slash a path to the next epoch

@@ -1,20 +1,13 @@
 # fwdslsh repositioning drafts (for review)
 
-Nothing here is live. `drafts/` sits outside `src/`, so it never publishes.
+The pages drafted here now live in `src/` (`index.md`, `tools.md`, `supported.md`, `members.md`, `about.md`, `join.md`). This folder keeps the research and the messaging framework behind them. `drafts/` sits outside `src/`, so it never publishes.
 
 | File | What it is |
 |---|---|
 | [market-research.md](market-research.md) | The research: comparable collectives, foundations and co-ops, and the agentic-web landscape. Covers where unify, rabit and akm fit, with sources. |
 | [messaging-framework.md](messaging-framework.md) | Positioning, hero options, word list, voice rules and the page plan the drafts follow. |
-| [pages/index.md](pages/index.md) | New home page |
-| [pages/tools.md](pages/tools.md) | Supported tools: unify, rabit, akm, plus a separate "From our members" section |
-| [pages/supported.md](pages/supported.md) | What "supported by fwdslsh" means: criteria, where each tool stands, lifecycle, leaving |
-| [pages/members.md](pages/members.md) | Members list: itlackey, the only member today, plus an open invitation |
-| [pages/about.md](pages/about.md) | How fwdslsh works: organization, stewards, AI-contribution policy, funding |
-| [pages/join.md](pages/join.md) | Two paths: become a member, or propose a tool for support |
-| [pages/_member-template.md](pages/_member-template.md) | Card template for adding members |
 
-Each page is a valid unify Markdown page. A scratch build with them dropped into `src/` passes `build --strict` and `audit --strict`. Lines starting with **Review note** mark something you need to decide or supply before launch; all of them are listed below.
+Lines starting with **Review note** mark something you need to decide or supply before launch; all of them are listed below.
 
 ## Wording choices that differ from your request
 
@@ -57,10 +50,3 @@ The support and governance rules are marked **Draft** on the pages themselves. T
 8. **"From our members".** Publish it empty until itlackey opts in.
 9. **Credential register.** Two holders each for the GitHub org, the npm scope, domain/DNS and hosting. The list stays private.
 10. **itlackey's card.** Confirm the display name ("itlackey" or "IT Lackey"), plus bio, website, "member since", and any own repos to list.
-
-## When these become site pages
-
-- Move `pages/*.md` into `src/`. `index.md` replaces `src/index.html`.
-- Point the nav and footer links at `/tools.html` and `/about.html`. They currently use `/#tools` and `/#about`, anchors the new home page drops; the scratch build reports exactly those 20 broken links.
-- Remove the current rabit overclaims from `src/rabit/index.html`: its meta description ("The Gopher protocol for the AI age") and "agents are guaranteed to understand". Research §3 also suggests a short "how rabit relates to llms.txt, AGENTS.md and MCP" section.
-- Update the website's CLAUDE.md, the org profile README (typos "where" and "tatical", and its "zero deps" claim), and unify's GitHub description.

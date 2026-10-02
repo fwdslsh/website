@@ -1,6 +1,7 @@
 ---
 title: Supported by fwdslsh
 description: "What 'supported by fwdslsh' means: the criteria a tool meets, what members commit to, and how a tool joins, goes dormant or leaves."
+class: prose
 ---
 
 # Supported by fwdslsh

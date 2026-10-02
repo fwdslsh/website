@@ -4,10 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-The **fwdslsh website** (https://fwdslsh.dev) — documentation for **rabit** and a showcase for **unify**, the
-static site generator it is built with. The site lists two tools: rabit (documented under `src/rabit/`) and
-unify (linked to https://unify.fwdslsh.dev/, opened in a new tab). It doubles as a reference unify site: plain HTML composed at build
-time, no framework, minimal JavaScript.
+The **fwdslsh website** (https://fwdslsh.dev): fwdslsh is a collective of independent developers building open tools
+for a web that AI agents and people both use. The site presents the collective, its members, and the three tools
+"supported by fwdslsh": unify (linked to https://unify.fwdslsh.dev/, new tab), rabit (documented under `src/rabit/`)
+and akm (github.com/itlackey/akm, a member's repo). It is built with unify: plain HTML and Markdown composed at build
+time, no framework, minimal JavaScript. The support and governance rules on the site are marked Draft; fwdslsh is
+one member today (itlackey). Background research and the messaging framework are in `drafts/`.
 
 ## Development Commands
 
@@ -43,6 +45,8 @@ changing markup. The short version:
 - **Underscore**: `_includes/`, `_layout.html`, and any `_`-prefixed path never ship.
 - **Links**: link the real file (`/rabit/docs.html`); `--pretty-urls` rewrites it to `/rabit/docs/`.
 - **Everything else ships byte-for-byte**, including `src/.well-known/` (the site's rabit burrow and warren).
+- **Markdown pages** set `title`, `description` and `class: prose` in frontmatter; `prose` (in `styles.css`) gives
+  them the reading layout. Never put a `<head>` in Markdown.
 - Content after `</html>` is dropped by unify when a layout applies — keep scripts inside `<body>` or in
   `src/assets/js/main.js`.
 
@@ -54,7 +58,11 @@ The retired DOM Cascade vocabulary (`data-unify`, `unify-*` area classes) is a b
 src/
 ├── _layout.html              # the one layout: head include, nav, <main>, footer, scripts
 ├── _includes/base/           # head.html, nav.html (scoped <style>), footer.html, scripts.html
-├── index.html                # homepage: hero, tools (rabit, unify), about
+├── index.md                  # home
+├── tools.md, supported.md    # the supported tools; what "supported by fwdslsh" means (Draft rules)
+├── members.md, about.md      # members list; how fwdslsh works (Draft governance)
+├── join.md                   # membership and tool proposals
+├── _member-template.md       # member card template (never ships)
 ├── rabit/                    # index, getting-started, docs, examples
 ├── .well-known/              # burrow.json and warren.json (rabit v0.4.0; validate against rabit's schemas)
 ├── assets/                   # styles.css (global), components.css, layouts.css, utilities.css, js/, vendor/

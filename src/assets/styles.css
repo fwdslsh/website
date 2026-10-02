@@ -247,6 +247,68 @@ main {
   overflow-x: hidden;
 }
 
+/* Markdown pages: frontmatter `class: prose` puts this class on <body> */
+.prose main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.prose main h1 {
+  display: block;
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  color: var(--primary);
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+}
+
+.prose main h2 {
+  font-size: 1.6rem;
+  margin: 2.75rem 0 0.75rem;
+}
+
+.prose main h3 {
+  font-size: 1.2rem;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.prose main :is(p, ul, ol, blockquote, table) {
+  margin-bottom: 1rem;
+}
+
+.prose main :is(ul, ol) {
+  padding-left: 1.5rem;
+}
+
+.prose main li {
+  margin-bottom: 0.35rem;
+}
+
+.prose main blockquote {
+  border-left: 3px solid var(--primary);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  padding: 0.75rem 1rem;
+  border-radius: 0 6px 6px 0;
+}
+
+.prose main blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.prose main table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.prose main :is(th, td) {
+  border: 1px solid var(--border-subtle);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
 /* Typography */
 h1 {
   display: inline;

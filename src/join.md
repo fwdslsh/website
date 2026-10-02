@@ -1,6 +1,7 @@
 ---
 title: Join
 description: How to join fwdslsh as a member or propose a tool for support. Both paths start with a public GitHub issue, and the decision is recorded there.
+class: prose
 ---
 
 # Join

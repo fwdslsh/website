@@ -1,6 +1,7 @@
 ---
 title: Tools
 description: "The tools supported by fwdslsh: unify, rabit and akm. What each one does today, its status, license, version, and who maintains it."
+class: prose
 ---
 
 # Tools

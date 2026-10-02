@@ -1,6 +1,7 @@
 ---
 title: Members
 description: The independent developers in the fwdslsh collective, with links to their GitHub profiles and the repositories they choose to list.
+class: prose
 ---
 
 # Members

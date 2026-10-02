@@ -1,6 +1,7 @@
 ---
 title: How fwdslsh works
 description: "How fwdslsh is organized: a collective with no legal entity, no money and no ownership of members' code, and how we work with AI agents."
+class: prose
 ---
 
 # How fwdslsh works
