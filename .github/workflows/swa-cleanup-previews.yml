@@ -15,6 +15,10 @@ on:
         required: true
         default: '1,2,3'
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   close_preview:
     runs-on: ubuntu-latest
@@ -25,11 +29,17 @@ jobs:
     name: Close preview for PR ${{ matrix.pr }}
     steps:
       - name: Point the event at PR ${{ matrix.pr }}
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          jq --argjson n "${{ matrix.pr }}" '. + {action: "closed", number: $n, pull_request: {number: $n}}' \
-            "$GITHUB_EVENT_PATH" > event.json
+          # Rebuild the event a real "pull_request: closed" run would carry: the
+          # action reads pull_request.{number,html_url,title,base,head} and repository.
+          gh api "repos/${{ github.repository }}/pulls/${{ matrix.pr }}" > pr.json
+          gh api "repos/${{ github.repository }}" > repo.json
+          jq -n --slurpfile pr pr.json --slurpfile repo repo.json \
+            '{action: "closed", number: $pr[0].number, pull_request: $pr[0], repository: $repo[0]}' > event.json
           cp event.json "$GITHUB_EVENT_PATH"
-          cat "$GITHUB_EVENT_PATH"
+          jq '{action, number, pr: .pull_request.html_url, head: .pull_request.head.ref}' "$GITHUB_EVENT_PATH"
       - name: Close preview
         uses: Azure/static-web-apps-deploy@v1
         with:
