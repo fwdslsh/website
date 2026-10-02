@@ -17,9 +17,9 @@ and never work around them with wrappers or scripts.
 ```bash
 npm run dev             # unify dev: build + watch + serve on http://localhost:3000 with live reload
                         #   http://localhost:3000/_unify/ shows every audit finding by page
-npm run build           # unify build → dist/
-npm run check           # the whole build and every check, writing nothing (--dry-run --strict); CI gate
-npm run audit           # unify audit --strict: page-level findings (titles, h1s, metadata, links); CI gate
+npm run build           # unify build --audit --strict → dist/, written only if the audit passes; the CI gate
+npm run check           # the whole build and every check, writing nothing (--dry-run --strict)
+npm run audit           # unify audit --strict: page-level findings (titles, h1s, metadata, links), writing nothing
 npm run audit:external  # audit plus fetching every off-site link
 npm test                # Playwright smoke tests against `npm run dev`
 ```
@@ -46,14 +46,13 @@ changing markup. How this site uses each feature:
   section). Designed pages are HTML documents (`index.html`, `rabit/index.html`, `404.html`) with their own
   `<head>` (title and description only) and no chrome.
 - **Titles**: a page writes only its own title; the layout's `<title>· fwdslsh</title>` (or `· rabit · fwdslsh`)
-  carries the suffix. The `<h1>` must be contained in the title or contain it (`unify audit` checks).
+  carries the suffix. The feed is titled from `og:site_name` ("fwdslsh", in `_includes/base/head.html`).
 - **Current section**: the page's `<body>` class (`class: about` in frontmatter, `<body class="home">` in HTML,
   or the rabit layout's `tools`) merges into the layout's `<body>`. CSS in `nav.html` (`body.about .nav-about`)
   and `styles.css` (`body.rabit-spec .tab-spec`) highlights the link. No script.
 - **Slotted includes**: `_includes/card.fragment.html` (tool and rabit cards) and `_includes/member.fragment.html`
   declare named slots; a non-empty `<include>` fills them with `slot=` on its top-level elements. Card icons are
-  `<img>`s of `src/assets/icons/*.svg`: an `<include>` inside a slotted include's content breaks
-  ([fwdslsh/unify#90](https://github.com/fwdslsh/unify/issues/90)).
+  `<img>`s of `src/assets/icons/*.svg`.
 - **Generated content**: `src/_scripts/gen.mjs` runs before every build, dev rebuild and audit (`--generate`).
   It reads `src/blog/posts/*.md` frontmatter and writes `_includes/post-list.html` and
   `_includes/latest-posts.html` into unify's overlay; it never writes into `src/`.
@@ -88,7 +87,7 @@ src/
 └── unify.yaml                # saved CLI flags (never shipped)
 ```
 
-Deployment: `.github/workflows/swa.yml` (Azure Static Web Apps; runs `check` and `audit` before building).
+Deployment: `.github/workflows/swa.yml` (Azure Static Web Apps; `npm run build` audits before it writes `dist/`).
 
 ## Publishing a blog post
 
@@ -118,7 +117,7 @@ a bio paragraph, like the existing one.
 
 ## Testing
 
-- `npm run check && npm run audit` must both exit 0.
+- `npm run build` must exit 0 (it audits with `--strict`); `npm run check` is the same gate without writing.
 - `npm test` covers same-site links on every page, one `<nav>`/`<h1>` per page, no console errors, the top-bar
   icons, the tools menu (mouse and keyboard), the current-section highlight, the generated post list and the
   copy buttons.
