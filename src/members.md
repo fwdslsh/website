@@ -1,13 +1,17 @@
 ---
 title: Members
 description: The indie developers behind fwdslsh and what each of them builds.
-class: prose
 ---
+
+<header class="page-header">
+<p class="eyebrow">~/members</p>
 
 # Members
 
-We're a few indie devs who build stuff, write stuff and share it. More members are on the way.
+<p class="lede">We're a few indie devs who build stuff, write stuff and share it. More members are on the way.</p>
 
-## itlackey
+</header>
 
-Builds [unify](https://unify.fwdslsh.dev/), [rabit](/rabit/index.html) and [akm](https://github.com/itlackey/akm). [GitHub](https://github.com/itlackey)
+<ul class="member-list">
+<include src="/_includes/members/itlackey.html"></include>
+</ul>

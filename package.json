@@ -5,7 +5,7 @@
   "type": "module",
   "homepage": "https://fwdslsh.dev",
   "scripts": {
-    "build": "unify build --source src --output dist",
+    "build": "unify build --source src --output dist --clean",
     "dev": "unify dev --source src",
     "check": "unify build --source src --output dist --dry-run --strict",
     "audit": "unify audit --source src --output dist --strict",

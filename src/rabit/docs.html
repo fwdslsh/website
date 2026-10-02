@@ -5,29 +5,25 @@
     <meta name="description" content="The rabit specification: index format, entry structure, and the conventions agents rely on to navigate published content.">
 </head>
 <body>
-    <section class="tool-hero">
-        <div class="tool-hero-content">
-            <h1>rabit Specification</h1>
-            <p class="tagline">The protocol details</p>
-        </div>
-    </section>
+    <header class="page-header">
+      <p class="eyebrow"><a href="/tools.html">~/tools</a> / <a href="/rabit/index.html">rabit</a> / specification</p>
+      <h1>rabit Specification</h1>
+      <p class="lede">The burrow manifest, its entries, and how clients find it.</p>
+    </header>
 
-    <section class="tool-nav">
-        <div class="tool-nav-container">
-            <ul class="tool-nav-links">
-                <li><a href="/rabit/index.html">Overview</a></li>
-                <li><a href="/rabit/getting-started.html">Getting Started</a></li>
-                <li><a href="/rabit/docs.html" class="active">Documentation</a></li>
-                <li><a href="/rabit/examples.html">Examples</a></li>
-            </ul>
-        </div>
-    </section>
+    <nav class="subnav" aria-label="rabit">
+      <ul>
+        <li><a href="/rabit/index.html">Overview</a></li>
+        <li><a href="/rabit/getting-started.html">Getting started</a></li>
+        <li><a href="/rabit/docs.html" aria-current="page">Specification</a></li>
+        <li><a href="/rabit/examples.html">Examples</a></li>
+      </ul>
+    </nav>
 
-    <section class="tool-section">
+    <section>
         <h2>Burrow Manifest</h2>
         <p>A burrow is a JSON document describing one collection of content. Every document carries a <code>specVersion</code> and a <code>kind</code>; everything else is optional except the <code>entries</code> list.</p>
-        <div class="code-block">
-<pre>{
+        <pre data-filename="docs/.burrow.json">{
   "$schema": "fwdslsh.dev/rabit/schemas/0.4.0/burrow",
   "specVersion": "fwdslsh.dev/rabit/schemas/0.4.0/burrow",
   "kind": "burrow",
@@ -46,10 +42,9 @@
       "title": "API Reference", "summary": "Endpoints, schemas, examples." }
   ]
 }</pre>
-        </div>
     </section>
 
-    <section class="tool-section">
+    <section>
         <h2>Entries</h2>
         <p>Each entry needs an <code>id</code> (unique within the burrow), a <code>kind</code>, and a <code>uri</code>. Optional fields include <code>title</code>, <code>summary</code>, <code>mediaType</code>, <code>sizeBytes</code>, <code>modified</code>, <code>sha256</code>, <code>tags</code>, <code>priority</code> (higher is more prominent), and <code>metadata</code>.</p>
         <ul>
@@ -61,7 +56,7 @@
         </ul>
     </section>
 
-    <section class="tool-section">
+    <section>
         <h2>Discovery</h2>
         <p>Clients try each name in order at a location and stop at the first that answers:</p>
         <ol>

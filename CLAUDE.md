@@ -44,8 +44,7 @@ changing markup. The short version:
 - **Underscore**: `_includes/`, `_layout.html`, and any `_`-prefixed path never ship.
 - **Links**: link the real file (`/rabit/docs.html`); `--pretty-urls` rewrites it to `/rabit/docs/`.
 - **Everything else ships byte-for-byte**, including `src/.well-known/` (the site's rabit burrow and warren).
-- **Markdown pages** set `title`, `description` and `class: prose` in frontmatter; `prose` (in `styles.css`) gives
-  them the reading layout. Never put a `<head>` in Markdown.
+- **Markdown pages** set `title` and `description` in frontmatter. Never put a `<head>` in Markdown.
 - Content after `</html>` is dropped by unify when a layout applies — keep scripts inside `<body>` or in
   `src/assets/js/main.js`.
 
@@ -57,13 +56,15 @@ The retired DOM Cascade vocabulary (`data-unify`, `unify-*` area classes) is a b
 src/
 ├── _layout.html              # the one layout: head include, nav, <main>, footer, scripts
 ├── _includes/base/           # head.html, nav.html (scoped <style>), footer.html, scripts.html
+├── _includes/tool-cards.html # the unify/rabit/akm cards (home and /tools/)
+├── _includes/members/        # one <li class="member"> per member, included by members.md
 ├── index.md                  # home
 ├── tools.md                  # unify, rabit, akm
 ├── members.md, about.md      # who we are
 ├── blog/                     # index.md (post list), one .md per post, _post-template.md (never ships)
 ├── rabit/                    # index, getting-started, docs, examples
 ├── .well-known/              # burrow.json and warren.json (rabit v0.4.0; validate against rabit's schemas)
-├── assets/                   # styles.css (global), components.css, layouts.css, utilities.css, js/, vendor/
+├── assets/                   # styles.css (the one global stylesheet), js/main.js, vendor/speed-highlight
 ├── staticwebapp.config.json  # Azure Static Web Apps headers
 └── unify.yaml                # saved CLI flags (never shipped)
 ```
@@ -80,6 +81,14 @@ Deployment: `.github/workflows/swa.yml` (Azure Static Web Apps; runs `check` and
    index once the first post exists; before that it isn't generated, and a link to it fails the build.
 
 ## Conventions
+
+- Page pattern: open with `<header class="page-header">` (`p.eyebrow` path, the `<h1>`, `p.lede`), then plain
+  `<section>`s, each starting with an `<h2>` (styled with a `/ ` prefix). Components available in `styles.css`:
+  `.card-grid`/`.card`, `.split`, `.subnav` (set `aria-current="page"` on the current tab), `.member-list`,
+  `.post-list`, `.empty-state`, `.btn-primary`/`.btn-secondary`, `.meta`.
+- Type: Protest Revolution for `<h1>` only, JetBrains Mono for h2–h6, nav and code, Inter for body text.
+- Code blocks: `main.js` adds a copy button and syntax highlighting to every `main pre`; `data-filename="x"` on a
+  `<pre>` adds a filename tab. Top-nav links carry `data-match` path prefixes so `main.js` can mark the current one.
 
 - Component styles live with the component (e.g. the `<style>` in `nav.html`, scoped under `nav`) and handle
   layout only; truly global styles go in `src/assets/styles.css`. Don't duplicate rules across both.
