@@ -1,225 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <title>Slash a path through the bloat</title>
-  <meta name="description"
-    content="Sharp tools for hackers who remember when software didn't fight you. Zero deps, instant setup, no frameworks to babysit.">
-
-  <style>
-    .protest-revolution-regular {
-      font-family: "Protest Revolution", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    /* Hero Section - Page specific */
-.hero {
-       min-height: 85vh;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       text-align: center;
-       padding: 2rem;
-       position: relative;
-       background-image: url("/assets/cables-bg.png");
-       background-repeat: no-repeat;
-       background-position: center;
-       background-size: contain;
-     }
-
-    .hero-content {
-      max-width: 800px;
-      animation: fadeInUp 1s ease-out;
-    }
-
-    .hero h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 900;
-      margin-bottom: 1rem;
-      background: var(--gradient-1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: var(--primary);
-      line-height: 1.1;
-      display: inline;
-      justify-content: center;
-      align-items: center;
-      text-transform: lowercase;
-      font-family: 'Protest Revolution';
-    }
-
-    .hero img {
-      height: clamp(3rem, 8vw, 6rem);
-    }
-
-    .hero .tagline {
-      font-size: clamp(1.2rem, 3vw, 1.8rem);
-      color: var(--text-secondary);
-      margin-bottom: 2rem;
-      font-family: var(--font-mono);
-    }
-
-    .hero .description {
-      font-size: 1.2rem;
-      color: var(--text-dim);
-      margin-bottom: 3rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Tools Preview Section styles moved to src/assets/styles.css */
-  </style>
+  <meta name="description" content="A small group of indie devs building open-source tools and sharing what we learn in the fwdslsh lab.">
 </head>
+<body class="home">
+  <header class="hero">
+    <p class="prompt">~/fwdslsh $</p>
+    <h1>Slash a path through the bloat</h1>
+    <p>fwdslsh is a small group of indie developers working together. We build open-source tools, try things out in the fwdslsh lab, and write up what we learn.</p>
+    <p class="actions">
+      <a class="btn btn-primary" href="/tools.html">See the tools</a>
+      <a class="btn btn-secondary" href="/blog/index.html">Read the blog</a>
+    </p>
+  </header>
 
-<body>
-  <section class="hero">
-    <div class="hero-content">
-      <h1>
-        fwdslsh
-      </h1>
-      <p class="tagline">Slash a path through the bloat</p>
-      <p class="description">
-        Sharp tools for hackers who remember when software didn't fight you.
-        Zero deps, instant setup, no frameworks to babysit.
-      </p>
-      <div class="cta-buttons">
-        <a href="#tools" class="btn btn-primary">
-          <span>/tools</span>
-        </a>
-        <a href="https://github.com/fwdslsh" class="btn btn-secondary">
-          /GitHub
-        </a>
-      </div>
-    </div>
-  </section>
+  <h2>Tools</h2>
+  <p>Right now that's mostly tools for a web that AI agents and people both use: sites that are easy to publish and easy to read, by eye or by agent.</p>
+  <include src="/_includes/tool-cards.html"></include>
 
-  <section id="tools" class="tools-preview">
-    <div class="section-header">
-      <h2>Built for the Command Line</h2>
-      <p>Small, sharp programs that do one thing well</p>
-    </div>
+  <h2>From the lab</h2>
+  <p>Notes, experiments and write-ups from members.</p>
+  <include src="/_includes/latest-posts.html"></include>
+  <p><a href="/blog/index.html">All posts →</a></p>
 
-    <div class="terminal-demo">
-      <div class="terminal-header">
-        <div class="terminal-dot dot-red"></div>
-        <div class="terminal-dot dot-yellow"></div>
-        <div class="terminal-dot dot-green"></div>
-        <div class="terminal-title">~/project</div>
-      </div>
-      <div class="terminal-content">
-        <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">unify init</span>
-          <span class="comment"> # Scaffold a plain-HTML site</span>
-        </div>
-        <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">unify build</span>
-          <span class="comment"> # Layouts + includes, rendered at build time</span>
-        </div>
-        <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">rabit discover https://fwdslsh.dev</span>
-          <span class="comment"> # Find a site's agent manifest</span>
-        </div>
-        <div class="terminal-line">
-          <span class="prompt">$</span> <span class="command">rabit traverse https://fwdslsh.dev</span>
-          <span class="comment"> # Walk every entry, deterministically</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="tools-grid">
-      <div class="tool-card">
-        <div class="tool-header">
-          <div class="tool-icon">
-            <svg class="lucide lucide-signpost" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 13v8" />
-              <path d="M12 3v3" />
-              <path d="M18 6a2 2 0 0 1 1.387.56l2.307 2.22a1 1 0 0 1 0 1.44l-2.307 2.22A2 2 0 0 1 18 13H6a2 2 0 0 1-1.387-.56l-2.306-2.22a1 1 0 0 1 0-1.44l2.306-2.22A2 2 0 0 1 6 6z" />
-            </svg>
-          </div>
-          <div>
-            <h3>rabit</h3>
-            <div class="subtitle">Manifest-based navigation for AI</div>
-          </div>
-        </div>
-        <p>A simple convention for publishing content that both humans and AI agents can navigate reliably, using <code>.burrow.json</code> manifests.</p>
-
-        <pre class="code-snippet">$ rabit map ./docs --title "My Docs"
-$ rabit validate docs/.burrow.json
-$ rabit list https://example.com/docs</pre>
-
-        <p><strong>Why we built it:</strong> AI agents need structured paths, not HTML soup.</p>
-
-        <div class="tool-links">
-          <a href="/rabit/index.html">Documentation →</a>
-          <a href="https://github.com/fwdslsh/rabit">GitHub →</a>
-        </div>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-header">
-          <div class="tool-icon">
-            <svg class="lucide lucide-layout-template" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect width="18" height="7" x="3" y="3" rx="1" />
-              <rect width="9" height="7" x="3" y="14" rx="1" />
-              <rect width="5" height="7" x="16" y="14" rx="1" />
-            </svg>
-          </div>
-          <div>
-            <h3>unify</h3>
-            <div class="subtitle">HTML-native static site generator</div>
-          </div>
-        </div>
-        <p>Write a header, nav, footer, or layout once in plain HTML and unify renders it into every page. No expression language, no client runtime &mdash; this site is built with it.</p>
-
-        <pre class="code-snippet">$ npm install -g @fwdslsh/unify
-$ unify init
-$ unify build</pre>
-
-        <p><strong>Why we built it:</strong> Sharing chrome across pages shouldn't require a framework.</p>
-
-        <div class="tool-links">
-          <a href="https://unify.fwdslsh.dev/docs/" target="_blank" rel="noopener">Documentation →</a>
-          <a href="https://github.com/fwdslsh/unify">GitHub →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="tools-preview">
-    <div class="section-header">
-      <h2>The Path Forward</h2>
-      <p>Old-school principles, new-school execution</p>
-    </div>
-
-    <div
-      style="max-width: 600px; margin: 0 auto; text-align: left; color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8;">
-      <p style="margin-bottom: 1.5rem;">
-        We're not building the next unicorn framework. We're building tools for hackers who value craft over hype.
-      </p>
-
-      <p style="margin-bottom: 1.5rem;">
-        <strong style="color: var(--primary);">Ship binaries, not ecosystems:</strong> Download once, run everywhere.
-        No package manager roulette or dependency hell.
-      </p>
-
-      <p style="margin-bottom: 1.5rem;">
-        <strong style="color: var(--primary);">Hack with the grain:</strong> Work with web standards and POSIX
-        conventions instead of reinventing everything.
-      </p>
-
-      <p style="margin-bottom: 1.5rem;">
-        <strong style="color: var(--primary);">Performance starts in your head:</strong> Tools should amplify human
-        intelligence, not fight it with ceremony and complexity.
-      </p>
-
-      <p
-        style="color: var(--text-primary); text-align: center; font-family: var(--font-mono); font-style: italic; margin-top: 2rem;">
-        The <span style="color: var(--primary); font-weight: bold;">/</span> isn't just our logo - it's a commitment
-        to cutting through the cruft.
-      </p>
-    </div>
-  </section>
+  <h2>Who we are</h2>
+  <p>A few devs who build stuff, write stuff and share it. <a href="/members.html">Meet the members →</a></p>
 </body>
 </html>

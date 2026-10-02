@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <include src="/_includes/base/head.html"></include>
+  <title>· rabit · fwdslsh</title>
+  <meta property="og:type" content="website">
+  <meta name="schema" content="WebPage">
+</head>
+<body class="tools">
+  <!-- The rabit section: the site chrome plus the section's tabs. Each page sets its own
+       body class (rabit-overview, rabit-start, rabit-spec, rabit-examples) to mark its tab. -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <include src="/_includes/base/nav.html"></include>
+  <main id="main">
+    <nav class="subnav" aria-label="rabit">
+      <ul>
+        <li><a class="tab-overview" href="/rabit/index.html">Overview</a></li>
+        <li><a class="tab-start" href="/rabit/getting-started.html">Getting started</a></li>
+        <li><a class="tab-spec" href="/rabit/docs.html">Specification</a></li>
+        <li><a class="tab-examples" href="/rabit/examples.html">Examples</a></li>
+      </ul>
+    </nav>
+    <slot></slot>
+  </main>
+  <include src="/_includes/base/footer.html"></include>
+</body>
+</html>

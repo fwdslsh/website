@@ -28,7 +28,7 @@ jobs:
         run: npm ci
 
       # Gate before publishing: either failing check stops the deploy.
-      # Shared flags (--pretty-urls, --base-url, --canonical) live in src/unify.yaml.
+      # Shared flags (--pretty-urls, --base-url, --canonical, --generate) live in src/unify.yaml.
       - name: Verify — build --dry-run --strict
         run: npm run check
 
