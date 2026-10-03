@@ -1,0 +1,29 @@
+<section class="model-ledger" aria-label="Interactive model benchmark ledger">
+  <p class="ledger-status" id="ledger-status" role="status" aria-live="polite">Loading the recorded runs…</p>
+  <p><a href="/assets/model-ledger.json" download="model-ledger.json">Download the full public snapshot (JSON)</a></p>
+  <noscript><p>Enable JavaScript to filter and sort the table, or use the downloadable snapshot above.</p></noscript>
+  <div class="ledger-controls" hidden>
+    <label>Search runs<input type="search" id="ledger-search" placeholder="Model, runtime, or run ID"></label>
+    <label><span id="ledger-system-label">System</span><select id="ledger-system" aria-labelledby="ledger-system-label"><option value="">All systems</option></select></label>
+    <label><span id="ledger-model-label">Model family</span><select id="ledger-model" aria-labelledby="ledger-model-label"><option value="">All models</option></select></label>
+    <label><span id="ledger-suite-label">Evaluation suite</span><select id="ledger-suite" aria-labelledby="ledger-suite-label"><option value="">All suites</option></select></label>
+    <label><span id="ledger-state-label">Run status</span><select id="ledger-state" aria-labelledby="ledger-state-label"><option value="">All statuses</option></select></label>
+    <label><span id="ledger-gpu-label">GPUs used</span><select id="ledger-gpu" aria-labelledby="ledger-gpu-label"><option value="">All allocations</option><option value="0">CPU only</option><option value="1">1 GPU</option><option value="2">2 GPUs</option><option value="unknown">Unrecorded</option></select></label>
+    <label>Minimum quality %<input id="ledger-quality" type="number" min="0" max="100" step="any" placeholder="Any" aria-describedby="ledger-help"></label>
+  </div>
+  <p id="ledger-help" class="ledger-help">Compare quality within the same suite. A minimum quality excludes unscored rows; blank includes them. “—” means unrecorded.</p>
+  <div class="ledger-actions" hidden>
+    <label><input type="checkbox" id="ledger-duplicates"> Hide exact duplicates</label>
+    <button type="button" id="ledger-reset">Reset filters</button>
+    <button type="button" id="ledger-csv">Export filtered CSV</button>
+    <button type="button" id="ledger-json">Export filtered JSON</button>
+  </div>
+  <div class="ledger-scroll" role="region" aria-label="Scrollable benchmark results" tabindex="0">
+    <table>
+      <caption>Recorded runs. Scroll horizontally for performance columns.</caption>
+      <thead><tr id="ledger-head"></tr></thead>
+      <tbody id="ledger-body"><tr><td>Interactive results load here; the full snapshot is available above.</td></tr></tbody>
+    </table>
+  </div>
+</section>
+<script type="module" src="/assets/js/model-ledger.js"></script>
