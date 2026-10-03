@@ -1,6 +1,6 @@
 ---
 title: From the lab
-description: Notes, experiments and write-ups from the fwdslsh lab.
+description: Notes, experiments and write-ups from the fwdslsh lab, shared so anyone can use them.
 class: blog
 ---
 

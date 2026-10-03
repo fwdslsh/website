@@ -4,8 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-The **fwdslsh website** (https://fwdslsh.dev): fwdslsh is a small group of indie devs who build open-source tools
-and write up what they learn in the fwdslsh lab. Keep the tone plain and informal. The site has the tools (unify,
+The **fwdslsh website** (https://fwdslsh.dev): fwdslsh is a group of indie devs who build open-source tools
+and write up what they learn in the fwdslsh lab, on the premise that shared tools and knowledge improve things for
+everyone ("a rising tide lifts all boats"; tagline "Slash a path to a better future"). Keep the tone plain and informal. The site has the tools (unify,
 introduced under `src/unify/` with the full docs at https://unify.fwdslsh.dev/; rabit, documented under
 `src/rabit/`; akm, introduced under `src/akm/` with the full docs at github.com/itlackey/akm; gutterpress, introduced under
 `src/gutterpress/` with the full docs at github.com/dimm-city/gutterpress), a blog
