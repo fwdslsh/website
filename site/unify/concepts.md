@@ -10,7 +10,7 @@ Five primitives and one rule for merging them. This is the short version; the [a
 
 ## Files
 
-The source root is `src/`. Every `.html` and `.md` file is a page, except a name ending `.fragment.html`, which ships as written for includes and `fetch`. Every other file copies through byte-for-byte to the same path. Anything whose name starts with `_` (`_layout.html`, `_includes/`, `_scripts/`) is read by the build but never published.
+The source root is `src/` by default, or whatever `source:` names in `unify.yaml` (`site/`, `pages/`). Every `.html` and `.md` file is a page, except a name ending `.fragment.html`, which ships as written for includes and `fetch`. Every other file copies through byte-for-byte to the same path. Anything whose name starts with `_` (`_layout.html`, `_includes/`, `_scripts/`) is read by the build but never published. Layouts, includes and `unify.yaml` can also live at the project root, beside `package.json`: unify looks there last, and nothing there is ever published.
 
 Always link the real file: `/about.html`, never `/about/`. Under `--pretty-urls` the build rewrites it for you.
 
@@ -23,13 +23,13 @@ Pick a different layout with `data-layout="/path.html"` on the page's `<html>` o
 ## Includes
 
 ```html
-<include src="/_includes/nav.html"></include>
+<include src="/includes/nav.html"></include>
 ```
 
 Always with the closing tag. A path starting with `/` resolves from `src/`; anything else is relative to the including file. Empty, it splices the file in verbatim. With content between the tags, it fills slots in a `*.fragment.html` that declares them:
 
 ```html
-<include src="/_includes/card.fragment.html">
+<include src="/includes/card.fragment.html">
   <span slot="title">unify</span>
   <p>Everything else goes to the bare slot.</p>
 </include>

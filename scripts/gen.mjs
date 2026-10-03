@@ -1,6 +1,6 @@
 // Writes the blog's post lists. unify runs it before every build, dev rebuild and
-// audit (`generate: _scripts/gen.mjs` in unify.yaml) and builds what it writes as
-// if it were part of src/. It never touches src/ itself.
+// audit (`generate: ../scripts/gen.mjs` in unify.yaml) and builds what it writes as
+// if it were part of site/. It never touches site/ itself.
 //
 //   argv[3]  an empty overlay directory, added to the build
 //   argv[4]  generator-context.json; with `source-inventory: true` in unify.yaml its
@@ -9,8 +9,8 @@
 //            parses no frontmatter itself
 //
 // Output, included by the blog index and the home page:
-//   _includes/post-list.html     every post, newest first
-//   _includes/latest-posts.html  the three newest
+//   _generated/post-list.html     every post, newest first
+//   _generated/latest-posts.html  the three newest
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -52,6 +52,6 @@ const list = (items) =>
         .join("\n") +
       "\n</ol>\n";
 
-mkdirSync(join(overlay, "_includes"), { recursive: true });
-writeFileSync(join(overlay, "_includes", "post-list.html"), list(posts));
-writeFileSync(join(overlay, "_includes", "latest-posts.html"), list(posts.slice(0, 3)));
+mkdirSync(join(overlay, "_generated"), { recursive: true });
+writeFileSync(join(overlay, "_generated", "post-list.html"), list(posts));
+writeFileSync(join(overlay, "_generated", "latest-posts.html"), list(posts.slice(0, 3)));

@@ -1,12 +1,18 @@
 # Scripts
 
+## gen.mjs
+
+The blog's post-list generator. unify runs it before every build, dev rebuild and audit
+(`generate: ../scripts/gen.mjs` in `unify.yaml`), hands it the source-page inventory, and
+builds what it writes into `_generated/` as if it were part of `site/`. It never writes into `site/`.
+
 ## check-version-sync.sh
 
 Checks that the website matches the projects it documents, using sibling checkouts
 (`../rabit`, `../unify`):
 
 - **rabit** — the version in `../rabit/package.json` against every `rabit/schemas/<version>/` the rabit pages
-  and `src/.well-known/*.json` reference.
+  and `site/.well-known/*.json` reference.
 - **unify** — the version in `../unify/package.json` against the `@fwdslsh/unify` version in `package-lock.json`.
 
 Exits 1 on any mismatch.

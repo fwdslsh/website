@@ -2,7 +2,7 @@
 node_modules/
 .unify-cache/
 /dist/
-!src/assets/vendor/**
+!site/assets/vendor/**
 .remove
 test-results/
 tests/visual/
