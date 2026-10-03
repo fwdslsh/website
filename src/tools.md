@@ -20,7 +20,7 @@ unify init
 unify build
 ```
 
-Needs Node 22.12+ or Bun 1.2+. MPL-2.0. [Docs](https://unify.fwdslsh.dev/) · [GitHub](https://github.com/fwdslsh/unify)
+Needs Node 22.12+ or Bun 1.2+. MPL-2.0. [Getting started](/unify/getting-started.html) · [Full docs](https://unify.fwdslsh.dev/) · [GitHub](https://github.com/fwdslsh/unify)
 
 ## rabit
 

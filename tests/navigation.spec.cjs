@@ -11,10 +11,14 @@ const paths = [
   '/rabit/getting-started/',
   '/rabit/docs/',
   '/rabit/examples/',
+  '/unify/',
+  '/unify/getting-started/',
+  '/unify/concepts/',
+  '/unify/examples/',
   '/404.html',
 ];
 
-// Same-site links in the top nav, the rabit sub-nav, and the footer.
+// Same-site links in the top nav, the section sub-navs, and the footer.
 const linkSelector = '.site-nav a, .subnav a, .site-footer a';
 
 test.describe('site navigation', () => {
@@ -74,8 +78,7 @@ test('tools menu lists all three tools, opens from the keyboard, and stays on sc
   await expect(menu).toBeVisible();
   await expect(menu.locator('.nav-tool-name')).toHaveText(['unify', 'rabit', 'akm']);
   const unify = menu.locator('a', { hasText: 'unify' });
-  await expect(unify).toHaveAttribute('href', 'https://unify.fwdslsh.dev/');
-  await expect(unify).toHaveAttribute('target', '_blank');
+  await expect(unify).toHaveAttribute('href', '/unify/');
   const box = await menu.boundingBox();
   const width = page.viewportSize().width;
   expect(box.x).toBeGreaterThanOrEqual(0);

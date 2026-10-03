@@ -1,7 +1,7 @@
 # fwdslsh.dev
 
 The website for [fwdslsh](https://github.com/fwdslsh), a small group of indie devs: our tools, the
-[rabit](https://github.com/fwdslsh/rabit) docs, and a blog. Built with [unify](https://github.com/fwdslsh/unify).
+[rabit](https://github.com/fwdslsh/rabit) docs, a short [unify](https://github.com/fwdslsh/unify) guide, and a blog. Built with [unify](https://github.com/fwdslsh/unify).
 
 ## Develop
 
