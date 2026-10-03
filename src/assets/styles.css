@@ -713,3 +713,38 @@ body.akm-examples .subnav-current::before, body.gp-examples .subnav-current::bef
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
 }
+.model-ledger { margin-block: var(--space-5); min-width: 0; font-size: 0.875rem; }
+.model-ledger-post .post > table { display: block; overflow-x: auto; max-width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.model-ledger-post .post > table :is(th, td) { padding: var(--space-3); border-bottom: 1px solid var(--border-subtle); text-align: left; }
+.model-ledger .ledger-controls[hidden], .model-ledger .ledger-actions[hidden] { display: none; }
+.model-ledger > p { margin-bottom: var(--space-3); }
+.model-ledger .ledger-status { color: var(--text-primary); font-family: var(--font-mono); }
+.model-ledger .ledger-help { color: var(--text-dim); }
+.model-ledger .ledger-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); margin-block: var(--space-5); }
+.model-ledger label { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; color: var(--text-secondary); }
+.model-ledger .ledger-controls label:first-child { grid-column: 1 / -1; }
+.model-ledger :is(input, select, button) { font: inherit; color: var(--text-primary); border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--bg-card); padding: var(--space-2) var(--space-3); min-height: 44px; }
+.model-ledger :is(input, select) { max-width: 100%; width: 100%; }
+.model-ledger button { cursor: pointer; }
+.model-ledger button:hover { border-color: var(--primary); }
+.model-ledger input[aria-invalid="true"] { outline: 2px solid var(--text-primary); }
+.model-ledger .ledger-actions { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-4); }
+.model-ledger .ledger-actions label { flex-direction: row; align-items: center; margin-right: auto; }
+.model-ledger input[type="checkbox"] { width: 1rem; min-height: 1rem; accent-color: var(--primary); }
+.model-ledger .ledger-scroll { overflow: auto; max-height: 34rem; border: 1px solid var(--border-strong); }
+.model-ledger table { display: table; max-width: none; overflow: visible; border-collapse: separate; border-spacing: 0; width: 100%; font-size: 0.8125rem; }
+.model-ledger caption { padding: var(--space-3); text-align: left; color: var(--text-dim); }
+.model-ledger :is(th, td) { padding: var(--space-3); text-align: left; border-bottom: 1px solid var(--border-subtle); vertical-align: top; }
+.model-ledger th { position: sticky; top: 0; z-index: 1; background: var(--bg-card); white-space: nowrap; }
+.model-ledger th button { border: 0; border-radius: 0; padding: 0; background: none; font: 500 0.75rem var(--font-mono); }
+.model-ledger td:nth-child(2), .model-ledger td:nth-child(3) { min-width: 12rem; }
+.model-ledger td.ledger-number { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.model-ledger tbody tr:hover { background: var(--bg-card); }
+.model-ledger .ledger-detail td { padding: var(--space-4); background: var(--bg-code); }
+.model-ledger .ledger-detail details { margin-top: var(--space-3); }
+.model-ledger summary { cursor: pointer; color: var(--primary); }
+.model-ledger pre { margin-top: var(--space-3); max-height: 20rem; max-width: 60rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.75rem; }
+@media (max-width: 40rem) {
+  .model-ledger .ledger-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+  .model-ledger .ledger-controls label:last-child { grid-column: 1 / -1; }
+}

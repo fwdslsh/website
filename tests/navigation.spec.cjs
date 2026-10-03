@@ -7,6 +7,7 @@ const paths = [
   '/about/',
   '/blog/',
   '/blog/posts/how-this-site-is-built/',
+  '/blog/posts/model-benchmark-ledger/',
   '/rabit/',
   '/rabit/getting-started/',
   '/rabit/docs/',
@@ -125,7 +126,8 @@ test('the section tabs collapse into a menu on phones', async ({ page, isMobile 
 
 test('the blog lists the post that the generator found', async ({ page }) => {
   await page.goto('/blog/');
-  await expect(page.locator('.post-list a').first()).toHaveAttribute('href', '/blog/posts/how-this-site-is-built/');
+  await expect(page.locator('.post-list a').first()).toHaveAttribute('href', '/blog/posts/model-benchmark-ledger/');
+  await expect(page.locator('.post-list a')).toHaveCount(2);
   await expect(page.locator('.post-list .post-by').first()).toHaveText('by fwdslsh');
 });
 
