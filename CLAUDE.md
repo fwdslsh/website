@@ -10,7 +10,7 @@ everyone ("a rising tide lifts all boats"; tagline "Slash a path to a better fut
 introduced under `src/unify/` with the full docs at https://unify.fwdslsh.dev/; rabit, documented under
 `src/rabit/`; akm, introduced under `src/akm/` with the full docs at github.com/itlackey/akm; gutterpress, introduced under
 `src/gutterpress/` with the full docs at github.com/dimm-city/gutterpress), a blog
-members publish to, a members page and an about page. Background market research is in `drafts/`.
+members publish to, a members page, an about page, and reference pages under `src/references/`.
 
 The site is also a reference unify site: it should use unify's own features the way unify's docs describe them,
 and never work around them with wrappers or scripts.
@@ -87,6 +87,7 @@ src/
 ├── 404.html                  # noindex; Azure serves it via staticwebapp.config.json
 ├── blog/index.md             # the post list
 ├── blog/posts/               # _layout.html, _template.md, one .md per post
+├── references/model-ledger.md # full-width interactive benchmark ledger
 ├── rabit/                    # _layout.html, index.html, getting-started.md, docs.md, examples.md
 ├── unify/                    # _layout.html, index.html, getting-started.md, concepts.md, examples.md
 ├── akm/                      # same shape; full docs live in the akm repo
