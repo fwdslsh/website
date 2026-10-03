@@ -42,4 +42,4 @@ npm install -g akm-cli
 akm setup --yes
 ```
 
-Needs Node 22+. MPL-2.0. [GitHub](https://github.com/itlackey/akm)
+Needs Node 22+. MPL-2.0. [Getting started](/akm/getting-started.html) · [Full docs](https://github.com/itlackey/akm/blob/main/docs/README.md) · [GitHub](https://github.com/itlackey/akm)

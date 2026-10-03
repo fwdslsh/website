@@ -496,7 +496,11 @@ body.rabit-examples .tab-examples,
 body.u-overview .tab-overview,
 body.u-start .tab-start,
 body.u-concepts .tab-concepts,
-body.u-examples .tab-examples {
+body.u-examples .tab-examples,
+body.akm-overview .tab-overview,
+body.akm-start .tab-start,
+body.akm-concepts .tab-concepts,
+body.akm-examples .tab-examples {
   color: var(--primary);
   box-shadow: inset 0 -2px 0 var(--primary-bright);
 }

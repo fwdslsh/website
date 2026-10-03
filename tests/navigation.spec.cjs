@@ -15,6 +15,10 @@ const paths = [
   '/unify/getting-started/',
   '/unify/concepts/',
   '/unify/examples/',
+  '/akm/',
+  '/akm/getting-started/',
+  '/akm/concepts/',
+  '/akm/examples/',
   '/404.html',
 ];
 

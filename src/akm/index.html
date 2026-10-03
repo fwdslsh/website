@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Overview</title>
+  <meta name="description" content="akm, the Agent Knowledge Manager, is one searchable library of skills, scripts, workflows and knowledge that any shell-capable coding agent can use.">
+</head>
+<body class="akm-overview">
+  <h1>akm</h1>
+  <p>Agent Knowledge Manager. One searchable library of skills, scripts, workflows, agents and knowledge, usable from any coding agent that can run shell commands. Build it once, use it from Claude Code, OpenCode, Cursor, Aider or whatever comes next. Built by itlackey.</p>
+  <p class="actions">
+    <a class="btn btn-primary" href="/akm/getting-started.html">Get started</a>
+    <a class="btn btn-secondary" href="https://github.com/itlackey/akm/blob/main/docs/README.md" target="_blank" rel="noopener">Full docs ↗</a>
+  </p>
+
+  <h2>The loop at a glance</h2>
+  <p>Tell akm where your assets already live, index them, then ask for what a task needs in plain language and load the best match by its ref.</p>
+  <pre><code class="language-sh">akm bundle add ~/.claude              # index what you already have, in place
+akm index
+akm curate "deploy a Bun app"         # a curated shortlist for the task
+akm show workflows/deploy             # the full asset, by ref
+akm feedback workflows/deploy --positive</code></pre>
+
+  <h2>Core concepts</h2>
+<div class="card-grid">
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/library.svg" alt="" width="20" height="20">
+    <span slot="title">Capabilities</span>
+    <p>Anything an agent can find and use: a script, skill, command, agent, workflow, memory or knowledge doc.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/folder-tree.svg" alt="" width="20" height="20">
+    <span slot="title">Bundles</span>
+    <p>A directory of capabilities: a local folder, a git repo, an npm package or a crawled website. Shareable and installable.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/network.svg" alt="" width="20" height="20">
+    <span slot="title">One index</span>
+    <p>Every bundle folds into one local search index. <code>search</code> returns a lean menu, <code>show</code> delivers the full asset.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/signpost.svg" alt="" width="20" height="20">
+    <span slot="title">Refs</span>
+    <p>A compact handle search returns and <code>show</code> consumes. Get it from search, pass it straight on, never type one by hand.</p>
+  </include>
+</div>
+
+  <h2>Why akm?</h2>
+  <p>Every coding agent wants its own copy of your team's knowledge: an AGENTS.md here, a tool-specific skills folder there, prompts scattered across repos and chat logs. akm indexes those assets where they are, loads only what a task needs, and keeps the library independent of any one assistant.</p>
+  <div class="compare">
+    <div class="card"><h3>Per-tool folders</h3><p>Copied, drifting, loaded whole into every prompt.</p></div>
+    <span class="vs">vs</span>
+    <div class="card is-accent"><h3>One akm library</h3><p>Indexed in place, searched, loaded by ref when needed.</p></div>
+  </div>
+
+  <h2>Beyond retrieval</h2>
+<div class="card-grid">
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/book-open.svg" alt="" width="20" height="20">
+    <span slot="title">Capture knowledge</span>
+    <p><code>akm remember</code> and <code>akm import</code> write into your working bundle, so every agent sees what one of them learned.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/brain.svg" alt="" width="20" height="20">
+    <span slot="title">Improve with review</span>
+    <p>Feedback shapes ranking and turns into diffable proposals. Nothing changes in the library without a review.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/globe.svg" alt="" width="20" height="20">
+    <span slot="title">Durable workflows</span>
+    <p>Multi-step procedures with gates, retries, budgets and resume, run with <code>akm workflow run</code>.</p>
+  </include>
+</div>
+</body>
+</html>
