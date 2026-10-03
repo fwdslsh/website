@@ -5,7 +5,8 @@
 //   argv[3]  an empty overlay directory, added to the build
 //   argv[4]  generator-context.json; with `source-inventory: true` in unify.yaml its
 //            inputs.sourcePages names a list of every source page with its authored
-//            title, description and date, so this script parses no frontmatter itself
+//            title, description, date and metas (author is one), so this script
+//            parses no frontmatter itself
 //
 // Output, included by the blog index and the home page:
 //   _includes/post-list.html     every post, newest first
@@ -28,7 +29,9 @@ const posts = inventory.pages
       console.error(`gen.mjs: ${p.source} needs a title and a date in its frontmatter`);
       process.exit(1);
     }
-    return { href: p.href, title: p.title, description: p.description || "", date: p.date };
+    // `meta` holds the post's own frontmatter metas; `author` is one of them.
+    const author = p.meta.find((m) => m.name === "author")?.content.trim() || "";
+    return { href: p.href, title: p.title, description: p.description || "", date: p.date, author };
   })
   // Newest first; ties broken by address so every run agrees.
   .sort((a, b) => Date.parse(b.date) - Date.parse(a.date) || a.href.localeCompare(b.href));
@@ -42,6 +45,7 @@ const list = (items) =>
           (p) =>
             `  <li><time datetime="${escAttr(p.date)}">${esc(p.date.slice(0, 10))}</time>` +
             `<a href="${escAttr(p.href)}">${esc(p.title)}</a>` +
+            (p.author ? `<p class="post-by">by ${esc(p.author)}</p>` : "") +
             (p.description ? `<p>${esc(p.description)}</p>` : "") +
             "</li>",
         )
