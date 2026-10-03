@@ -99,6 +99,7 @@ test('the nav marks the current section', async ({ page, isMobile }) => {
 test('the blog lists the post that the generator found', async ({ page }) => {
   await page.goto('/blog/');
   await expect(page.locator('.post-list a').first()).toHaveAttribute('href', '/blog/posts/how-this-site-is-built/');
+  await expect(page.locator('.post-list .post-by').first()).toHaveText('by fwdslsh');
 });
 
 test('the phone menu opens and lists every section', async ({ page, isMobile }) => {

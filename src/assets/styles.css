@@ -583,6 +583,7 @@ body.rabit-examples .tab-examples {
 
 .post-list a:hover { color: var(--primary); }
 .post-list p { grid-column: 2; margin: 0; font-size: 0.9375rem; }
+.post-list .post-by { font: 400 0.8125rem var(--font-mono); color: var(--text-dim); }
 
 @media (max-width: 480px) {
   .post-list li { grid-template-columns: 1fr; }
