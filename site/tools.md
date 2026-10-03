@@ -8,7 +8,7 @@ class: tools
 
 Open-source tools built by fwdslsh members. Each one lives in its own repo, so that's the place for docs, issues and releases.
 
-<include src="/_includes/tool-cards.html"></include>
+<include src="/includes/tool-cards.html"></include>
 
 ## unify
 

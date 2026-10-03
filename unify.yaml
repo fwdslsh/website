@@ -1,6 +1,7 @@
 # Saved unify CLI flags (keys are long option names; CLI flags win). Never shipped.
+source: site
 pretty-urls: true
 base-url: https://fwdslsh.dev/
 canonical: auto
-generate: _scripts/gen.mjs
+generate: ../scripts/gen.mjs
 source-inventory: true

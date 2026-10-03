@@ -28,7 +28,7 @@ jobs:
         run: npm ci
 
       # One step: unify composes once, audits that exact result, and writes dist/
-      # only if the audit passes (--audit --strict). Shared flags live in src/unify.yaml.
+      # only if the audit passes (--audit --strict). Shared flags live in unify.yaml at the repository root.
       - name: Build site (audited)
         run: npm run build
 

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <include src="/_includes/base/head.html"></include>
+  <include src="/includes/base/head.html"></include>
   <title>· fwdslsh</title>
   <!-- Every page in blog/posts/ is a post: one declaration here covers the feed,
        the JSON-LD and the share card for all of them. Posts only need a date. -->
@@ -10,11 +10,11 @@
 </head>
 <body class="blog">
   <a href="#main" class="skip-link">Skip to main content</a>
-  <include src="/_includes/base/nav.html"></include>
+  <include src="/includes/base/nav.html"></include>
   <main id="main">
     <article class="post"><slot></slot></article>
     <p class="post-back"><a href="/blog/index.html">← All posts</a></p>
   </main>
-  <include src="/_includes/base/footer.html"></include>
+  <include src="/includes/base/footer.html"></include>
 </body>
 </html>

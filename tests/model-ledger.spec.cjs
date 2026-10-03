@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { readFileSync } = require('node:fs');
 const path = require('node:path');
-const snapshot = JSON.parse(readFileSync(path.join(__dirname, '../src/assets/model-ledger.json'), 'utf8'));
+const snapshot = JSON.parse(readFileSync(path.join(__dirname, '../site/assets/model-ledger.json'), 'utf8'));
 const url = '/references/model-ledger/';
 const postUrl = '/blog/posts/model-benchmark-ledger/';
 
