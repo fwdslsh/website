@@ -6,7 +6,7 @@ class: members
 
 # Members
 
-We're a few indie devs who build stuff, write stuff and share it.
+We're indie devs who build stuff, write stuff and share it. Each of us brings our own tools and projects to the group, and what one of us learns, all of us get to use.
 
 <include src="/_includes/member.fragment.html">
   <img slot="avatar" src="https://github.com/itlackey.png?size=112" alt="" width="56" height="56" loading="lazy">
