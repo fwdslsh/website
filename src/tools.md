@@ -1,6 +1,6 @@
 ---
 title: Tools
-description: Open-source tools from the fwdslsh lab, unify, rabit and akm, with what each does and how to install it.
+description: Open-source tools from the fwdslsh lab, unify, rabit, akm and gutterpress, with what each does and how to install it.
 class: tools
 ---
 
@@ -43,3 +43,15 @@ akm setup --yes
 ```
 
 Needs Node 22+. MPL-2.0. [Getting started](/akm/getting-started.html) · [Full docs](https://github.com/itlackey/akm/blob/main/docs/README.md) · [GitHub](https://github.com/itlackey/akm)
+
+## gutterpress
+
+Write a book in Markdown, lay it out with CSS and export a print-ready PDF. A desktop app for Windows, macOS and Linux, with a CLI for scripts and CI. Renders through a real Chromium print engine, so the preview is the PDF. Built by dimm-city.
+
+```sh
+npm install -g gutterpress
+gutterpress new "My Book" --preset book
+gutterpress build ./my-book
+```
+
+The CLI needs Node 22+ and a Chromium-based browser; the desktop app needs nothing. MPL-2.0. [Getting started](/gutterpress/getting-started.html) · [User guide](https://github.com/dimm-city/gutterpress/tree/main/examples/gutterpress-user-guide) · [GitHub](https://github.com/dimm-city/gutterpress)

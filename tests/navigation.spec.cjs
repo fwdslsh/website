@@ -19,6 +19,10 @@ const paths = [
   '/akm/getting-started/',
   '/akm/concepts/',
   '/akm/examples/',
+  '/gutterpress/',
+  '/gutterpress/getting-started/',
+  '/gutterpress/concepts/',
+  '/gutterpress/examples/',
   '/404.html',
 ];
 
@@ -74,13 +78,13 @@ test('every top-bar icon link has an accessible name and a 20px icon', async ({ 
   }
 });
 
-test('tools menu lists all three tools, opens from the keyboard, and stays on screen', async ({ page, isMobile }) => {
+test('tools menu lists every tool, opens from the keyboard, and stays on screen', async ({ page, isMobile }) => {
   test.skip(isMobile, 'hover/focus menu is a desktop interaction');
   await page.goto('/');
   await page.locator('.site-nav .nav-dropdown > a').focus();
   const menu = page.locator('.nav-dropdown-content');
   await expect(menu).toBeVisible();
-  await expect(menu.locator('.nav-tool-name')).toHaveText(['unify', 'rabit', 'akm']);
+  await expect(menu.locator('.nav-tool-name')).toHaveText(['unify', 'rabit', 'akm', 'gutterpress']);
   const unify = menu.locator('a', { hasText: 'unify' });
   await expect(unify).toHaveAttribute('href', '/unify/');
   const box = await menu.boundingBox();

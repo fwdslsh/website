@@ -7,7 +7,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 The **fwdslsh website** (https://fwdslsh.dev): fwdslsh is a small group of indie devs who build open-source tools
 and write up what they learn in the fwdslsh lab. Keep the tone plain and informal. The site has the tools (unify,
 introduced under `src/unify/` with the full docs at https://unify.fwdslsh.dev/; rabit, documented under
-`src/rabit/`; akm, introduced under `src/akm/` with the full docs at github.com/itlackey/akm), a blog
+`src/rabit/`; akm, introduced under `src/akm/` with the full docs at github.com/itlackey/akm; gutterpress, introduced under
+`src/gutterpress/` with the full docs at github.com/dimm-city/gutterpress), a blog
 members publish to, a members page and an about page. Background market research is in `drafts/`.
 
 The site is also a reference unify site: it should use unify's own features the way unify's docs describe them,
@@ -37,19 +38,19 @@ changing markup. How this site uses each feature:
 
 - **Layouts** (nearest `_layout.html` wins; layouts don't chain, so each is a complete page):
   - `src/_layout.html`: most pages. `<main id="main"><slot></slot></main>` between nav and footer.
-  - `src/rabit/_layout.html`, `src/unify/_layout.html` and `src/akm/_layout.html`: the tool sections. Each adds its tabs and
+  - `src/rabit/_layout.html`, `src/unify/_layout.html`, `src/akm/_layout.html` and `src/gutterpress/_layout.html`: the tool sections. Each adds its tabs and
     `<body class="tools">`. unify's body classes are `u-*`, because `unify-*` is retired vocabulary unify rejects.
     Under 640px the tab row collapses into a `<details>` menu whose summary names the current tab from the
     body class (CSS `content`), the same no-script pattern as the top nav's mobile menu.
   - `src/blog/posts/_layout.html`: blog posts. Wraps the post in `<article class="post">` and declares
     `og:type article` and `<meta name="schema" content="BlogPosting">` for every post at once.
   - The shared `<head>`, nav and footer are `src/_includes/base/*.html`, included by all three layouts.
-- **Pages**: prose pages are **pure Markdown** (`tools`, `members`, `about`, `blog/index`, `rabit/*`, `unify/*` and `akm/*`
-  except the overviews, posts). Frontmatter sets `title`, `description` and `class`. Never wrap Markdown in HTML to style
+- **Pages**: prose pages are **pure Markdown** (`tools`, `members`, `about`, `blog/index`, `rabit/*`, `unify/*`, `akm/*` and
+  `gutterpress/*` except the overviews, posts). Frontmatter sets `title`, `description` and `class`. Never wrap Markdown in HTML to style
   it: CSS styles what the Markdown produces (the `<h1>`, the paragraph after it as the intro, an `<h2>` per
-  section). Designed pages are HTML documents (`index.html`, `rabit/index.html`, `unify/index.html`, `akm/index.html`, `404.html`) with their own
+  section). Designed pages are HTML documents (`index.html`, `rabit/index.html`, `unify/index.html`, `akm/index.html`, `gutterpress/index.html`, `404.html`) with their own
   `<head>` (title and description only) and no chrome.
-- **Titles**: a page writes only its own title; the layout's `<title>· fwdslsh</title>` (or `· rabit · fwdslsh`, `· unify · fwdslsh`, `· akm · fwdslsh`)
+- **Titles**: a page writes only its own title; the layout's `<title>· fwdslsh</title>` (or `· rabit · fwdslsh`, `· unify · fwdslsh`, `· akm · fwdslsh`, `· gutterpress · fwdslsh`)
   carries the suffix. The feed is titled from `og:site_name` ("fwdslsh", in `_includes/base/head.html`).
 - **Current section**: the page's `<body>` class (`class: about` in frontmatter, `<body class="home">` in HTML,
   or the rabit layout's `tools`) merges into the layout's `<body>`. CSS in `nav.html` (`body.about .nav-about`)
@@ -88,6 +89,7 @@ src/
 ├── rabit/                    # _layout.html, index.html, getting-started.md, docs.md, examples.md
 ├── unify/                    # _layout.html, index.html, getting-started.md, concepts.md, examples.md
 ├── akm/                      # same shape; full docs live in the akm repo
+├── gutterpress/              # same shape; full docs live in the gutterpress repo
 ├── .well-known/              # burrow.json and warren.json (rabit v0.4.0; validate against rabit's schemas)
 ├── assets/                   # styles.css (the one stylesheet), og.png (1200×630), icons/, js/main.js, vendor/
 ├── robots.txt

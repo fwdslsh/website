@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <include src="/_includes/base/head.html"></include>
+  <title>· gutterpress · fwdslsh</title>
+  <meta property="og:type" content="website">
+  <meta name="schema" content="WebPage">
+</head>
+<body class="tools">
+  <!-- The gutterpress section: the site chrome plus the section's tabs. Each page sets its own
+       body class (gp-overview, gp-start, gp-concepts, gp-examples) to mark its tab.
+       The full documentation lives in the gutterpress repo; these pages are the short version. -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <include src="/_includes/base/nav.html"></include>
+  <main id="main">
+    <nav class="subnav" aria-label="gutterpress">
+      <!-- On narrow screens the tabs collapse into this disclosure; the summary names the
+           current tab from the body class (CSS content), so no script and no duplication. -->
+      <details class="subnav-toggle"><summary>gutterpress <span class="subnav-current"></span><svg class="lucide lucide-chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary></details>
+      <ul>
+        <li><a class="tab-overview" href="/gutterpress/index.html">Overview</a></li>
+        <li><a class="tab-start" href="/gutterpress/getting-started.html">Getting started</a></li>
+        <li><a class="tab-concepts" href="/gutterpress/concepts.html">How it works</a></li>
+        <li><a class="tab-examples" href="/gutterpress/examples.html">Examples</a></li>
+        <li><a class="tab-external" href="https://github.com/dimm-city/gutterpress/tree/main/examples/gutterpress-user-guide" target="_blank" rel="noopener">Full docs ↗</a></li>
+      </ul>
+    </nav>
+    <slot></slot>
+  </main>
+  <include src="/_includes/base/footer.html"></include>
+</body>
+</html>
