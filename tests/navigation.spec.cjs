@@ -8,7 +8,7 @@ const paths = [
   '/blog/',
   '/blog/posts/how-this-site-is-built/',
   '/blog/posts/model-benchmark-ledger/',
-  '/model-ledger/',
+  '/references/model-ledger/',
   '/rabit/',
   '/rabit/getting-started/',
   '/rabit/docs/',

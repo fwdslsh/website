@@ -10,7 +10,7 @@ class: model-ledger-post
 
 Comparing local models gets confusing when the results come from different machines, runtimes, and test suites. A run that completed two cases can show a high quality score, but it doesn't tell you how the model handled the rest of the workload.
 
-The [model ledger](/model-ledger.html) brings the lab results into one table: 129 rows across five hardware configurations, including 45 unique completed evaluations. Two exact duplicate artifacts are marked as duplicates. The remaining rows include incomplete runs, diagnostics, reported-only results, and service tests, so you can separate them before making a comparison.
+The [model ledger](/references/model-ledger.html) brings the lab results into one table: 129 rows across five hardware configurations, including 45 unique completed evaluations. Two exact duplicate artifacts are marked as duplicates. The remaining rows include incomplete runs, diagnostics, reported-only results, and service tests, so you can separate them before making a comparison.
 
 ## Compare the same workload
 
@@ -22,7 +22,7 @@ On the Ryzen system, Qwen3.5-9B Q4_K_M recorded 84.626% quality, a median decode
 
 ## Explore the ledger
 
-Open the [full-width interactive ledger](/model-ledger.html) and start by selecting one evaluation suite and completed runs. Then filter by system, model family, or GPU allocation. This keeps the comparison focused on the same workload rather than mixing full evaluations with short probes.
+Open the [full-width interactive ledger](/references/model-ledger.html) and start by selecting one evaluation suite and completed runs. Then filter by system, model family, or GPU allocation. This keeps the comparison focused on the same workload rather than mixing full evaluations with short probes.
 
 Click a column heading to sort. Open a row's details to check its settings, performance distributions, and per-group results. The CSV and JSON exports contain the filtered rows, so you can take the same comparison into another tool.
 
