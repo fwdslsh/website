@@ -39,6 +39,8 @@ changing markup. How this site uses each feature:
   - `src/_layout.html`: most pages. `<main id="main"><slot></slot></main>` between nav and footer.
   - `src/rabit/_layout.html`, `src/unify/_layout.html` and `src/akm/_layout.html`: the tool sections. Each adds its tabs and
     `<body class="tools">`. unify's body classes are `u-*`, because `unify-*` is retired vocabulary unify rejects.
+    Under 640px the tab row collapses into a `<details>` menu whose summary names the current tab from the
+    body class (CSS `content`), the same no-script pattern as the top nav's mobile menu.
   - `src/blog/posts/_layout.html`: blog posts. Wraps the post in `<article class="post">` and declares
     `og:type article` and `<meta name="schema" content="BlogPosting">` for every post at once.
   - The shared `<head>`, nav and footer are `src/_includes/base/*.html`, included by all three layouts.
