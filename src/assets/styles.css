@@ -505,6 +505,60 @@ body.akm-examples .tab-examples {
   box-shadow: inset 0 -2px 0 var(--primary-bright);
 }
 
+/* Narrow screens: the tabs collapse into a disclosure menu instead of scrolling sideways.
+   The summary shows the section name plus the current tab (from the body class). */
+.subnav-toggle { display: none; }
+
+body.rabit-overview .subnav-current::before, body.u-overview .subnav-current::before,
+body.akm-overview .subnav-current::before { content: "· Overview"; }
+body.rabit-start .subnav-current::before, body.u-start .subnav-current::before,
+body.akm-start .subnav-current::before { content: "· Getting started"; }
+body.rabit-spec .subnav-current::before { content: "· Specification"; }
+body.u-concepts .subnav-current::before, body.akm-concepts .subnav-current::before { content: "· How it works"; }
+body.rabit-examples .subnav-current::before, body.u-examples .subnav-current::before,
+body.akm-examples .subnav-current::before { content: "· Examples"; }
+
+@media (max-width: 640px) {
+  .subnav { position: relative; overflow: visible; }
+  .subnav-toggle { display: block; }
+
+  .subnav-toggle summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) 0;
+    font: 400 0.875rem var(--font-mono);
+    color: var(--primary);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .subnav-toggle summary::-webkit-details-marker { display: none; }
+  .subnav-toggle summary svg { width: 16px; height: 16px; margin-left: auto; transition: transform 0.15s; }
+  .subnav-toggle[open] summary svg { transform: rotate(180deg); }
+
+  .subnav ul { display: none; }
+
+  .subnav-toggle[open] + ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 10;
+    padding: var(--space-2) var(--space-4);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    white-space: normal;
+  }
+
+  .subnav-toggle[open] + ul a { padding: var(--space-2) 0; box-shadow: none; }
+}
+
 /* ===== Compare (rabit "Why rabit?", unify "Why unify?") ===== */
 
 .compare {

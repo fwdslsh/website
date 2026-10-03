@@ -13,6 +13,9 @@
   <include src="/_includes/base/nav.html"></include>
   <main id="main">
     <nav class="subnav" aria-label="rabit">
+      <!-- On narrow screens the tabs collapse into this disclosure; the summary names the
+           current tab from the body class (CSS content), so no script and no duplication. -->
+      <details class="subnav-toggle"><summary>rabit <span class="subnav-current"></span><svg class="lucide lucide-chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary></details>
       <ul>
         <li><a class="tab-overview" href="/rabit/index.html">Overview</a></li>
         <li><a class="tab-start" href="/rabit/getting-started.html">Getting started</a></li>

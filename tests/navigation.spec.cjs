@@ -103,6 +103,22 @@ test('the nav marks the current section', async ({ page, isMobile }) => {
   expect(spec).not.toBe(await color(page.locator('.subnav .tab-overview')));
 });
 
+test('the section tabs collapse into a menu on phones', async ({ page, isMobile }) => {
+  test.skip(!isMobile, 'the tab row stays visible on wide screens');
+  await page.goto('/unify/concepts/');
+  const tabs = page.locator('.subnav ul');
+  await expect(tabs).toBeHidden();
+  const summary = page.locator('.subnav summary');
+  await expect(summary).toContainText('unify');
+  await summary.click();
+  await expect(tabs).toBeVisible();
+  await expect(page.locator('.subnav .tab-examples')).toBeVisible();
+  const width = page.viewportSize().width;
+  const box = await tabs.boundingBox();
+  expect(box.x).toBeGreaterThanOrEqual(0);
+  expect(box.x + box.width).toBeLessThanOrEqual(width);
+});
+
 test('the blog lists the post that the generator found', async ({ page }) => {
   await page.goto('/blog/');
   await expect(page.locator('.post-list a').first()).toHaveAttribute('href', '/blog/posts/how-this-site-is-built/');
