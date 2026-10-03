@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Overview</title>
+  <meta name="description" content="gutterpress turns a folder of Markdown into a print-ready PDF, laid out with CSS and rendered by a real Chromium print engine.">
+</head>
+<body class="gp-overview">
+  <h1>gutterpress</h1>
+  <p>Write a book in Markdown. Lay it out with CSS. Export a print-ready PDF. gutterpress is a desktop app, with a CLI for scripting, that turns a folder of Markdown files into a professionally typeset PDF: the kind you'd send to an offset printer or a print-on-demand service. Built by <a href="https://dimm.city/">Dimm City</a>, the studio behind the tabletop RPG of the same name.</p>
+  <p class="actions">
+    <a class="btn btn-primary" href="/gutterpress/getting-started.html">Get started</a>
+    <a class="btn btn-secondary" href="https://github.com/dimm-city/gutterpress/releases/latest" target="_blank" rel="noopener">Download ↗</a>
+  </p>
+
+  <h2>A book at a glance</h2>
+  <p>A project is a folder with a manifest, your chapters and a stylesheet. The manifest names the files and the page size; CSS does the rest.</p>
+  <pre><code class="language-yaml">title: "My Book"
+authors:
+  - "Jane Doe"
+preset: book          # a 6×9in trade book
+styles:
+  - styles/book.css
+source:
+  files:
+    - 01-introduction.md
+    - 02-chapter-two.md</code></pre>
+
+  <h2>Core concepts</h2>
+<div class="card-grid">
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/book-open.svg" alt="" width="20" height="20">
+    <span slot="title">Markdown in</span>
+    <p>Chapters are plain Markdown files. A few directives (<code>@chapter</code>, <code>@page</code>, <code>@section</code>) handle breaks and columns.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/layout-template.svg" alt="" width="20" height="20">
+    <span slot="title">CSS for layout</span>
+    <p>Page size, margins, bleed, running headers, page numbers and columns are all CSS Paged Media, the W3C spec for print.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/globe.svg" alt="" width="20" height="20">
+    <span slot="title">Chromium out</span>
+    <p>The preview and the PDF come from the same print engine, so what you see while editing is what prints.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/signpost.svg" alt="" width="20" height="20">
+    <span slot="title">Print-ready</span>
+    <p>PDF/X output with CMYK and an ICC profile, plus checks for image DPI, colour space and font embedding.</p>
+  </include>
+</div>
+
+  <h2>Why gutterpress?</h2>
+  <p>Desktop publishing tools lock your book inside a proprietary file. Word processors fight you on every page break. gutterpress keeps the text as Markdown in a folder you own, and the design as a stylesheet you can read, diff and share.</p>
+  <div class="compare">
+    <div class="card"><h3>A layout app</h3><p>One big binary file, one person's machine, manual page breaks.</p></div>
+    <span class="vs">vs</span>
+    <div class="card is-accent"><h3>gutterpress</h3><p>Markdown and CSS in git, built the same way every time, in CI if you like.</p></div>
+  </div>
+
+  <h2>Also in the box</h2>
+<div class="card-grid">
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/folder-tree.svg" alt="" width="20" height="20">
+    <span slot="title">Plugins and looks</span>
+    <p>Any <code>markdown-it</code> plugin works. Add a bundled look, or publish your own, with <code>gutterpress ext add</code>.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/network.svg" alt="" width="20" height="20">
+    <span slot="title">Publishing targets</span>
+    <p>Presets for DriveThruRPG and trade books, and a guide to itch.io, KDP and the rest.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/library.svg" alt="" width="20" height="20">
+    <span slot="title">CI-friendly CLI</span>
+    <p>A single binary that builds the same PDF in GitHub Actions, GitLab CI or Docker.</p>
+  </include>
+</div>
+</body>
+</html>
