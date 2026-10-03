@@ -713,6 +713,7 @@ body.akm-examples .subnav-current::before, body.gp-examples .subnav-current::bef
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
 }
+.model-ledger-page main { max-width: none; padding-inline: clamp(1rem, 2vw, 2rem); }
 .model-ledger { margin-block: var(--space-5); min-width: 0; font-size: 0.875rem; }
 .model-ledger-post .post > table { display: block; overflow-x: auto; max-width: 100%; border-collapse: collapse; font-size: 0.875rem; }
 .model-ledger-post .post > table :is(th, td) { padding: var(--space-3); border-bottom: 1px solid var(--border-subtle); text-align: left; }
@@ -720,9 +721,9 @@ body.akm-examples .subnav-current::before, body.gp-examples .subnav-current::bef
 .model-ledger > p { margin-bottom: var(--space-3); }
 .model-ledger .ledger-status { color: var(--text-primary); font-family: var(--font-mono); }
 .model-ledger .ledger-help { color: var(--text-dim); }
-.model-ledger .ledger-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); margin-block: var(--space-5); }
+.model-ledger .ledger-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); margin-block: var(--space-5); }
 .model-ledger label { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; color: var(--text-secondary); }
-.model-ledger .ledger-controls label:first-child { grid-column: 1 / -1; }
+.model-ledger .ledger-controls label:first-child { grid-column: span 2; }
 .model-ledger :is(input, select, button) { font: inherit; color: var(--text-primary); border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--bg-card); padding: var(--space-2) var(--space-3); min-height: 44px; }
 .model-ledger :is(input, select) { max-width: 100%; width: 100%; }
 .model-ledger button { cursor: pointer; }

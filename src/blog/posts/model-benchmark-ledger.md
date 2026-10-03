@@ -12,13 +12,11 @@ Picking a local model sounds like a leaderboard problem: find the best score you
 
 We put the recovered results into a ledger rather than choosing one winning number. This post includes a public snapshot: **129 rows, five hardware configurations, and 45 unique completed evaluations**. Two exact duplicate artifacts remain labelled instead of being silently counted twice. The other rows include incomplete runs, diagnostics, reported-only results, and service tests.
 
-The ledger is dated September 30, 2026 and was compiled on October 1. This is a record of those runs—not new measurements, a live service inventory, or a claim that we recovered every experiment.
-
 ## What the ledger changed
 
-One useful comparison is a Qwen3.8-27B Q2_K_XL run on each of our dual-4060-Ti systems. Both completed the same 123-case suite with **91.837% quality**. The Xeon run recorded **40.23 tokens/second median decode**; the Ryzen run recorded **47.31**. That is about 17.6% faster decode in those two artifacts, with the same recorded quality—not proof that one CPU is universally faster.
+One useful comparison is a Qwen3.8-27B Q2_K_XL run on each of our dual-4060-Ti systems. Both completed the same 123-case suite with **91.837% quality**. The Xeon run recorded **40.23 tokens/second median decode**; the Ryzen run recorded **47.31**. That is about 17.6% faster decode in those two artifacts, with the same recorded quality.
 
-The machines differed in much more than CPU: the older workstation had 256 GB DDR4 and HDD-backed working storage; the Ryzen build had 32 GB DDR5 and NVMe storage. Runtime settings and per-run GPU allocation also matter. A hardware comparison should keep those caveats attached to the numbers.
+The machines differed in much more than CPU: the older workstation had 256 GB DDR4 and HDD-backed working storage; the Ryzen build had 32 GB DDR5 and NVMe storage. Runtime settings and per-run GPU allocation also matter.
 
 On the Ryzen system, the completed Qwen3.5-9B Q4_K_M run recorded **84.626% quality**, **46.62 tokens/second median decode**, and **2,054.72 tokens/second median prefill**. Its decode rate was close to the 27B run's 47.31, but its quality and prefill behaviour were different. “Almost the same tokens per second” was not the same result.
 
@@ -26,9 +24,7 @@ That is the point of retaining the ledger: you can inspect the trade-off instead
 
 ## Explore the ledger
 
-Start with one evaluation suite and completed runs. Then narrow the system, model family, or GPU allocation. Click a column heading to sort, and open a row's details for its distributions, group results, settings, and telemetry coverage. Exports contain only the currently filtered rows.
-
-<include src="/_includes/model-ledger.html"></include>
+Open the [full-width interactive ledger](/model-ledger.html) to filter, sort, inspect run details, and export the results. Start with one evaluation suite and completed runs, then narrow the system, model family, or GPU allocation.
 
 ## What a score does—and doesn't—mean
 
@@ -55,10 +51,10 @@ These are the captured benchmark configurations, not today's deployment plan. Me
 
 ## A snapshot you can take away
 
-The table runs entirely in your browser with the JSON file shipped alongside this post. No account, model endpoint, analytics service, or lab network access is required. If JavaScript is unavailable, the snapshot is still downloadable.
+The table runs entirely in your browser with the JSON file shipped alongside the ledger. No account, model endpoint, analytics service, or lab network access is required. If JavaScript is unavailable, the snapshot is still downloadable.
 
 We copied the recorded metrics without rescoring them. The public snapshot keeps all 129 row IDs, duplicate relationships, numeric results, per-group summaries, and recorded performance distributions. It omits private filesystem paths, service addresses, raw prompts and responses, and raw per-case records. System labels describe hardware instead of private hostnames. The JSON records the original ledger's SHA-256 and compilation time so this snapshot has a fixed provenance.
 
-The benchmark harness and its public evaluation material are in [AKM](https://github.com/itlackey/akm). The post and its dataset live in the [fwdslsh website repository](https://github.com/fwdslsh/website). The publishing setup is described in [How this site is built](/blog/posts/how-this-site-is-built.html).
+The reproducible benchmark is [AKM Model Eval](https://github.com/itlackey/akm-model-eval), with a [public test corpus](https://github.com/itlackey/akm-model-eval/tree/main/corpus), [runner and scoring logic](https://github.com/itlackey/akm-model-eval/blob/main/bench.py), and [instructions for running it yourself](https://github.com/itlackey/akm-model-eval#quick-start). The post and its dataset live in the [fwdslsh website repository](https://github.com/fwdslsh/website). The publishing setup is described in [How this site is built](/blog/posts/how-this-site-is-built.html).
 
 We still care about finding a good model. We just want the answer to survive “which run was that?”

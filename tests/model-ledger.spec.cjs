@@ -2,7 +2,8 @@ const { test, expect } = require('@playwright/test');
 const { readFileSync } = require('node:fs');
 const path = require('node:path');
 const snapshot = JSON.parse(readFileSync(path.join(__dirname, '../src/assets/model-ledger.json'), 'utf8'));
-const url = '/blog/posts/model-benchmark-ledger/';
+const url = '/model-ledger/';
+const postUrl = '/blog/posts/model-benchmark-ledger/';
 
 async function ready(page) {
   await page.goto(url);
@@ -119,9 +120,23 @@ test('post is discoverable through the blog, homepage and feed and fits small sc
   await page.getByRole('link',{name:"A model leaderboard wasn't enough. We kept the ledger.",exact:true}).click();
   await expect(page.locator('h1')).toHaveText("A model leaderboard wasn't enough. We kept the ledger.");
   await expect(page.locator('.site-nav')).toHaveCount(1);
-  expect(await (await request.get('/feed.xml')).text()).toContain('/blog/posts/model-benchmark-ledger/');
+  await expect(page.locator('.model-ledger')).toHaveCount(0);
+  await expect(page.locator('main')).not.toContainText('The ledger is dated September 30');
+  await expect(page.locator('main')).not.toContainText('not proof that one CPU is universally faster');
+  await expect(page.locator('main')).not.toContainText('A hardware comparison should keep those caveats');
+  await expect(page.getByRole('link',{name:'AKM Model Eval',exact:true})).toHaveAttribute('href','https://github.com/itlackey/akm-model-eval');
+  await expect(page.getByRole('link',{name:'public test corpus',exact:true})).toHaveAttribute('href','https://github.com/itlackey/akm-model-eval/tree/main/corpus');
+  await page.getByRole('link',{name:'full-width interactive ledger',exact:true}).click();
+  await expect(page).toHaveURL(new RegExp(url + '$'));
+  await expect(page.getByRole('link',{name:'Read the article',exact:true})).toHaveAttribute('href',postUrl);
+  expect(await (await request.get('/feed.xml')).text()).toContain(postUrl);
   await page.goto('/');
-  await expect(page.locator('.post-list a').filter({hasText:'We kept the ledger.'})).toHaveAttribute('href',url);
+  await expect(page.locator('.post-list a').filter({hasText:'We kept the ledger.'})).toHaveAttribute('href',postUrl);
+  await page.setViewportSize({width:1600,height:900});
+  await ready(page);
+  const desktop = await page.evaluate(()=>({viewport:innerWidth,main:document.querySelector('main').getBoundingClientRect().width,table:document.querySelector('.ledger-scroll').getBoundingClientRect().width}));
+  expect(desktop.main).toBe(desktop.viewport);
+  expect(desktop.table).toBeGreaterThan(desktop.viewport * 0.95);
   await page.setViewportSize({width:320,height:740});
   await ready(page);
   const widths = await page.evaluate(()=>({viewport:innerWidth,page:document.documentElement.scrollWidth,scroll:document.querySelector('.ledger-scroll').scrollWidth,box:document.querySelector('.ledger-scroll').clientWidth}));
