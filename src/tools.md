@@ -20,7 +20,7 @@ unify init
 unify build
 ```
 
-Needs Node 22.12+ or Bun 1.2+. MPL-2.0. [Docs](https://unify.fwdslsh.dev/) · [GitHub](https://github.com/fwdslsh/unify)
+Needs Node 22.12+ or Bun 1.2+. MPL-2.0. [Getting started](/unify/getting-started.html) · [Full docs](https://unify.fwdslsh.dev/) · [GitHub](https://github.com/fwdslsh/unify)
 
 ## rabit
 
@@ -42,4 +42,4 @@ npm install -g akm-cli
 akm setup --yes
 ```
 
-Needs Node 22+. MPL-2.0. [GitHub](https://github.com/itlackey/akm)
+Needs Node 22+. MPL-2.0. [Getting started](/akm/getting-started.html) · [Full docs](https://github.com/itlackey/akm/blob/main/docs/README.md) · [GitHub](https://github.com/itlackey/akm)

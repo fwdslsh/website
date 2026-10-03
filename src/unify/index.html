@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Overview</title>
+  <meta name="description" content="unify is a static site generator that composes plain HTML and Markdown at build time, with no template language and no client runtime.">
+</head>
+<body class="u-overview">
+  <h1>unify</h1>
+  <p>A static site generator for people who'd rather write plain HTML. Write a layout, nav or footer once and it lands on every page. No template language, no framework, no JavaScript of its own. This site is built with it.</p>
+  <p class="actions">
+    <a class="btn btn-primary" href="/unify/getting-started.html">Get started</a>
+    <a class="btn btn-secondary" href="https://unify.fwdslsh.dev/" target="_blank" rel="noopener">Full docs and examples ↗</a>
+  </p>
+
+  <h2>A layout at a glance</h2>
+  <p>One complete HTML page in <code>src/_layout.html</code> is the site's chrome. Every page lands in its <code>&lt;main&gt;</code>; a page can fill a named slot or leave its fallback.</p>
+  <pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;· My Site&lt;/title&gt;
+    &lt;link rel="stylesheet" href="/assets/style.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;include src="/_includes/nav.html"&gt;&lt;/include&gt;
+    &lt;main&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/main&gt;
+    &lt;footer&gt;&lt;slot name="footer"&gt;&lt;p&gt;© My Site&lt;/p&gt;&lt;/slot&gt;&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+  <h2>The whole surface</h2>
+<div class="card-grid">
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/layout-template.svg" alt="" width="20" height="20">
+    <span slot="title">Layouts</span>
+    <p>The nearest <code>_layout.html</code> wraps every page in its folder. Pages never name it.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/folder-tree.svg" alt="" width="20" height="20">
+    <span slot="title">Includes</span>
+    <p><code>&lt;include src&gt;</code> splices a fragment in. Content between the tags fills the fragment's slots.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/network.svg" alt="" width="20" height="20">
+    <span slot="title">Slots</span>
+    <p><code>&lt;slot name&gt;</code> in a layout, <code>slot=</code> on a page element. Standard HTML, no new syntax.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/book-open.svg" alt="" width="20" height="20">
+    <span slot="title">Markdown</span>
+    <p>A <code>.md</code> file is a page too. Frontmatter supplies the head; the layout applies the same way.</p>
+  </include>
+</div>
+
+  <h2>Why unify?</h2>
+  <p>Most generators ask you to learn a template language and a config format before you write a page. unify asks for HTML. The output is exactly your markup, so what you see in <code>src/</code> is what ships.</p>
+  <div class="compare">
+    <div class="card"><h3>A framework</h3><p>Templates, variables, a build config, a client runtime.</p></div>
+    <span class="vs">vs</span>
+    <div class="card is-accent"><h3>unify</h3><p>Plain HTML and Markdown, composed once at build time.</p></div>
+  </div>
+
+  <h2>Built in</h2>
+<div class="card-grid">
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/signpost.svg" alt="" width="20" height="20">
+    <span slot="title">Checked links</span>
+    <p>Every internal link is checked against the output. A broken one fails the build, and nothing is published.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="/assets/icons/globe.svg" alt="" width="20" height="20">
+    <span slot="title">Feeds, sitemaps, JSON-LD</span>
+    <p>Declare a page's <code>schema</code> and give the site its address: unify writes the feed, the sitemap and the structured data.</p>
+  </include>
+</div>
+</body>
+</html>

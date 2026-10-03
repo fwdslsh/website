@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <include src="/_includes/base/head.html"></include>
+  <title>· akm · fwdslsh</title>
+  <meta property="og:type" content="website">
+  <meta name="schema" content="WebPage">
+</head>
+<body class="tools">
+  <!-- The akm section: the site chrome plus the section's tabs. Each page sets its own
+       body class (akm-overview, akm-start, akm-concepts, akm-examples) to mark its tab.
+       The full documentation lives in the akm repo; these pages are the short version. -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <include src="/_includes/base/nav.html"></include>
+  <main id="main">
+    <nav class="subnav" aria-label="akm">
+      <ul>
+        <li><a class="tab-overview" href="/akm/index.html">Overview</a></li>
+        <li><a class="tab-start" href="/akm/getting-started.html">Getting started</a></li>
+        <li><a class="tab-concepts" href="/akm/concepts.html">How it works</a></li>
+        <li><a class="tab-examples" href="/akm/examples.html">Examples</a></li>
+        <li><a class="tab-external" href="https://github.com/itlackey/akm/blob/main/docs/README.md" target="_blank" rel="noopener">Full docs ↗</a></li>
+      </ul>
+    </nav>
+    <slot></slot>
+  </main>
+  <include src="/_includes/base/footer.html"></include>
+</body>
+</html>

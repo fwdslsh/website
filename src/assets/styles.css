@@ -460,7 +460,7 @@ main td {
 
 main th { font: 600 0.8125rem var(--font-mono); color: var(--text-primary); background: var(--bg-card); }
 
-/* ===== Section sub-nav (rabit docs) ===== */
+/* ===== Section sub-nav (rabit and unify docs) ===== */
 
 .subnav {
   margin-top: var(--space-5);
@@ -488,16 +488,24 @@ main th { font: 600 0.8125rem var(--font-mono); color: var(--text-primary); back
 
 .subnav a:hover { color: var(--text-primary); }
 
-/* The current tab: each rabit page's body class (from its frontmatter) names it */
+/* The current tab: each section page's body class (from its frontmatter) names it */
 body.rabit-overview .tab-overview,
 body.rabit-start .tab-start,
 body.rabit-spec .tab-spec,
-body.rabit-examples .tab-examples {
+body.rabit-examples .tab-examples,
+body.u-overview .tab-overview,
+body.u-start .tab-start,
+body.u-concepts .tab-concepts,
+body.u-examples .tab-examples,
+body.akm-overview .tab-overview,
+body.akm-start .tab-start,
+body.akm-concepts .tab-concepts,
+body.akm-examples .tab-examples {
   color: var(--primary);
   box-shadow: inset 0 -2px 0 var(--primary-bright);
 }
 
-/* ===== Compare (rabit "Why rabit?") ===== */
+/* ===== Compare (rabit "Why rabit?", unify "Why unify?") ===== */
 
 .compare {
   display: grid;
