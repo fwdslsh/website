@@ -20,6 +20,6 @@ We're a few indie devs who build stuff, write stuff and share it.
 </include>
 <include src="/_includes/member.fragment.html">
   <img slot="avatar" src="https://github.com/dimm-city.png?size=112" alt="" width="56" height="56" loading="lazy">
-  <a slot="name" href="https://github.com/dimm-city">dimm-city</a>
-  <p>Builds <a href="/gutterpress/index.html">gutterpress</a>, Markdown to print-ready PDF.</p>
+  <a slot="name" href="https://dimm.city/">Dimm City</a>
+  <p>A new tabletop RPG and the small company behind it. Alongside the game they build open-source tools that help indie authors publish their work, like <a href="/gutterpress/index.html">gutterpress</a>. On GitHub as <a href="https://github.com/dimm-city">dimm-city</a>.</p>
 </include>

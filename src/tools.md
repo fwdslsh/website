@@ -46,7 +46,7 @@ Needs Node 22+. MPL-2.0. [Getting started](/akm/getting-started.html) · [Full d
 
 ## gutterpress
 
-Write a book in Markdown, lay it out with CSS and export a print-ready PDF. A desktop app for Windows, macOS and Linux, with a CLI for scripts and CI. Renders through a real Chromium print engine, so the preview is the PDF. Built by dimm-city.
+Write a book in Markdown, lay it out with CSS and export a print-ready PDF. A desktop app for Windows, macOS and Linux, with a CLI for scripts and CI. Renders through a real Chromium print engine, so the preview is the PDF. Built by [Dimm City](https://dimm.city/).
 
 ```sh
 npm install -g gutterpress
