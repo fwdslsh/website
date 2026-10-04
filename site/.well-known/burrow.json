@@ -7,7 +7,7 @@
   "updated": "2026-10-02T00:00:00Z",
   "baseUri": "https://fwdslsh.dev/",
   "agents": {
-    "context": "fwdslsh is a group of indie developers who build open-source tools and share what they learn. This site introduces their tools (unify, rabit, akm, gutterpress), documents rabit, and hosts their blog.",
+    "context": "fwdslsh is a group of indie developers who build open-source tools and share what they learn. This site introduces their tools (unify, fhold, akm, rabit, gutterpress), documents rabit, and hosts their blog.",
     "entryPoint": "rabit-index"
   },
   "entries": [
