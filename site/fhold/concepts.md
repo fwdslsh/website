@@ -24,7 +24,7 @@ akm + supercronic ──> restricted scheduled work ───────┘
 
 ## Your home folder
 
-Everything lives under `FH_HOME`, by default `~/.fhold`:
+Every instance is one folder under `~/fhold/`: `default` for a plain install, or the name you gave `--name`. Inside it:
 
 | Path | Owner | What's in it |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ Everything lives under `FH_HOME`, by default `~/.fhold`:
 | `state/` | the control plane | stack intent, derived env, named credentials, file-backed secrets |
 | `data/` | the containers | Assistant home, akm state, portal databases, audit logs |
 
-A different home is a different instance with its own Compose project, ports and name. fhold refuses to adopt a folder it didn't create, and updates replace only release-owned files: they seed missing settings and never delete whole trees.
+Each folder is its own instance with its own Compose project, ports and name; commands act on `default` unless `FH_HOME` points at another instance's folder. fhold refuses to adopt a folder it didn't create, and updates replace only release-owned files: they seed missing settings and never delete whole trees.
 
 ## Two ways in
 
