@@ -47,11 +47,11 @@ Every non-empty allowlist must match, and an empty allowlist refuses everyone, s
 ## A second instance
 
 ```sh
-fhold install --name work-agent          # lands in ~/fhold/work-agent
-FH_HOME=~/fhold/work-agent fhold setup
+fhold install --name work-agent          # lands in ~/fhold/instances/work-agent
+FH_HOME=~/fhold/instances/work-agent fhold setup
 ```
 
-Each instance under `~/fhold/` is its own Compose project with its own knowledge, credentials, workspace and ports; fresh setup picks free ports automatically. Commands act on `~/fhold/default` unless `FH_HOME` names another instance's folder, so keep it explicit for every command meant for the second one. In Admin, **Create new instance** does the same.
+Each instance under `~/fhold/instances/` is its own Compose project with its own knowledge, credentials, workspace and ports; fresh setup picks free ports automatically. Commands act on `~/fhold/instances/default` unless `FH_HOME` names another instance's folder, so keep it explicit for every command meant for the second one. In Admin, **Create new instance** does the same.
 
 ## Back up and move it
 
@@ -59,8 +59,8 @@ Each instance under `~/fhold/` is its own Compose project with its own knowledge
 fhold backup --to /private/path/backup
 
 fhold install --name restored --no-start
-FH_HOME=~/fhold/restored fhold restore --from /private/path/backup --dry-run
-FH_HOME=~/fhold/restored fhold restore --from /private/path/backup --apply
+FH_HOME=~/fhold/instances/restored fhold restore --from /private/path/backup --dry-run
+FH_HOME=~/fhold/instances/restored fhold restore --from /private/path/backup --apply
 ```
 
 The dry run lists what will be restored and what needs a separate opt-in (provider auth, private environment, portal maps). Backups are unencrypted, so keep them private. See [portable backup](https://github.com/fwdslsh/fhold/blob/main/docs/managing-fhold.md#portable-backup-and-own-backup-restore).

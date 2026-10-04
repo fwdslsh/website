@@ -24,7 +24,7 @@ akm + supercronic ──> restricted scheduled work ───────┘
 
 ## Your home folder
 
-Every instance is one folder under `~/fhold/`: `default` for a plain install, or the name you gave `--name`. Inside it:
+Every instance is one folder under `~/fhold/instances/`: `default` for a plain install, or the name you gave `--name`. Inside it:
 
 | Path | Owner | What's in it |
 | --- | --- | --- |
