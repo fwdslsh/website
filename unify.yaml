@@ -1,7 +1,7 @@
-# Saved unify CLI flags (keys are long option names; CLI flags win). Never shipped.
-source: site
-pretty-urls: true
+# Saved unify CLI flags (keys are long option names; CLI flags win). Only what differs from the defaults.
+# the address the site is published at: sitemap.xml, feed.xml, canonical links and absolute URLs come from it
 base-url: https://fwdslsh.dev/
-canonical: auto
+# /rabit/docs/ rather than /rabit/docs.html
+pretty-urls: true
+# scripts/gen.mjs writes the post lists before every build, dev rebuild and audit; it reads the page list unify hands every generator
 generate: scripts/gen.mjs
-source-inventory: true
