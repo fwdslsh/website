@@ -28,9 +28,9 @@ A home for your personal AI. fhold runs one persistent OpenCode agent, akm knowl
 
 ```sh
 curl -fL -o fhold https://github.com/fwdslsh/fhold/releases/download/0.1.2610040821-alpha.3/fhold-cli-linux-x64
-chmod +x fhold
-./fhold install --name personal-agent
-./fhold setup
+sudo install -m 755 fhold /usr/local/bin/fhold
+fhold install --name personal-agent
+fhold setup
 ```
 
 Needs Docker Engine with Compose v2 and an AI provider supported by OpenCode. MIT. [Getting started](/fhold/getting-started.html) · [Full docs](https://github.com/fwdslsh/fhold/blob/main/docs/README.md) · [GitHub](https://github.com/fwdslsh/fhold)

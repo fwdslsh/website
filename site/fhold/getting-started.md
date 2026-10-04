@@ -14,11 +14,11 @@ Download the standalone CLI for your architecture from the [Linux alpha release]
 
 ```sh
 curl -fL -o fhold https://github.com/fwdslsh/fhold/releases/download/0.1.2610040821-alpha.3/fhold-cli-linux-x64
-chmod +x fhold
-./fhold install --name personal-agent
+sudo install -m 755 fhold /usr/local/bin/fhold
+fhold install --name personal-agent
 ```
 
-Use `fhold-cli-linux-arm64` on ARM64. `install` writes one Compose project to `~/fhold/instances/personal-agent` and pulls the pinned `fwdslsh/fhold-assistant` image from public Docker Hub; no Docker Hub login is needed. The name you choose becomes the folder, the container prefix and the agent's hostname; leave it out and the instance is `~/fhold/instances/default`. Keep the binary somewhere on your `PATH` for the shorter commands below.
+Use `fhold-cli-linux-arm64` on ARM64. `install` writes one Compose project to `~/fhold/instances/personal-agent` and pulls the pinned `fwdslsh/fhold-assistant` image from public Docker Hub; no Docker Hub login is needed. The name you choose becomes the folder, the container prefix and the agent's hostname; leave it out and the instance is `~/fhold/instances/default`. The second line puts the binary on your `PATH`, which every command below assumes.
 
 Prefer a desktop? The same release has an Admin AppImage. Make it executable, launch it and choose **Create new instance**; it walks through the same setup.
 
