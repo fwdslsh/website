@@ -16,6 +16,9 @@ import { join } from "node:path";
 
 const [, , , overlay, contextPath] = process.argv;
 const context = JSON.parse(readFileSync(contextPath, "utf8"));
+if (!context.inputs.sourcePages) {
+  throw new Error("gen.mjs reads the source page list: keep `source-inventory: true` in unify.yaml (or pass --source-inventory)");
+}
 const inventory = JSON.parse(readFileSync(context.inputs.sourcePages, "utf8"));
 
 const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
