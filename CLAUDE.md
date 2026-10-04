@@ -50,6 +50,7 @@ Follow Unify’s rules, not other generator conventions:
 This site is a companion site for the broader fwdslsh toolset:
 
 - `site/unify/` — Unify docs and examples
+- `site/fhold/` — fhold docs
 - `site/rabit/` — Rabit spec and docs
 - `site/akm/` — AKM docs
 - `site/gutterpress/` — Gutterpress docs

@@ -509,7 +509,11 @@ body.akm-examples .tab-examples,
 body.gp-overview .tab-overview,
 body.gp-start .tab-start,
 body.gp-concepts .tab-concepts,
-body.gp-examples .tab-examples {
+body.gp-examples .tab-examples,
+body.fh-overview .tab-overview,
+body.fh-start .tab-start,
+body.fh-concepts .tab-concepts,
+body.fh-examples .tab-examples {
   color: var(--primary);
   box-shadow: inset 0 -2px 0 var(--primary-bright);
 }
@@ -519,14 +523,17 @@ body.gp-examples .tab-examples {
 .subnav-toggle { display: none; }
 
 body.rabit-overview .subnav-current::before, body.u-overview .subnav-current::before,
-body.akm-overview .subnav-current::before, body.gp-overview .subnav-current::before { content: "· Overview"; }
+body.akm-overview .subnav-current::before, body.gp-overview .subnav-current::before,
+body.fh-overview .subnav-current::before { content: "· Overview"; }
 body.rabit-start .subnav-current::before, body.u-start .subnav-current::before,
-body.akm-start .subnav-current::before, body.gp-start .subnav-current::before { content: "· Getting started"; }
+body.akm-start .subnav-current::before, body.gp-start .subnav-current::before,
+body.fh-start .subnav-current::before { content: "· Getting started"; }
 body.rabit-spec .subnav-current::before { content: "· Specification"; }
 body.u-concepts .subnav-current::before, body.akm-concepts .subnav-current::before,
-body.gp-concepts .subnav-current::before { content: "· How it works"; }
+body.gp-concepts .subnav-current::before, body.fh-concepts .subnav-current::before { content: "· How it works"; }
 body.rabit-examples .subnav-current::before, body.u-examples .subnav-current::before,
-body.akm-examples .subnav-current::before, body.gp-examples .subnav-current::before { content: "· Examples"; }
+body.akm-examples .subnav-current::before, body.gp-examples .subnav-current::before,
+body.fh-examples .subnav-current::before { content: "· Examples"; }
 
 @media (max-width: 640px) {
   .subnav { position: relative; overflow: visible; }

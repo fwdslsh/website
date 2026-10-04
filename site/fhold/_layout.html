@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <include src="/_includes/base/head.html"></include>
+  <!-- relative to this file, so the layout previews styled straight from the folder; unify rewrites it per page -->
+  <link rel="stylesheet" href="../assets/styles.css">
+  <title>· fhold · fwdslsh</title>
+  <meta property="og:type" content="website">
+  <meta name="schema" content="WebPage">
+</head>
+<body class="tools">
+  <!-- The fhold section: the site chrome plus the section's tabs. Each page sets its own
+       body class (fh-overview, fh-start, fh-concepts, fh-examples) to mark its tab.
+       The full documentation lives in the fhold repo; these pages are the short version. -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <include src="/_includes/base/nav.html"></include>
+  <main id="main">
+    <nav class="subnav" aria-label="fhold">
+      <!-- On narrow screens the tabs collapse into this disclosure; the summary names the
+           current tab from the body class (CSS content), so no script and no duplication. -->
+      <details class="subnav-toggle"><summary>fhold <span class="subnav-current"></span><svg class="lucide lucide-chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary></details>
+      <ul>
+        <li><a class="tab-overview" href="/fhold/index.html">Overview</a></li>
+        <li><a class="tab-start" href="/fhold/getting-started.html">Getting started</a></li>
+        <li><a class="tab-concepts" href="/fhold/concepts.html">How it works</a></li>
+        <li><a class="tab-examples" href="/fhold/examples.html">Examples</a></li>
+        <li><a class="tab-external" href="https://github.com/fwdslsh/fhold/blob/main/docs/README.md" target="_blank" rel="noopener">Full docs ↗</a></li>
+      </ul>
+    </nav>
+    <slot></slot>
+  </main>
+  <include src="/_includes/base/footer.html"></include>
+</body>
+</html>

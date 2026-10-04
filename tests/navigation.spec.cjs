@@ -17,6 +17,10 @@ const paths = [
   '/unify/getting-started/',
   '/unify/concepts/',
   '/unify/examples/',
+  '/fhold/',
+  '/fhold/getting-started/',
+  '/fhold/concepts/',
+  '/fhold/examples/',
   '/akm/',
   '/akm/getting-started/',
   '/akm/concepts/',
@@ -86,7 +90,7 @@ test('tools menu lists every tool, opens from the keyboard, and stays on screen'
   await page.locator('.site-nav .nav-dropdown > a').focus();
   const menu = page.locator('.nav-dropdown-content');
   await expect(menu).toBeVisible();
-  await expect(menu.locator('.nav-tool-name')).toHaveText(['unify', 'rabit', 'akm', 'gutterpress']);
+  await expect(menu.locator('.nav-tool-name')).toHaveText(['unify', 'fhold', 'akm', 'rabit', 'gutterpress']);
   const unify = menu.locator('a', { hasText: 'unify' });
   await expect(unify).toHaveAttribute('href', '/unify/');
   const box = await menu.boundingBox();
