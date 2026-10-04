@@ -13,7 +13,7 @@
     "test": "playwright test"
   },
   "devDependencies": {
-    "@fwdslsh/unify": "^0.9.5",
+    "@fwdslsh/unify": "0.10.0-beta.1",
     "@playwright/test": "^1.57.0"
   },
   "dependencies": {
