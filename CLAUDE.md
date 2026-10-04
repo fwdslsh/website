@@ -6,7 +6,7 @@ This repo is the fwdslsh website. It is authored as plain HTML and Markdown and 
 
 - The site source lives in `site/`.
 - The repo root holds project settings and generator scripts, not published output.
-- `unify.yaml` at the repo root stores the build flags that differ from unify's defaults: the production base URL `https://fwdslsh.dev/`, `pretty-urls` and `canonical: auto`, the generator script `scripts/gen.mjs`, and `source-inventory`, which the generator needs (it reads unify's page list instead of parsing frontmatter). Defaults such as `source: site` are not written.
+- `unify.yaml` at the repo root stores the build flags that differ from unify's defaults: the production base URL `https://fwdslsh.dev/`, `pretty-urls`, and the generator script `scripts/gen.mjs`. Canonical links come with the base URL and the generator gets unify's page list by default, so neither is written; nor are defaults such as `source: site`.
 - `scripts/gen.mjs` creates generated fragments for blog lists and recent posts; it runs before build/audit/dev.
 - The publishable output is generated into `dist/` only when checks pass.
 
