@@ -1,3 +1,8 @@
+/* The web fonts ride with the stylesheet (an @import must come first), so any file that links
+   styles.css — a layout or a page opened straight from the folder included — gets the type too.
+   head.html keeps the preconnect hints. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&family=Protest+Revolution&display=swap");
+
 /* fwdslsh.dev
    One site grid (--site) with a reading measure (--measure) inside it.
    Display face for h1 only; mono for headings, nav, code and meta; Inter for body text.
