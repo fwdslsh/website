@@ -13,10 +13,10 @@ Below is how the layouts, pages, and generated lists fit together. You can follo
 
 ## Layouts
 
-unify starts in the page's folder and walks up until it finds an `_layout.html`. That file supplies the page's shared structure. This site has six layouts:
+unify starts in the page's folder and walks up until it finds an `_layout.html`. That file supplies the page's shared structure. This site has seven layouts:
 
 - `site/_layout.html` wraps most pages: the nav, `<main>` and the footer.
-- `site/rabit/_layout.html`, `site/unify/_layout.html`, `site/akm/_layout.html`, and `site/gutterpress/_layout.html` add the appropriate section tabs to each tool's pages.
+- `site/rabit/_layout.html`, `site/unify/_layout.html`, `site/fhold/_layout.html`, `site/akm/_layout.html`, and `site/gutterpress/_layout.html` add the appropriate section tabs to each tool's pages.
 - `site/blog/posts/_layout.html` wraps each post in an `<article>` and marks it as a `BlogPosting`.
 
 Layouts don't inherit from each other. Each one is a complete HTML document, but they pull in the same `<head>`, navigation, and footer. For example, this include adds the shared navigation:

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <title>Overview</title>
+  <meta name="description" content="fhold is a home for your personal AI: one persistent OpenCode agent with akm knowledge and recurring work, in a single container on your own machine.">
+</head>
+<body class="fh-overview">
+<main id="main">
+  <h1>fhold</h1>
+  <p>A home for your personal AI. fhold runs one persistent <a href="https://opencode.ai/" target="_blank" rel="noopener">OpenCode</a> agent in a single container on a machine you control. It remembers what you tell it through <a href="/akm/index.html">akm</a>, runs recurring work you describe in ordinary language, and is reachable from the clients you already use: OpenCode, Claude Desktop, any MCP client, Discord or Slack. Linux alpha; you bring the model provider.</p>
+  <p class="actions">
+    <a class="btn btn-primary" href="/fhold/getting-started.html">Get started</a>
+    <a class="btn btn-secondary" href="https://github.com/fwdslsh/fhold/releases" target="_blank" rel="noopener">Download ↗</a>
+  </p>
+
+  <h2>An agent at a glance</h2>
+  <p>One standalone CLI installs the stack, signs you in to a provider through OpenCode, and confirms the agent answers before it calls setup done.</p>
+  <pre><code class="language-sh">./fhold install --name personal-agent   # one Compose project under ~/.fhold
+./fhold setup                           # provider sign-in, then a real test request
+fhold status                            # the Assistant container, healthy
+fhold connect opencode                  # where to point your OpenCode client</code></pre>
+
+  <h2>Core concepts</h2>
+<div class="card-grid">
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="../assets/icons/bot.svg" alt="" width="20" height="20">
+    <span slot="title">Assistant</span>
+    <p>The one default container: OpenCode for providers and models, akm for knowledge, supercronic for schedules. Nothing runs as root.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="../assets/icons/library.svg" alt="" width="20" height="20">
+    <span slot="title">Knowledge</span>
+    <p>Facts, files and task definitions live in <code>knowledge/</code> on your disk, indexed by akm, so every conversation starts informed.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="../assets/icons/clock.svg" alt="" width="20" height="20">
+    <span slot="title">Recurring work</span>
+    <p>Ask for a weekday morning briefing in plain language. It runs on a cron schedule in your timezone and files reports in your inbox.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="../assets/icons/shield.svg" alt="" width="20" height="20">
+    <span slot="title">Guardian</span>
+    <p>Optional, policy-scoped MCP for everyone who isn't you. Named identities get <code>chat</code>, <code>read</code> or <code>full</code>; everything else fails closed.</p>
+  </include>
+</div>
+
+  <h2>Why fhold?</h2>
+  <p>A hosted assistant forgets you between sessions, lives on someone else's servers and can't do anything while you're away. fhold keeps the agent, its memory and its schedule in a folder you own, and uses the providers, clients and tools you already have instead of inventing new ones.</p>
+  <div class="compare">
+    <div class="card"><h3>A chat tab</h3><p>Stateless, someone else's machine, only works while you're typing.</p></div>
+    <span class="vs">vs</span>
+    <div class="card is-accent"><h3>fhold</h3><p>One persistent agent on your hardware, with memory, a schedule and a locked front door.</p></div>
+  </div>
+
+  <h2>Also in the box</h2>
+<div class="card-grid">
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="../assets/icons/network.svg" alt="" width="20" height="20">
+    <span slot="title">Your clients</span>
+    <p>Trusted OpenCode locally, a Claude Desktop extension, or any MCP client through Guardian, with OAuth for a public endpoint.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="../assets/icons/globe.svg" alt="" width="20" height="20">
+    <span slot="title">Discord and Slack</span>
+    <p>One Portal image serves both. Allowlists are default-deny, and every user maps to a named identity with a fixed policy.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="../assets/icons/layout-template.svg" alt="" width="20" height="20">
+    <span slot="title">Admin app</span>
+    <p>An optional desktop utility for setup, settings, connections and backups. It is not a server and runs nothing in the background.</p>
+  </include>
+  <include src="/_includes/card.fragment.html">
+    <img slot="icon" src="../assets/icons/folder-tree.svg" alt="" width="20" height="20">
+    <span slot="title">Backup and recovery</span>
+    <p>Portable backups with a hash-verified manifest, previewed before they are applied. Updates replace only release-owned files.</p>
+  </include>
+</div>
+</main>
+</body>
+</html>

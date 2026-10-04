@@ -33,7 +33,7 @@ chmod +x fhold
 ./fhold setup
 ```
 
-Needs Docker Engine with Compose v2 and an AI provider supported by OpenCode. MIT. [Installation](https://github.com/fwdslsh/fhold/blob/main/docs/installation.md) · [Full docs](https://github.com/fwdslsh/fhold/blob/main/docs/README.md) · [GitHub](https://github.com/fwdslsh/fhold)
+Needs Docker Engine with Compose v2 and an AI provider supported by OpenCode. MIT. [Getting started](/fhold/getting-started.html) · [Full docs](https://github.com/fwdslsh/fhold/blob/main/docs/README.md) · [GitHub](https://github.com/fwdslsh/fhold)
 
 ## akm
 
