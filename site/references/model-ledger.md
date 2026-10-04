@@ -8,4 +8,4 @@ class: model-ledger-page
 
 [Read the article](/blog/posts/model-benchmark-ledger.html) · [Reproduce the tests](https://github.com/itlackey/akm-model-eval#quick-start) · [Public test corpus](https://github.com/itlackey/akm-model-eval/tree/main/corpus)
 
-<include src="/includes/model-ledger.html"></include>
+<include src="/_includes/model-ledger.html"></include>

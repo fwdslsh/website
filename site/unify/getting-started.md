@@ -18,7 +18,7 @@ mkdir my-site && cd my-site
 unify init
 ```
 
-`init` writes a complete starter into `src/`: a layout, a nav fragment, an HTML page, a Markdown page, a 404 and a stylesheet. Pass a template name for a different start: `unify init blog`, `docs` or `portfolio`.
+`init` writes a complete starter into `site/`: a layout, a nav fragment, an HTML page, a Markdown page, a 404 and a stylesheet, with `AGENTS.md` and `DEPLOY.md` beside it. Pass a template name for a different start: `unify init blog`, `docs` or `portfolio`.
 
 ## 2. Edit and preview
 
@@ -26,14 +26,14 @@ unify init
 unify dev
 ```
 
-Open <http://localhost:3000>. Edit anything under `src/`, save, and the browser reloads. While it runs, <http://localhost:3000/_unify/> lists every finding the audit would report, page by page.
+Open <http://localhost:3000>. Edit anything under `site/`, save, and the browser reloads. While it runs, <http://localhost:3000/_unify/> lists every finding the audit would report, page by page.
 
 The two files to look at first:
 
-- `src/_layout.html` is the site chrome, a complete HTML page with `<main><slot></slot></main>` where pages land.
-- `src/index.html` is a page. It has its own `<head>` with a `<title>` and a description, and its body is the content. It never mentions the layout: the nearest `_layout.html` applies on its own.
+- `site/_layout.html` is the site chrome, a complete HTML page with `<main><slot></slot></main>` where pages land. Open it straight from the folder and it shows with its styles, because its stylesheet link is relative to the file.
+- `site/index.html` is a page. It has its own `<head>` with a `<title>` and a description, and its body is the content. It never mentions the layout: the nearest `_layout.html` applies on its own.
 
-Add a page by adding a file. `src/about.md` with a `title` and `description` in its frontmatter becomes `/about.html`, wrapped in the same layout.
+Add a page by adding a file. `site/about.md` with a `title` and `description` in its frontmatter becomes `/about.html`, wrapped in the same layout.
 
 ## 3. Check and publish
 
@@ -44,7 +44,7 @@ unify build                      # write dist/
 
 Exit 0 means `dist/` is the complete site. Anything else means nothing was published and the previous `dist/` is untouched. Upload `dist/` to any static host.
 
-For a site with an address, add the flags once and keep them in `src/unify.yaml` so every command shares them:
+For a site with an address, add the flags once and keep them in `unify.yaml` at the project root so every command shares them:
 
 ```sh
 unify build --pretty-urls --base-url https://example.com/ --canonical auto --save-config

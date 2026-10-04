@@ -1,10 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- relative to this file, so the page previews styled straight from the folder; the layout links the same
+       stylesheet and unify keeps one copy -->
+  <link rel="stylesheet" href="assets/styles.css">
   <title>Slash a path to a better future</title>
   <meta name="description" content="fwdslsh is a group of indie developers building open-source tools and sharing what they learn, because a rising tide lifts all boats.">
 </head>
 <body class="home">
+<main id="main">
   <header class="hero">
     <p class="prompt">~/fwdslsh $</p>
     <h1>Slash a path to a better future</h1>
@@ -17,7 +21,7 @@
 
   <h2>Tools</h2>
   <p>Right now that's mostly tools for a web that AI agents and people both use: sites that are easy to publish and easy to read, by eye or by agent.</p>
-  <include src="/includes/tool-cards.html"></include>
+  <include src="/_includes/tool-cards.html"></include>
 
   <h2>From the lab</h2>
   <p>Notes, experiments and write-ups from members. What we figure out, we pass on.</p>
@@ -26,5 +30,6 @@
 
   <h2>Who we are</h2>
   <p>Indie devs who build stuff, write stuff and share it, so the next person starts further along. <a href="/members.html">Meet the members →</a></p>
+</main>
 </body>
 </html>

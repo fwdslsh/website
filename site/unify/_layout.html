@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <include src="/includes/base/head.html"></include>
+  <include src="/_includes/base/head.html"></include>
+  <!-- relative to this file, so the layout previews styled straight from the folder; unify rewrites it per page -->
+  <link rel="stylesheet" href="../assets/styles.css">
   <title>· unify · fwdslsh</title>
   <meta property="og:type" content="website">
   <meta name="schema" content="WebPage">
@@ -11,7 +13,7 @@
        body class (u-overview, u-start, u-concepts, u-examples) to mark its tab.
        The full documentation lives on unify's own site; these pages are the short version. -->
   <a href="#main" class="skip-link">Skip to main content</a>
-  <include src="/includes/base/nav.html"></include>
+  <include src="/_includes/base/nav.html"></include>
   <main id="main">
     <nav class="subnav" aria-label="unify">
       <!-- On narrow screens the tabs collapse into this disclosure; the summary names the
@@ -27,6 +29,6 @@
     </nav>
     <slot></slot>
   </main>
-  <include src="/includes/base/footer.html"></include>
+  <include src="/_includes/base/footer.html"></include>
 </body>
 </html>
