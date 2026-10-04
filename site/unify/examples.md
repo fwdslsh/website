@@ -37,15 +37,15 @@ Drop `src/blog/posts/_layout.html` in place and every post gets it. The shared h
 <!doctype html>
 <html lang="en">
 <head>
-  <include src="/includes/base/head.html"></include>
+  <include src="/_includes/base/head.html"></include>
   <title>· fwdslsh</title>
   <meta property="og:type" content="article">
   <meta name="schema" content="BlogPosting">
 </head>
 <body>
-  <include src="/includes/base/nav.html"></include>
+  <include src="/_includes/base/nav.html"></include>
   <main id="main"><article class="post"><slot></slot></article></main>
-  <include src="/includes/base/footer.html"></include>
+  <include src="/_includes/base/footer.html"></include>
 </body>
 </html>
 ```
@@ -87,7 +87,7 @@ A fragment declares named slots and a bare one:
 A non-empty include fills them. This works in Markdown too, as long as the include starts a line and has no blank lines inside:
 
 ```html
-<include src="/includes/card.fragment.html">
+<include src="/_includes/card.fragment.html">
   <img slot="icon" src="/assets/icons/signpost.svg" alt="" width="20" height="20">
   <a slot="title" href="/rabit/index.html">rabit</a>
   <p>A small JSON manifest that tells agents what a site holds and where.</p>
@@ -96,14 +96,14 @@ A non-empty include fills them. This works in Markdown too, as long as the inclu
 
 ## A generated post list
 
-unify has no collections, so the blog index comes from a script. This site keeps its content in `site/`, its shared fragments in `includes/` and the script in `scripts/`, with `unify.yaml` at the repository root holding the flags every command shares:
+unify has no collections, so the blog index comes from a script. This site keeps its content in `site/` and the script in `scripts/`, with `unify.yaml` at the repository root holding the flags every command shares (a path in the file is relative to the file):
 
 ```yaml
 source: site
 pretty-urls: true
 base-url: https://fwdslsh.dev/
 canonical: auto
-generate: ../scripts/gen.mjs
+generate: scripts/gen.mjs
 source-inventory: true
 ```
 
@@ -123,7 +123,7 @@ mkdirSync(join(overlay, "_generated"), { recursive: true });
 writeFileSync(join(overlay, "_generated", "post-list.html"), `<ol>${items.join("")}</ol>`);
 ```
 
-`blog/index.md` then includes `/_generated/post-list.html` like any other fragment. The overlay, the source tree and the project root share one path space, and the generated fragment never touches `site/`.
+`blog/index.md` then includes `/_generated/post-list.html` like any other fragment. The overlay and the source tree share one path space, and the generated fragment never touches `site/`.
 
 ## Saving the flags
 

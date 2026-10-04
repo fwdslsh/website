@@ -22,7 +22,7 @@ npm test         # Playwright smoke tests
 ```
 
 Build flags shared by every command live in `unify.yaml` at the repository root. Source is plain HTML and Markdown
-in `site/`, shared fragments are in `includes/`, and the post-list generator is `scripts/gen.mjs`.
+in `site/` (with its layouts and `_includes/`), and the post-list generator is `scripts/gen.mjs`.
 To write a blog post, copy `site/blog/posts/_template.md`. See [CLAUDE.md](CLAUDE.md) for how the site is put
 together, and unify's
 [authoring rules](https://github.com/fwdslsh/unify/blob/main/docs/authoring-rules.md) for the composition model.

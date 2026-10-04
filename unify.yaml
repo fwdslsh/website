@@ -3,5 +3,5 @@ source: site
 pretty-urls: true
 base-url: https://fwdslsh.dev/
 canonical: auto
-generate: ../scripts/gen.mjs
+generate: scripts/gen.mjs
 source-inventory: true

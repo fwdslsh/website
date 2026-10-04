@@ -22,7 +22,7 @@ unify starts in the page's folder and walks up until it finds an `_layout.html`.
 Layouts don't inherit from each other. Each one is a complete HTML document, but they pull in the same `<head>`, navigation, and footer. For example, this include adds the shared navigation:
 
 ```html
-<include src="/includes/base/nav.html"></include>
+<include src="/_includes/base/nav.html"></include>
 ```
 
 ## Pages
@@ -48,7 +48,7 @@ Each section's pages carry a class on `<body>`. The about page uses `class: abou
 Tool cards and rabit cards use the same `card.fragment.html`. Its named slots let each card supply an icon and title while keeping the surrounding markup in one place:
 
 ```html
-<include src="/includes/card.fragment.html">
+<include src="/_includes/card.fragment.html">
   <img slot="icon" src="/assets/icons/signpost.svg" alt="" width="20" height="20">
   <a slot="title" href="/rabit/index.html">rabit</a>
   <p>A small JSON manifest that tells agents what a site holds and where.</p>
@@ -63,20 +63,20 @@ The blog index needs a list of posts, but unify doesn't decide which pages belon
 
 With `source-inventory: true`, unify gives the script a list of source pages and their metadata. The script selects pages under `blog/posts/`, sorts them newest first, and writes includes for the blog index and home page. It doesn't need to parse frontmatter or maintain a separate list of published posts. The generated includes stay in unify's build overlay rather than being written back into `site/`.
 
-The shared fragments the layouts pull in live in `includes/` at the repository root, next to `scripts/` and `tests/`. unify looks there last, after the site itself, so `<include src="/includes/base/nav.html">` finds them and nothing in that directory is ever published.
+The shared fragments live in `site/_includes/`, next to the layouts, and both link their own assets relative to the file: open a layout or a fragment straight from the folder and it shows with its styles and images, because unify resolves a relative link against the file that wrote it and rewrites it for every page. Build tooling that isn't content, the generator and the config, sits at the repository root.
 
 The [Atom feed](/feed.xml) follows a different path. The posts layout declares `BlogPosting`, and each post has a publication date with a time. unify uses that metadata to generate `feed.xml` and the post's JSON-LD structured data. No separate feed script is needed.
 
 ## Build and verify
 
-The same build generates `sitemap.xml` and each page's canonical link. These settings in `unify.yaml` at the repository root name the content directory, supply the site address, enable readable URLs, and connect the post-list script to the source inventory:
+The same build generates `sitemap.xml` and each page's canonical link. These settings in `unify.yaml` at the repository root name the content directory and the generator (a path in the file is relative to the file), supply the site address, enable readable URLs, and connect the post-list script to the source inventory:
 
 ```yaml
 source: site
 pretty-urls: true
 base-url: https://fwdslsh.dev/
 canonical: auto
-generate: ../scripts/gen.mjs
+generate: scripts/gen.mjs
 source-inventory: true
 ```
 
