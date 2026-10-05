@@ -25,23 +25,31 @@ Add `--audit` to keep the scaffold only if `unify audit --strict` passes on it. 
 
 ## Stay current
 
-`init` leaves `unify.template.json` at the project root: the source, the version fetched and a hash of every file the template provided. Commit it, configure your site, write your content. When the template releases a new version:
+`init` leaves one line in `unify.yaml`, the template pinned to the version it fetched:
+
+```yaml
+template: https://github.com/acme/templates/shop#3f9c2e1a7b…
+```
+
+That is the whole record. Commit it, configure your site, write your content. When the template releases a new version:
 
 ```sh
 unify update --dry-run   # the change set, nothing written
 unify update             # apply it
 ```
 
-Files you never touched take the new version. A file you edited that the template also changed is a **conflict**: your bytes stay, the line names the file, the exit code is 1. Nothing resolves a conflict but you. Files the template marks as yours, such as its config seed or a content folder, are never touched or mentioned. Running it again when nothing changed says so.
+unify fetches the template at the recorded version and at its latest, and compares each file three ways: then, now, and on your disk. Files you never touched take the new version. A file you edited that the template also changed is a **conflict**: your bytes stay, the line names the file, the exit code is 1, and the recorded version does not move until the conflict is gone. Resolve it by taking the template's version, or keep yours and list the file under `owned:` in `unify.yaml`, where the template's own seeds and content folders already are. Running it again when nothing changed says so.
 
 The recommended rhythm: scaffold and commit, configure and commit, author and commit, then `unify update --dry-run`, `unify update`, resolve any conflicts, `unify build --dry-run --strict`, commit. The update is ordinary changes in your working tree, so `git diff` reviews it.
 
 ## Publish your own
 
-Make a site, strip it to the starting point you want others to have, and make sure `unify audit --strict` passes on a fresh scaffold. Declare what a site owns once scaffolded in a `unify.template.json` at the template's root:
+Make a site, strip it to the starting point you want others to have, and make sure `unify audit --strict` passes on a fresh scaffold. Declare what a site owns once scaffolded in the template's `unify.yaml`:
 
-```json
-{"owned": ["site/config.json", "site/posts/**"]}
+```yaml
+owned:
+  - site/config.json
+  - site/posts/**
 ```
 
 Then host it where your users can fetch it: a directory in a git repository (tag your releases), or an npm package named `unify-<name>-template` or `@you/unify-<name>-template`, which is also what to search npm for.
