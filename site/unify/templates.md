@@ -44,6 +44,23 @@ The recommended rhythm: scaffold and commit, configure and commit, author and co
 
 ## Publish your own
 
-Make a site, strip it to the starting point you want others to have, and make sure `unify audit --strict` passes on a fresh scaffold. Then host it where your users can fetch it: a directory in a git repository (tag your releases), or an npm package named `unify-<name>-template` or `@you/unify-<name>-template`, which is also what to search npm for.
+Make a site, strip it to the starting point you want others to have, and make sure `unify audit --strict` passes on a fresh scaffold.
+
+Ship your tooling in place, and everything a site fills in only as examples:
+
+```
+site/
+  _layout.html          tooling: ships in place, updates cleanly
+  _includes/nav.html
+  assets/style.css
+  index.html            the one page a scaffold cannot build without
+  _examples/
+    post.md             copied into place, then edited — never edited where it is
+    author.json
+```
+
+`_examples/` is excluded from the build by the default `_*` rule, so the examples land in every site and never publish. The author copies `_examples/post.md` to `posts/first.md` and edits the copy; `unify update` never visits a path the template does not ship, and the example itself is never edited, so your improvements to it arrive cleanly. Nothing is declared anywhere: the path says whose a file is. Don't ship `unify.yaml` unless a page needs a flag live; `init` writes the all-commented file, and it is then the site's.
+
+Then host it where your users can fetch it: a directory in a git repository (tag your releases), or an npm package named `unify-<name>-template` or `@you/unify-<name>-template`, which is also what to search npm for.
 
 The complete guide, with the exact rules for every case, is on [unify.fwdslsh.dev](https://unify.fwdslsh.dev/docs/templates.html).
