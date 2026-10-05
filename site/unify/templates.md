@@ -25,10 +25,14 @@ Add `--audit` to keep the scaffold only if `unify audit --strict` passes on it. 
 
 ## Stay current
 
-`init` leaves one line in `unify.yaml`, the template as you typed it:
+`init` records the template in `unify.yaml`, as you typed it — the value of `template:`, or `source:` inside a block that also lists the files `unify update` never overwrites:
 
 ```yaml
-template: https://github.com/acme/templates/shop
+template:
+  source: https://github.com/acme/templates/shop
+  keep:
+    - unify.yaml
+    - site/assets/theme.css
 ```
 
 That is the whole record. Commit it, configure your site, write your content. When the template changes:
@@ -38,7 +42,7 @@ unify update --dry-run   # the files it would overwrite and add, nothing written
 unify update             # the same list, then one question
 ```
 
-unify fetches the template again and compares every file it ships with yours. Files you do not have are added. Files that differ are listed, and `unify update` asks `overwrite N file(s)? [y/N]` before writing any of them: answer `y` and the listed files take the template's version; anything else writes nothing. Nothing is ever removed, and files you added are never touched. `--yes` answers for a script. Running it when nothing differs says so.
+unify fetches the template again and compares every file it ships with yours. Files you do not have are added. Files that differ are listed, and `unify update` asks `overwrite N file(s)? [y/N]` before writing any of them: answer `y` and the listed files take the template's version; anything else writes nothing. A file named under `keep:` is never overwritten once it exists — the theme you edited, and the nav or the home page once you add them — and is reported as kept instead; `--keep <path>` names one for a single run. Nothing is ever removed, and files you added are never touched. `--yes` answers for a script. Running it when nothing differs says so.
 
 The recommended rhythm: scaffold and commit, configure and commit, author and commit, then `unify update --dry-run`, read the list, `unify update`, `unify build --dry-run --strict`, commit. The update is ordinary changes in your working tree, so `git diff` reviews it and `git checkout -- <file>` takes back any file you would rather have kept your own version of.
 
