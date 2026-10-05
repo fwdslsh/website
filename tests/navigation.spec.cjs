@@ -15,6 +15,7 @@ const paths = [
   '/rabit/examples/',
   '/unify/',
   '/unify/getting-started/',
+  '/unify/templates/',
   '/unify/concepts/',
   '/unify/examples/',
   '/fhold/',

@@ -18,7 +18,7 @@ mkdir my-site && cd my-site
 unify init
 ```
 
-`init` writes a complete starter into `site/`: a layout, a nav fragment, an HTML page, a Markdown page, a 404 and a stylesheet, with `AGENTS.md` and `DEPLOY.md` beside it. Pass a template name for a different start: `unify init blog`, `docs` or `portfolio`. A template can also be a directory, a git repository — `unify init https://github.com/fwdslsh/unify/templates/blog` scaffolds one directory of a repository that hosts several — or an npm package named `unify-<name>-template`; add `--audit` to keep the scaffold only if `unify audit --strict` passes on it. Later, `unify update` brings the template's next version in: files you never touched update, files you edited are kept and listed as conflicts, and `--dry-run` previews the change.
+`init` writes a complete starter into `site/`: a layout, a nav fragment, an HTML page, a Markdown page, a 404 and a stylesheet, with `AGENTS.md`, `DEPLOY.md` and `unify.template.json` beside it. Pass a template name for a different start: `unify init blog`, `docs` or `portfolio`. A template can also be a directory, a git repository or an npm package, and `unify update` later brings its next version in without losing your edits — see [Templates](/unify/templates.html).
 
 ## 2. Edit and preview
 
