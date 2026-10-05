@@ -15,11 +15,11 @@ unify init blog                                              # a built-in: defau
 unify init ../our-house-template                             # a directory
 unify init https://github.com/fwdslsh/unify/templates/blog   # one subdirectory of a git repository
 unify init git@github.com:acme/templates.git/shop#v2         # an SSH address, a subdirectory, a tag
-unify init unify-shop-template                               # an npm package, by its conventional name
+unify init unify-shop-template                               # an npm package — any package; this is the searchable name
 unify init @acme/unify-shop-template@1.4.0                   # under an organization, at a version
 ```
 
-The four forms are told apart by shape, so a typo is an error, never a network lookup. A git repository is cloned with your own `git` and an npm package fetched with your own `npm`, so your keys, tokens and registry apply. One repository can host several templates: the path after `owner/repo` names the directory, and `#ref` a branch, tag or commit. The URL your browser shows for a directory works as written.
+The four forms are told apart by shape: a built-in name, a git address, a directory that exists, else an npm package — any package, with `unify-<name>-template` the convention that makes one easy to find, and `--audit` what tells a template from a package that is not one. A git repository is cloned with your own `git` and an npm package fetched with your own `npm`, so your keys, tokens and registry apply. One repository can host several templates: the path after `owner/repo` names the directory, and `#ref` a branch, tag or commit. The URL your browser shows for a directory works as written.
 
 Add `--audit` to keep the scaffold only if `unify audit --strict` passes on it. Every built-in does.
 
@@ -61,6 +61,8 @@ site/
 
 `_examples/` is excluded from the build by the default `_*` rule, so the examples land in every site and never publish. The author copies `_examples/post.md` to `posts/first.md` and edits the copy; `unify update` never visits a path the template does not ship, and the example itself is never edited, so your improvements to it arrive cleanly. Nothing is declared anywhere: the path says whose a file is. Don't ship `unify.yaml` unless a page needs a flag live; `init` writes the all-commented file, and it is then the site's.
 
-Then host it where your users can fetch it: a directory in a git repository (tag your releases), or an npm package named `unify-<name>-template` or `@you/unify-<name>-template`, which is also what to search npm for.
+Ship the look the same way: a stylesheet whose rules all sit in a `base` cascade layer and read custom properties, a layout that includes `/_includes/theme.html`, that fragment shipped beside `AGENTS.md` (a comment — a fresh scaffold resolves it from the project root), and `_examples/theme.html` holding those properties at their defaults in a `<style>` block. The author copies it to `site/_includes/theme.html`, a path you never ship; the site's file is found first and its values win. A stylesheet cannot import a file the site copies later: a reference to nothing blocks the publish.
+
+Then host it where your users can fetch it: a directory in a git repository (tag your releases), or an npm package — any name works, and `unify-<name>-template` or `@you/unify-<name>-template` is the convention that makes it easy to find on npm.
 
 The complete guide, with the exact rules for every case, is on [unify.fwdslsh.dev](https://unify.fwdslsh.dev/docs/templates.html).
