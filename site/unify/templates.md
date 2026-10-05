@@ -16,7 +16,7 @@ unify init ../our-house-template                             # a directory
 unify init https://github.com/fwdslsh/unify/templates/blog   # one subdirectory of a git repository
 unify init git@github.com:acme/templates.git/shop#v2         # an SSH address, a subdirectory, a tag
 unify init unify-shop-template                               # an npm package, by its conventional name
-unify init @acme/unify-shop-template@1.4.0                   # under an organization, pinned
+unify init @acme/unify-shop-template@1.4.0                   # under an organization, at a version
 ```
 
 The four forms are told apart by shape, so a typo is an error, never a network lookup. A git repository is cloned with your own `git` and an npm package fetched with your own `npm`, so your keys, tokens and registry apply. One repository can host several templates: the path after `owner/repo` names the directory, and `#ref` a branch, tag or commit. The URL your browser shows for a directory works as written.
@@ -25,33 +25,25 @@ Add `--audit` to keep the scaffold only if `unify audit --strict` passes on it. 
 
 ## Stay current
 
-`init` leaves one line in `unify.yaml`, the template pinned to the version it fetched:
+`init` leaves one line in `unify.yaml`, the template as you typed it:
 
 ```yaml
-template: https://github.com/acme/templates/shop#3f9c2e1a7b…
+template: https://github.com/acme/templates/shop
 ```
 
-That is the whole record. Commit it, configure your site, write your content. When the template releases a new version:
+That is the whole record. Commit it, configure your site, write your content. When the template changes:
 
 ```sh
-unify update --dry-run   # the change set, nothing written
-unify update             # apply it
+unify update --dry-run   # the files it would overwrite and add, nothing written
+unify update             # the same list, then one question
 ```
 
-unify fetches the template at the recorded version and at its latest, and compares each file three ways: then, now, and on your disk. Files you never touched take the new version. A file you edited that the template also changed is a **conflict**: your bytes stay, the line names the file, the exit code is 1, and the recorded version does not move until the conflict is gone. Resolve it by taking the template's version, or keep yours and list the file under `owned:` in `unify.yaml`, where the template's own seeds and content folders already are. Running it again when nothing changed says so.
+unify fetches the template again and compares every file it ships with yours. Files you do not have are added. Files that differ are listed, and `unify update` asks `overwrite N file(s)? [y/N]` before writing any of them: answer `y` and the listed files take the template's version; anything else writes nothing. Nothing is ever removed, and files you added are never touched. `--yes` answers for a script. Running it when nothing differs says so.
 
-The recommended rhythm: scaffold and commit, configure and commit, author and commit, then `unify update --dry-run`, `unify update`, resolve any conflicts, `unify build --dry-run --strict`, commit. The update is ordinary changes in your working tree, so `git diff` reviews it.
+The recommended rhythm: scaffold and commit, configure and commit, author and commit, then `unify update --dry-run`, read the list, `unify update`, `unify build --dry-run --strict`, commit. The update is ordinary changes in your working tree, so `git diff` reviews it and `git checkout -- <file>` takes back any file you would rather have kept your own version of.
 
 ## Publish your own
 
-Make a site, strip it to the starting point you want others to have, and make sure `unify audit --strict` passes on a fresh scaffold. Declare what a site owns once scaffolded in the template's `unify.yaml`:
-
-```yaml
-owned:
-  - site/config.json
-  - site/posts/**
-```
-
-Then host it where your users can fetch it: a directory in a git repository (tag your releases), or an npm package named `unify-<name>-template` or `@you/unify-<name>-template`, which is also what to search npm for.
+Make a site, strip it to the starting point you want others to have, and make sure `unify audit --strict` passes on a fresh scaffold. Then host it where your users can fetch it: a directory in a git repository (tag your releases), or an npm package named `unify-<name>-template` or `@you/unify-<name>-template`, which is also what to search npm for.
 
 The complete guide, with the exact rules for every case, is on [unify.fwdslsh.dev](https://unify.fwdslsh.dev/docs/templates.html).
