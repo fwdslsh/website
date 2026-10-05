@@ -500,6 +500,7 @@ body.rabit-spec .tab-spec,
 body.rabit-examples .tab-examples,
 body.u-overview .tab-overview,
 body.u-start .tab-start,
+body.u-templates .tab-templates,
 body.u-concepts .tab-concepts,
 body.u-examples .tab-examples,
 body.akm-overview .tab-overview,
@@ -529,6 +530,7 @@ body.rabit-start .subnav-current::before, body.u-start .subnav-current::before,
 body.akm-start .subnav-current::before, body.gp-start .subnav-current::before,
 body.fh-start .subnav-current::before { content: "· Getting started"; }
 body.rabit-spec .subnav-current::before { content: "· Specification"; }
+body.u-templates .subnav-current::before { content: "· Templates"; }
 body.u-concepts .subnav-current::before, body.akm-concepts .subnav-current::before,
 body.gp-concepts .subnav-current::before, body.fh-concepts .subnav-current::before { content: "· How it works"; }
 body.rabit-examples .subnav-current::before, body.u-examples .subnav-current::before,
