@@ -16,7 +16,7 @@ unify init ../our-house-template                             # a directory
 unify init https://github.com/fwdslsh/unify/templates/blog   # one subdirectory of a git repository
 unify init git@github.com:acme/templates.git/shop#v2         # an SSH address, a subdirectory, a tag
 unify init unify-shop-template                               # an npm package, by its conventional name
-unify init @acme/unify-shop-template@1.4.0                   # under an organization, pinned
+unify init @acme/unify-shop-template@1.4.0                   # under an organization, at a version
 ```
 
 The four forms are told apart by shape, so a typo is an error, never a network lookup. A git repository is cloned with your own `git` and an npm package fetched with your own `npm`, so your keys, tokens and registry apply. One repository can host several templates: the path after `owner/repo` names the directory, and `#ref` a branch, tag or commit. The URL your browser shows for a directory works as written.
@@ -25,24 +25,41 @@ Add `--audit` to keep the scaffold only if `unify audit --strict` passes on it. 
 
 ## Stay current
 
-`init` leaves `unify.template.json` at the project root: the source, the version fetched and a hash of every file the template provided. Commit it, configure your site, write your content. When the template releases a new version:
+`init` leaves one line in `unify.yaml`, the template as you typed it:
 
-```sh
-unify update --dry-run   # the change set, nothing written
-unify update             # apply it
+```yaml
+template: https://github.com/acme/templates/shop
 ```
 
-Files you never touched take the new version. A file you edited that the template also changed is a **conflict**: your bytes stay, the line names the file, the exit code is 1. Nothing resolves a conflict but you. Files the template marks as yours, such as its config seed or a content folder, are never touched or mentioned. Running it again when nothing changed says so.
+That is the whole record. Commit it, configure your site, write your content. When the template changes:
 
-The recommended rhythm: scaffold and commit, configure and commit, author and commit, then `unify update --dry-run`, `unify update`, resolve any conflicts, `unify build --dry-run --strict`, commit. The update is ordinary changes in your working tree, so `git diff` reviews it.
+```sh
+unify update --dry-run   # the files it would overwrite and add, nothing written
+unify update             # the same list, then one question
+```
+
+unify fetches the template again and compares every file it ships with yours. Files you do not have are added. Files that differ are listed, and `unify update` asks `overwrite N file(s)? [y/N]` before writing any of them: answer `y` and the listed files take the template's version; anything else writes nothing. Nothing is ever removed, and files you added are never touched. `--yes` answers for a script. Running it when nothing differs says so.
+
+The recommended rhythm: scaffold and commit, configure and commit, author and commit, then `unify update --dry-run`, read the list, `unify update`, `unify build --dry-run --strict`, commit. The update is ordinary changes in your working tree, so `git diff` reviews it and `git checkout -- <file>` takes back any file you would rather have kept your own version of.
 
 ## Publish your own
 
-Make a site, strip it to the starting point you want others to have, and make sure `unify audit --strict` passes on a fresh scaffold. Declare what a site owns once scaffolded in a `unify.template.json` at the template's root:
+Make a site, strip it to the starting point you want others to have, and make sure `unify audit --strict` passes on a fresh scaffold.
 
-```json
-{"owned": ["site/config.json", "site/posts/**"]}
+Ship your tooling in place, and everything a site fills in only as examples:
+
 ```
+site/
+  _layout.html          tooling: ships in place, updates cleanly
+  _includes/nav.html
+  assets/style.css
+  index.html            the one page a scaffold cannot build without
+  _examples/
+    post.md             copied into place, then edited — never edited where it is
+    author.json
+```
+
+`_examples/` is excluded from the build by the default `_*` rule, so the examples land in every site and never publish. The author copies `_examples/post.md` to `posts/first.md` and edits the copy; `unify update` never visits a path the template does not ship, and the example itself is never edited, so your improvements to it arrive cleanly. Nothing is declared anywhere: the path says whose a file is. Don't ship `unify.yaml` unless a page needs a flag live; `init` writes the all-commented file, and it is then the site's.
 
 Then host it where your users can fetch it: a directory in a git repository (tag your releases), or an npm package named `unify-<name>-template` or `@you/unify-<name>-template`, which is also what to search npm for.
 

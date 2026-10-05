@@ -18,7 +18,7 @@ mkdir my-site && cd my-site
 unify init
 ```
 
-`init` writes a complete starter into `site/`: a layout, a nav fragment, an HTML page, a Markdown page, a 404 and a stylesheet, with `AGENTS.md`, `DEPLOY.md` and `unify.template.json` beside it. Pass a template name for a different start: `unify init blog`, `docs` or `portfolio`. A template can also be a directory, a git repository or an npm package, and `unify update` later brings its next version in without losing your edits — see [Templates](/unify/templates.html).
+`init` writes a complete starter into `site/`: a layout, a nav fragment, an HTML page, a Markdown page, a 404 and a stylesheet, with `AGENTS.md`, `DEPLOY.md` and `unify.yaml` beside it. Pass a template name for a different start: `unify init blog`, `docs` or `portfolio`. A template can also be a directory, a git repository or an npm package, and `unify update` later brings its next version in without losing your edits — see [Templates](/unify/templates.html).
 
 ## 2. Edit and preview
 
@@ -33,7 +33,7 @@ The two files to look at first:
 - `site/_layout.html` is the site chrome, a complete HTML page with `<main><slot></slot></main>` where pages land. Open it straight from the folder and it shows with its styles, because its stylesheet link is relative to the file.
 - `site/index.html` is a page. It has its own `<head>` with a `<title>` and a description, and its body is the content. It never mentions the layout: the nearest `_layout.html` applies on its own.
 
-Add a page by adding a file. `site/about.md` with a `title` and `description` in its frontmatter becomes `/about.html`, wrapped in the same layout.
+Add a page by adding a file, and the scaffold ships ready-to-copy ones under `site/_examples/`, which never publish: copy `about.md` to `site/about.md`, edit it, and link it from `site/_includes/nav.html`. A Markdown page with a `title` and `description` in its frontmatter becomes `/about.html`, wrapped in the same layout. `unify update` refreshes the template's own files and never touches a file you copied.
 
 ## 3. Check and publish
 
