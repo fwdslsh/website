@@ -1,6 +1,7 @@
 // The unify templates on npm: every package named unify-<name>-template, scoped or not.
-// Two registry searches, merged: the unify-template keyword (what the built-ins carry, and an
-// exact match) and the name itself (fuzzy, a second net for a package without the keyword).
+// The registry's full-text ranking buries a new package under thousands of unrelated ones,
+// but a search for the one token "unify" is a finite list of every package with that word
+// in its name, so the script reads every page of it and keeps the names that fit the pattern.
 // A built-in already on the page gets its npm version; any other package gets a card.
 const root = document.querySelector('.template-browser');
 const status = root.querySelector('#templates-status');
@@ -19,14 +20,17 @@ const card = pkg => `<a class="card template" href="https://www.npmjs.com/packag
   <p class="card-meta">${meta(pkg)}</p>
 </a>`;
 
-const search = async text => {
-  const response = await fetch(`https://registry.npmjs.org/-/v1/search?text=${encodeURIComponent(text)}&size=250`);
+const page = async from => {
+  const response = await fetch(`https://registry.npmjs.org/-/v1/search?text=unify&size=250&from=${from}`);
   if (!response.ok) throw new Error(`npm answered ${response.status}`);
-  return (await response.json()).objects.map(entry => entry.package);
+  return response.json();
 };
 
 try {
-  const found = (await Promise.all([search('keywords:unify-template'), search('unify-template')])).flat();
+  const first = await page(0);
+  const pages = Math.min(Math.ceil(first.total / 250), 20);
+  const rest = await Promise.all(Array.from({ length: pages - 1 }, (_, i) => page((i + 1) * 250)));
+  const found = [first, ...rest].flatMap(result => result.objects.map(entry => entry.package));
   const templates = [...new Map(found.filter(pkg => pattern.test(pkg.name)).map(pkg => [pkg.name, pkg])).values()]
     .sort((a, b) => a.name.localeCompare(b.name));
   let added = 0;
@@ -38,5 +42,5 @@ try {
   const builtIn = grid.querySelectorAll('[data-package]').length;
   status.textContent = `${builtIn + added} templates · ${builtIn} built into the CLI · ${templates.length} on npm`;
 } catch {
-  status.innerHTML = 'Could not reach npm, so only the built-ins are listed. <a href="https://www.npmjs.com/search?q=keywords:unify-template" target="_blank" rel="noopener">Search npm directly</a>.';
+  status.innerHTML = 'Could not reach npm, so only the built-ins are listed. <a href="https://www.npmjs.com/search?q=unify-template" target="_blank" rel="noopener">Search npm directly</a>.';
 }
