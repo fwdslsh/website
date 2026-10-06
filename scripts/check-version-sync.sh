@@ -1,5 +1,5 @@
 #!/bin/bash
-# Check that the website matches the current versions of rabit and unify
+# Check that the website matches the current version of unify
 # Usage: ./check-version-sync.sh
 
 set -e
@@ -8,7 +8,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WEBSITE_DIR="$(dirname "$SCRIPT_DIR")"
 SRC_DIR="$WEBSITE_DIR/src"
 
-# Sibling checkouts of the fwdslsh repositories (e.g. ../rabit, ../unify)
+# Sibling checkouts of the fwdslsh repositories (e.g. ../unify)
 REPO_ROOT="$(cd "$WEBSITE_DIR/.." && pwd)"
 
 echo "Checking version synchronization..."
@@ -27,18 +27,6 @@ compare() {
     MISMATCHES=$((MISMATCHES + 1))
   fi
 }
-
-# rabit: the spec version in the repo vs the specVersion the rabit pages and burrow document
-if [ -f "$REPO_ROOT/rabit/package.json" ]; then
-  PROJECT_VERSION=$(jq -r '.version' "$REPO_ROOT/rabit/package.json")
-  for page in "$SRC_DIR"/rabit/*.html "$SRC_DIR/.well-known/burrow.json" "$SRC_DIR/.well-known/warren.json"; do
-    for v in $(grep -oP 'rabit/schemas/\K[0-9.]+(?=/)' "$page" | sort -u); do
-      compare "rabit (${page#$SRC_DIR/})" "$PROJECT_VERSION" "$v"
-    done
-  done
-else
-  echo "⚠️  rabit: Project not found at $REPO_ROOT/rabit"
-fi
 
 # unify: the repo version vs the version the website builds with
 if [ -f "$REPO_ROOT/unify/package.json" ]; then

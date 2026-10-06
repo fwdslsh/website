@@ -1,7 +1,6 @@
 # fwdslsh.dev
 
-The website for [fwdslsh](https://github.com/fwdslsh), a small group of indie devs: our tools, the
-[rabit](https://github.com/fwdslsh/rabit) docs, short [unify](https://github.com/fwdslsh/unify), [fhold](https://github.com/fwdslsh/fhold), [akm](https://github.com/itlackey/akm) and [gutterpress](https://github.com/dimm-city/gutterpress) guides, and a blog. Built with [unify](https://github.com/fwdslsh/unify).
+The website for [fwdslsh](https://github.com/fwdslsh), a small group of indie devs: our tools, short [unify](https://github.com/fwdslsh/unify), [fhold](https://github.com/fwdslsh/fhold), [akm](https://github.com/itlackey/akm) and [gutterpress](https://github.com/dimm-city/gutterpress) guides, and a blog. Built with [unify](https://github.com/fwdslsh/unify).
 
 ## Develop
 

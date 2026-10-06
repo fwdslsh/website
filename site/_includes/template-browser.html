@@ -1,0 +1,40 @@
+<section class="template-browser" aria-label="unify templates">
+  <p id="templates-status" role="status" aria-live="polite">Searching npm…</p>
+  <noscript><p>Enable JavaScript to list the templates on npm, or <a href="https://www.npmjs.com/search?q=keywords:unify-template" target="_blank" rel="noopener">search npm</a>.</p></noscript>
+  <!-- The built-ins ship inside the CLI and are also published to npm. They are written here so
+       the page is complete without a script; the script fills in each one's npm version and appends
+       every other package published with the unify-template keyword. -->
+  <div class="card-grid" id="templates">
+    <a class="card template" href="https://github.com/fwdslsh/unify/blob/main/templates/default/README.md" target="_blank" rel="noopener" data-package="unify-default-template">
+      <h3>default <span class="badge">built in</span></h3>
+      <p>What <code>unify init</code> writes with no argument: a layout, a nav, a 404 page, and example about and contact pages to copy.</p>
+      <code class="install">unify init</code>
+      <p class="card-meta"><span class="template-npm">unify-default-template</span></p>
+    </a>
+    <a class="card template" href="https://github.com/fwdslsh/unify/blob/main/templates/basic/README.md" target="_blank" rel="noopener" data-package="unify-basic-template">
+      <h3>basic <span class="badge">built in</span></h3>
+      <p>The smallest start: a layout, a nav, a home page and a 404 page, with a contact page as the example.</p>
+      <code class="install">unify init basic</code>
+      <p class="card-meta"><span class="template-npm">unify-basic-template</span></p>
+    </a>
+    <a class="card template" href="https://github.com/fwdslsh/unify/blob/main/templates/blog/README.md" target="_blank" rel="noopener" data-package="unify-blog-template">
+      <h3>blog <span class="badge">built in</span></h3>
+      <p>Posts in Markdown, with a post index and an Atom feed written by a generator, and an example post and authors file to copy into place.</p>
+      <code class="install">unify init blog</code>
+      <p class="card-meta"><span class="template-npm">unify-blog-template</span></p>
+    </a>
+    <a class="card template" href="https://github.com/fwdslsh/unify/blob/main/templates/docs/README.md" target="_blank" rel="noopener" data-package="unify-docs-template">
+      <h3>docs <span class="badge">built in</span></h3>
+      <p>A documentation site with an all-pages index, and an example guide page to copy.</p>
+      <code class="install">unify init docs</code>
+      <p class="card-meta"><span class="template-npm">unify-docs-template</span></p>
+    </a>
+    <a class="card template" href="https://github.com/fwdslsh/unify/blob/main/templates/portfolio/README.md" target="_blank" rel="noopener" data-package="unify-portfolio-template">
+      <h3>portfolio <span class="badge">built in</span></h3>
+      <p>A portfolio with example work and project pages to copy.</p>
+      <code class="install">unify init portfolio</code>
+      <p class="card-meta"><span class="template-npm">unify-portfolio-template</span></p>
+    </a>
+  </div>
+</section>
+<script type="module" src="../assets/js/template-browser.js"></script>

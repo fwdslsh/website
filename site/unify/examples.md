@@ -88,9 +88,9 @@ A non-empty include fills them. This works in Markdown too, as long as the inclu
 
 ```html
 <include src="/_includes/card.fragment.html">
-  <img slot="icon" src="/assets/icons/signpost.svg" alt="" width="20" height="20">
-  <a slot="title" href="/rabit/index.html">rabit</a>
-  <p>A small JSON manifest that tells agents what a site holds and where.</p>
+  <img slot="icon" src="/assets/icons/library.svg" alt="" width="20" height="20">
+  <a slot="title" href="/akm/index.html">akm</a>
+  <p>One library of skills, scripts and knowledge for any coding agent.</p>
 </include>
 ```
 

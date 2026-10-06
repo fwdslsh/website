@@ -1,6 +1,6 @@
 ---
 title: Templates
-description: Start a unify site from a built-in, a directory, a git repository or an npm package, keep it current with unify update, and publish a template of your own.
+description: Start a unify site from a built-in, a directory, a git repository or an npm package, keep it current with unify update, and publish a template of your own with the unify-template keyword.
 class: u-templates
 ---
 
@@ -15,13 +15,15 @@ unify init blog                                              # a built-in: defau
 unify init ../our-house-template                             # a directory
 unify init https://github.com/fwdslsh/unify/templates/blog   # one subdirectory of a git repository
 unify init git@github.com:acme/templates.git/shop#v2         # an SSH address, a subdirectory, a tag
-unify init unify-shop-template                               # an npm package — any package; this is the searchable name
-unify init @acme/unify-shop-template@1.4.0                   # under an organization, at a version
+unify init shop-template                                     # an npm package — any package
+unify init @acme/shop-template@1.4.0                         # under an organization, at a version
 ```
 
-The four forms are told apart by shape: a built-in name, a git address, a directory that exists, else an npm package — any package, with `unify-<name>-template` the convention that makes one easy to find, and `--audit` what tells a template from a package that is not one. A git repository is cloned with your own `git` and an npm package fetched with your own `npm`, so your keys, tokens and registry apply. One repository can host several templates: the path after `owner/repo` names the directory, and `#ref` a branch, tag or commit. The URL your browser shows for a directory works as written.
+The four forms are told apart by shape: a built-in name, a git address, a directory that exists, else an npm package — any package, and `--audit` what tells a template from a package that is not one. A git repository is cloned with your own `git` and an npm package fetched with your own `npm`, so your keys, tokens and registry apply. One repository can host several templates: the path after `owner/repo` names the directory, and `#ref` a branch, tag or commit. The URL your browser shows for a directory works as written.
 
 Add `--audit` to keep the scaffold only if `unify audit --strict` passes on it. Every built-in does.
+
+[Browse the templates](/unify/browse-templates.html) you can start from: the built-ins and every one published to npm with the `unify-template` keyword.
 
 ## Stay current
 
@@ -67,6 +69,6 @@ site/
 
 Ship the look the same way: a stylesheet that opens with `@layer base, theme;` and `@import url("theme.css") layer(theme);`, its look as custom properties in the base layer, and `assets/theme.css` in place with those properties at their defaults, named under `keep:` in the `template:` block of the `unify.yaml` you ship. The author edits the file; its values win over the defaults, and `unify update` never overwrites it. It ships in place rather than as an example because a stylesheet cannot import a file the site copies later: a reference to nothing blocks the publish.
 
-Then host it where your users can fetch it: a directory in a git repository (tag your releases), or an npm package — any name works, and `unify-<name>-template` or `@you/unify-<name>-template` is the convention that makes it easy to find on npm.
+Then host it where your users can fetch it: a directory in a git repository (tag your releases), or an npm package. Any name works; put `unify-template` in the `keywords` of its `package.json`, as the built-ins do, and a search for that keyword lists it beside every other template, on npm and on the [browse page](/unify/browse-templates.html).
 
 The complete guide, with the exact rules for every case, is on [unify.fwdslsh.dev](https://unify.fwdslsh.dev/docs/templates.html).
