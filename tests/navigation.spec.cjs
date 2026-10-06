@@ -9,15 +9,13 @@ const paths = [
   '/blog/posts/how-this-site-is-built/',
   '/blog/posts/model-benchmark-ledger/',
   '/references/model-ledger/',
-  '/rabit/',
-  '/rabit/getting-started/',
-  '/rabit/docs/',
-  '/rabit/examples/',
   '/unify/',
   '/unify/getting-started/',
   '/unify/templates/',
+  '/unify/browse-templates/',
   '/unify/concepts/',
   '/unify/examples/',
+  '/unify/users/',
   '/fhold/',
   '/fhold/getting-started/',
   '/fhold/concepts/',
@@ -91,7 +89,7 @@ test('tools menu lists every tool, opens from the keyboard, and stays on screen'
   await page.locator('.site-nav .nav-dropdown > a').focus();
   const menu = page.locator('.nav-dropdown-content');
   await expect(menu).toBeVisible();
-  await expect(menu.locator('.nav-tool-name')).toHaveText(['unify', 'fhold', 'akm', 'rabit', 'gutterpress']);
+  await expect(menu.locator('.nav-tool-name')).toHaveText(['unify', 'fhold', 'akm', 'gutterpress']);
   const unify = menu.locator('a', { hasText: 'unify' });
   await expect(unify).toHaveAttribute('href', '/unify/');
   const box = await menu.boundingBox();
@@ -105,13 +103,13 @@ const color = (locator) => locator.evaluate((el) => getComputedStyle(el).color);
 
 test('the nav marks the current section', async ({ page, isMobile }) => {
   test.skip(isMobile, 'desktop links are hidden on phones');
-  await page.goto('/rabit/docs/');
+  await page.goto('/unify/concepts/');
   await expect(page.locator('body')).toHaveClass(/\btools\b/);
   const tools = await color(page.locator('.site-nav .nav-links .nav-tools'));
   expect(tools).not.toBe(await color(page.locator('.site-nav .nav-links .nav-blog')));
-  const spec = await color(page.locator('.subnav .tab-spec'));
-  expect(spec).toBe(tools);
-  expect(spec).not.toBe(await color(page.locator('.subnav .tab-overview')));
+  const concepts = await color(page.locator('.subnav .tab-concepts'));
+  expect(concepts).toBe(tools);
+  expect(concepts).not.toBe(await color(page.locator('.subnav .tab-overview')));
 });
 
 test('the section tabs collapse into a menu on phones', async ({ page, isMobile }) => {

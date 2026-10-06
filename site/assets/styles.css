@@ -364,6 +364,11 @@ main h2::before {
 .card-links a { color: var(--primary); text-decoration: none; }
 .card-links a:hover { color: var(--primary-bright); text-decoration: underline; }
 
+/* A card that is one link (the template browser): the whole card opens the README */
+a.card { color: inherit; text-decoration: none; }
+a.card:hover h3 { color: var(--primary); }
+.card-meta { margin-top: auto; font: 400 0.8125rem var(--font-mono); color: var(--text-dim); }
+
 /* ===== Code ===== */
 
 main pre {
@@ -465,7 +470,7 @@ main td {
 
 main th { font: 600 0.8125rem var(--font-mono); color: var(--text-primary); background: var(--bg-card); }
 
-/* ===== Section sub-nav (rabit and unify docs) ===== */
+/* ===== Section sub-nav (tool docs) ===== */
 
 .subnav {
   margin-top: var(--space-5);
@@ -494,15 +499,13 @@ main th { font: 600 0.8125rem var(--font-mono); color: var(--text-primary); back
 .subnav a:hover { color: var(--text-primary); }
 
 /* The current tab: each section page's body class (from its frontmatter) names it */
-body.rabit-overview .tab-overview,
-body.rabit-start .tab-start,
-body.rabit-spec .tab-spec,
-body.rabit-examples .tab-examples,
 body.u-overview .tab-overview,
 body.u-start .tab-start,
 body.u-templates .tab-templates,
+body.u-browse .tab-browse,
 body.u-concepts .tab-concepts,
 body.u-examples .tab-examples,
+body.u-users .tab-users,
 body.akm-overview .tab-overview,
 body.akm-start .tab-start,
 body.akm-concepts .tab-concepts,
@@ -523,17 +526,18 @@ body.fh-examples .tab-examples {
    The summary shows the section name plus the current tab (from the body class). */
 .subnav-toggle { display: none; }
 
-body.rabit-overview .subnav-current::before, body.u-overview .subnav-current::before,
+body.u-overview .subnav-current::before,
 body.akm-overview .subnav-current::before, body.gp-overview .subnav-current::before,
 body.fh-overview .subnav-current::before { content: "· Overview"; }
-body.rabit-start .subnav-current::before, body.u-start .subnav-current::before,
+body.u-start .subnav-current::before,
 body.akm-start .subnav-current::before, body.gp-start .subnav-current::before,
 body.fh-start .subnav-current::before { content: "· Getting started"; }
-body.rabit-spec .subnav-current::before { content: "· Specification"; }
 body.u-templates .subnav-current::before { content: "· Templates"; }
+body.u-browse .subnav-current::before { content: "· Browse templates"; }
+body.u-users .subnav-current::before { content: "· Who's using it"; }
 body.u-concepts .subnav-current::before, body.akm-concepts .subnav-current::before,
 body.gp-concepts .subnav-current::before, body.fh-concepts .subnav-current::before { content: "· How it works"; }
-body.rabit-examples .subnav-current::before, body.u-examples .subnav-current::before,
+body.u-examples .subnav-current::before,
 body.akm-examples .subnav-current::before, body.gp-examples .subnav-current::before,
 body.fh-examples .subnav-current::before { content: "· Examples"; }
 
@@ -578,7 +582,7 @@ body.fh-examples .subnav-current::before { content: "· Examples"; }
   .subnav-toggle[open] + ul a { padding: var(--space-2) 0; box-shadow: none; }
 }
 
-/* ===== Compare (rabit "Why rabit?", unify "Why unify?") ===== */
+/* ===== Compare (unify "Why unify?") ===== */
 
 .compare {
   display: grid;

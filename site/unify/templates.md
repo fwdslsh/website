@@ -23,6 +23,8 @@ The four forms are told apart by shape: a built-in name, a git address, a direct
 
 Add `--audit` to keep the scaffold only if `unify audit --strict` passes on it. Every built-in does.
 
+[Browse the templates](/unify/browse-templates.html) you can start from: the built-ins and every one published on npm.
+
 ## Stay current
 
 `init` records the template in `unify.yaml`, as you typed it — the value of `template:`, or `source:` inside a block that also lists the files `unify update` never overwrites:

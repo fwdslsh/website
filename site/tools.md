@@ -1,6 +1,6 @@
 ---
 title: Tools
-description: Open-source tools from the fwdslsh lab, unify, fhold, akm, rabit and gutterpress, with what each does and how to install it.
+description: Open-source tools from the fwdslsh lab, unify, fhold, akm and gutterpress, with what each does and how to install it.
 class: tools
 ---
 
@@ -45,17 +45,6 @@ akm setup --yes
 ```
 
 Needs Node 22+. MPL-2.0. [Getting started](/akm/getting-started.html) · [Full docs](https://github.com/itlackey/akm/blob/main/docs/README.md) · [GitHub](https://github.com/itlackey/akm)
-
-## rabit
-
-A small JSON manifest convention (`.burrow.json`) that tells agents what content a site or repo holds and where, so they can find things without crawling. It's a draft spec (0.4.0). This site publishes its own at [`/.well-known/burrow.json`](/.well-known/burrow.json).
-
-```sh
-bun add -g @fwdslsh/rabit-client
-rabit validate .burrow.json
-```
-
-The CLI needs Bun. CC-BY-4.0. [Docs](/rabit/index.html) · [GitHub](https://github.com/fwdslsh/rabit)
 
 ## gutterpress
 

@@ -37,7 +37,7 @@ Follow Unify’s rules, not other generator conventions:
 - A layout is the nearest `_layout.html` in the current or parent folder. Layouts are complete pages, not chained templates.
 - Pages do not “wrap” Markdown with HTML to style it; CSS styles the generated markup.
 - Reuse shared chrome with `<include src="/_includes/..."></include>` and fragments named `*.fragment.html`.
-- Use real file paths in links, e.g. `/rabit/docs.html` rather than a route-like string; pretty URLs are generated at build time.
+- Use real file paths in links, e.g. `/unify/concepts.html` rather than a route-like string; pretty URLs are generated at build time.
 - Keep underscore-prefixed files and folders (`_includes`, `_layout.html`, `_generated`, `_drafts`, etc.) out of the published site.
 - Every page should have its own title, description, and exactly one `<h1>` in the main content.
 - Keep CSS in the stylesheet or scope component CSS locally; do not add framework-like behavior.
@@ -51,7 +51,6 @@ This site is a companion site for the broader fwdslsh toolset:
 
 - `site/unify/` — Unify docs and examples
 - `site/fhold/` — fhold docs
-- `site/rabit/` — Rabit spec and docs
 - `site/akm/` — AKM docs
 - `site/gutterpress/` — Gutterpress docs
 
@@ -64,7 +63,6 @@ The same project layout and conventions apply across those sections.
 - Unify CLI reference: https://github.com/fwdslsh/unify/blob/main/docs/cli-reference.md
 - Unify getting started: https://github.com/fwdslsh/unify/blob/main/docs/getting-started.md
 - Unify docs site: https://unify.fwdslsh.dev/
-- Rabit repo: https://github.com/fwdslsh/rabit
 - AKM repo: https://github.com/itlackey/akm
 - Gutterpress repo: https://github.com/dimm-city/gutterpress
 - Production site: https://fwdslsh.dev

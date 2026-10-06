@@ -9,10 +9,8 @@ builds what it writes into `_generated/` as if it were part of `site/`. It never
 ## check-version-sync.sh
 
 Checks that the website matches the projects it documents, using sibling checkouts
-(`../rabit`, `../unify`):
+(`../unify`):
 
-- **rabit** — the version in `../rabit/package.json` against every `rabit/schemas/<version>/` the rabit pages
-  and `site/.well-known/*.json` reference.
 - **unify** — the version in `../unify/package.json` against the `@fwdslsh/unify` version in `package-lock.json`.
 
 Exits 1 on any mismatch.

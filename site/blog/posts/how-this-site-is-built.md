@@ -16,7 +16,7 @@ Below is how the layouts, pages, and generated lists fit together. You can follo
 unify starts in the page's folder and walks up until it finds an `_layout.html`. That file supplies the page's shared structure. This site has seven layouts:
 
 - `site/_layout.html` wraps most pages: the nav, `<main>` and the footer.
-- `site/rabit/_layout.html`, `site/unify/_layout.html`, `site/fhold/_layout.html`, `site/akm/_layout.html`, and `site/gutterpress/_layout.html` add the appropriate section tabs to each tool's pages.
+- `site/unify/_layout.html`, `site/fhold/_layout.html`, `site/akm/_layout.html`, and `site/gutterpress/_layout.html` add the appropriate section tabs to each tool's pages.
 - `site/blog/posts/_layout.html` wraps each post in an `<article>` and marks it as a `BlogPosting`.
 
 Layouts don't inherit from each other. Each one is a complete HTML document, but they pull in the same `<head>`, navigation, and footer. For example, this include adds the shared navigation:
@@ -37,21 +37,21 @@ date: 2026-10-02T09:00:00Z
 ---
 ```
 
-Pages such as the home page and the rabit overview use HTML for their designed layouts. In either format, the page contains its own content rather than another copy of the navigation and footer. unify inserts that content into the layout's `<main>`.
+Pages such as the home page and the unify overview use HTML for their designed layouts. In either format, the page contains its own content rather than another copy of the navigation and footer. unify inserts that content into the layout's `<main>`.
 
 ## The current page in the nav
 
-Each section's pages carry a class on `<body>`. The about page uses `class: about` in frontmatter; the rabit layout uses `<body class="tools">`. unify merges that class into the finished page, where CSS highlights the matching navigation link. The selected section doesn't need to be tracked in JavaScript.
+Each section's pages carry a class on `<body>`. The about page uses `class: about` in frontmatter; the unify layout uses `<body class="tools">`. unify merges that class into the finished page, where CSS highlights the matching navigation link. The selected section doesn't need to be tracked in JavaScript.
 
 ## Cards
 
-Tool cards and rabit cards use the same `card.fragment.html`. Its named slots let each card supply an icon and title while keeping the surrounding markup in one place:
+Tool cards and feature cards use the same `card.fragment.html`. Its named slots let each card supply an icon and title while keeping the surrounding markup in one place:
 
 ```html
 <include src="/_includes/card.fragment.html">
-  <img slot="icon" src="/assets/icons/signpost.svg" alt="" width="20" height="20">
-  <a slot="title" href="/rabit/index.html">rabit</a>
-  <p>A small JSON manifest that tells agents what a site holds and where.</p>
+  <img slot="icon" src="/assets/icons/library.svg" alt="" width="20" height="20">
+  <a slot="title" href="/akm/index.html">akm</a>
+  <p>One library of skills, scripts and knowledge for any coding agent.</p>
 </include>
 ```
 
