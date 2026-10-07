@@ -63,7 +63,7 @@ FH_HOME=~/fhold/instances/restored fhold restore --from /private/path/backup --d
 FH_HOME=~/fhold/instances/restored fhold restore --from /private/path/backup --apply
 ```
 
-The dry run lists what will be restored and what needs a separate opt-in (provider auth, private environment, portal maps). Backups are unencrypted, so keep them private. See [portable backup](https://github.com/fwdslsh/fhold/blob/main/docs/managing-fhold.md#portable-backup-and-own-backup-restore).
+The dry run lists what will be restored and what needs a separate opt-in (provider auth, private environment, portal maps). Backups are unencrypted, so keep them private. See [portable backup](https://github.com/fwdslsh/fhold/blob/main/docs/managing-fhold.md#portable-content).
 
 ## Let Claude Code or Codex work in the workspace
 

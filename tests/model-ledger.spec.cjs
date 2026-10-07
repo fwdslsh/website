@@ -124,8 +124,8 @@ test('post is discoverable through the blog, homepage and feed and fits small sc
   await expect(page.locator('main')).not.toContainText('The ledger is dated September 30');
   await expect(page.locator('main')).not.toContainText('not proof that one CPU is universally faster');
   await expect(page.locator('main')).not.toContainText('A hardware comparison should keep those caveats');
-  await expect(page.getByRole('link',{name:'AKM Model Eval',exact:true})).toHaveAttribute('href','https://github.com/itlackey/akm-model-eval');
-  await expect(page.getByRole('link',{name:'public test corpus',exact:true})).toHaveAttribute('href','https://github.com/itlackey/akm-model-eval/tree/main/corpus');
+  await expect(page.getByRole('link',{name:'AKM Model Eval',exact:true})).toHaveAttribute('href','https://github.com/itlackey/akm-model-eval/tree/8a4f70668ecb0c649fbb402faf19b37a764f06c0');
+  await expect(page.getByRole('link',{name:'public test corpus',exact:true})).toHaveAttribute('href','https://github.com/itlackey/akm-model-eval/tree/8a4f70668ecb0c649fbb402faf19b37a764f06c0/corpus');
   await page.getByRole('link',{name:'full-width interactive ledger',exact:true}).click();
   await expect(page).toHaveURL(new RegExp(url + '$'));
   await expect(page.getByRole('link',{name:'Read the article',exact:true})).toHaveAttribute('href',postUrl);
