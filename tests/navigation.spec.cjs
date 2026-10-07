@@ -16,6 +16,8 @@ const paths = [
   '/unify/concepts/',
   '/unify/examples/',
   '/unify/users/',
+  '/unify/whats-new/',
+  '/unify/whats-new/unify-0-9-to-0-11/',
   '/fhold/',
   '/fhold/getting-started/',
   '/fhold/concepts/',
