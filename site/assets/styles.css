@@ -519,7 +519,6 @@ body.u-browse .tab-browse,
 body.u-concepts .tab-concepts,
 body.u-examples .tab-examples,
 body.u-users .tab-users,
-body.u-news .tab-news,
 body.akm-overview .tab-overview,
 body.akm-start .tab-start,
 body.akm-concepts .tab-concepts,
@@ -549,7 +548,6 @@ body.fh-start .subnav-current::before { content: "· Getting started"; }
 body.u-templates .subnav-current::before { content: "· Templates"; }
 body.u-browse .subnav-current::before { content: "· Browse templates"; }
 body.u-users .subnav-current::before { content: "· Who's using it"; }
-body.u-news .subnav-current::before { content: "· What's new"; }
 body.u-concepts .subnav-current::before, body.akm-concepts .subnav-current::before,
 body.gp-concepts .subnav-current::before, body.fh-concepts .subnav-current::before { content: "· How it works"; }
 body.u-examples .subnav-current::before,

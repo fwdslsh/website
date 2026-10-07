@@ -1,7 +1,8 @@
 ---
 title: What's new in unify 0.9 to 0.11
-description: Six weeks of unify releases by theme. One command to check and publish, a project root with a place for everything, templates from any directory, git repository or npm package, updates that keep your files, and a layout you can design in the browser.
-class: u-news
+description: "Six weeks of unify releases by theme: one command to check and publish, a project root with a place for everything, templates from any directory, git repository or npm package, updates that keep your files, and a layout you can design in the browser."
+author: fwdslsh
+date: 2026-10-07T15:00:00Z
 ---
 
 # What's new in unify 0.9 to 0.11
