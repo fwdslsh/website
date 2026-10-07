@@ -6,7 +6,7 @@ class: u-concepts
 
 # How it works
 
-Five primitives and one rule for merging them. This is the short version; the [authoring rules](https://unify.fwdslsh.dev/docs/authoring-rules.html) are the complete one.
+Five primitives and one rule for merging them. This is the short version; the [authoring rules](https://unify.fwdslsh.dev/docs/authoring-rules/) are the complete one.
 
 ## Files
 
