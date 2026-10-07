@@ -8,6 +8,7 @@ const paths = [
   '/blog/',
   '/blog/posts/how-this-site-is-built/',
   '/blog/posts/model-benchmark-ledger/',
+  '/blog/posts/whats-new-in-unify-0-9-to-0-11/',
   '/references/model-ledger/',
   '/unify/',
   '/unify/getting-started/',

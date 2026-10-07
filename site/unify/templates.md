@@ -71,4 +71,4 @@ Ship the look the same way: a stylesheet that opens with `@layer base, theme;` a
 
 Then host it where your users can fetch it: a directory in a git repository (tag your releases), or an npm package. Any name works; put `unify-template` in the `keywords` of its `package.json`, as the built-ins do, and a search for that keyword lists it beside every other template, on npm and on the [browse page](/unify/browse-templates.html).
 
-The complete guide, with the exact rules for every case, is on [unify.fwdslsh.dev](https://unify.fwdslsh.dev/docs/templates.html).
+The complete guide, with the exact rules for every case, is on [unify.fwdslsh.dev](https://unify.fwdslsh.dev/docs/templates/).
