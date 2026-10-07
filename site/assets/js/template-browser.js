@@ -1,6 +1,7 @@
 // The unify templates on npm: every package published with the unify-template keyword, which
 // the registry matches exactly. A built-in already on the page gets its npm version; any other
-// package gets a card.
+// package gets a card, with a verified badge when it is published under the @fwdslsh scope,
+// which only the fwdslsh npm organization can publish to.
 const root = document.querySelector('.template-browser');
 const status = root.querySelector('#templates-status');
 const grid = root.querySelector('#templates');
@@ -9,9 +10,11 @@ const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({
 })[c]);
 const when = iso => new Date(iso).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
 const meta = pkg => `v${escape(pkg.version)}${pkg.date ? ` · ${when(pkg.date)}` : ''}`;
+const verified = pkg => pkg.name.startsWith('@fwdslsh/')
+  ? ' <span class="badge" title="Published by fwdslsh on npm">verified</span>' : '';
 
 const card = pkg => `<a class="card template" href="https://www.npmjs.com/package/${escape(pkg.name)}" target="_blank" rel="noopener">
-  <h3>${escape(pkg.name)}</h3>
+  <h3>${escape(pkg.name)}${verified(pkg)}</h3>
   <p>${escape(pkg.description || 'No description yet.')}</p>
   <code class="install">unify init ${escape(pkg.name)}</code>
   <p class="card-meta">${meta(pkg)}</p>
