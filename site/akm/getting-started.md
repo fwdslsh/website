@@ -69,4 +69,4 @@ From then on the agent runs `akm curate` at the start of a task and `akm show` t
 
 ## Where to go next
 
-[How it works](/akm/concepts.html) covers the mental model, and [Examples](/akm/examples.html) shows the common commands. The full guides and reference are in the [akm docs](https://github.com/itlackey/akm/blob/main/docs/README.md) on GitHub.
+[How it works](/akm/concepts.html) covers the mental model, and [Examples](/akm/examples.html) shows the common commands. The full guides and reference are in the [akm docs](https://akm.fwdslsh.dev/).

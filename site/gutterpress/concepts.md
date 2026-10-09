@@ -6,7 +6,7 @@ class: t-concepts
 
 # How it works
 
-A project is a folder, the manifest says what's in it, Markdown carries the words, CSS carries the design, and Chromium prints it. This is the short version; the [user guide](https://github.com/dimm-city/gutterpress/tree/main/examples/gutterpress-user-guide) is the complete one.
+A project is a folder, the manifest says what's in it, Markdown carries the words, CSS carries the design, and Chromium prints it. This is the short version; the repository's [docs](https://github.com/dimm-city/gutterpress/tree/main/docs) are the complete one.
 
 ## The project
 

@@ -52,4 +52,4 @@ In the app it's **Export → PDF**. PDF/X output needs Ghostscript and qpdf inst
 
 ## Where to go next
 
-[How it works](/gutterpress/concepts.html) covers the project shape and the layout directives, and [Examples](/gutterpress/examples.html) shows the common patterns. The complete [user guide](https://github.com/dimm-city/gutterpress/tree/main/examples/gutterpress-user-guide) is a gutterpress book itself, built with the commands it documents.
+[How it works](/gutterpress/concepts.html) covers the project shape and the layout directives, and [Examples](/gutterpress/examples.html) shows the common patterns. The full documentation is in the repository's [docs](https://github.com/dimm-city/gutterpress/tree/main/docs) directory.

@@ -74,4 +74,4 @@ fhold backup --to /private/path/backup
 
 ## Where to go next
 
-[How it works](/fhold/concepts.html) covers the containers, the home folder and the two ways in, and [Examples](/fhold/examples.html) walks through the common setups. The full guides are in the [fhold docs](https://github.com/fwdslsh/fhold/blob/main/docs/README.md) on GitHub.
+[How it works](/fhold/concepts.html) covers the containers, the home folder and the two ways in, and [Examples](/fhold/examples.html) walks through the common setups. The full guides are in the [fhold docs](https://fhold.fwdslsh.dev/).
