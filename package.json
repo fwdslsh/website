@@ -13,12 +13,9 @@
     "test": "playwright test"
   },
   "devDependencies": {
-    "@fwdslsh/unify": "0.11.12",
+    "@fwdslsh/unify": "0.11.13",
     "@playwright/test": "^1.57.0",
-    "unify-docs-template": "0.3.0"
-  },
-  "dependencies": {
-    "@speed-highlight/core": "^1.2.14"
+    "unify-docs-template": "0.4.0"
   },
   "engines": {
     "node": ">=22.12.0"
