@@ -33,7 +33,7 @@ fhold install --name personal-agent
 fhold setup
 ```
 
-Needs Docker Engine with Compose v2 and an AI provider supported by OpenCode. MIT. [Getting started](/fhold/getting-started.html) · [Full docs](https://github.com/fwdslsh/fhold/blob/main/docs/README.md) · [GitHub](https://github.com/fwdslsh/fhold)
+Needs Docker Engine with Compose v2 and an AI provider supported by OpenCode. MIT. [Getting started](/fhold/getting-started.html) · [Full docs](https://fhold.fwdslsh.dev/) · [GitHub](https://github.com/fwdslsh/fhold)
 
 ## akm
 
@@ -44,7 +44,7 @@ npm install -g akm-cli
 akm setup --yes
 ```
 
-Needs Node 22+. MPL-2.0. [Getting started](/akm/getting-started.html) · [Full docs](https://github.com/itlackey/akm/blob/main/docs/README.md) · [GitHub](https://github.com/itlackey/akm)
+Needs Node 22+. MPL-2.0. [Getting started](/akm/getting-started.html) · [Full docs](https://akm.fwdslsh.dev/) · [GitHub](https://github.com/itlackey/akm)
 
 ## gutterpress
 
@@ -56,4 +56,4 @@ gutterpress new "My Book" --preset book
 gutterpress build ./my-book
 ```
 
-The CLI needs Node 22+ and a Chromium-based browser; the desktop app needs nothing. MPL-2.0. [Getting started](/gutterpress/getting-started.html) · [User guide](https://github.com/dimm-city/gutterpress/tree/main/examples/gutterpress-user-guide) · [GitHub](https://github.com/dimm-city/gutterpress)
+The CLI needs Node 22+ and a Chromium-based browser; the desktop app needs nothing. MPL-2.0. [Getting started](/gutterpress/getting-started.html) · [Full docs](https://github.com/dimm-city/gutterpress/tree/main/docs) · [GitHub](https://github.com/dimm-city/gutterpress)

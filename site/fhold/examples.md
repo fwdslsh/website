@@ -6,7 +6,7 @@ class: t-examples
 
 # Examples
 
-The setups you'll reach for most. Each guide linked here goes deeper in the [fhold docs](https://github.com/fwdslsh/fhold/blob/main/docs/README.md).
+The setups you'll reach for most. Each guide linked here goes deeper in the [fhold docs](https://fhold.fwdslsh.dev/).
 
 ## A morning briefing
 

@@ -6,7 +6,7 @@ class: t-examples
 
 # Examples
 
-The commands you'll reach for most. Each guide linked here goes deeper in the [akm docs](https://github.com/itlackey/akm/blob/main/docs/README.md).
+The commands you'll reach for most. Each guide linked here goes deeper in the [akm docs](https://akm.fwdslsh.dev/).
 
 ## Connect a team bundle from GitHub
 
