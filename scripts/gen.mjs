@@ -7,11 +7,19 @@
 //            title, description, date and metas (author is one), so this script
 //            parses no frontmatter itself
 //
+// The list also carries the articles members publish elsewhere: every
+// account named in scripts/external-articles.json (dev.to usernames, Medium
+// handles) is read at build time and its articles are listed by date beside
+// this blog's posts, linking out. dev.to articles whose canonical URL is on this
+// site are this blog's own cross-posts (scripts/crosspost-devto.mjs) and are left
+// out. A source that cannot be reached is reported and skipped; the build goes on.
+//
 // Output, included by the blog index and the home page:
 //   _generated/post-list.html     every post, newest first
 //   _generated/latest-posts.html  the three newest
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { fetchExternal, loadAccounts } from "./syndication.mjs";
 
 const [, , , overlay, contextPath] = process.argv;
 const context = JSON.parse(readFileSync(contextPath, "utf8"));
@@ -33,10 +41,14 @@ const posts = inventory.pages
     }
     // `meta` holds the post's own frontmatter metas; `author` is one of them.
     const author = p.meta.find((m) => m.name === "author")?.content.trim() || "";
-    return { href: p.href, title: p.title, description: p.description || "", date: p.date, author };
-  })
-  // Newest first; ties broken by address so every run agrees.
-  .sort((a, b) => Date.parse(b.date) - Date.parse(a.date) || a.href.localeCompare(b.href));
+    return { href: p.href, title: p.title, description: p.description || "", date: p.date, author, source: "" };
+  });
+
+const external = await fetchExternal(loadAccounts(new URL("./external-articles.json", import.meta.url)), {
+  siteBase: context.site.baseUrl,
+});
+// Newest first; ties broken by address so every run agrees.
+const all = [...posts, ...external].sort((a, b) => Date.parse(b.date) - Date.parse(a.date) || a.href.localeCompare(b.href));
 
 const list = (items) =>
   items.length === 0
@@ -46,8 +58,10 @@ const list = (items) =>
         .map(
           (p) =>
             `  <li><time datetime="${escAttr(p.date)}">${esc(p.date.slice(0, 10))}</time>` +
-            `<a href="${escAttr(p.href)}">${esc(p.title)}</a>` +
-            (p.author ? `<p class="post-by">by ${esc(p.author)}</p>` : "") +
+            `<a href="${escAttr(p.href)}"${p.source ? ' rel="external"' : ""}>${esc(p.title)}</a>` +
+            (p.author || p.source
+              ? `<p class="post-by">${p.author ? `by ${esc(p.author)}` : ""}${p.source ? `${p.author ? " " : ""}on ${esc(p.source)}` : ""}</p>`
+              : "") +
             (p.description ? `<p>${esc(p.description)}</p>` : "") +
             "</li>",
         )
@@ -55,5 +69,5 @@ const list = (items) =>
       "\n</ol>\n";
 
 mkdirSync(join(overlay, "_generated"), { recursive: true });
-writeFileSync(join(overlay, "_generated", "post-list.html"), list(posts));
-writeFileSync(join(overlay, "_generated", "latest-posts.html"), list(posts.slice(0, 3)));
+writeFileSync(join(overlay, "_generated", "post-list.html"), list(all));
+writeFileSync(join(overlay, "_generated", "latest-posts.html"), list(all.slice(0, 3)));

@@ -131,9 +131,10 @@ test('the section tabs collapse into a menu on phones', async ({ page, isMobile 
 
 test('the blog lists the post that the generator found', async ({ page }) => {
   await page.goto('/blog/');
-  await expect(page.locator('.post-list a').first()).toHaveAttribute('href', '/blog/posts/whats-new-in-unify-0-9-to-0-11/');
-  await expect(page.locator('.post-list a')).toHaveCount(3);
-  await expect(page.locator('.post-list .post-by').first()).toHaveText('by fwdslsh');
+  await expect(page.locator('.post-list a:not([rel=external])').first()).toHaveAttribute('href', '/blog/posts/whats-new-in-unify-0-9-to-0-11/');
+  // This blog's own posts; articles from scripts/external-articles.json link out (rel=external).
+  await expect(page.locator('.post-list a:not([rel=external])')).toHaveCount(3);
+  await expect(page.locator('.post-list li:has(a:not([rel=external])) .post-by').first()).toHaveText('by fwdslsh');
 });
 
 test('the phone menu opens and lists every section', async ({ page, isMobile }) => {
