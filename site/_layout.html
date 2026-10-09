@@ -1,9 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <include src="/_includes/base/head.html"></include>
-  <!-- relative to this file, so the layout previews styled straight from the folder; unify rewrites it per page -->
-  <link rel="stylesheet" href="assets/styles.css">
+  <include src="/_includes/head.html"></include>
   <title>· fwdslsh</title>
   <meta property="og:type" content="website">
   <!-- unify writes each page's JSON-LD from what the page declares. -->
@@ -11,8 +9,8 @@
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
-  <include src="/_includes/base/nav.html"></include>
+  <include src="/_includes/nav.html"></include>
   <main id="main"><slot></slot></main>
-  <include src="/_includes/base/footer.html"></include>
+  <include src="/_includes/footer.html"></include>
 </body>
 </html>

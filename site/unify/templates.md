@@ -1,12 +1,12 @@
 ---
 title: Templates
 description: Start a unify site from a built-in, a directory, a git repository or an npm package, keep it current with unify update, and publish a template of your own with the unify-template keyword.
-class: u-templates
+class: t-templates
 ---
 
 # Templates
 
-A template is just a unify project: a `site/` folder beside `AGENTS.md`, `DEPLOY.md` and `unify.yaml`. `unify init` writes one, and `unify init` can start from one you or someone else published. Nothing in a template is ever executed on your machine.
+A template is just a unify project: a `site/` folder beside `README.md`, `DEPLOY.md` and `unify.yaml`. `unify init` writes one, and `unify init` can start from one you or someone else published. Nothing in a template is ever executed on your machine.
 
 ## Start from one
 

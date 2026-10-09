@@ -1,7 +1,7 @@
 ---
 title: How it works
 description: The unify composition model in one page, including layouts, includes, slots, head merging, Markdown frontmatter and the build's checks.
-class: u-concepts
+class: t-concepts
 ---
 
 # How it works
@@ -54,7 +54,7 @@ Frontmatter is YAML. `title`, `description`, `layout`, `class`, `lang`, `dir` an
 
 ## Derived content
 
-unify builds no collections, indexes or navigation. A post list is a script you own. Pass it with `generate: scripts/gen.mjs` in `unify.yaml` (or `--generate`) and unify runs it before every build, hands it an empty overlay directory to write pages and fragments into, and composes what it wrote as if it were in `src/`. With `--source-inventory` it also hands the script a list of every page with its authored title, description, date and metas, so the script parses nothing itself.
+unify builds no collections, indexes or navigation. A post list is a script you own. Pass it with `generate: scripts/gen.mjs` in `unify.yaml` (or `--generate`) and unify runs it before every build, hands it an empty overlay directory to write pages and fragments into, and composes what it wrote as if it were in the source root. It also hands the script a list of every page with its authored title, description, date and metas, so the script parses nothing itself (`source-inventory: false` turns the list off).
 
 ## The checks
 

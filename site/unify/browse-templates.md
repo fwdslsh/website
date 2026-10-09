@@ -1,11 +1,11 @@
 ---
 title: Browse templates
 description: Every unify template you can start from, the five built into the CLI and every template published to npm, each card opening its README.
-class: u-browse
+class: t-browse
 ---
 
 # Browse templates
 
-Every template you can start a site from. The five built into the CLI need no network; they are also on npm, beside every template anyone has published with the `unify-template` keyword. Each card opens the template's README in a new tab, and the command on it scaffolds the site. A **verified** badge marks a template fwdslsh published itself, under the `@fwdslsh` scope on npm. [How templates work](/unify/templates.html) covers the rest.
+Every template you can start a site from. The five built into the CLI need no network; they are also on npm, beside every template anyone has published with the `unify-template` keyword. Each card opens the template's README in a new tab, and the command on it scaffolds the site. A **verified** badge marks a package under the `@fwdslsh` scope on npm, which only fwdslsh can publish to. [How templates work](/unify/templates.html) covers the rest.
 
 <include src="/_includes/template-browser.html"></include>

@@ -1,10 +1,9 @@
 // Writes the blog's post lists. unify runs it before every build, dev rebuild and
-// audit (`generate: ../scripts/gen.mjs` in unify.yaml) and builds what it writes as
+// audit (`generate: scripts/gen.mjs` in unify.yaml) and builds what it writes as
 // if it were part of site/. It never touches site/ itself.
 //
 //   argv[3]  an empty overlay directory, added to the build
-//   argv[4]  generator-context.json; with `source-inventory: true` in unify.yaml its
-//            inputs.sourcePages names a list of every source page with its authored
+//   argv[4]  generator-context.json; its inputs.sourcePages (on by default) names a list of every source page with its authored
 //            title, description, date and metas (author is one), so this script
 //            parses no frontmatter itself
 //
@@ -17,7 +16,7 @@ import { join } from "node:path";
 const [, , , overlay, contextPath] = process.argv;
 const context = JSON.parse(readFileSync(contextPath, "utf8"));
 if (!context.inputs.sourcePages) {
-  throw new Error("gen.mjs reads the source page list: keep `source-inventory: true` in unify.yaml (or pass --source-inventory)");
+  throw new Error("gen.mjs reads the source page list: do not set `source-inventory: false` in unify.yaml");
 }
 const inventory = JSON.parse(readFileSync(context.inputs.sourcePages, "utf8"));
 

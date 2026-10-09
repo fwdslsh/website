@@ -13,7 +13,7 @@ This is the account by theme, with the version that shipped each change. The ver
 
 ## One command to check and publish
 
-`unify build --audit --strict` (0.9.2) composes the site once, evaluates the same findings `unify audit` reports over that exact result, and publishes only if the audit would pass. Before it, a careful release ran three commands: `build --dry-run --strict`, then `build`, then `audit --strict`. It is now the one-line release gate the scaffolds' `AGENTS.md` and `DEPLOY.md` name, and the one this site's `npm run build` runs.
+`unify build --audit --strict` (0.9.2) composes the site once, evaluates the same findings `unify audit` reports over that exact result, and publishes only if the audit would pass. Before it, a careful release ran three commands: `build --dry-run --strict`, then `build`, then `audit --strict`. It is now the one-line release gate the scaffolds' `AGENTS.md` (`README.md` since 0.11.7) and `DEPLOY.md` name, and the one this site's `npm run build` runs.
 
 `--save-config` (0.9.2) writes the options you passed into `unify.yaml` after a build that exits 0, changing only the keys you gave. It works with `--dry-run` too (0.9.5), so a flag can be tried and saved without publishing.
 
@@ -22,7 +22,7 @@ This is the account by theme, with the version that shipped each change. The ver
 A fresh `unify init` scaffolds this (0.10.0):
 
 ```
-AGENTS.md  DEPLOY.md
+AGENTS.md  DEPLOY.md   # README.md DEPLOY.md since 0.11.7, which keeps an existing README.md
 unify.yaml        # every build flag, described and commented out; uncomment what differs
 scripts/gen.mjs   # the blog template's generator, run by unify before every build
 site/             # the source root: pages, assets, _layout.html, _includes/
@@ -76,7 +76,7 @@ unify init @acme/shop-template@1.4.0                         # scoped, at a vers
 
 A git repository is cloned with your own `git` and an npm package fetched with your own `npm`, so your keys and registry apply, and nothing a template ships is executed. One repository can hold many templates: the path after `owner/repo` names the directory, `#ref` a branch, tag or commit, and the URL your browser shows for a directory works as written. The five built-ins are real projects under `templates/` in the repository, each usable as a git template in its own right.
 
-Any npm package can be the source (0.11.6). Naming a template `unify-<name>-template` and giving it the `unify-template` keyword is what makes it easy to find, on npm and on the [browse page](/unify/browse-templates.html), not a rule the CLI checks. `unify init --audit` is what tells a template from a package that is not one: it keeps the scaffold only if `unify audit --strict` passes on it.
+Any npm package can be the source (0.11.6). Giving a template the `unify-template` keyword is what makes it easy to find (0.11.6 also suggested naming it `unify-<name>-template`; since 0.11.8 the keyword alone is the convention), on npm and on the [browse page](/unify/browse-templates.html), not a rule the CLI checks. `unify init --audit` is what tells a template from a package that is not one: it keeps the scaffold only if `unify audit --strict` passes on it.
 
 ## Update a site without losing anything
 

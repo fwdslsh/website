@@ -33,7 +33,7 @@ const paths = [
 ];
 
 // Same-site links in the top nav, the section sub-navs, and the footer.
-const linkSelector = '.site-nav a, .subnav a, .site-footer a';
+const linkSelector = '.site-head a, .tabs a, .site-foot a';
 
 test.describe('site navigation', () => {
   for (const path of paths) {
@@ -64,7 +64,7 @@ test.describe('site navigation', () => {
       });
       await page.goto(path, { waitUntil: 'load' });
 
-      await expect(page.locator('.site-nav')).toHaveCount(1);
+      await expect(page.locator('.site-head')).toHaveCount(1);
       await expect(page.locator('h1')).toHaveCount(1);
       expect(errors).toEqual([]);
     });
@@ -73,7 +73,7 @@ test.describe('site navigation', () => {
 
 test('every top-bar icon link has an accessible name and a 20px icon', async ({ page }) => {
   await page.goto('/');
-  const links = page.locator('.site-nav .nav-icons a');
+  const links = page.locator('.site-head .head-icons a');
   await expect(links).toHaveCount(2);
   for (let i = 0; i < 2; i++) {
     const link = links.nth(i);
@@ -87,7 +87,7 @@ test('every top-bar icon link has an accessible name and a 20px icon', async ({ 
 test('tools menu lists every tool, opens from the keyboard, and stays on screen', async ({ page, isMobile }) => {
   test.skip(isMobile, 'hover/focus menu is a desktop interaction');
   await page.goto('/');
-  await page.locator('.site-nav .nav-dropdown > a').focus();
+  await page.locator('.site-head .nav-dropdown > a').focus();
   const menu = page.locator('.nav-dropdown-content');
   await expect(menu).toBeVisible();
   await expect(menu.locator('.nav-tool-name')).toHaveText(['unify', 'fhold', 'akm', 'gutterpress']);
@@ -106,23 +106,23 @@ test('the nav marks the current section', async ({ page, isMobile }) => {
   test.skip(isMobile, 'desktop links are hidden on phones');
   await page.goto('/unify/concepts/');
   await expect(page.locator('body')).toHaveClass(/\btools\b/);
-  const tools = await color(page.locator('.site-nav .nav-links .nav-tools'));
-  expect(tools).not.toBe(await color(page.locator('.site-nav .nav-links .nav-blog')));
-  const concepts = await color(page.locator('.subnav .tab-concepts'));
+  const tools = await color(page.locator('.site-head .head-links .nav-tools'));
+  expect(tools).not.toBe(await color(page.locator('.site-head .head-links .nav-blog')));
+  const concepts = await color(page.locator('.tabs .tab-concepts'));
   expect(concepts).toBe(tools);
-  expect(concepts).not.toBe(await color(page.locator('.subnav .tab-overview')));
+  expect(concepts).not.toBe(await color(page.locator('.tabs .tab-overview')));
 });
 
 test('the section tabs collapse into a menu on phones', async ({ page, isMobile }) => {
   test.skip(!isMobile, 'the tab row stays visible on wide screens');
   await page.goto('/unify/concepts/');
-  const tabs = page.locator('.subnav ul');
+  const tabs = page.locator('.tabs ul');
   await expect(tabs).toBeHidden();
-  const summary = page.locator('.subnav summary');
+  const summary = page.locator('.tabs summary');
   await expect(summary).toContainText('unify');
   await summary.click();
   await expect(tabs).toBeVisible();
-  await expect(page.locator('.subnav .tab-examples')).toBeVisible();
+  await expect(page.locator('.tabs .tab-examples')).toBeVisible();
   const width = page.viewportSize().width;
   const box = await tabs.boundingBox();
   expect(box.x).toBeGreaterThanOrEqual(0);
@@ -131,16 +131,16 @@ test('the section tabs collapse into a menu on phones', async ({ page, isMobile 
 
 test('the blog lists the post that the generator found', async ({ page }) => {
   await page.goto('/blog/');
-  await expect(page.locator('.post-list a').first()).toHaveAttribute('href', '/blog/posts/model-benchmark-ledger/');
-  await expect(page.locator('.post-list a')).toHaveCount(2);
+  await expect(page.locator('.post-list a').first()).toHaveAttribute('href', '/blog/posts/whats-new-in-unify-0-9-to-0-11/');
+  await expect(page.locator('.post-list a')).toHaveCount(3);
   await expect(page.locator('.post-list .post-by').first()).toHaveText('by fwdslsh');
 });
 
 test('the phone menu opens and lists every section', async ({ page, isMobile }) => {
   test.skip(!isMobile, 'phone-only menu');
   await page.goto('/');
-  await page.locator('.site-nav .nav-menu summary').click();
-  const panel = page.locator('.site-nav .nav-menu-panel');
+  await page.locator('.site-head .head-menu summary').click();
+  const panel = page.locator('.site-head .head-menu-panel');
   await expect(panel).toBeVisible();
   for (const name of ['tools', 'blog', 'members', 'about']) {
     await expect(panel.locator('.nav-link', { hasText: name })).toBeVisible();

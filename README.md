@@ -22,6 +22,8 @@ npm test         # Playwright smoke tests
 
 Build flags shared by every command live in `unify.yaml` at the repository root. Source is plain HTML and Markdown
 in `site/` (with its layouts and `_includes/`), and the post-list generator is `scripts/gen.mjs`.
+The look is the fwdslsh theme from [unify-docs-template](https://github.com/fwdslsh/unify/tree/main/templates/docs),
+which `unify.yaml` extends; this site's own components are in `site/assets/site.css`.
 To write a blog post, copy `site/blog/posts/_template.md`. See [CLAUDE.md](CLAUDE.md) for how the site is put
 together, and unify's
 [authoring rules](https://github.com/fwdslsh/unify/blob/main/docs/authoring-rules.md) for the composition model.

@@ -1,7 +1,7 @@
 ---
 title: Who's using it
 description: Sites built with unify, from the fwdslsh lab and beyond.
-class: u-users
+class: t-users
 ---
 
 # Who's using it

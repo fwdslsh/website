@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Install akm, connect the assets you already have, index them and pull a curated shortlist for a real task.
-class: akm-start
+class: t-start
 ---
 
 # Getting started

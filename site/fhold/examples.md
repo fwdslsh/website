@@ -1,7 +1,7 @@
 ---
 title: Examples
 description: Common fhold setups, from a scheduled morning briefing and Claude Desktop to a Discord bot, a second instance and a portable backup.
-class: fh-examples
+class: t-examples
 ---
 
 # Examples

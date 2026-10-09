@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Install fhold on a Linux machine with Docker, sign in to a provider, talk to your agent and give it its first scheduled task.
-class: fh-start
+class: t-start
 ---
 
 # Getting started

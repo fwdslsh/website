@@ -1,7 +1,7 @@
 ---
 title: Examples
 description: Common gutterpress patterns, from a two-column spread and running page headers to a print-ready PDF/X build in CI.
-class: gp-examples
+class: t-examples
 ---
 
 # Examples
