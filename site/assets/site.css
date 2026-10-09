@@ -233,44 +233,6 @@ body.t-users .tabs-current::before { content: "· Who's using it"; }
   .tabs-toggle[open] + ul a { box-shadow: none; }
 }
 
-/* ===== Code blocks: the copy button and syntax colours main.js adds ===== */
-
-.code-wrap { position: relative; max-width: var(--measure-wide); }
-.code-wrap > pre { margin-top: 0; }
-
-.copy-btn {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  font: 400 0.75rem var(--mono);
-  color: var(--dim);
-  background: var(--bg-card);
-  border: 1px solid var(--border-faint);
-  border-radius: var(--radius-sm);
-  padding: 2px 0.5rem;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity var(--dur), color var(--dur), border-color var(--dur);
-}
-.copy-btn svg { width: 12px; height: 12px; }
-.code-wrap:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
-.copy-btn:hover, .copy-btn[data-copied] { color: var(--accent); border-color: var(--accent); opacity: 1; }
-
-@media (max-width: 48rem) {
-  .code-wrap { margin-inline: calc(-1 * var(--gutter)); max-width: none; }
-  .code-wrap > pre { border-radius: 0; border-inline: 0; }
-}
-
-.shj-syn-cmnt { color: var(--dim); font-style: italic; }
-.shj-syn-str, .shj-syn-insert { color: #9ee6a8; }
-.shj-syn-kwd, .shj-syn-err, .shj-syn-deleted { color: #ff8b7e; }
-.shj-syn-num, .shj-syn-bool, .shj-syn-type, .shj-syn-oper, .shj-syn-var, .shj-syn-section { color: var(--accent-2); }
-.shj-syn-class { color: #ffc27a; }
-.shj-syn-func { color: #d6b4ff; }
-
 /* ===== Tool cards: the install line ===== */
 
 .card .install {
