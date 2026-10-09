@@ -1,24 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <include src="/_includes/base/head.html"></include>
-  <!-- relative to this file, so the layout previews styled straight from the folder; unify rewrites it per page -->
-  <link rel="stylesheet" href="../assets/styles.css">
+  <include src="/_includes/head.html"></include>
   <title>· akm · fwdslsh</title>
   <meta property="og:type" content="website">
   <meta name="schema" content="WebPage">
 </head>
 <body class="tools">
   <!-- The akm section: the site chrome plus the section's tabs. Each page sets its own
-       body class (akm-overview, akm-start, akm-concepts, akm-examples) to mark its tab.
+       body class (t-overview, t-start, …) to mark its tab.
        The full documentation lives in the akm repo; these pages are the short version. -->
   <a href="#main" class="skip-link">Skip to main content</a>
-  <include src="/_includes/base/nav.html"></include>
+  <include src="/_includes/nav.html"></include>
   <main id="main">
-    <nav class="subnav" aria-label="akm">
+    <nav class="tabs" aria-label="akm">
       <!-- On narrow screens the tabs collapse into this disclosure; the summary names the
            current tab from the body class (CSS content), so no script and no duplication. -->
-      <details class="subnav-toggle"><summary>akm <span class="subnav-current"></span><svg class="lucide lucide-chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary></details>
+      <details class="tabs-toggle"><summary>akm <span class="tabs-current"></span><svg class="lucide lucide-chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary></details>
       <ul>
         <li><a class="tab-overview" href="/akm/index.html">Overview</a></li>
         <li><a class="tab-start" href="/akm/getting-started.html">Getting started</a></li>
@@ -29,6 +27,6 @@
     </nav>
     <slot></slot>
   </main>
-  <include src="/_includes/base/footer.html"></include>
+  <include src="/_includes/footer.html"></include>
 </body>
 </html>

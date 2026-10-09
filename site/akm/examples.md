@@ -1,7 +1,7 @@
 ---
 title: Examples
 description: Common akm commands, from connecting a team bundle and curating for a task to capturing a memory and running a workflow.
-class: akm-examples
+class: t-examples
 ---
 
 # Examples
@@ -38,10 +38,12 @@ akm show workflows/deploy-to-prod
 akm feedback workflows/deploy-to-prod --positive --reason "Completed without issues"
 ```
 
-Negative feedback carries what should change, and the next improve run drafts the fix:
+Negative feedback says what is wrong: the asset ranks lower right away, and the next improve run may repair its title or description. A fix to the text goes with it, checked and queued as a proposal for review:
 
 ```sh
 akm feedback skills/release-notes --negative --reason "Misses the breaking-changes section"
+akm feedback knowledge/opencode-server --negative --reason "the default port is 4096, not 8000" \
+  --replace "port 8000" --with "port 4096" --source "https://opencode.ai/docs/server/"
 ```
 
 See [Use akm with any agent](https://github.com/itlackey/akm/blob/main/docs/guides/use-with-any-agent.md).

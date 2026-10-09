@@ -3,7 +3,7 @@
 ## gen.mjs
 
 The blog's post-list generator. unify runs it before every build, dev rebuild and audit
-(`generate: ../scripts/gen.mjs` in `unify.yaml`), hands it the source-page inventory, and
+(`generate: scripts/gen.mjs` in `unify.yaml`), hands it the source-page inventory, and
 builds what it writes into `_generated/` as if it were part of `site/`. It never writes into `site/`.
 
 ## check-version-sync.sh

@@ -1,21 +1,20 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="../assets/styles.css">
   <title>Overview</title>
   <meta name="description" content="unify is a static site generator that composes plain HTML and Markdown at build time, with no template language and no client runtime.">
 </head>
-<body class="u-overview">
+<body class="t-overview">
 <main id="main">
   <h1>unify</h1>
   <p>A static site generator for people who'd rather write plain HTML. Write a layout, nav or footer once and it lands on every page. No template language, no framework, no JavaScript of its own. This site is built with it.</p>
-  <p class="actions">
+  <p class="cta-row">
     <a class="btn btn-primary" href="/unify/getting-started.html">Get started</a>
     <a class="btn btn-secondary" href="https://unify.fwdslsh.dev/" target="_blank" rel="noopener">Full docs and examples ↗</a>
   </p>
 
   <h2>A layout at a glance</h2>
-  <p>One complete HTML page in <code>src/_layout.html</code> is the site's chrome. Every page lands in its <code>&lt;main&gt;</code>; a page can fill a named slot or leave its fallback.</p>
+  <p>One complete HTML page in <code>site/_layout.html</code> is the site's chrome. Every page lands in its <code>&lt;main&gt;</code>; a page can fill a named slot or leave its fallback.</p>
   <pre><code class="language-html">&lt;!doctype html&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -54,11 +53,11 @@
 </div>
 
   <h2>Why unify?</h2>
-  <p>Most generators ask you to learn a template language and a config format before you write a page. unify asks for HTML. The output is exactly your markup, so what you see in <code>src/</code> is what ships.</p>
+  <p>Most generators ask you to learn a template language and a config format before you write a page. unify asks for HTML. The output is exactly your markup, so what you see in <code>site/</code> is what ships.</p>
   <div class="compare">
     <div class="card"><h3>A framework</h3><p>Templates, variables, a build config, a client runtime.</p></div>
     <span class="vs">vs</span>
-    <div class="card is-accent"><h3>unify</h3><p>Plain HTML and Markdown, composed once at build time.</p></div>
+    <div class="card featured"><h3>unify</h3><p>Plain HTML and Markdown, composed once at build time.</p></div>
   </div>
 
   <h2>Built in</h2>

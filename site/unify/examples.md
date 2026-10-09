@@ -1,7 +1,7 @@
 ---
 title: Examples
 description: Worked unify examples, from a slot override and a section layout to a blog feed and the generated post list on this site.
-class: u-examples
+class: t-examples
 ---
 
 # Examples
@@ -31,21 +31,21 @@ A page replaces it with one attribute on a top-level element. Every other page k
 
 ## A section with its own chrome
 
-Drop `src/blog/posts/_layout.html` in place and every post gets it. The shared head, nav and footer come from the same fragments the root layout uses, so nothing is written twice:
+Drop `site/blog/posts/_layout.html` in place and every post gets it. The shared head, nav and footer come from the same fragments the root layout uses, so nothing is written twice:
 
 ```html
 <!doctype html>
 <html lang="en">
 <head>
-  <include src="/_includes/base/head.html"></include>
+  <include src="/_includes/head.html"></include>
   <title>· fwdslsh</title>
   <meta property="og:type" content="article">
   <meta name="schema" content="BlogPosting">
 </head>
 <body>
-  <include src="/_includes/base/nav.html"></include>
-  <main id="main"><article class="post"><slot></slot></article></main>
-  <include src="/_includes/base/footer.html"></include>
+  <include src="/_includes/nav.html"></include>
+  <main id="main"><slot></slot></main>
+  <include src="/_includes/footer.html"></include>
 </body>
 </html>
 ```
@@ -99,15 +99,12 @@ A non-empty include fills them. This works in Markdown too, as long as the inclu
 unify has no collections, so the blog index comes from a script. This site keeps its content in `site/` and the script in `scripts/`, with `unify.yaml` at the repository root holding the flags every command shares (a path in the file is relative to the file):
 
 ```yaml
-source: site
-pretty-urls: true
 base-url: https://fwdslsh.dev/
-canonical: auto
+pretty-urls: true
 generate: scripts/gen.mjs
-source-inventory: true
 ```
 
-Before each build unify runs the script with an overlay directory and a context file. The context names a JSON inventory of every source page, so the script filters, sorts and writes a fragment without parsing a single file:
+Before each build unify runs the script with an overlay directory and a context file. The context names a JSON inventory of every source page (on by default for a generator), so the script filters, sorts and writes a fragment without parsing a single file:
 
 ```js
 const [, , , overlay, contextPath] = process.argv;
@@ -127,10 +124,10 @@ writeFileSync(join(overlay, "_generated", "post-list.html"), `<ol>${items.join("
 
 ## Saving the flags
 
-Run the build once with the flags you want and `--save-config`, and unify writes them into `src/unify.yaml` for every later command:
+Run the build once with the flags you want and `--save-config`, and unify writes them into `unify.yaml` at the project root for every later command:
 
 ```sh
-unify build --pretty-urls --base-url https://example.com/ --canonical auto --save-config
+unify build --pretty-urls --base-url https://example.com/ --save-config
 unify dev      # same flags, from the file
 ```
 

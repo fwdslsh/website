@@ -1,9 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <include src="/_includes/base/head.html"></include>
-  <!-- relative to this file, so the layout previews styled straight from the folder; unify rewrites it per page -->
-  <link rel="stylesheet" href="../../assets/styles.css">
+  <include src="/_includes/head.html"></include>
   <title>· fwdslsh</title>
   <!-- Every page in blog/posts/ is a post: one declaration here covers the feed,
        the JSON-LD and the share card for all of them. Posts only need a date. -->
@@ -12,11 +10,11 @@
 </head>
 <body class="blog">
   <a href="#main" class="skip-link">Skip to main content</a>
-  <include src="/_includes/base/nav.html"></include>
+  <include src="/_includes/nav.html"></include>
   <main id="main">
-    <article class="post"><slot></slot></article>
+    <slot></slot>
     <p class="post-back"><a href="/blog/index.html">← All posts</a></p>
   </main>
-  <include src="/_includes/base/footer.html"></include>
+  <include src="/_includes/footer.html"></include>
 </body>
 </html>

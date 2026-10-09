@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Install unify, scaffold a starter site and publish it, in three steps and two commands.
-class: u-start
+class: t-start
 ---
 
 # Getting started
@@ -18,7 +18,7 @@ mkdir my-site && cd my-site
 unify init
 ```
 
-`init` writes a complete starter into `site/`: a layout, a nav fragment, a home page, a 404, a stylesheet with a theme file of custom properties you edit, and ready-to-copy example pages under `site/_examples/`, with `AGENTS.md`, `DEPLOY.md` and `unify.yaml` beside it. Pass a template name for a different start: `unify init blog`, `docs` or `portfolio`. A template can also be a directory, a git repository or any npm package, and `unify update` later brings its next version in, never overwriting the files `unify.yaml` keeps — see [Templates](/unify/templates.html).
+`init` writes a complete starter into `site/`: a layout, a nav fragment, a home page, a 404, a stylesheet with a theme file of custom properties you edit, and ready-to-copy example pages under `site/_examples/`, with `README.md` (an existing one is kept), `DEPLOY.md` and `unify.yaml` beside it. Pass a template name for a different start: `unify init blog`, `docs` or `portfolio`. A template can also be a directory, a git repository or any npm package, and `unify update` later brings its next version in, never overwriting the files `unify.yaml` keeps — see [Templates](/unify/templates.html).
 
 ## 2. Edit and preview
 
@@ -47,7 +47,7 @@ Exit 0 means `dist/` is the complete site. Anything else means nothing was publi
 For a site with an address, add the flags once and keep them in `unify.yaml` at the project root so every command shares them:
 
 ```sh
-unify build --pretty-urls --base-url https://example.com/ --canonical auto --save-config
+unify build --pretty-urls --base-url https://example.com/ --save-config
 ```
 
 `--pretty-urls` turns `/about.html` into `/about/` in the output (you still link the real file). `--base-url` makes share metadata absolute and switches on `sitemap.xml` and the feed.

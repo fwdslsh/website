@@ -1,7 +1,7 @@
 ---
 title: How it works
 description: The gutterpress model in one page, including the project folder, the manifest, layout directives, CSS Paged Media, extensions and validation.
-class: gp-concepts
+class: t-concepts
 ---
 
 # How it works

@@ -1,7 +1,7 @@
 ---
 title: Getting started
 description: Install gutterpress, scaffold a book, preview it live and export your first PDF.
-class: gp-start
+class: t-start
 ---
 
 # Getting started

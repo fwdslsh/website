@@ -5,3 +5,8 @@ base-url: https://fwdslsh.dev/
 pretty-urls: true
 # scripts/gen.mjs writes the post lists before every build, dev rebuild and audit; it reads the page list unify hands every generator
 generate: scripts/gen.mjs
+# the fwdslsh family theme: the docs template's stylesheet, theme and All-pages directory,
+# read from node_modules (a devDependency); this site's own files win wherever they share a path
+extends: node_modules/unify-docs-template
+# assets/unify/catalog.json, which the template's All-pages directory reads
+catalog: true

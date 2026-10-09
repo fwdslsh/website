@@ -1,7 +1,7 @@
 ---
 title: How it works
 description: The fhold model in one page, including the Assistant container, the home folder on disk, trusted versus guarded access, scheduled work and recovery.
-class: fh-concepts
+class: t-concepts
 ---
 
 # How it works

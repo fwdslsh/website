@@ -6,7 +6,8 @@ This repo is the fwdslsh website. It is authored as plain HTML and Markdown and 
 
 - The site source lives in `site/`.
 - The repo root holds project settings and generator scripts, not published output.
-- `unify.yaml` at the repo root stores the build flags that differ from unify's defaults: the production base URL `https://fwdslsh.dev/`, `pretty-urls`, and the generator script `scripts/gen.mjs`. Canonical links come with the base URL and the generator gets unify's page list by default, so neither is written; nor are defaults such as `source: site`.
+- `unify.yaml` at the repo root stores the build flags that differ from unify's defaults: the production base URL `https://fwdslsh.dev/`, `pretty-urls`, the generator script `scripts/gen.mjs`, `extends: node_modules/unify-docs-template` (the theme), and `catalog: true` (read by the template's All-pages directory). Canonical links come with the base URL and the generator gets unify's page list by default, so neither is written; nor are defaults such as `source: site`.
+- The look is the fwdslsh family theme from `unify-docs-template` (a devDependency), shared with unify.fwdslsh.dev and akm.fwdslsh.dev: its `assets/style.css` and `assets/theme.css` build into this site through `extends`. Site files win at the same path. Only components this site alone has go in `site/assets/site.css`; to change a color, font or size, set the template's custom property in `site/assets/theme.css` rather than restyling.
 - `scripts/gen.mjs` creates generated fragments for blog lists and recent posts; it runs before build/audit/dev.
 - The publishable output is generated into `dist/` only when checks pass.
 
@@ -36,11 +37,11 @@ Follow Unify’s rules, not other generator conventions:
 - Use plain HTML or Markdown. Do not add template variables, props, loops, or custom wrappers.
 - A layout is the nearest `_layout.html` in the current or parent folder. Layouts are complete pages, not chained templates.
 - Pages do not “wrap” Markdown with HTML to style it; CSS styles the generated markup.
-- Reuse shared chrome with `<include src="/_includes/..."></include>` and fragments named `*.fragment.html`.
+- Reuse shared chrome with `<include src="/_includes/..."></include>`; name a file `*.fragment.html` only when it declares slots or must ship as a bare snippet.
 - Use real file paths in links, e.g. `/unify/concepts.html` rather than a route-like string; pretty URLs are generated at build time.
 - Keep underscore-prefixed files and folders (`_includes`, `_layout.html`, `_generated`, `_drafts`, etc.) out of the published site.
 - Every page should have its own title, description, and exactly one `<h1>` in the main content.
-- Keep CSS in the stylesheet or scope component CSS locally; do not add framework-like behavior.
+- Use the template's class vocabulary (`.card`, `.btn`, `.hero`, `.cta-row`, `.badge`, …) before adding a class; keep site-only CSS in `site.css`; do not add framework-like behavior.
 - Use modern CSS such as custom properties, layers, nesting, etc. to keep CSS clean and understandable.
 - The site is a reference implementation of Unify: prefer the generator’s actual mechanisms over custom scripts.
 - Blog posts need a date with a time in frontmatter for feed generation; otherwise they are omitted.

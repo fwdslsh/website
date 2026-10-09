@@ -13,17 +13,21 @@ Below is how the layouts, pages, and generated lists fit together. You can follo
 
 ## Layouts
 
-unify starts in the page's folder and walks up until it finds an `_layout.html`. That file supplies the page's shared structure. This site has seven layouts:
+unify starts in the page's folder and walks up until it finds an `_layout.html`. That file supplies the page's shared structure. This site has six layouts:
 
 - `site/_layout.html` wraps most pages: the nav, `<main>` and the footer.
 - `site/unify/_layout.html`, `site/fhold/_layout.html`, `site/akm/_layout.html`, and `site/gutterpress/_layout.html` add the appropriate section tabs to each tool's pages.
-- `site/blog/posts/_layout.html` wraps each post in an `<article>` and marks it as a `BlogPosting`.
+- `site/blog/posts/_layout.html` marks each post as a `BlogPosting` and adds a link back to the post list.
 
 Layouts don't inherit from each other. Each one is a complete HTML document, but they pull in the same `<head>`, navigation, and footer. For example, this include adds the shared navigation:
 
 ```html
-<include src="/_includes/base/nav.html"></include>
+<include src="/_includes/nav.html"></include>
 ```
+
+## The look
+
+The site doesn't carry a stylesheet of its own design. `unify.yaml` says `extends: node_modules/unify-docs-template`: unify reads that template's files as the last place to find anything, so its stylesheet, theme and All-pages directory build into this site while every file here wins at the same path. unify.fwdslsh.dev and akm.fwdslsh.dev extend the same template, which is why the three sites look like one family. What only this site has, the tools dropdown, the section tabs, the post list and the member cards, is in `site/assets/site.css`, and both stylesheets are linked from `site/_includes/head.html`.
 
 ## Pages
 
@@ -61,23 +65,22 @@ The include fills those slots and adds the description. Changing the fragment's 
 
 The blog index needs a list of posts, but unify doesn't decide which pages belong in a collection or how to sort them. Our small, dependency-free `scripts/gen.mjs` handles that part. It lives beside the site, not inside it: unify runs a generator from anywhere, and build tooling isn't content.
 
-With `source-inventory: true`, unify gives the script a list of source pages and their metadata. The script selects pages under `blog/posts/`, sorts them newest first, and writes includes for the blog index and home page. It doesn't need to parse frontmatter or maintain a separate list of published posts. The generated includes stay in unify's build overlay rather than being written back into `site/`.
+unify gives every generator a list of source pages and their metadata. The script selects pages under `blog/posts/`, sorts them newest first, and writes includes for the blog index and home page. It doesn't need to parse frontmatter or maintain a separate list of published posts. The generated includes stay in unify's build overlay rather than being written back into `site/`.
 
-The shared fragments live in `site/_includes/`, next to the layouts, and both link their own assets relative to the file: open a layout or a fragment straight from the folder and it shows with its styles and images, because unify resolves a relative link against the file that wrote it and rewrites it for every page. Build tooling that isn't content, the generator and the config, sits at the repository root.
+The shared fragments live in `site/_includes/`, next to the layouts. Build tooling that isn't content, the generator and the config, sits at the repository root.
 
 The [Atom feed](/feed.xml) follows a different path. The posts layout declares `BlogPosting`, and each post has a publication date with a time. unify uses that metadata to generate `feed.xml` and the post's JSON-LD structured data. No separate feed script is needed.
 
 ## Build and verify
 
-The same build generates `sitemap.xml` and each page's canonical link. These settings in `unify.yaml` at the repository root name the content directory and the generator (a path in the file is relative to the file), supply the site address, enable readable URLs, and connect the post-list script to the source inventory:
+The same build generates `sitemap.xml` and each page's canonical link. `unify.yaml` at the repository root keeps only what differs from unify's defaults (a path in the file is relative to the file): the site address, readable URLs, the post-list script, the template the look comes from, and the page catalog its All-pages directory reads:
 
 ```yaml
-source: site
-pretty-urls: true
 base-url: https://fwdslsh.dev/
-canonical: auto
+pretty-urls: true
 generate: scripts/gen.mjs
-source-inventory: true
+extends: node_modules/unify-docs-template
+catalog: true
 ```
 
 Before committing a content change, run the dry-run check:

@@ -119,7 +119,7 @@ test('post is discoverable through the blog, homepage and feed and fits small sc
   await page.goto('/blog/');
   await page.getByRole('link',{name:"A model leaderboard wasn't enough. We kept the ledger.",exact:true}).click();
   await expect(page.locator('h1')).toHaveText("A model leaderboard wasn't enough. We kept the ledger.");
-  await expect(page.locator('.site-nav')).toHaveCount(1);
+  await expect(page.locator('.site-head')).toHaveCount(1);
   await expect(page.locator('.model-ledger')).toHaveCount(0);
   await expect(page.locator('main')).not.toContainText('The ledger is dated September 30');
   await expect(page.locator('main')).not.toContainText('not proof that one CPU is universally faster');
