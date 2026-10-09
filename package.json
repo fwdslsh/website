@@ -10,7 +10,9 @@
     "check": "unify build --dry-run --strict",
     "audit": "unify audit --strict",
     "audit:external": "unify audit --external",
-    "test": "playwright test"
+    "test": "playwright test",
+    "test:scripts": "node --test scripts/*.test.mjs",
+    "crosspost": "node scripts/crosspost-devto.mjs"
   },
   "devDependencies": {
     "@fwdslsh/unify": "0.11.13",
