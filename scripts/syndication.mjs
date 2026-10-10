@@ -96,6 +96,15 @@ export function parseFrontmatter(text) {
   return { data, body: text.slice(m[0].length) };
 }
 
+/**
+ * A post's `tags:` line (`tags: webdev, html`) as dev.to accepts them: at most
+ * four, lowercase letters and digits only.
+ */
+export function devtoTags(value) {
+  const tags = (value || "").split(",").map((t) => t.toLowerCase().replace(/[^a-z0-9]/g, "")).filter(Boolean);
+  return [...new Set(tags)].slice(0, 4);
+}
+
 /** The published address of a page's source path, as unify writes it. */
 export function publishedUrl(source, siteBase, prettyUrls) {
   let path = source.replace(/\.(md|html)$/, ".html");
