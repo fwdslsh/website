@@ -30,14 +30,14 @@ test("a Medium feed becomes list items: CDATA titles, links without the tracking
 });
 
 test("an unreachable source is reported and skipped; the others still arrive", async () => {
-  const warnings = [];
+  const lines = [];
   const fetch = async (url) => {
     if (url.includes("medium.com")) throw new Error("connect refused");
     return { ok: true, json: async () => [{ title: "T", url: "https://dev.to/a/t", published_at: "2026-10-01T00:00:00Z", user: { name: "A" } }] };
   };
-  const items = await fetchExternal({ devto: ["a"], medium: ["b"] }, { fetch, siteBase: SITE, warn: (m) => warnings.push(m) });
+  const items = await fetchExternal({ devto: ["a"], medium: ["b"] }, { fetch, siteBase: SITE, log: (m) => lines.push(m) });
   assert.equal(items.length, 1);
-  assert.match(warnings[0], /skipped medium\.com\/@b \(connect refused\)/);
+  assert.deepEqual(lines, ["gen.mjs: dev.to/a: 1 articles listed", "gen.mjs: skipped medium.com/@b (connect refused); the list shows the other sources"]);
 });
 
 test("frontmatter scalars are read with their quotes removed", () => {

@@ -59,9 +59,11 @@ export function parseMediumRss(xml, siteBase) {
 /**
  * Every configured account's articles. A source that cannot be reached is
  * reported and skipped, so an outage on dev.to or Medium never stops a build;
- * the list then shows this site's own posts and whatever did arrive.
+ * the list then shows this site's own posts and whatever did arrive. Each
+ * source's outcome goes to stdout, which unify passes through to the build
+ * log; a generator's stderr is shown only when it fails.
  */
-export async function fetchExternal(accounts, { fetch = globalThis.fetch, siteBase = null, timeoutMs = 8000, warn = console.warn } = {}) {
+export async function fetchExternal(accounts, { fetch = globalThis.fetch, siteBase = null, timeoutMs = 8000, log = console.log } = {}) {
   const get = async (url, as) => {
     const res = await fetch(url, { signal: AbortSignal.timeout(timeoutMs), headers: { accept: as === "json" ? "application/json" : "application/rss+xml" } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -71,15 +73,11 @@ export async function fetchExternal(accounts, { fetch = globalThis.fetch, siteBa
     ...accounts.devto.map((name) => [`dev.to/${name}`, () => get(`https://dev.to/api/articles?username=${encodeURIComponent(name)}&per_page=100`, "json").then((j) => parseDevto(j, siteBase))]),
     ...accounts.medium.map((name) => [`medium.com/@${name}`, () => get(`https://medium.com/feed/@${encodeURIComponent(name)}`, "text").then((x) => parseMediumRss(x, siteBase))]),
   ];
-  const results = await Promise.all(
-    jobs.map(([label, run]) =>
-      run().catch((error) => {
-        warn(`gen.mjs: skipped ${label} (${error.message}); the list shows the other sources`);
-        return [];
-      }),
-    ),
+  const results = await Promise.all(jobs.map(([, run]) => run().then((items) => ({ items }), (error) => ({ items: [], error }))));
+  results.forEach(({ items, error }, i) =>
+    log(error ? `gen.mjs: skipped ${jobs[i][0]} (${error.message}); the list shows the other sources` : `gen.mjs: ${jobs[i][0]}: ${items.length} articles listed`),
   );
-  return results.flat();
+  return results.flatMap((r) => r.items);
 }
 
 /** `---` frontmatter of a post: the scalar keys it uses, unquoted. */
