@@ -4,6 +4,7 @@ description: "Compare quality and speed across 129 recorded model runs, with fil
 author: fwdslsh
 date: 2026-10-03T17:00:00Z
 class: model-ledger-post
+tags: ai, llm, machinelearning, opensource
 ---
 
 # A model leaderboard wasn't enough. We kept the ledger.

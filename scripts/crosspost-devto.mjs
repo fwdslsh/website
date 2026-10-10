@@ -4,17 +4,19 @@
 // there, with its canonical URL set to the post's address on this site, so
 // search engines credit fwdslsh.dev and gen.mjs knows to leave the copy out of
 // the blog's own list. A post already on dev.to — matched by canonical URL — is
-// never posted twice, so the script is safe to run on every deploy.
+// never posted twice, so the script is safe to run on every deploy. A post's
+// `tags:` line becomes its dev.to tags, and a post already there whose tags
+// differ from its line has them updated.
 //
 //   node scripts/crosspost-devto.mjs            publish what is missing
-//   node scripts/crosspost-devto.mjs --dry-run  list what would be published
+//   node scripts/crosspost-devto.mjs --dry-run  list what would be published or retagged
 //
 // Without DEVTO_API_KEY it says so and does nothing (a fork's CI, a local run).
 // A post dated in the future waits until a deploy after its date.
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { parseFrontmatter, publishedUrl, toDevtoMarkdown } from "./syndication.mjs";
+import { devtoTags, parseFrontmatter, publishedUrl, toDevtoMarkdown } from "./syndication.mjs";
 
 const API = "https://dev.to/api";
 const root = fileURLToPath(new URL("..", import.meta.url));
@@ -40,6 +42,7 @@ export function articles({ postsDir, siteBase, prettyUrls, now = new Date() }) {
           description: data.description || "",
           body_markdown: toDevtoMarkdown(body, siteBase, prettyUrls),
           canonical_url: publishedUrl(`blog/posts/${name}`, siteBase, prettyUrls),
+          tags: devtoTags(data.tags),
           published: true,
         },
       };
@@ -49,6 +52,8 @@ export function articles({ postsDir, siteBase, prettyUrls, now = new Date() }) {
 }
 
 const norm = (url) => (url || "").replace(/\/+$/, "");
+// dev.to lists tags as an array, but some of its responses spell them "a, b".
+const tagKey = (tags) => (Array.isArray(tags) ? tags : String(tags || "").split(/,\s*/)).filter(Boolean).sort().join();
 
 async function main() {
   const dryRun = process.argv.includes("--dry-run");
@@ -65,23 +70,32 @@ async function main() {
 
   const res = await fetch(`${API}/articles/me/all?per_page=1000`, { headers });
   if (!res.ok) throw new Error(`crosspost-devto: listing the account's articles failed: HTTP ${res.status}`);
-  const existing = new Set((await res.json()).map((a) => norm(a.canonical_url)));
+  const existing = new Map((await res.json()).map((a) => [norm(a.canonical_url), a]));
   const missing = candidates.filter((a) => !existing.has(norm(a.canonical_url)));
+  const retag = candidates
+    .map((a) => ({ article: a, copy: existing.get(norm(a.canonical_url)) }))
+    .filter(({ article, copy }) => copy && article.tags.length && tagKey(article.tags) !== tagKey(copy.tag_list));
 
-  console.log(`crosspost-devto: ${candidates.length} posts, ${missing.length} not on dev.to yet`);
-  for (const [i, article] of missing.entries()) {
+  console.log(`crosspost-devto: ${candidates.length} posts, ${missing.length} not on dev.to yet, ${retag.length} to retag`);
+  const jobs = [
+    ...missing.map((article) => ({ verb: "publish", url: `${API}/articles`, method: "POST", body: { article }, canonical: article.canonical_url })),
+    ...retag.map(({ article, copy }) => ({ verb: "retag", url: `${API}/articles/${copy.id}`, method: "PUT", body: { article: { tags: article.tags } }, canonical: article.canonical_url })),
+  ];
+  for (const [i, job] of jobs.entries()) {
     if (dryRun) {
-      console.log(`  would publish ${article.canonical_url}  ${article.title}`);
+      console.log(`  would ${job.verb} ${job.canonical}`);
       continue;
     }
-    if (i > 0) await new Promise((r) => setTimeout(r, 5000)); // dev.to rate-limits article creation
-    let post = await fetch(`${API}/articles`, { method: "POST", headers, body: JSON.stringify({ article }) });
-    if (post.status === 429) {
-      await new Promise((r) => setTimeout(r, 1000 * (Number(post.headers.get("retry-after")) || 30)));
-      post = await fetch(`${API}/articles`, { method: "POST", headers, body: JSON.stringify({ article }) });
+    if (i > 0) await new Promise((r) => setTimeout(r, 5000)); // dev.to rate-limits article writes
+    const send = () => fetch(job.url, { method: job.method, headers, body: JSON.stringify(job.body) });
+    let reply = await send();
+    if (reply.status === 429) {
+      await new Promise((r) => setTimeout(r, 1000 * (Number(reply.headers.get("retry-after")) || 30)));
+      reply = await send();
     }
-    if (!post.ok) throw new Error(`crosspost-devto: publishing ${article.canonical_url} failed: HTTP ${post.status} ${await post.text()}`);
-    console.log(`  published ${(await post.json()).url}  ← ${article.canonical_url}`);
+    if (!reply.ok) throw new Error(`crosspost-devto: ${job.verb} ${job.canonical} failed: HTTP ${reply.status} ${await reply.text()}`);
+    const done = await reply.json();
+    console.log(`  ${job.verb === "publish" ? "published" : "retagged"} ${done.url}  ← ${job.canonical}  [${done.tags ?? done.tag_list}]`);
   }
 }
 

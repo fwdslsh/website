@@ -3,6 +3,7 @@ title: How this site is built
 description: How fwdslsh.dev uses unify to share layouts, generate its post lists, and check the finished site before deployment.
 author: fwdslsh
 date: 2026-10-02T09:00:00Z
+tags: webdev, html, staticsite, opensource
 ---
 
 # How this site is built

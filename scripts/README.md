@@ -26,10 +26,13 @@ not carry yet is published there, its canonical URL set to the post's address he
 engines credit fwdslsh.dev. A post is matched by canonical URL and never posted twice; a post dated
 in the future waits for a deploy after its date. Root-relative links and images become absolute
 fwdslsh.dev addresses, and the leading `# Title` is dropped, since dev.to prints the title.
+A post's `tags:` line (`tags: webdev, html`) becomes its dev.to tags: at most four, lowercased,
+letters and digits only. A post already on dev.to whose tags differ from its line is retagged on
+the next deploy; a post with no `tags:` line leaves the dev.to copy's tags as they are.
 
 It needs a dev.to API key in the `DEVTO_API_KEY` repository secret (dev.to → Settings →
 Extensions → DEV Community API Keys, for the fwdslsh account); without one it reports that and
-publishes nothing. `npm run crosspost -- --dry-run` lists what it would publish.
+publishes nothing. `npm run crosspost -- --dry-run` lists what it would publish or retag.
 
 `npm run test:scripts` tests both scripts against recorded dev.to and Medium responses.
 

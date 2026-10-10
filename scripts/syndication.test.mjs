@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 import { articles, siteSettings } from "./crosspost-devto.mjs";
-import { fetchExternal, parseDevto, parseFrontmatter, parseMediumRss, publishedUrl, toDevtoMarkdown } from "./syndication.mjs";
+import { devtoTags, fetchExternal, parseDevto, parseFrontmatter, parseMediumRss, publishedUrl, toDevtoMarkdown } from "./syndication.mjs";
 
 const SITE = "https://fwdslsh.dev/";
 
@@ -59,13 +59,18 @@ test("cross-post candidates: published posts only, with their canonical address 
   const dir = mkdtempSync(join(tmpdir(), "crosspost-"));
   try {
     writeFileSync(join(dir, "_template.md"), "---\ntitle: T\ndate: 2026-01-01T00:00:00Z\n---\n# T\n");
-    writeFileSync(join(dir, "old.md"), "---\ntitle: Old\ndescription: d\ndate: 2026-10-01T00:00:00Z\n---\n# Old\n\nBody.\n");
+    writeFileSync(join(dir, "old.md"), "---\ntitle: Old\ndescription: d\ndate: 2026-10-01T00:00:00Z\ntags: webdev, HTML\n---\n# Old\n\nBody.\n");
     writeFileSync(join(dir, "future.md"), "---\ntitle: Future\ndate: 2099-01-01T00:00:00Z\n---\n# Future\n");
     const { siteBase, prettyUrls } = siteSettings("base-url: https://fwdslsh.dev/\npretty-urls: true\n");
     assert.deepEqual(articles({ postsDir: dir, siteBase, prettyUrls, now: new Date("2026-10-09T00:00:00Z") }), [
-      { title: "Old", description: "d", body_markdown: "Body.\n", canonical_url: "https://fwdslsh.dev/blog/posts/old/", published: true },
+      { title: "Old", description: "d", body_markdown: "Body.\n", canonical_url: "https://fwdslsh.dev/blog/posts/old/", tags: ["webdev", "html"], published: true },
     ]);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
+});
+
+test("a tags line becomes dev.to tags: four at most, lowercase letters and digits, no repeats", () => {
+  assert.deepEqual(devtoTags("Static-Sites, html, HTML, web dev, ai, extra"), ["staticsites", "html", "webdev", "ai"]);
+  assert.deepEqual(devtoTags(undefined), []);
 });
