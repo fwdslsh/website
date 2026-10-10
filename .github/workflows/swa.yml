@@ -27,8 +27,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: TEMP inspect dev.to
-        run: curl -s "https://dev.to/api/articles?username=fwdslsh&per_page=100" | jq -c '.[] | {title,url,canonical_url,published_at,user:.user.username}'
       - name: Test the generator's scripts
         run: npm run test:scripts
 
