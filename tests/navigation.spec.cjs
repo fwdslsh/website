@@ -7,6 +7,7 @@ const paths = [
   '/about/',
   '/blog/',
   '/blog/posts/how-this-site-is-built/',
+  '/blog/posts/let-your-agent-use-a-token-it-cannot-read/',
   '/blog/posts/model-benchmark-ledger/',
   '/blog/posts/whats-new-in-unify-0-9-to-0-11/',
   '/references/model-ledger/',
@@ -131,9 +132,9 @@ test('the section tabs collapse into a menu on phones', async ({ page, isMobile 
 
 test('the blog lists the post that the generator found', async ({ page }) => {
   await page.goto('/blog/');
-  await expect(page.locator('.post-list a:not([rel=external])').first()).toHaveAttribute('href', '/blog/posts/cross-post-your-unify-blog-to-dev-to/');
+  await expect(page.locator('.post-list a:not([rel=external])').first()).toHaveAttribute('href', '/blog/posts/let-your-agent-use-a-token-it-cannot-read/');
   // This blog's own posts; articles from scripts/external-articles.json link out (rel=external).
-  await expect(page.locator('.post-list a:not([rel=external])')).toHaveCount(4);
+  await expect(page.locator('.post-list a:not([rel=external])')).toHaveCount(5);
   await expect(page.locator('.post-list li:has(a:not([rel=external])) .post-by').first()).toHaveText('by fwdslsh');
 });
 
